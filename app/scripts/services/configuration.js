@@ -12,8 +12,8 @@ angular.module('pdscApp')
 
       "datasource": {
           "paradisec": {
-              "getItem": "http://catalog.paradisec.org.au/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac",
-              "getCollection": "http://catalog.paradisec.org.au/oai/item?verb=GetRecord&identifier={{collectionId}}-{{itemId}}&metadataPrefix=olac"
+              "getItem": "http://catalog.pdsc/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac",
+              "getCollection": "http://catalog.pdsc/oai/item?verb=GetRecord&identifier={{collectionId}}-{{itemId}}&metadataPrefix=olac"
           },
           "esrc": {
               "getItem": "http://data.esrc.unimelb.edu.au/ead/{{dataset}}/item/{{itemId}}/xml",

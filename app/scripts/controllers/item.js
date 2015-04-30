@@ -12,15 +12,16 @@ angular.module('pdscApp')
     function ($scope, $log, $routeParams, paradisec) {
 
         $log.debug("ItemCtrl: $routeParams", $routeParams);
-
         var project    = _.has($routeParams, 'project')    ? $routeParams.project    : undefined;
         var itemId     = _.has($routeParams, 'itemId')     ? $routeParams.itemId     : undefined;
         var instanceId = _.has($routeParams, 'instanceId') ? $routeParams.instanceId : undefined;
-        $log.debug("ItemCtrl: project and itemId", project, itemId);
+        $log.debug("ItemCtrl: project:", project, "and itemId:", itemId);
 
         if (project && itemId) {
             if (project === 'paradisec') {
-                paradisec.getItem(project, itemId);
+                var d = paradisec.getItem(project, itemId);
+                d.then(function(resp) { $scope.itemData = resp; });
+
             } else if (project === 'esrc') {
             } else if (project === 'alveo') {
             } else {
@@ -30,4 +31,5 @@ angular.module('pdscApp')
             $log.debug("ItemCtrl: unknown datasource");
         }
       
+
   }]);
