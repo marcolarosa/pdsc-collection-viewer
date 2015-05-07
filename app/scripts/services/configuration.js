@@ -12,6 +12,8 @@ angular.module('pdscApp')
 
       "datasource": {
           "paradisec": {
+              "collections": "http://catalog.paradisec.org.au/collections",
+              "itemIdentifier": "oai:paradisec.org.au:{{collectionId}}-{{itemId}}",
               "getItem": "http://catalog.pdsc/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac",
               "getCollection": "http://catalog.pdsc/oai/item?verb=GetRecord&identifier={{collectionId}}-{{itemId}}&metadataPrefix=olac"
           },

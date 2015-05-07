@@ -32,7 +32,7 @@ angular
           templateUrl: 'views/collection.html',
           controller: 'CollectionCtrl'
       })
-      .when('/:project/item/:itemId?/:itemInstance?', {
+      .when('/:project/item/:collectionId/:itemId/:itemInstance?', {
           templateUrl: 'views/item.html',
           controller: 'ItemCtrl'
       })

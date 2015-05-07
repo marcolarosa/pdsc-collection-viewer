@@ -1,0 +1,119 @@
+
+<div ng-if="showImageSet" class="fade-in" 
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #aec6cf; box-shadow: 5px 5px 4px #888888; ">
+    <div style="position: relative;">
+        <!-- previous image control -->
+        <div style="position: absolute; top: 0; left: 0; width: 5%; height: {{panelHeight}}px; " ng-show="showPrevious">
+            <a ng-click="previous()" class="left carousel-control" style="width: 100%;">
+                <span class="glyphicon glyphicon-chevron-left" style="font-size: 26px;"></span>
+            </a>
+        </div>
+
+        <!-- Image large view panel -->
+        <div style="position: absolute; top: 0; left: 5%; width: 90%; height: {{panelHeight}}px;">
+            <div class="row" style="margin: 10px 0px;">
+                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8" style="text-align: center;">
+                    Image {{current + 1}}&nbsp;of&nbsp;{{imageSetData.images.length}}
+                    <a href="" ng-click="jumpToStart()">
+                        <span class="glyphicon glyphicon-step-backward"></span>
+                    </a>
+                    <a href="" ng-click="jumpToEnd()">
+                        <span class="glyphicon glyphicon-step-forward"></span>
+                    </a>
+                    <!--
+                    &nbsp;&dash;&nbsp;
+                    <a href="" ng-click="toggleInformation()">
+                       <span ng-hide="showInformation">view item information</span>
+                       <span ng-show="showInformation">hide item information</span>
+                    </a>
+                    -->
+                    &nbsp;&dash;&nbsp;
+                    <a href="" ng-click="toggleFilmstrip()">
+                        <span ng-show="showFilmstrip">hide thumbnails</span>
+                        <span ng-hide="showFilmstrip">show thumbnails</span>
+                    </a>
+                    &nbsp;&dash;&nbsp;
+                    <a href="" ng-click="showItemInformation = !showItemInformation">
+                        <span ng-show="showItemInformation">hide item information</span>
+                        <span ng-hide="showItemInformation">show item information</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row" style="height: {{imagePaneHeight}}px;">
+                <img ng-src="{{image}}" id="main_img" smoothzoom alt='You must be logged in to Nabu to view this image'>
+            </div>
+
+            <div class="row" ng-if="!showFilmstrip">
+                <div class="col-sm-12 col-col-md-12 col-lg-offset-2 col-lg-8 text-center">
+                    <h4 class="section-heading">{{imageSetData.title}}</h4>
+                </div>
+            </div>
+            <div class="row" ng-if="!showFilmstrip">
+                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
+                    <a href="{{imageSetData.identifier[1]}}" target="_blank">view resource (opens in a new window)</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 0; left: 95%; width: 5%; height: {{panelHeight}}px;" ng-show="showNext">
+            <a ng-click="next()" class="right carousel-control" style="width: 100%;">
+                <span class="glyphicon glyphicon-chevron-right" style="font-size: 26px;"></span>
+            </a>
+        </div>
+
+        <!-- Filmstrip -->
+        <div ng-if="showFilmstrip" 
+            style="position:absolute; top: {{navbarHeight + imagePaneHeight}}px; left: 0; width: 100%; height: {{filmstripHeight}}px; width: 100%; 
+                    background-color: #aec6cf; opacity: 0.5; z-index: 40;"></div>
+        <div ng-if="showFilmstrip" class="fade-in"
+            style="position:absolute; top: {{navbarHeight + imagePaneHeight}}px; left: 0; width: 100%; height: {{filmstripHeight}}px; width: 100%; 
+                    overflow-x: scroll; white-space: nowrap; display: inline-block; z-index: 50; padding: 5px 5px; border-top: 2px solid #ccc;">
+            <span ng-repeat="img in smallImages">
+                <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
+                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{imageHeight}}px;"  />
+                </a>
+            </span>
+        </div>
+
+        <!-- item information panel -->
+        <div ng-if="showItemInformation" class="fade-in"
+            style="position:absolute; top: {{panelHeight * 0.01}}px; left: 1%; width: 100%; height: {{panelHeight * 0.9}}px; width: 50%;
+                    background-color: #FFFFF0; z-index: 50; border-radius: 2px; box-shadow: 5px 5px 4px #888888;"></div>
+        <div ng-if="showItemInformation" class="fade-in"
+            style="position:absolute; top: {{panelHeight * 0.01}}px; left: 1%; width: 100%; height: {{panelHeight * 0.9}}px; width: 50%;
+                    display: inline-block; z-index: 60; padding: 15px;">
+        
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="section-heading">
+                        {{imageSetData.title}}
+                    </h2>
+                    <hr style="border: 1px solid black;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <p><strong>Collection: <a href="{{imageSetData.collectionLink}}">{{imageSetData.collectionId}}</a></strong></p>
+                    <p><strong>Item: <a href="{{imageSetData.identifier[1]}}">{{imageSetData.itemId}}</a></strong></p>
+                    <p>
+                        <strong>Contributors: </strong>
+                        <ul>
+                            <span ng-repeat="contributor in imageSetData.contributor">
+                                <li>{{contributor.name}} ({{contributor.role}})</li>
+                            </span>
+                        </ul>
+                    </p>
+                    <p><strong>Description:<br/></strong>{{imageSetData.description}}</p>
+                    <p><strong>Cite this item:<br/></strong>{{imageSetData.citation}}</p>
+                    <p>
+                        <a href="{{imageSetData.identifier[1]}}">View this resource in the catalog</a>
+                        &nbsp;&dash;&nbsp;
+                        <a href="" ng-click="toggleItemInformation()">close</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
