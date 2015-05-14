@@ -18,6 +18,26 @@ angular.module('pdscApp')
           return { 'data': createItemDataStructure(tree)}
       }
 
+      function constructItemList(type, tree) {
+          var selector;
+          if (type === 'images') {
+              selector = paradisec.imageTypes;
+          } else if (type === 'video') {
+              selector = paradisec.videoTypes;
+          } else if (type === 'audio') {
+              selector = paradisec.audioTypes;
+          }
+          console.log('**', selector);
+      
+         return  _.without(_.map(tree['dcterms:tableOfContents'], function(d) {
+              var i = d['#text'];
+              var ext = i.split('.').pop();
+              if (ext !== undefined && selector !== undefined && selector.indexOf(ext.toLowerCase()) !== -1) {
+                  return d['#text'];
+              }
+          }), undefined)
+      }
+
       function createItemDataStructure(tree) {
           return {
               'identifier': _.map(tree['dc:identifier'], function(d) {
@@ -32,13 +52,9 @@ angular.module('pdscApp')
                       'role': d['@attributes']['olac:code']
                   }
               }),
-              'images': _.without(_.map(tree['dcterms:tableOfContents'], function(d) {
-                  var i = d['#text'];
-                  var ext = i.split('.').pop();
-                  if (ext !== undefined && paradisec.imageTypes.indexOf(ext.toLowerCase()) !== -1) {
-                      return d['#text'];
-                  }
-              }), undefined),
+              'images': constructItemList('images', tree),
+              'video': constructItemList('video', tree),
+              'audio': constructItemList('audio', tree),
               'rights': tree['dcterms:accessRights']['#text']
           };
       }
@@ -65,6 +81,8 @@ angular.module('pdscApp')
 
       var paradisec = {
           imageTypes: [ 'jpg', 'png' ],
+          videoTypes: [ 'mp4', 'webm', 'ogg' ],
+          audioTypes: [ 'mp3', 'webm', 'mp3', 'wav' ],
           getItem: getItem
       }
       return paradisec;
