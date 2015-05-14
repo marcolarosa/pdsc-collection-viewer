@@ -7,7 +7,7 @@ angular.module('pdscApp')
       templateUrl: 'views/view-image-set.html',
       restrict: 'E',
       scope: {
-          imageSetData: '=',
+          itemData: '=',
           instanceId: '=',
       },
       link: function postLink(scope, element, attrs) {
@@ -38,9 +38,9 @@ angular.module('pdscApp')
               }
           }
 
-          scope.$watch('imageSetData', function() {
-              if (!_.isEmpty(scope.imageSetData)) {
-                  //$log.debug('D:view-set; image-set data', scope.imageSetData);
+          scope.$watch('itemData', function() {
+              if (!_.isEmpty(scope.itemData)) {
+                  //$log.debug('D:view-set; image-set data', scope.itemData);
 
                   // figure out sizes
                   scope.showFilmstrip = false;
@@ -60,7 +60,7 @@ angular.module('pdscApp')
           });
 
           scope.loadImage = function() {
-              scope.image = scope.imageSetData.images[scope.current];
+              scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
               scope.highlightThumbnail();
           }
@@ -71,7 +71,7 @@ angular.module('pdscApp')
                   // show next not previous
                   scope.showNext = true;
                   scope.showPrevious = false;
-              } else if (scope.current === scope.imageSetData.images.length -1) {
+              } else if (scope.current === scope.itemData.images.length -1) {
                   // show previous not next
                   scope.showNext = false;
                   scope.showPrevious = true;
@@ -85,7 +85,7 @@ angular.module('pdscApp')
           // page to next image
           scope.next = function() {
               scope.current += 1;
-              if (scope.current === scope.imageSetData.images.length -1) scope.current = scope.imageSetData.images.length -1;
+              if (scope.current === scope.itemData.images.length -1) scope.current = scope.itemData.images.length -1;
               scope.loadImage();
           }
 
@@ -104,7 +104,7 @@ angular.module('pdscApp')
 
           // jump to last image
           scope.jumpToEnd = function(){
-              scope.current = scope.imageSetData.images.length -1;
+              scope.current = scope.itemData.images.length -1;
               scope.loadImage();
           }
           
@@ -120,12 +120,12 @@ angular.module('pdscApp')
           // toggle the filmstrip view
           scope.toggleFilmstrip = function() {
               scope.showFilmstrip = !scope.showFilmstrip;
-              scope.smallImages = _.map(scope.imageSetData.images, function(d, i) { 
+              scope.smallImages = _.map(scope.itemData.images, function(d, i) { 
                   var selected = '';
                   if (i === scope.current) selected = 'filmstrip-highlight-current'; 
                   return {
                       'id': i,
-                      'source': scope.imageSetData.images[i],
+                      'source': scope.itemData.images[i],
                       'selected': selected
                   }
               });
