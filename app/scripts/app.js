@@ -20,21 +20,13 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/:collectionId?/:itemId/:itemInstance?', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      })
-      .when('/:project/collection/:collectionId?', {
-          templateUrl: 'views/collection.html',
-          controller: 'CollectionCtrl'
-      })
-      .when('/:project/item/:collectionId/:itemId/:itemInstance?', {
-          templateUrl: 'views/item.html',
-          controller: 'ItemCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -10,6 +10,8 @@
 angular.module('pdscApp')
   .constant('configuration', {
 
+      "deployment": "paradisec",
+
       "datasource": {
           "paradisec": {
               "collections": "http://catalog.paradisec.org.au/collections",

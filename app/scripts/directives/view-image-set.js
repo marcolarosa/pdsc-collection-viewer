@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('pdscApp')
-  .directive('viewSet', [ '$log', '$window', '$location', '$anchorScroll', '$timeout',  
+  .directive('viewImageSet', [ '$log', '$window', '$location', '$anchorScroll', '$timeout',  
         function ($log, $window, $location, $anchorScroll, $timeout) {
     return {
-      templateUrl: 'views/view-set.html',
+      templateUrl: 'views/view-image-set.html',
       restrict: 'E',
       scope: {
           imageSetData: '=',

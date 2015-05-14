@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: viewSet', function () {
+describe('Directive: viewImageSet', function () {
 
   // load the directive's module
   beforeEach(module('pdscApp'));
@@ -13,8 +13,8 @@ describe('Directive: viewSet', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<view-set></view-set>');
+    element = angular.element('<view-image-set></view-image-set>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the viewSet directive');
+    expect(element.text()).toBe('this is the viewImageSet directive');
   }));
 });
