@@ -136,7 +136,6 @@ angular.module('pdscApp')
           }
 
           scope.toggleItemInformation = function() {
-              console.log('here');
               scope.showItemInformation = !scope.showItemInformation;
           }
 

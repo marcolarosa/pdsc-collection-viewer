@@ -1,0 +1,35 @@
+<!-- background panel -->
+<div ng-if="show" ng-style="backgroundStyle" ng-click="close()"></div>
+
+ <!-- item information panel -->
+<div ng-if="show" class="fade-in" ng-style="contentStyle">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2 class="section-heading">
+                {{itemData.title}}
+            </h2>
+            <hr style="border: 1px solid black;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <p><strong>Collection: <a href="{{itemData.collectionLink}}">{{itemData.collectionId}}</a></strong></p>
+            <p><strong>Item: <a href="{{itemData.identifier[1]}}">{{itemData.itemId}}</a></strong></p>
+            <p>
+                <strong>Contributors: </strong>
+                <ul>
+                    <span ng-repeat="contributor in itemData.contributor">
+                        <li>{{contributor.name}} ({{contributor.role}})</li>
+                    </span>
+                </ul>
+            </p>
+            <p><strong>Description:<br/></strong>{{itemData.description}}</p>
+            <p><strong>Cite this item:<br/></strong>{{itemData.citation}}</p>
+            <p>
+                <a href="{{itemData.identifier[1]}}">View this resource in the catalog</a>
+                &nbsp;&dash;&nbsp;
+                <a href="" ng-click="close()">close</a>
+            </p>
+        </div>
+    </div>
+</div>
