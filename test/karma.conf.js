@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/underscore/underscore.js',
       'bower_components/underscore-contrib/dist/underscore-contrib.min.js',
+      'bower_components/videojs/dist/video-js/video.js',
       'bower_components/smoothzoom/jquery.smoothZoom.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

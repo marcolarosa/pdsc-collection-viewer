@@ -11,7 +11,6 @@
 angular.module('pdscApp')
   .filter('trustAsHtml', [ '$sce', function ($sce) {
     return function (input) {
-        console.log(input);
         return $sce.trustAsResourceUrl(input);
     };
   }]);

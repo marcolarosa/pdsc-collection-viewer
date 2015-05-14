@@ -27,15 +27,24 @@ angular.module('pdscApp')
           } else if (type === 'audio') {
               selector = paradisec.audioTypes;
           }
-          console.log('**', selector);
       
-         return  _.without(_.map(tree['dcterms:tableOfContents'], function(d) {
+          var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
               var i = d['#text'];
               var ext = i.split('.').pop();
               if (ext !== undefined && selector !== undefined && selector.indexOf(ext.toLowerCase()) !== -1) {
                   return d['#text'];
               }
-          }), undefined)
+          }))
+
+          if (type === 'audio' || type === 'video') {
+              // audio and video can exist in multiple formats; so, group the data
+              //  by name and then returne an array of arrays - sorting by item name 
+              return _(items).chain()
+                             .groupBy(function(d) { return _.last(d.split('/')).split('.')[0]; })
+                             .value();
+          } else {
+            return items;
+          }
       }
 
       function createItemDataStructure(tree) {

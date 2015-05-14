@@ -26,6 +26,9 @@ angular.module('pdscApp')
                         $scope.loadImageViewer = true;
                         $scope.itemData = resp;
                         $scope.instanceId = instanceId;
+                    } else {
+                        $scope.loadMediaPlayer = true;
+                        $scope.itemData = resp;
                     }
                 });
 
