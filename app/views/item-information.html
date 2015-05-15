@@ -27,8 +27,10 @@
             <p><strong>Cite this item:<br/></strong>{{itemData.citation}}</p>
             <p>
                 <a href="{{itemData.identifier[1]}}">View this resource in the catalog</a>
-                &nbsp;&dash;&nbsp;
-                <a href="" ng-click="close()">close</a>
+                <span ng-if="!alwaysOpen">
+                    &nbsp;&dash;&nbsp;
+                    <a href="" ng-click="close()">close</a>
+                </span>
             </p>
         </div>
     </div>

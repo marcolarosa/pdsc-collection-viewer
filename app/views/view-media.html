@@ -3,58 +3,51 @@
     <div style="position: relative;">
 
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                <a href="{{itemData.identifier[1]}}" target="_blank">view resource (opens in a new window)</a>
-                &nbsp;&dash;&nbsp;
-                <a href="" ng-click="toggleItemInformation()">
-                    <span ng-show="showItemInformation">hide item information</span>
-                    <span ng-hide="showItemInformation">show item information</span>
-                </a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-sm-12 col-col-md-12 col-lg-offset-2 col-lg-8 text-center">
                 <h4 class="section-heading">{{itemData.title}}</h4>
             </div>
         </div>
-
-        <span ng-repeat="(k,v) in itemData.video" ng-if="loadVideoPlayer">
-            <div class="row" style="">
-                <div class="col-sm-12 col-md-12 col-lg-offset-3 col-lg-6 text-center">
-                    <video class="video-js vjs-default-skin" controls preload="auto">
-                        <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
-                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a 
-                            web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                        </p>
-                    </video>
-                </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-offset-2 col-lg-4">
+                <!-- item information -->
+                <item-information item-data="itemData" always-open="true" show="true"></item-information>
             </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-offset-3 col-lg-6 text-center">
-                    {{k}}
-                </div> 
+            <div class="col-md-6 col-lg-4">
+                <span ng-repeat="(k,v) in itemData.video" ng-if="loadVideoPlayer">
+                    <div class="row" style="">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            {{k}}
+                        </div> 
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <video class="video-js vjs-default-skin" controls preload="auto">
+                                <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
+                                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a 
+                                    web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                                </p>
+                            </video>
+                        </div>
+                    </div>
+                </span>
+                <span ng-repeat="(k,v) in itemData.audio" ng-if="loadAudioPlayer">
+                    <div class="row" style="padding: 5px 15px;">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            {{k}}
+                            &nbsp;&dash;&nbsp;
+                            <a href="" class="disabled">annotate this selection</a>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <audio class="video-js vjs-default-skin" controls preload="auto" style="">
+                                <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
+                                <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a 
+                                    web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
+                                </p>
+                            </audio>
+                        </div>
+                    </div>
+                </span>
             </div>
-        </span>
-        <span ng-repeat="(k,v) in itemData.audio" ng-if="loadAudioPlayer">
-            <div class="row" style="padding: 5px 15px;">
-                <div class="col-sm-5 col-md-offset-1 col-md-4 col-lg-offset-3 col-lg-2 text-center">
-                    {{k}}
-                </div>
-                <div class="col-sm-3 col-md-3 col-lg-2">
-                    <audio class="video-js vjs-default-skin" controls preload="auto" style="display: inline-block;">
-                        <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
-                        <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a 
-                            web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
-                        </p>
-                    </audio>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 text-center"><a href="" class="disabled">annotate this selection</a></div>
-            </div>
-        </span>
-        
+        </div>
     </div>
 
-    <!-- item information -->
-    <item-information item-data="itemData" show="showItemInformation" close="toggleItemInformation()"></item-information>
 
 </div>
