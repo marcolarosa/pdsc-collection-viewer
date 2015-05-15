@@ -23,17 +23,18 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+
     buildcontrol: {
         options: {
             dir: 'dist',
             commit: true,
             push: true,
-          },
+        },
         testing: {
             options: {
                 remote: 'git@bitbucket.org:marcolarosa/pdsc-collection-viewer.git',
-                branch: 'testing'
-              }
+                branch: 'testing',
+            },
         }
     },
 
