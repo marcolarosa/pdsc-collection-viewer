@@ -1,3 +1,10 @@
+.viewer-background-colour {
+    background-color: #cfcfc4;
+}
+.info-panel-background-colour {
+    background-color: #fffff0;
+}
+
 .fade-in.ng-enter {
     animation: fadeIn 0.5s;
 }

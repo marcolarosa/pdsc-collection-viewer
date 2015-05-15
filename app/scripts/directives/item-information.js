@@ -46,7 +46,6 @@ angular.module('pdscApp')
                   'left': $window.innerWidth * 0.01 + 'px',
                   'width': $window.innerWidth * 0.4 + 'px', 
                   'height': $window.innerHeight * 0.9 + 'px',
-                  'background-color': '#FFFFF0',
                   'z-index': '110',
                   'border-radius': '2px',
                   'box-shadow': '5px 5px 4px #888888',
