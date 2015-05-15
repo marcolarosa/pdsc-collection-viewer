@@ -31,7 +31,7 @@ module.exports = function (grunt) {
           },
         testing: {
             options: {
-                remote: 'git@bitbucket.org:esrc/pdsc-collection-viewer.git',
+                remote: 'git@bitbucket.org:marcolarosa/pdsc-collection-viewer.git',
                 branch: 'testing'
               }
         }
