@@ -10,6 +10,9 @@
 angular.module('pdscApp')
   .constant('configuration', {
 
+      // Styling the app
+      //  Limited styling is supported - see config/app.css
+
       // This viewer can be augmented to work for other datasources - defined further on.
       //  Define those in the section 'datasource' then set the deployment as required.
       "deployment": "paradisec",
