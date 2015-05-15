@@ -29,6 +29,7 @@ angular.module('pdscApp')
       //  paradisec example - see createItemDataStructure()), integrate it into scripts/controllers/main.js.
       "datasource": {
           "paradisec": {
+              "collections": "http://catalog.paradisec.org.au/collections",
               "itemIdentifier": "oai:paradisec.org.au:{{collectionId}}-{{itemId}}",
               "getItem": "http://catalog.pdsc/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac",
           },
