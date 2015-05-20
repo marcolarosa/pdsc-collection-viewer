@@ -24,7 +24,9 @@
                 </ul>
             </p>
             <p><strong>Description:<br/></strong>{{itemData.description}}</p>
-            <p><strong>Cite this item:<br/></strong>{{itemData.citation}}</p>
+            <p><strong>Cite this item:<br/></strong>
+                <span style="word-wrap: break-word;">{{itemData.citation}}</span>
+            </p>
             <p>
                 <a href="{{itemData.identifier[1]}}">View this resource in the catalog</a>
                 <span ng-if="!alwaysOpen">
