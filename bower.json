@@ -15,6 +15,7 @@
     "underscore-contrib": "~0.3.0",
     "animate.css": "~3.2.6",
     "videojs": "~4.12.6",
+    "pdfjs-dist": "~1.1.159",
     "smoothzoom": "1.7"
   },
   "devDependencies": {
