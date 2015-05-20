@@ -26,6 +26,8 @@ angular.module('pdscApp')
               selector = paradisec.videoTypes;
           } else if (type === 'audio') {
               selector = paradisec.audioTypes;
+          } else if (type === 'documents') {
+              selector = paradisec.documentTypes;
           }
       
           var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
@@ -38,7 +40,7 @@ angular.module('pdscApp')
 
           if (type === 'audio' || type === 'video') {
               // audio and video can exist in multiple formats; so, group the data
-              //  by name and then returne an array of arrays - sorting by item name 
+              //  by name and then return an array of arrays - sorting by item name 
               return _(items).chain()
                              .groupBy(function(d) { return _.last(d.split('/')).split('.')[0]; })
                              .value();
@@ -64,6 +66,7 @@ angular.module('pdscApp')
               'images': constructItemList('images', tree),
               'video': constructItemList('video', tree),
               'audio': constructItemList('audio', tree),
+              'documents': constructItemList('documents', tree),
               'rights': tree['dcterms:accessRights']['#text']
           };
       }
@@ -89,9 +92,10 @@ angular.module('pdscApp')
       }
 
       var paradisec = {
-          imageTypes: [ 'jpg', 'png' ],
-          videoTypes: [ 'mp4', 'webm', 'ogg', 'ogv' ],
-          audioTypes: [ 'mp3', 'webm', 'ogg', 'oga' ],
+          imageTypes:    [ 'jpg', 'png' ],
+          videoTypes:    [ 'mp4', 'webm', 'ogg', 'ogv' ],
+          audioTypes:    [ 'mp3', 'webm', 'ogg', 'oga' ],
+          documentTypes: [ 'pdf' ],
           getItem: getItem
       }
       return paradisec;

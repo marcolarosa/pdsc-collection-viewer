@@ -26,6 +26,9 @@ angular.module('pdscApp')
                         $scope.loadImageViewer = true;
                         $scope.itemData = resp;
                         $scope.instanceId = instanceId;
+                    } else if (!_.isEmpty(resp.documents)) {
+                        $scope.loadDocumentViewer = true;
+                        $scope.itemData = resp;
                     } else {
                         $scope.loadMediaPlayer = true;
                         $scope.itemData = resp;

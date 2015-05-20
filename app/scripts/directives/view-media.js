@@ -24,9 +24,6 @@ angular.module('pdscApp')
           if (!_.isEmpty(scope.itemData.video)) scope.loadVideoPlayer = true;
           if (!_.isEmpty(scope.itemData.audio)) scope.loadAudioPlayer = true;
 
-          scope.toggleItemInformation = function() {
-              scope.showItemInformation = !scope.showItemInformation;
-          }
       }
     };
   });
