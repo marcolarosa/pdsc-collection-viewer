@@ -90,8 +90,8 @@ angular.module('pdscApp')
 
       var paradisec = {
           imageTypes: [ 'jpg', 'png' ],
-          videoTypes: [ 'mp4', 'webm', 'ogg' ],
-          audioTypes: [ 'mp3', 'webm', 'mp3', 'wav' ],
+          videoTypes: [ 'mp4', 'webm', 'ogg', 'ogv' ],
+          audioTypes: [ 'mp3', 'webm', 'ogg', 'oga' ],
           getItem: getItem
       }
       return paradisec;
