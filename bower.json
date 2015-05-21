@@ -16,6 +16,7 @@
     "animate.css": "~3.2.6",
     "videojs": "~4.12.6",
     "pdfjs-dist": "~1.1.159",
+    "font-awesome": "~4.3.0",
     "smoothzoom": "1.7"
   },
   "devDependencies": {

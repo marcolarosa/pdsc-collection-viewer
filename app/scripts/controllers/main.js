@@ -26,11 +26,12 @@ angular.module('pdscApp')
                         $scope.loadImageViewer = true;
                         $scope.itemData = resp;
                         $scope.instanceId = instanceId;
-                    } else if (!_.isEmpty(resp.documents)) {
-                        $scope.loadDocumentViewer = true;
-                        $scope.itemData = resp;
-                    } else {
+                    } else if (!_.isEmpty(resp.audio) || !_.isEmpty(resp.video)){
                         $scope.loadMediaPlayer = true;
+                        $scope.itemData = resp;
+                    }
+                    if (!_.isEmpty(resp.documents)) {
+                        $scope.loadDocumentViewer = true;
                         $scope.itemData = resp;
                     }
                 });
