@@ -21,7 +21,9 @@
                     <span class="fa fa-step-backward"></span>
                 </button>
                 <span ng-if="pdfInfo.totalPages">
+                    &dash;&nbsp;
                     Page {{current}} of {{pdfInfo.totalPages}}
+                    &nbsp;&dash;
                 </span>
                 <button class="btn btn-default" ng-click="nextPage()" blur-on-click>
                     <span class="fa fa-step-forward"></span>
@@ -29,34 +31,22 @@
                 <button class="btn btn-default" ng-click="lastPage()" blur-on-click>
                     <span class="fa fa-fast-forward"></span>
                 </button>
-                <!--
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default" ng-click="zoomIn()" blur-on-click>
-                    <span class="fa fa-plus"></span>
-                </button>
                 <button class="btn btn-default" ng-click="zoomOut()" blur-on-click>
                     <span class="fa fa-minus"></span>
                 </button>
-                -->
+                <span>
+                    <small>{{scale | number:1}}x</small>
+                </span>
+                <button class="btn btn-default" ng-click="zoomIn()" blur-on-click>
+                    <span class="fa fa-plus"></span>
+                </button>
             </div>
-            <!--
-            <div class="col-sm-4 col-md-3 col-lg-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search the document..." />
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" style="background-color: white;" blur-on-click>
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
         <hr style="margin: 5px 0px;" />
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8">
-                <canvas id="the-canvas" style="max-width: 100%; border: 0; padding: 0px 15px;"></canvas>
-                <!-- <iframe src="{{d}}" style="border: 0; width: 100%;" seamless /> -->
+            <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center" ng-style="pdfPanelStyle">
+                <canvas id="the-canvas" style="border: 0;"></canvas>
             </div>
         </div>
     </div>

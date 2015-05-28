@@ -25,6 +25,9 @@ angular.module('pdscApp')
           //  pages count from 1 - NOT 0
           scope.current = 1;
 
+          // initial scale
+          scope.scale = 1;
+
           // handle window resize events
           var w = angular.element($window);
           w.bind('resize', function() {
@@ -35,10 +38,11 @@ angular.module('pdscApp')
 
           var sizeThePanels = function() {
               scope.pdfPanelStyle = {
-                  'width': '100%',
-                  'height': $window.innerHeight - 50,
-                  'margin': '0px 15px 15px 0px',
+                  'position': 'absolute',
+                  'height': $window.innerHeight - 100,
+                  'padding': '0px 0px 0px 0px',
                   'border': '0',
+                  'overflow': 'scroll'
 
               }
           }
@@ -80,8 +84,7 @@ angular.module('pdscApp')
           scope.loadPage = function() {
               // Using promise to fetch the page
               scope.pdf.getPage(scope.current).then(function(page) {
-                var scale = 1.5;
-                var viewport = page.getViewport(scale);
+                var viewport = page.getViewport(scope.scale);
 
                 //
                 // Prepare canvas using PDF page dimensions
@@ -103,16 +106,14 @@ angular.module('pdscApp')
           }
 
           scope.zoomIn = function() {
-              var canvas = document.getElementById(canvasId);
-              var context = canvas.getContext('2d');
-              console.log('zoom in', context.scale());
-              context.scale(2,2);
+              scope.scale += 0.5;
+              if (scope.scale > 3) scope.scale = 3;
+              scope.loadPage();
           }
           scope.zoomOut = function() {
-              var canvas = document.getElementById(canvasId);
-              var context = canvas.getContext('2d');
-              console.log('zoom in', context.scale());
-              context.scale(0.5,0.5);
+              scope.scale -= 0.5;
+              if (scope.scale < 1) scope.scale = 1;
+              scope.loadPage();
           }
           scope.nextPage = function() {
               scope.current += 1;
