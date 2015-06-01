@@ -13,6 +13,7 @@ angular.module('pdscApp')
       restrict: 'E',
       scope: {
           itemData: '=',
+          headerHeight: '='
       },
       link: function postLink(scope, element, attrs) {
 
@@ -39,9 +40,7 @@ angular.module('pdscApp')
           var sizeThePanels = function() {
               scope.pdfPanelStyle = {
                   'position': 'absolute',
-                  'height': $window.innerHeight - 100,
-                  'padding': '0px 0px 0px 0px',
-                  'border': '0',
+                  'height': $window.innerHeight - scope.headerHeight - 40,
                   'overflow': 'scroll'
 
               }

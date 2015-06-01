@@ -19,12 +19,10 @@ angular.module('pdscApp')
               });
           }
 
-          scope.$watch('image_pane_height', function() {
-              element.smoothZoom('destroy');
-              scope.init();
-          })
-
           element.on('load', function() {
+              scope.$apply(function() {
+                scope.showImage = true;
+              });
               scope.init();
           });
       }

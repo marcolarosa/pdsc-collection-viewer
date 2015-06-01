@@ -16,7 +16,6 @@ angular.module('pdscApp')
       },
       link: function postLink(scope, element, attrs) {
           scope.showMedia = true;
-          scope.showItemInformation = false;
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
 

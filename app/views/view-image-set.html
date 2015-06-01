@@ -1,82 +1,57 @@
-<div ng-if="showImageSet" class="fade-in viewer-background-colour"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; box-shadow: 5px 5px 4px #888888; ">
-    <div style="position: relative;">
+<div ng-if="showImageSet" class="fade-in" >
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
+                    <span ng-if="!disableThumbnailView">
+                        <button class="btn btn-default btn-sm" ng-click="jumpToStart()" blur-on-click>
+                            <span class="glyphicon glyphicon-step-backward"></span>
+                        </button>
+                    </span>
+                    &dash;&nbsp;
+                    Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
+                    &nbsp;&dash;
+                    <span ng-if="!disableThumbnailView">
+                        <button class="btn btn-default btn-sm" ng-click="jumpToEnd()" blur-on-click>
+                            <span class="glyphicon glyphicon-step-forward"></span>
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-click="toggleFilmstrip()" blur-on-click>
+                            <span ng-show="showFilmstrip">hide thumbnails</span>
+                            <span ng-hide="showFilmstrip">show thumbnails</span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <!-- previous image control -->
-        <div style="position: absolute; top: 0; left: 0; width: 5%; height: {{panelHeight}}px; " ng-show="showPrevious">
+        <div ng-style="contentPaneLeft" ng-show="showPrevious">
             <a ng-click="previous()" class="left carousel-control" style="width: 100%;">
                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 26px;"></span>
             </a>
         </div>
 
         <!-- Image large view panel -->
-        <div style="position: absolute; top: 0; left: 5%; width: 90%; height: {{panelHeight}}px;">
-            <div class="row" style="margin: 10px 0px;">
-                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8" style="text-align: center;">
-                    Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
-                    <a href="" ng-click="jumpToStart()">
-                        <span class="glyphicon glyphicon-step-backward"></span>
-                    </a>
-                    <a href="" ng-click="jumpToEnd()">
-                        <span class="glyphicon glyphicon-step-forward"></span>
-                    </a>
-                    <!--
-                    &nbsp;&dash;&nbsp;
-                    <a href="" ng-click="toggleInformation()">
-                       <span ng-hide="showInformation">view item information</span>
-                       <span ng-show="showInformation">hide item information</span>
-                    </a>
-                    -->
-                    &nbsp;&dash;&nbsp;
-                    <a href="" ng-click="toggleFilmstrip()">
-                        <span ng-show="showFilmstrip">hide thumbnails</span>
-                        <span ng-hide="showFilmstrip">show thumbnails</span>
-                    </a>
-                    &nbsp;&dash;&nbsp;
-                    <a href="" ng-click="toggleItemInformation()">
-                        <span ng-show="showItemInformation">hide item information</span>
-                        <span ng-hide="showItemInformation">show item information</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="row" style="height: {{imagePaneHeight}}px;">
-                <img ng-src="{{image}}" id="main_img" smoothzoom alt='You must be logged in to Nabu to view this image'>
-            </div>
-
-            <div class="row" ng-if="!showFilmstrip">
-                <div class="col-sm-12 col-col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                    <h4 class="section-heading">{{itemData.title}}</h4>
-                </div>
-            </div>
-            <div class="row" ng-if="!showFilmstrip">
-                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                    <a href="{{itemData.identifier[1]}}" target="_blank">view resource (opens in a new window)</a>
-                </div>
-            </div>
+        <div ng-style="contentPaneCenter">
+            <img ng-src="{{image}}" smoothzoom alt='You must be logged in to Nabu to view this image' ng-show="showImage">
         </div>
 
         <!-- next image control -->
-        <div style="position: absolute; top: 0; left: 95%; width: 5%; height: {{panelHeight}}px;" ng-show="showNext">
+        <div ng-style="contentPaneRight" ng-show="showNext">
             <a ng-click="next()" class="right carousel-control" style="width: 100%;">
                 <span class="glyphicon glyphicon-chevron-right" style="font-size: 26px;"></span>
             </a>
         </div>
 
         <!-- Filmstrip -->
-        <div ng-if="showFilmstrip" class="viewer-background-colour"
-            style="position:absolute; top: {{navbarHeight + imagePaneHeight}}px; left: 0; width: 100%; height: {{filmstripHeight}}px; width: 100%; 
-                    opacity: 0.5; z-index: 40;"></div>
-        <div ng-if="showFilmstrip" class="fade-in"
-            style="position:absolute; top: {{navbarHeight + imagePaneHeight}}px; left: 0; width: 100%; height: {{filmstripHeight}}px; width: 100%; 
-                    overflow-x: scroll; white-space: nowrap; display: inline-block; z-index: 50; padding: 5px 5px; border-top: 2px solid #ccc;">
+        <div ng-if="showFilmstrip" ng-style="filmstripBackStyle">
+        <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
             <span ng-repeat="img in smallImages">
                 <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{imageHeight}}px;"  />
+                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;"  />
                 </a>
             </span>
         </div>
-
-        <!-- item information -->
-        <item-information item-data="itemData" show="showItemInformation" close="toggleItemInformation()"></item-information>
     </div>
 </div>

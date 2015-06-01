@@ -1,53 +1,38 @@
-<div ng-if="showDocuments" class="fade-in viewer-background-colour"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; box-shadow: 5px 5px 4px #888888; ">
-    <div style="position: relative;">
-
-        <div class="row">
-            <div class="col-sm-12 col-col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                <h4 class="section-heading">{{itemData.title}}</h4>
-            </div>
+<div ng-if="showDocuments" class="fade-in">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <button class="btn btn-default" ng-click="firstPage()" blur-on-click>
+                <span class="fa fa-fast-backward"></span>
+            </button>
+            <button class="btn btn-default" ng-click="previousPage()" blur-on-click>
+                <span class="fa fa-step-backward"></span>
+            </button>
+            <span ng-if="pdfInfo.totalPages">
+                &dash;&nbsp;
+                Page {{current}} of {{pdfInfo.totalPages}}
+                &nbsp;&dash;
+            </span>
+            <button class="btn btn-default" ng-click="nextPage()" blur-on-click>
+                <span class="fa fa-step-forward"></span>
+            </button>
+            <button class="btn btn-default" ng-click="lastPage()" blur-on-click>
+                <span class="fa fa-fast-forward"></span>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default" ng-click="zoomOut()" blur-on-click>
+                <span class="fa fa-minus"></span>
+            </button>
+            <span>
+                <small>{{scale | number:1}}x</small>
+            </span>
+            <button class="btn btn-default" ng-click="zoomIn()" blur-on-click>
+                <span class="fa fa-plus"></span>
+            </button>
         </div>
-        <div class="row" style="padding: 0px 15px;">
-            <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                <!--
-                <button class="btn btn-default pull-left" blur-on-click>
-                    <span class="fa fa-th-list"></span>
-                </button>
-                -->
-                <button class="btn btn-default" ng-click="firstPage()" blur-on-click>
-                    <span class="fa fa-fast-backward"></span>
-                </button>
-                <button class="btn btn-default" ng-click="previousPage()" blur-on-click>
-                    <span class="fa fa-step-backward"></span>
-                </button>
-                <span ng-if="pdfInfo.totalPages">
-                    &dash;&nbsp;
-                    Page {{current}} of {{pdfInfo.totalPages}}
-                    &nbsp;&dash;
-                </span>
-                <button class="btn btn-default" ng-click="nextPage()" blur-on-click>
-                    <span class="fa fa-step-forward"></span>
-                </button>
-                <button class="btn btn-default" ng-click="lastPage()" blur-on-click>
-                    <span class="fa fa-fast-forward"></span>
-                </button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default" ng-click="zoomOut()" blur-on-click>
-                    <span class="fa fa-minus"></span>
-                </button>
-                <span>
-                    <small>{{scale | number:1}}x</small>
-                </span>
-                <button class="btn btn-default" ng-click="zoomIn()" blur-on-click>
-                    <span class="fa fa-plus"></span>
-                </button>
-            </div>
-        </div>
-        <hr style="margin: 5px 0px;" />
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center" ng-style="pdfPanelStyle">
-                <canvas id="the-canvas" style="border: 0;"></canvas>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center" ng-style="pdfPanelStyle">
+            <canvas id="the-canvas" />
         </div>
     </div>
 </div>
