@@ -33,7 +33,7 @@ module.exports = function(config) {
       'bower_components/underscore-contrib/dist/underscore-contrib.min.js',
       'bower_components/videojs/dist/video-js/video.js',
       'bower_components/pdfjs-dist/build/pdf.js',
-      'bower_components/pdfjs-dist/build/pdf.worker.js',
+      'bower_components/pdfjs-dist/build/pdfworker.js',
       'bower_components/smoothzoom/jquery.smoothZoom.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
