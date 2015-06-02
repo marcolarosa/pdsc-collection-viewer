@@ -26,8 +26,18 @@ angular.module('pdscApp')
           //  pages count from 1 - NOT 0
           scope.current = 1;
 
-          // initial scale
-          scope.scale = 1;
+          // first document
+          //  documents count from zero - the array index
+          scope.doc = 0;
+
+          // initial scale - depends on window width
+          if ($window.innerWidth < 780) {
+              scope.scale = 0.5
+          } else if ($window.innerWidth > 780 && $window.innerWidth < 1030) {
+              scope.scale = 1;
+          } else {
+              scope.scale = 1.5;
+          }
 
           // handle window resize events
           var w = angular.element($window);
@@ -48,8 +58,7 @@ angular.module('pdscApp')
           sizeThePanels();
 
           var loadDocument = function() {
-              var d = scope.itemData.documents[0].replace('catalog.paradisec.org.au', 'catalog.pdsc');
-              scope.d = $sce.trustAsResourceUrl(scope.itemData.documents[0]);
+              scope.d = $sce.trustAsResourceUrl(scope.itemData.documents[scope.doc]);
               //
               // Fetch the PDF document from the URL using promises
               //
@@ -104,6 +113,17 @@ angular.module('pdscApp')
               });
           }
 
+          scope.previousDocument = function() {
+              scope.doc += 1
+              if (scope.doc > scope.itemData.documents.length) scope.doc = scope.itemData.documents.length;
+              loadDocument();
+          }
+          scope.nextDocument = function() {
+              scope.doc -= 1
+              if (scope.doc < 0) scope.doc = 0;
+              loadDocument();
+          }
+
           scope.zoomIn = function() {
               scope.scale += 0.5;
               if (scope.scale > 3) scope.scale = 3;
@@ -111,7 +131,7 @@ angular.module('pdscApp')
           }
           scope.zoomOut = function() {
               scope.scale -= 0.5;
-              if (scope.scale < 1) scope.scale = 1;
+              if (scope.scale < 0.5) scope.scale = 0.5;
               scope.loadPage();
           }
           scope.nextPage = function() {

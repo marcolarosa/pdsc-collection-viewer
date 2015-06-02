@@ -1,6 +1,18 @@
 <div ng-if="showDocuments" class="fade-in">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <span ng-if="itemData.documents.length > 1">
+                <button class="btn btn-default" ng-click="previousDocument()" blur-on-click>
+                    <span class="fa fa-step-backward"></span>
+                </button>
+                &dash;&nbsp;
+                Document {{current}} of {{itemData.documents.length}}
+                &nbsp;&dash;
+                <button class="btn btn-default" ng-click="nextDocment()" blur-on-click>
+                    <span class="fa fa-step-forward"></span>
+                </button>
+                &nbsp;&nbsp;&dash;&nbsp;&nbsp;
+            </span>
             <button class="btn btn-default" ng-click="firstPage()" blur-on-click>
                 <span class="fa fa-fast-backward"></span>
             </button>
