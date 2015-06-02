@@ -89,7 +89,12 @@ angular.module('pdscApp')
                   
                   // load up the image
                   if (scope.instanceId) {
-                      scope.current = parseInt(scope.instanceId) - 1;
+                      if (isNaN(parseInt(scope.instanceId))) {
+                          // assume the name has been passed in - process it to extract the image number
+                          scope.current = parseInt(scope.instanceId.split('.')[0].split('-')[2]) - 1;
+                      } else {
+                          scope.current = parseInt(scope.instanceId) - 1;
+                      }
                   } else {
                       scope.current = 0;
                   }
