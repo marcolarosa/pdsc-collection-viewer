@@ -22,10 +22,6 @@ angular.module('pdscApp')
           scope.showItemInformation = false;
           scope.pdfInfo = {};
 
-          // first page
-          //  pages count from 1 - NOT 0
-          scope.current = 1;
-
           // first document
           //  documents count from zero - the array index
           scope.doc = 0;
@@ -58,7 +54,6 @@ angular.module('pdscApp')
           sizeThePanels();
 
           var loadDocument = function() {
-              scope.d = $sce.trustAsResourceUrl(scope.itemData.documents[scope.doc]);
               //
               // Fetch the PDF document from the URL using promises
               //
@@ -68,9 +63,14 @@ angular.module('pdscApp')
               PDFJS.disableWorker = true;
               PDFJS.disableRange = true;
               var what = {
-                  'url': scope.itemData.documents[0],
+                  'url': $sce.trustAsResourceUrl(scope.itemData.documents[scope.doc]),
                   'withCredentials': true
               }
+
+              // first page
+              //  pages count from 1 - NOT 0
+              // When loading a document, always start at the beginning
+              scope.current = 1;
 
               PDFJS.getDocument(what).then(function(pdf) {
                   scope.pdf = pdf;
@@ -113,12 +113,12 @@ angular.module('pdscApp')
               });
           }
 
-          scope.previousDocument = function() {
+          scope.nextDocument = function() {
               scope.doc += 1
-              if (scope.doc > scope.itemData.documents.length) scope.doc = scope.itemData.documents.length;
+              if (scope.doc === scope.itemData.documents.length) scope.doc = scope.itemData.documents.length;
               loadDocument();
           }
-          scope.nextDocument = function() {
+          scope.previousDocument = function() {
               scope.doc -= 1
               if (scope.doc < 0) scope.doc = 0;
               loadDocument();
