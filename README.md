@@ -18,3 +18,4 @@ Items with varying types useful for testing
   * http://dev.local:9000/#/AC2/ETHGS102 # image set
   * http://dev.local:9000/#/AA2/003 # audio
   * http://dev.local:9000/#/NT5/DickLauto # video
+  * http://dev.local:9000/#/SN1/MM20130708Museum # multiple: image, audio and multiple PDF documents
