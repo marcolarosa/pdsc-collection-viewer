@@ -12,12 +12,23 @@ angular.module('pdscApp')
       templateUrl: 'views/view-media.html',
       restrict: 'E',
       scope: {
-          itemData: '='
+          itemData: '=',
+          instanceId: '=',
       },
       link: function postLink(scope, element, attrs) {
           scope.showMedia = true;
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
+
+          // is a specific instance being requested? If so - strip the others
+          //  from the set. Support the instance being defined by the name or it's position
+          //  in the set.
+          if (scope.instanceId) {
+              // it's not undefined
+              var k = scope.instanceId;
+              if (!_.isEmpty(scope.itemData.audio)) scope.itemData.audio = _.pick(scope.itemData.audio, k);
+              if (!_.isEmpty(scope.itemData.video)) scope.itemData.video = _.pick(scope.itemData.video, k);
+          }
 
           // are we dealing with audio or video?
           if (!_.isEmpty(scope.itemData.video)) scope.loadVideoPlayer = true;

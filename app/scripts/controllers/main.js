@@ -15,7 +15,7 @@ angular.module('pdscApp')
         $log.debug("MainCtrl: $routeParams", $routeParams);
         var collectionId = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
         var itemId       = _.has($routeParams, 'itemId')       ? $routeParams.itemId       : undefined;
-        var instanceId   = _.has($routeParams, 'itemInstance') ? $routeParams.itemInstance : '1';
+        $scope.instanceId   = _.has($routeParams, 'itemInstance') ? $routeParams.itemInstance : undefined;
         $log.debug("MainCtrl: project:", conf.deployment, "and collectionId:", collectionId, "and itemId:", itemId);
 
         if (collectionId && itemId) {

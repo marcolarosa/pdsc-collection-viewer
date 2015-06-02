@@ -47,9 +47,9 @@
 <div class="row" ng-show="!showItemInformation">
     <div class="col-sm-12 col-md-12 col-lg-offset-1 col-lg-10">
         <!-- the viewers -->
-        <view-image-set ng-if="loadImageViewer" item-data="itemData" header-height="headerHeight" instance-id="instanceId"></view-image-set>
-        <view-documents ng-if="loadDocumentViewer" item-data="itemData" header-height="headerHeight"></view-documents>
-        <view-media ng-if="loadMediaPlayer" item-data="itemData"></view-media>
+        <view-image-set ng-if="loadImageViewer"    item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-image-set>
+        <view-documents ng-if="loadDocumentViewer" item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-documents>
+        <view-media ng-if="loadMediaPlayer"        item-data="itemData" instance-id="instanceId"></view-media>
     </div>
 </div>
 
