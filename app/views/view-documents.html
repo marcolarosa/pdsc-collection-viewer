@@ -5,13 +5,13 @@
                 <button class="btn btn-default" ng-click="previousDocument()" blur-on-click>
                     <span class="fa fa-step-backward"></span>
                 </button>
-                &dash;&nbsp;
+                &nbsp;
                 Document {{current}} of {{itemData.documents.length}}
-                &nbsp;&dash;
+                &nbsp;
                 <button class="btn btn-default" ng-click="nextDocment()" blur-on-click>
                     <span class="fa fa-step-forward"></span>
                 </button>
-                &nbsp;&nbsp;&dash;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <button class="btn btn-default" ng-click="firstPage()" blur-on-click>
                 <span class="fa fa-fast-backward"></span>
@@ -20,9 +20,9 @@
                 <span class="fa fa-step-backward"></span>
             </button>
             <span ng-if="pdfInfo.totalPages">
-                &dash;&nbsp;
+                &dash;
                 Page {{current}} of {{pdfInfo.totalPages}}
-                &nbsp;&dash;
+                &dash;
             </span>
             <button class="btn btn-default" ng-click="nextPage()" blur-on-click>
                 <span class="fa fa-step-forward"></span>
@@ -30,7 +30,7 @@
             <button class="btn btn-default" ng-click="lastPage()" blur-on-click>
                 <span class="fa fa-fast-forward"></span>
             </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="btn btn-default" ng-click="zoomOut()" blur-on-click>
                 <span class="fa fa-minus"></span>
             </button>
