@@ -12,10 +12,27 @@ angular.module('pdscApp')
 
       function getNodes(d) {
           var parser = new DOMParser();
+
+          // parse the xml document
           var xmldoc = parser.parseFromString(d, "text/xml");
+
+          // convert it to JSON
           var tree = xml.toJson(xmldoc);
+
+          // get a handle to the actual tree of data inside the OAI guff
           tree = tree['OAI-PMH']['GetRecord']['record']['metadata']['olac:olac'];
+
+          // assemble and return the item data structure
           return { 'data': createItemDataStructure(tree)}
+      }
+
+      function get(tree, thing) {
+          // not every item has every datapoint
+          try {
+              return tree[thing]['#text'];
+          } catch (e) {
+              return '';
+          }
       }
 
       function constructItemList(type, tree) {
@@ -50,13 +67,16 @@ angular.module('pdscApp')
       }
 
       function createItemDataStructure(tree) {
+          if (! _.isArray(tree['dc:identifier'])) tree['dc:identifier'] = [ tree['dc:identifier'] ];
+          if (! _.isArray(tree['dc:contributor'])) tree['dc:contributor'] = [ tree['dc:contributor'] ];
+          console.log(tree);
           return {
               'identifier': _.map(tree['dc:identifier'], function(d) {
                   return d['#text'];
               }),
-              'title': tree['dc:title']['#text'],
-              'description': tree['dc:description']['#text'],
-              'citation': tree['dcterms:bibliographicCitation']['#text'],
+              'title': get(tree, 'dc:title'),
+              'description': get(tree, 'dc:description'),
+              'citation': get(tree, 'dcterms:bibliographicCitation'),
               'contributor': _.map(tree['dc:contributor'], function(d) {
                   return { 
                       'name': d['#text'],
@@ -67,7 +87,7 @@ angular.module('pdscApp')
               'video': constructItemList('video', tree),
               'audio': constructItemList('audio', tree),
               'documents': constructItemList('documents', tree),
-              'rights': tree['dcterms:accessRights']['#text']
+              'rights': get(tree, 'dcterms:accessRights')
           };
       }
 
