@@ -29,7 +29,7 @@ angular.module('pdscApp')
 
           var sizeThePanels = function() {
               scope.width = $window.innerWidth;
-              scope.navbarHeight = 30;
+              scope.navbarHeight = 35;
               var panelHeight = $window.innerHeight - scope.headerHeight - scope.navbarHeight - 40;
               scope.filmstripHeight = 250;
               scope.filmstripImageHeight = scope.filmstripHeight - 20;

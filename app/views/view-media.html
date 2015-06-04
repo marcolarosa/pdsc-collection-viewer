@@ -4,9 +4,17 @@
             <div class="col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
                 <span ng-repeat="(k,v) in itemData.video" ng-if="loadVideoPlayer">
                     <div class="row" style="">
-                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                            {{k}}
-                        </div> 
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div style="padding: 5px;">{{k}}</div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <span ng-repeat="src in v">
+                                <!--<a href="" class="pull-right">annotate this selection</a>-->
+                                <a class="btn btn-default btn-sm pull-right" href="{{src}}" download>
+                                    <i class="fa fa-download"></i> Download {{src | extension}}
+                                </a>
+                            </span>
+                        </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                             <video class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;">
                                 <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
@@ -18,12 +26,19 @@
                     </div>
                 </span>
                 <span ng-repeat="(k,v) in itemData.audio" ng-if="loadAudioPlayer">
-                    <div class="row" style="padding: 5px 15px;">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            {{k}}
-                            <!--<a href="" class="pull-right">annotate this selection</a>-->
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div style="padding: 5px;">{{k}}</div>
                         </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <span ng-repeat="src in v">
+                                <!--<a href="" class="pull-right">annotate this selection</a>-->
+                                <a class="btn btn-default btn-sm pull-right" href="{{src}}" download>
+                                    <i class="fa fa-download"></i> Download {{src | extension}}
+                                </a>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12" style="margin: 5px 0px;">
                             <audio class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;">
                                 <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
                                 <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a 

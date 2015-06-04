@@ -5,21 +5,31 @@
                 <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
                     <span ng-if="!disableThumbnailView">
                         <button class="btn btn-default btn-sm" ng-click="jumpToStart()" blur-on-click>
-                            <span class="glyphicon glyphicon-step-backward"></span>
+                            <span class="fa fa-fast-backward"></span>
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-click="previous()" blur-on-click>
+                            <span class="fa fa-step-backward"></span>
                         </button>
                     </span>
                     &dash;&nbsp;
                     Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
                     &nbsp;&dash;
                     <span ng-if="!disableThumbnailView">
+                        <button class="btn btn-default btn-sm" ng-click="next()" blur-on-click>
+                            <span class="fa fa-step-forward"></span>
+                        </button>
                         <button class="btn btn-default btn-sm" ng-click="jumpToEnd()" blur-on-click>
-                            <span class="glyphicon glyphicon-step-forward"></span>
+                            <span class="fa fa-fast-forward"></span>
                         </button>
                         <button class="btn btn-default btn-sm" ng-click="toggleFilmstrip()" blur-on-click>
                             <span ng-show="showFilmstrip">hide thumbnails</span>
                             <span ng-hide="showFilmstrip">show thumbnails</span>
                         </button>
                     </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-default btn-sm" href="{{itemData.images[current]}}" download>
+                        <i class="fa fa-download"></i> Download
+                    </a>
                 </div>
             </div>
         </div>
