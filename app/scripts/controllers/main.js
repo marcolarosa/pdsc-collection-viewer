@@ -13,8 +13,8 @@ angular.module('pdscApp')
         $scope.showItemInformation = false;
 
         $log.debug("MainCtrl: $routeParams", $routeParams);
-        var collectionId = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
-        var itemId       = _.has($routeParams, 'itemId')       ? $routeParams.itemId       : undefined;
+        var collectionId    = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
+        var itemId          = _.has($routeParams, 'itemId')       ? $routeParams.itemId       : undefined;
         $scope.instanceId   = _.has($routeParams, 'itemInstance') ? $routeParams.itemInstance : undefined;
         $log.debug("MainCtrl: project:", conf.deployment, "and collectionId:", collectionId, "and itemId:", itemId);
 
@@ -23,13 +23,7 @@ angular.module('pdscApp')
                 var d = paradisec.getItem('paradisec', collectionId, itemId);
                 d.then(function(resp) {
                     $scope.itemData = resp;
-                    if (! _.isEmpty(resp.images)) {
-                        $scope.loadViewer('images');
-                    } else if (! _.isEmpty(resp.documents)) {
-                        $scope.loadViewer('documents');
-                    } else {
-                        $scope.loadViewer('media');
-                    }
+                    $scope.whichViewer($scope.itemData);
                 });
 
             } else if (conf.deployment === 'esrc') {
@@ -46,7 +40,58 @@ angular.module('pdscApp')
             $scope.showItemInformation = ! $scope.showItemInformation;
         }
 
-        // toggle an appropriate viewer
+        // determine which viewer to load based on the route
+        $scope.whichViewer = function(data) {
+            // is a specific instance defined? if so, use this to determine which
+            //  viewer to load.
+            if ($scope.instanceId) {
+
+                // is it an image?
+                if (! _.isEmpty(data.images)) {
+                    var m = _.filter(data.images, function(d) {
+                        return d.match($scope.instanceId);
+                    })
+                    if (!_.isEmpty(m)) $scope.loadViewer('images');
+                }
+
+                // is it a document?
+                if (! _.isEmpty(data.documents)) {
+                    var m = _.filter(data.documents, function(d) {
+                        return d.match($scope.instanceId);
+                    })
+                    if (!_.isEmpty(m)) $scope.loadViewer('documents');
+                }
+
+                // is it an audio file?
+                if (! _.isEmpty(data.audio)) {
+                    var m = _.filter(data.audio, function(d,k) {
+                        return k.match($scope.instanceId);
+                    })
+                    if (!_.isEmpty(m)) $scope.loadViewer('media');
+                }
+
+                // is it a video file?
+                if (! _.isEmpty(data.video)) {
+                    var m = _.filter(data.video, function(d, k) {
+                        return k.match($scope.instanceId);
+                    })
+                    if (!_.isEmpty(m)) $scope.loadViewer('media');
+                }
+            } else {
+
+                //  Otherwise - images > documents > media
+                if (! _.isEmpty(data.images)) {
+                    $scope.loadViewer('images');
+                } else if (! _.isEmpty(data.documents)) {
+                    $scope.loadViewer('documents');
+                } else {
+                    $scope.loadViewer('media');
+                }
+            }
+        }
+
+        
+        // load an appropriate viewer
         $scope.loadViewer = function(dataType) {
             // always ditch info when loading a viewer
             $scope.showItemInformation = false;

@@ -13,6 +13,7 @@ angular.module('pdscApp')
       restrict: 'E',
       scope: {
           itemData: '=',
+          instanceId: '=',
           headerHeight: '='
       },
       link: function postLink(scope, element, attrs) {
@@ -21,6 +22,16 @@ angular.module('pdscApp')
           scope.showDocuments = true;
           scope.showItemInformation = false;
           scope.pdfInfo = {};
+
+          // is a specific instance being requested? If so - strip the others
+          //  from the set. Support the instance being defined by the name or it's position
+          //  in the set.
+          if (scope.instanceId) {
+              // it's not undefined
+              scope.itemData.documents = _.filter(scope.itemData.documents, function(d) {
+                  return d.match(scope.instanceId);
+              })
+          }
 
           // first document
           //  documents count from zero - the array index
@@ -62,6 +73,7 @@ angular.module('pdscApp')
               PDFJS.cMapPacked = true;
               PDFJS.disableWorker = true;
               PDFJS.disableRange = true;
+
               var what = {
                   'url': $sce.trustAsResourceUrl(scope.itemData.documents[scope.doc]),
                   'withCredentials': true

@@ -20,9 +20,8 @@ angular.module('pdscApp')
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
 
-          // is a specific instance being requested? If so - strip the others
-          //  from the set. Support the instance being defined by the name or it's position
-          //  in the set.
+          // is a specific instance being requested?
+          //  If so, strip the others from the set.
           if (scope.instanceId) {
               // it's not undefined
               var k = scope.instanceId;
