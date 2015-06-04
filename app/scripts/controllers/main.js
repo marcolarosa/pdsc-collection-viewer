@@ -11,6 +11,7 @@ angular.module('pdscApp')
   .controller('MainCtrl', [ '$scope', '$log', '$routeParams', 'configuration', 'paradisec',
     function ($scope, $log, $routeParams, conf, paradisec) {
         $scope.showItemInformation = false;
+        $scope.levelup = false;
 
         $log.debug("MainCtrl: $routeParams", $routeParams);
         var collectionId    = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
@@ -51,7 +52,14 @@ angular.module('pdscApp')
                     var m = _.filter(data.images, function(d) {
                         return d.match($scope.instanceId);
                     })
-                    if (!_.isEmpty(m)) $scope.loadViewer('images');
+
+                    if (!_.isEmpty(m)) { 
+                        // blank off the others - we're focussing just on this one item
+                        data.documents = [];
+                        data.audio = [];
+                        data.video = [];
+                        $scope.loadViewer('images', true);
+                    }
                 }
 
                 // is it a document?
@@ -59,7 +67,14 @@ angular.module('pdscApp')
                     var m = _.filter(data.documents, function(d) {
                         return d.match($scope.instanceId);
                     })
-                    if (!_.isEmpty(m)) $scope.loadViewer('documents');
+
+                    if (!_.isEmpty(m)) {
+                        // blank off the others - we're focussing just on this one item
+                        data.images = [];
+                        data.audio = [];
+                        data.video = [];
+                        $scope.loadViewer('documents', true);
+                    }
                 }
 
                 // is it an audio file?
@@ -67,7 +82,14 @@ angular.module('pdscApp')
                     var m = _.filter(data.audio, function(d,k) {
                         return k.match($scope.instanceId);
                     })
-                    if (!_.isEmpty(m)) $scope.loadViewer('media');
+
+                    if (!_.isEmpty(m)) {
+                        // blank off the others - we're focussing just on this one item
+                        data.images = [];
+                        data.documents = [];
+                        data.video = [];
+                        $scope.loadViewer('media', true);
+                    }
                 }
 
                 // is it a video file?
@@ -75,8 +97,18 @@ angular.module('pdscApp')
                     var m = _.filter(data.video, function(d, k) {
                         return k.match($scope.instanceId);
                     })
-                    if (!_.isEmpty(m)) $scope.loadViewer('media');
+
+                    if (!_.isEmpty(m)) {
+                        // blank off the others - we're focussing just on this one item
+                        data.images = [];
+                        data.documents = [];
+                        data.audio = [];
+                        $scope.loadViewer('media', true);
+                    }
                 }
+
+                // we're focussed in on one specific item so enable the level up toggle
+                $scope.levelup = '#/' + collectionId + '/' + itemId;
             } else {
 
                 //  Otherwise - images > documents > media
@@ -90,20 +122,21 @@ angular.module('pdscApp')
             }
         }
 
-        
         // load an appropriate viewer
-        $scope.loadViewer = function(dataType) {
+        $scope.loadViewer = function(dataType, specificInstanceLoaded) {
+            // some of the viewers need to know the header height so they
+            //  can size themselves accordingly
+            $scope.headerHeight = document.getElementById('header').clientHeight;
+
             // always ditch info when loading a viewer
             $scope.showItemInformation = false;
 
             // now load the required viewer
             if (dataType === 'images') {
-                $scope.headerHeight = document.getElementById('header').clientHeight;
                 $scope.loadImageViewer = true;
                 $scope.loadMediaPlayer = false;
                 $scope.loadDocumentViewer = false;
             } else if (dataType === 'documents') {
-                $scope.headerHeight = document.getElementById('header').clientHeight;
                 $scope.loadImageViewer = false;
                 $scope.loadMediaPlayer = false;
                 $scope.loadDocumentViewer = true;

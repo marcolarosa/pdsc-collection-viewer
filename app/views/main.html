@@ -29,8 +29,11 @@
                         <i class="fa fa-file-pdf-o"></i> Documents
                     </button>
                 </span>
+                <a class="btn btn-default btn-sm" href="{{levelup}}" ng-if="levelup">
+                    <i class="fa fa-level-up"></i> View Item 
+                </a>
                 <a class="btn btn-default btn-sm" href="{{itemData.identifier[1]}}" target="_blank">
-                    <i class="fa fa-external-link"></i> View in Catalog
+                    <i class="fa fa-external-link"></i> View Item in Catalog
                 </a>
                 <hr style="margin: 5px 0px;" />
             </div>
