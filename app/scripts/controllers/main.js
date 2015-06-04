@@ -40,7 +40,7 @@ angular.module('pdscApp')
             $scope.showItemInformation = ! $scope.showItemInformation;
         }
 
-        // determine which viewer to load based on the route
+        // determine which viewer to load based on the route configuration
         $scope.whichViewer = function(data) {
             // is a specific instance defined? if so, use this to determine which
             //  viewer to load.
