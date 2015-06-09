@@ -19,11 +19,19 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link rel="stylesheet" href="config/app.css">
-    <meta name="dc.title" content="{{itemData.title}}">
-    <meta ng-repeat="id in itemData.identifier" name="dc.identifier" content="{{id}}">
-    <meta ng-repeat="contributor in itemData.contributor" name="dc.contributor" content="{{contributor.name}} ({{contributor.role}})">
-    <meta name="dc.date" content="{{itemData.date}}">
-    <meta name="dc.description" content="{{itemData.description}}">
+
+
+    <!-- namespace declarations -->
+    <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
+
+    <!-- item metadata -->
+    <meta name="dc.title" content="{{itemData.title}}" />
+    <meta name="citation_public_url"  content="{{itemData.identifier[1]}}" />
+    <meta ng-repeat="contributor in itemData.contributor" name="dc.creator" content="({{contributor.role}}) {{contributor.name}}" />
+    <meta name="dc.date" content="{{itemData.date}}" />
+    <meta name="dc.description" content="{{itemData.description}}" />
+    <meta name="dc.rights" content="{{itemData.rights}}" />
+    <meta name="dc.publisher" content="PARADISEC" />
 
   </head>
   <body>
