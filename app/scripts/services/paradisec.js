@@ -8,7 +8,8 @@
  * Service in the pdscApp.
  */
 angular.module('pdscApp')
-  .service('paradisec', [ '$log', '$http', 'xml', 'configuration', function ($log, $http, xml, conf) {
+  .service('paradisec', [ '$rootScope', '$log', '$http', 'xml', 'configuration', 
+        function ($rootScope, $log, $http, xml, conf) {
 
       function getNodes(d) {
           var parser = new DOMParser();
@@ -69,12 +70,12 @@ angular.module('pdscApp')
       function createItemDataStructure(tree) {
           if (! _.isArray(tree['dc:identifier'])) tree['dc:identifier'] = [ tree['dc:identifier'] ];
           if (! _.isArray(tree['dc:contributor'])) tree['dc:contributor'] = [ tree['dc:contributor'] ];
-          console.log(tree);
           return {
               'identifier': _.map(tree['dc:identifier'], function(d) {
                   return d['#text'];
               }),
               'title': get(tree, 'dc:title'),
+              'date': get(tree, 'dcterms:created'),
               'description': get(tree, 'dc:description'),
               'citation': get(tree, 'dcterms:bibliographicCitation'),
               'contributor': _.map(tree['dc:contributor'], function(d) {
@@ -104,6 +105,13 @@ angular.module('pdscApp')
               resp.data.data.collectionId = collectionId;
               resp.data.data.collectionLink = conf.datasource[project].collections + '/' + collectionId;
               resp.data.data.itemId = itemId;
+
+              // store the object in the service and let the metadata
+              //  controller know it's ready to go
+              paradisec.itemData = resp.data.data;
+              $rootScope.$broadcast('item-data-ready');
+
+              // and return it to the caller which is expecting a promise
               return resp.data.data;
           }, 
           function(resp) {
@@ -116,7 +124,8 @@ angular.module('pdscApp')
           videoTypes:    [ 'mp4', 'webm', 'ogg', 'ogv' ],
           audioTypes:    [ 'mp3', 'webm', 'ogg', 'oga' ],
           documentTypes: [ 'pdf' ],
-          getItem: getItem
+          getItem: getItem,
+          itemData: {}
       }
       return paradisec;
   }]);

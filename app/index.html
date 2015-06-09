@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="pdscApp" ng-controller="MetadataCtrl">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -19,8 +19,14 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link rel="stylesheet" href="config/app.css">
+    <meta name="dc.title" content="{{itemData.title}}">
+    <meta ng-repeat="id in itemData.identifier" name="dc.identifier" content="{{id}}">
+    <meta ng-repeat="contributor in itemData.contributor" name="dc.contributor" content="{{contributor.name}} ({{contributor.role}})">
+    <meta name="dc.date" content="{{itemData.date}}">
+    <meta name="dc.description" content="{{itemData.description}}">
+
   </head>
-  <body ng-app="pdscApp">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -79,6 +85,7 @@
         <script src="scripts/filters/is-empty.js"></script>
         <script src="scripts/filters/extension.js"></script>
         <script src="scripts/filters/strip-time.js"></script>
+        <script src="scripts/controllers/metadata.js"></script>
         <!-- endbuild -->
 </body>
 </html>
