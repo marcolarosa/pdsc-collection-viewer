@@ -59,12 +59,13 @@ angular.module('pdscApp')
           });
           data = _.groupBy(_.flatten(turns), function(d) { return d.id; });
 
-          // free up some memory
+          // finally, collapse it into an array of objects
+          data = _.map(data, function(d) { return d[0]; });
+
           return data;
 
-          // data is an object keyed on start where each is an array of objects as
-          // {
-          //  '1': [
+          // data is an array of objects in ascending order
+          // [
           //    {
           //        'id': ....,
           //        'referenceValue': ....,
@@ -72,8 +73,8 @@ angular.module('pdscApp')
           //        'value': ....,
           //        'speaker': ....
           //    }
+          //    ...
           //  ]
-          //  }
       }
 
       return trsParser;

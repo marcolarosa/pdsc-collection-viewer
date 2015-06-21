@@ -61,21 +61,23 @@ angular.module('pdscApp')
               annotations.alignableAnnotation[d.ref][0].referenceValue = d.value || undefined; 
           });
 
-          // finally, iterate over the alignable annotations and join the data into the timeslot data
+          // iterate over the alignable annotations and join the data into the timeslot data
           _.each(annotations.alignableAnnotation, function(d, i) {
               timeslots[d[0].ts1][0].value = d[0].value;
               timeslots[d[0].ts1][0].referenceValue = d[0].referenceValue;
               timeslots[d[0].ts1][0].speaker = d[0].speaker;
           })
 
+          // finally, collapse it into an array of objects
+          timeslots = _.map(timeslots, function(d) { return d[0]; });
+
           // free up some memory;
           delete annotations.alignableAnnotation;
           delete annotations.referenceAnnotation;
           return timeslots;
 
-          // timeslots is an object keyed on id where each is an array of objects as
-          // {
-          //  'ts1': [
+          // timeslots is an array of objects in ascending order
+          // [
           //    {
           //        'id': ....,
           //        'referenceValue': ....,
@@ -83,8 +85,8 @@ angular.module('pdscApp')
           //        'value': ....,
           //        'speaker': ....
           //    }
+          //    ...
           //  ]
-          //  }
 
       }
 
