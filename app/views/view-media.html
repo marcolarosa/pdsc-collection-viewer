@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
 
+                <!-- AUDIO -->
                 <span ng-repeat="(k,v) in itemData.audio" ng-if="loadAudioPlayer">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-sm-6 col-md-6 col-lg-6">
@@ -17,6 +18,9 @@
                             </span>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12" style="margin: 5px 0px;">
+                            <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12" style="margin: 5px 0px;">
                             <audio class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;">
                                 <source ng-repeat="src in v" src="{{src | trustAsHtml}}" />
                                 <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a 
@@ -27,6 +31,7 @@
                     </div>
                 </span>
 
+                <!-- VIDEO -->
                 <span ng-repeat="(k,v) in itemData.video" ng-if="loadVideoPlayer">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-sm-6 col-md-6 col-lg-6">
