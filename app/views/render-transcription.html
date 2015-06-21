@@ -1,0 +1,18 @@
+<button class="btn btn-default" ng-click="st = !st" ng-show="!st">Show Transcription</button>
+<button class="btn btn-default" ng-click="st = !st" ng-show="st">Hide Transcription</button>
+<hr/>
+<div style="position: relative; height: 300px; overflow: auto;">
+    <table class="table table-condensed" ng-show="st">
+        <tbody>
+            <tr ng-repeat="(k, v) in transcription" ng-if="v.value || v.referenceValue" id="{{v.time}}">
+                <td style="vertical-align: middle;">
+                    <button class="btn btn-default" ng-click="play(k)">
+                        <i class="fa fa-play"></i> Play ({{v.time}}s)
+                    </button>
+                </td>
+                <td style="vertical-align: middle;">{{v.value}}</td>
+                <td style="vertical-align: middle;">{{v.referenceValue}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
