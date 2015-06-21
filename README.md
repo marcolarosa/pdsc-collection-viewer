@@ -14,8 +14,10 @@ Running `grunt test` will run the unit tests with karma.
 ## TESTING
 
 Items with varying types useful for testing
-  * http://dev.local:9000/#/AC2/VUNU105 # one image and one PDF
-  * http://dev.local:9000/#/AC2/ETHGS102 # image set
-  * http://dev.local:9000/#/AA2/003 # audio
-  * http://dev.local:9000/#/NT5/DickLauto # video
-  * http://dev.local:9000/#/SN1/MM20130708Museum # multiple: image, audio and multiple PDF documents
+  * /#/AC2/VUNU105 # one image and one PDF
+  * /#/AC2/ETHGS102 # image set
+  * /#/AA2/003 # audio
+  * /#/NT5/DickLauto # video
+  * /#/SN1/MM20130708Museum # multiple: image, audio and multiple PDF documents
+  * /#/EAG1/S1 : .eaf XML
+  * /#/BN1/001 : .trs XML
