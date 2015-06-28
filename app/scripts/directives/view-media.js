@@ -20,6 +20,7 @@ angular.module('pdscApp')
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
           scope.time = '';
+          scope.showTranscription = false;
 
           // is a specific instance being requested?
           //  If so, strip the others from the set.
@@ -60,7 +61,11 @@ angular.module('pdscApp')
                   })
               }
 
-
+              // show the transcription
+              scope.showTranscription = true;
+              
+              // scroll to the specific transcription
+              scope.scrollTo = $routeParams.start;
           }
 
           // are we dealing with audio or video?

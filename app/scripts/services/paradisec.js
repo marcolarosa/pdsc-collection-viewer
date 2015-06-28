@@ -11,6 +11,7 @@ angular.module('pdscApp')
   .service('paradisec', [ '$rootScope', '$log', '$http', 'xml', 'configuration', 'eafParser', 'trsParser',
         function ($rootScope, $log, $http, xml, conf, eaf, trs) {
 
+      // generic xml parser - pass in XML : get back JSON
       function parseXML(doc) {
           var parser = new DOMParser();
 

@@ -1,0 +1,33 @@
+<div class="row" style="margin-bottom: 20px;">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div style="padding: 5px;">{{name}}</div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <span ng-repeat="src in itemData">
+            <!--<a href="" class="pull-right">annotate this selection</a>-->
+            <a class="btn btn-default btn-sm pull-right" href="{{src | stripTime}}" download>
+                <i class="fa fa-download"></i> Download {{src | stripTime | extension}}
+            </a>
+        </span>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="margin: 5px 0px;">
+        <span ng-show="mediaReadyToPlay">
+            <video id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;" media-ready>
+                <source ng-repeat="src in itemData" src="{{src | trustAsHtml}}" />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+        </span>
+        <span ng-show="!mediaReadyToPlay">Loading media... please wait.</span>
+    </div>
+</div>
+<div class="row" ng-if="transcription.eaf[name] || transcription.trs[name]" ng-show="mediaReadyToPlay">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <render-transcription
+            transcription="transcription"
+            name="{{name}}"
+            play="playFragment(start, end)">
+        </render-transcription>
+    </div>
+</div>

@@ -8,6 +8,10 @@ body {
     background-color: #fffff0;
 }
 
+.table-colour-fix {
+    border-top-color: #cfcfc4;
+}
+
 .fade-in.ng-enter {
     animation: fadeIn 0.5s;
 }
@@ -27,3 +31,8 @@ body {
     text-rendering: optimizelegibility;
     margin: 10px 0px;
 }
+
+.vjs-default-skin .vjs-volume-control { 
+    display: none; 
+}
+

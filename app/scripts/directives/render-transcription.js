@@ -13,34 +13,29 @@ angular.module('pdscApp')
       restrict: 'E',
       scope: {
           transcription: '=',
-          instanceId: '@',
-          showTranscription: '@',
-          scrollTo: '@'
+          name: '@',
+          play: '&'
       },
       link: function postLink(scope, element, attrs) {
           // show or hide the transcription?
-          scope.st = scope.showTranscription;
+          scope.st = false;
 
-          // if scrollTo is set - scroll to that element
-          if (scope.scrollTo) {
-              var o = $location.hash();
-              $location.hash(scope.scrollTo);
-              $anchorScroll();
-              $location.hash(o);
-          }
+          // watch itemData and when it looks like we have the data
+          //  we need; kick off whatever we need to do
+          scope.$watch('transcription', function(n,o) {
+              var eaf = scope.transcription.eaf[scope.name];
+              var trs = scope.transcription.trs[scope.name];
 
-          scope.play = function(k) {
-              var timeStart = scope.transcription[k].time;
-              var timeEnd = scope.transcription[k+1].time;
+              var transcript;
+              if (!_.isEmpty(eaf) && _.isObject(eaf)) {
+                  transcript = _.compact(_.map(eaf, function(v) { if (v.value || v.referenceValue) return v; }));
 
-              if (!$location.path().match(scope.instanceId)) {
-                  $location.path($location.path() + '/' + scope.instanceId);
+              } else if (!_.isEmpty(trs) && _.isObject(trs)) {
+                  transcript = _.compact(_.map(trs, function(v) { if (v.value || v.referenceValue) return v; }));
+
               }
-              $location.search({
-                  'start': timeStart,
-                  'end': timeEnd
-              });
-          }
+              if (!_.isEmpty(transcript)) scope.transcript = transcript;
+          }, true);
 
       }
     };
