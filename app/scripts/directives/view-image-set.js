@@ -18,6 +18,7 @@ angular.module('pdscApp')
           scope.showFilmstrip = false;
           scope.showItemInformation = false;
           scope.disableThumbnailView = false;
+          scope.currentRotation = 0;
 
           // handle window resize events
           var w = angular.element($window);
@@ -25,6 +26,10 @@ angular.module('pdscApp')
               scope.$apply(function() {
                 sizeThePanels();
               })
+          });
+
+          scope.$on('image-loaded', function() {
+              scope.scaleToFit();
           });
 
           var sizeThePanels = function() {
@@ -46,7 +51,8 @@ angular.module('pdscApp')
                   'top': scope.navbarHeight + 'px', 
                   'left': '5%',
                   'width': '90%',
-                  'height': panelHeight + 'px'
+                  'height': panelHeight + 'px',
+                  'overflow': 'auto'
               }
               scope.contentPaneRight = {
                   'position': 'absolute',
@@ -106,7 +112,7 @@ angular.module('pdscApp')
           });
 
           scope.loadImage = function() {
-              scope.showImage = false;
+              scope.showImage = true;
               scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
               scope.highlightThumbnail();
@@ -165,6 +171,66 @@ angular.module('pdscApp')
               scope.loadImage();
           }
           
+          // rotate left
+          scope.rotateLeft = function() {
+              scope.currentRotation -= 90;
+              if (scope.currentRotation === -360) scope.currentRotation = 0;
+              scope.setTransform();
+          }
+
+          // rotate right
+          scope.rotateRight = function() {
+              scope.currentRotation += 90;
+              if (scope.currentRotation === 360) scope.currentRotation = 0;
+              scope.setTransform();
+          }
+
+          // zoom in 
+          scope.zoomIn = function() {
+              scope.currentScale += 0.05;
+              if (scope.currentScale < 0.2) scope.currentScale = 0.2;
+              scope.setTransform();
+          }
+
+          // zoom out
+          scope.zoomOut = function() {
+              scope.currentScale -= 0.05;
+              if (scope.currentScale > 2) scope.currentScale = 2;
+              scope.setTransform();
+          }
+
+          // set transform
+          scope.setTransform = function() {
+              scope.transform = {
+                  '-webkit-backface-visibility': 'hidden',
+                  '-webkit-transform': 'translateZ(0)',
+                  '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-webkit-transition': '1s ease-in-out',
+                  '-moz-transition': '1s ease-in-out',
+                  '-o-transition': '1s ease-in-out',
+                  'transition': '0.5s ease-in-out'
+              }
+          }
+
+          scope.scaleToFit = function() {
+              if (!scope.currentScale) {
+                  var cp = angular.element(document.getElementById('contentPane'));
+                  var im = angular.element(document.getElementById('largeImage'));
+                  scope.currentScale = cp[0].clientWidth / im[0].clientWidth;
+
+                  var translateX = (im[0].clientWidth * (1 - scope.currentScale));
+                  var translateY = (im[0].clientHeight * (1 - scope.currentScale));
+                  scope.translate = 'translate(-' + translateX + 'px, -' + translateY + 'px)';
+                  $timeout(function() {
+                     scope.setTransform();
+                  },1);
+              }
+          }
+
           // highlight thumbnail
           scope.highlightThumbnail = function() {
               _.each(scope.smallImages, function(d, i) {

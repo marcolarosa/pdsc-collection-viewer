@@ -21,12 +21,26 @@
                         <button class="btn btn-default btn-sm" ng-click="jumpToEnd()" blur-on-click>
                             <span class="fa fa-fast-forward"></span>
                         </button>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-default btn-sm" ng-click="rotateLeft()" blur-on-click>
+                        <span class="fa fa-rotate-left"></span>
+                    </button>
+                    <button class="btn btn-default btn-sm" ng-click="rotateRight()" blur-on-click>
+                        <span class="fa fa-rotate-right"></span>
+                    </button>
+                    <button class="btn btn-default btn-sm" ng-click="zoomOut()" blur-on-click>
+                        <span class="fa fa-search-minus"></span>
+                    </button>
+                    <button class="btn btn-default btn-sm" ng-click="zoomIn()" blur-on-click>
+                        <span class="fa fa-search-plus"></span>
+                    </button>
+                    <span ng-if="!disableThumbnailView">
                         <button class="btn btn-default btn-sm" ng-click="toggleFilmstrip()" blur-on-click>
                             <span ng-show="showFilmstrip">hide thumbnails</span>
                             <span ng-hide="showFilmstrip">show thumbnails</span>
                         </button>
                     </span>
-                    &nbsp;&nbsp;&nbsp;
                     <a class="btn btn-default btn-sm" href="{{itemData.images[current]}}" download>
                         <i class="fa fa-download"></i> Download {{itemData.images[current] | extension}}
                     </a>
@@ -43,8 +57,8 @@
         </div>
 
         <!-- Image large view panel -->
-        <div ng-style="contentPaneCenter">
-            <img ng-src="{{image}}" smoothzoom alt='You must be logged in to Nabu to view this image' ng-show="showImage">
+        <div ng-style="contentPaneCenter" id='contentPane'>
+            <img id='largeImage' src="{{image}}" alt='You must be logged in to Nabu to view this image' ng-show="showImage" ng-style="transform" scale-and-center>
         </div>
 
         <!-- next image control -->
@@ -59,7 +73,7 @@
         <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
             <span ng-repeat="img in smallImages">
                 <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;"  />
+                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
                 </a>
             </span>
         </div>
