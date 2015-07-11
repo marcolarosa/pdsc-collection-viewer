@@ -27,6 +27,7 @@ angular.module('pdscApp')
 
           // extract the annotations
           var annotations = [];
+          if (!_.isArray(data.ANNOTATION_DOCUMENT.TIER)) data.ANNOTATION_DOCUMENT.TIER = [data.ANNOTATION_DOCUMENT.TIER];
           _.each(data.ANNOTATION_DOCUMENT.TIER, function(d) {
               var a = _.map(d.ANNOTATION, function(e) {
                   if (e.ALIGNABLE_ANNOTATION) {

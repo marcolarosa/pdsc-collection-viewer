@@ -22,10 +22,10 @@
         <span ng-show="!mediaReadyToPlay">Loading media... please wait.</span>
     </div>
 </div>
-<div class="row" ng-if="transcription.eaf[name] || transcription.trs[name]" ng-show="mediaReadyToPlay">
+<div class="row" ng-if="mediaReadyToPlay && trs">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <render-transcription
-            transcription="transcription"
+            transcription="trs"
             name="{{name}}"
             play="playFragment(start, end)">
         </render-transcription>

@@ -74,6 +74,7 @@ angular.module('pdscApp')
               selector = 'trs';
           }
       
+          if (!_.isArray(tree['dcterms:tableOfContents'])) tree['dcterms:tableOfContents'] = [ tree['dcterms:tableOfContents'] ];
           var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
               var i = d['#text'];
               var ext = i.split('.').pop();

@@ -19,19 +19,28 @@ angular.module('pdscApp')
           if (data.html) return;
 
           // extract the speakers and group by id
-          var speakers = _.map(data.Trans[1].Speakers.Speaker, function(d) {
-              return {
-                  'id': d['@attributes']['id'],
-                  'name': d['@attributes']['name']
-              }
-          });
-          speakers = _.groupBy(speakers, function(d) { return d.id; });
+          var speakers;
+          if (data.Trans[1].Speakers) {
+              speakers = _.map(data.Trans[1].Speakers.Speaker, function(d) {
+                  return {
+                      'id': d['@attributes']['id'],
+                      'name': d['@attributes']['name']
+                  }
+              });
+              speakers = _.groupBy(speakers, function(d) { return d.id; });
+          } else {
+              speakers = {};
+          }
 
           var turns = [];
-          var data;
+          if (!_.isArray(data.Trans[1].Episode.Section.Turn)) data.Trans[1].Episode.Section.Turn = [data.Trans[1].Episode.Section.Turn];
           _.each(data.Trans[1].Episode.Section.Turn, function(d) {
-              // extract the speaker for use ater
-              var spkr = d['@attributes']['speaker'];
+              // extract the speaker for use later
+              if (d['@attributes']) {
+                  var spkr = d['@attributes']['speaker'];
+              } else {
+                  spkr = '';
+              }
 
               // extract the text
               var texts = _.map(d['#text'], function(e) { return e.trim(); });
@@ -44,9 +53,9 @@ angular.module('pdscApp')
               } else if (_.isObject(d['Sync'])) {
                   syncs = [ d['Sync']['@attributes']['time'] ];
               }
-              data = _.zip(syncs, texts);
+              var transdata = _.zip(syncs, texts);
 
-              data = _.map(data, function(d) {
+              transdata = _.map(transdata, function(d) {
                   return {
                       'id': d[0],
                       'time': d[0],
@@ -55,7 +64,7 @@ angular.module('pdscApp')
                       'speaker': spkr
                   }
               })
-              turns.push(data);
+              turns.push(transdata);
           });
           data = _.groupBy(_.flatten(turns), function(d) { return d.id; });
 
