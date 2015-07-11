@@ -21,3 +21,6 @@ Items with varying types useful for testing
   * /#/SN1/MM20130708Museum # multiple: image, audio and multiple PDF documents
   * /#/EAG1/S1 : .eaf XML
   * /#/BN1/001 : .trs XML
+  * /#/NT10/W08 : .trs XML
+  * /#/NT10/W13 : .eaf XML
+
