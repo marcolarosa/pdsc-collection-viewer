@@ -7,7 +7,7 @@
  * # scaleAndCenter
  */
 angular.module('pdscApp')
-  .directive('scaleAndCenter', function () {
+  .directive('scaleAndCenter', [ '$timeout', function ($timeout) {
     return {
       template: '',
       restrict: 'A',
@@ -15,8 +15,10 @@ angular.module('pdscApp')
       },
       link: function postLink(scope, element, attrs) {
           element.on('load', function() {
-              scope.$emit('image-loaded');
+              $timeout(function() {
+                  scope.$emit('image-loaded');
+              },1);
           });
       }
     };
-  });
+  }]);

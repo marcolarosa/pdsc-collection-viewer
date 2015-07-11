@@ -19,6 +19,10 @@ angular.module('pdscApp')
           scope.showItemInformation = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
+          scope.translate = '';
+          scope.currentScale = 1;
+          scope.transformOrigin = '50% 50%';
+          scope.scaleStep = 0.15;
 
           // handle window resize events
           var w = angular.element($window);
@@ -29,7 +33,7 @@ angular.module('pdscApp')
           });
 
           scope.$on('image-loaded', function() {
-              scope.scaleToFit();
+              scope.setTransform();
           });
 
           var sizeThePanels = function() {
@@ -174,27 +178,29 @@ angular.module('pdscApp')
           // rotate left
           scope.rotateLeft = function() {
               scope.currentRotation -= 90;
-              if (scope.currentRotation === -360) scope.currentRotation = 0;
+              //if (scope.currentRotation === -360) scope.currentRotation = 0;
               scope.setTransform();
           }
 
           // rotate right
           scope.rotateRight = function() {
               scope.currentRotation += 90;
-              if (scope.currentRotation === 360) scope.currentRotation = 0;
+              //if (scope.currentRotation === 360) scope.currentRotation = 0;
               scope.setTransform();
           }
 
           // zoom in 
           scope.zoomIn = function() {
-              scope.currentScale += 0.05;
+              scope.getCurrentScale();
+              scope.currentScale += scope.scaleStep;
               if (scope.currentScale < 0.2) scope.currentScale = 0.2;
               scope.setTransform();
           }
 
           // zoom out
           scope.zoomOut = function() {
-              scope.currentScale -= 0.05;
+              scope.getCurrentScale();
+              scope.currentScale -= scope.scaleStep;
               if (scope.currentScale > 2) scope.currentScale = 2;
               scope.setTransform();
           }
@@ -202,32 +208,32 @@ angular.module('pdscApp')
           // set transform
           scope.setTransform = function() {
               scope.transform = {
-                  '-webkit-backface-visibility': 'hidden',
-                  '-webkit-transform': 'translateZ(0)',
                   '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-webkit-transform-origin': scope.transformOrigin,
                   '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
-                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-moz-transform-origin': scope.transformOrigin,
                   '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-ms-transform-origin': scope.transformOrigin,
+                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-o-transform-origin': scope.transformOrigin,
                   'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  'transform-origin': scope.transformOrigin,
                   '-webkit-transition': '1s ease-in-out',
                   '-moz-transition': '1s ease-in-out',
+                  '-ms-transition': '1s ease-in-out',
                   '-o-transition': '1s ease-in-out',
-                  'transition': '0.5s ease-in-out'
+                  'transition': '0.5s ease-in-out',
+                  'max-width': '100%',
+                  'height': 'auto'
               }
           }
 
-          scope.scaleToFit = function() {
+          scope.getCurrentScale = function() {
               if (!scope.currentScale) {
                   var cp = angular.element(document.getElementById('contentPane'));
                   var im = angular.element(document.getElementById('largeImage'));
                   scope.currentScale = cp[0].clientWidth / im[0].clientWidth;
-
-                  var translateX = (im[0].clientWidth * (1 - scope.currentScale));
-                  var translateY = (im[0].clientHeight * (1 - scope.currentScale));
-                  scope.translate = 'translate(-' + translateX + 'px, -' + translateY + 'px)';
-                  $timeout(function() {
-                     scope.setTransform();
-                  },1);
+                  scope.setTransform();
               }
           }
 
