@@ -36,3 +36,6 @@ body {
     display: none; 
 }
 
+.transcription-selected {
+    background-color: #FCF8E3;
+}

@@ -17,25 +17,33 @@ angular.module('pdscApp')
           transcription: '=',
       },
       link: function postLink(scope, element, attrs) {
-          scope.$watch('transcription', function() {
-              if (!_.isEmpty(scope.transcription.eaf)) {
-                  _.each(scope.transcription.eaf, function(value, key) {
-                      if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
-                          if (scope.transcription.eaf[key].length > 1) scope.trs = scope.transcription.eaf[key];
-                      }
-                  });
-              }
-              if (!scope.trs && !_.isEmpty(scope.transcription.trs)) {
-                  _.each(scope.transcription.trs, function(value, key) {
-                      if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
-                          if (scope.transcription.trs[key].length > 1) scope.trs = scope.transcription.trs[key];
-                      }
-                  });
-              }
-          }, true);
-
           // defaults
           scope.mediaReadyToPlay = false;
+
+          scope.$watch('transcription', function() {
+              if (!_.isEmpty(scope.transcription.eaf)) {
+                  if (scope.transcription.eaf[scope.name] && scope.transcription.eaf[scope.name].length > 1) {
+                      scope.trs = scope.transcription.eaf[scope.name];
+                  } else {
+                      _.each(scope.transcription.eaf, function(value, key) {
+                          if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
+                              if (scope.transcription.eaf[key].length > 1) scope.trs = scope.transcription.eaf[key];
+                          }
+                      });
+                  }
+              }
+              if (!_.isEmpty(scope.transcription.trs)) {
+                  if (scope.transcription.trs[scope.name] && scope.transcription.trs[scope.name].length > 1) {
+                      scope.trs = scope.transcription.trs[scope.name];
+                  } else {
+                      _.each(scope.transcription.trs, function(value, key) {
+                          if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
+                              if (scope.transcription.trs[key].length > 1) scope.trs = scope.transcription.trs[key];
+                          }
+                      });
+                  }
+              }
+          }, true);
 
           // required by the directive which watches for the 
           //  element to be ready - this makes the media element visible
