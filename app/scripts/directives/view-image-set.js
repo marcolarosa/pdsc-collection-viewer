@@ -151,15 +151,15 @@ angular.module('pdscApp')
 
           // page to next image
           scope.next = function() {
+              if (scope.current === scope.itemData.images.length -1) return;
               scope.current += 1;
-              if (scope.current === scope.itemData.images.length -1) scope.current = scope.itemData.images.length -1;
               scope.loadImage();
           }
 
           // page to previous image
           scope.previous = function() {
+              if (scope.current === 0) return;
               scope.current -= 1;
-              if (scope.current === 0) scope.current = 0;
               scope.loadImage();
           }
 
