@@ -7,7 +7,7 @@
  * # videoElement
  */
 angular.module('pdscApp')
-  .directive('videoElement', function () {
+  .directive('videoElement', [ '$timeout', function ($timeout) {
     return {
       templateUrl: 'views/video-element.html',
       restrict: 'E',
@@ -59,4 +59,4 @@ angular.module('pdscApp')
           }
       }
     };
-  });
+  }]);

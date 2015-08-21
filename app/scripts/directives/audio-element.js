@@ -24,23 +24,11 @@ angular.module('pdscApp')
               if (!_.isEmpty(scope.transcription.eaf)) {
                   if (scope.transcription.eaf[scope.name] && scope.transcription.eaf[scope.name].length > 1) {
                       scope.trs = scope.transcription.eaf[scope.name];
-                  } else {
-                      _.each(scope.transcription.eaf, function(value, key) {
-                          if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
-                              if (scope.transcription.eaf[key].length > 1) scope.trs = scope.transcription.eaf[key];
-                          }
-                      });
                   }
               }
               if (!_.isEmpty(scope.transcription.trs)) {
                   if (scope.transcription.trs[scope.name] && scope.transcription.trs[scope.name].length > 1) {
                       scope.trs = scope.transcription.trs[scope.name];
-                  } else {
-                      _.each(scope.transcription.trs, function(value, key) {
-                          if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) { 
-                              if (scope.transcription.trs[key].length > 1) scope.trs = scope.transcription.trs[key];
-                          }
-                      });
                   }
               }
           }, true);

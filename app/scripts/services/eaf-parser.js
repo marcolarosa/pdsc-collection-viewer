@@ -59,7 +59,10 @@ angular.module('pdscApp')
 
           // iterate over the reference annotations and join the data into the alignable annotations
           _.each(annotations.referenceAnnotation, function(d, i) {
-              annotations.alignableAnnotation[d.ref][0].referenceValue = d.value || undefined; 
+              try {
+                  annotations.alignableAnnotation[d.ref][0].referenceValue = d.value || undefined; 
+              } catch (e) {
+              }
           });
 
           // iterate over the alignable annotations and join the data into the timeslot data
