@@ -49,10 +49,15 @@
 </span>
 <div class="row" ng-show="!showItemInformation">
     <div class="col-sm-12 col-md-12 col-lg-offset-1 col-lg-10">
-        <!-- the viewers -->
-        <view-image-set ng-if="loadImageViewer"    item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-image-set>
-        <view-documents ng-if="loadDocumentViewer" item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-documents>
-        <view-media     ng-if="loadMediaPlayer"    item-data="itemData" instance-id="instanceId"></view-media>
+        <div ng-if="itemData.openAccess">
+            <!-- the viewers -->
+            <view-image-set ng-if="loadImageViewer"    item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-image-set>
+            <view-documents ng-if="loadDocumentViewer" item-data="itemData" instance-id="instanceId" header-height="headerHeight"></view-documents>
+            <view-media     ng-if="loadMediaPlayer"    item-data="itemData" instance-id="instanceId"></view-media>
+        </div>
+        <div ng-if="!itemData.openAccess" class="text-center">
+            {{itemData.rights}}
+        </div>
     </div>
 </div>
 

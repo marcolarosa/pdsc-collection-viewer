@@ -99,6 +99,7 @@ angular.module('pdscApp')
           if (! _.isArray(tree['dc:identifier'])) tree['dc:identifier'] = [ tree['dc:identifier'] ];
           if (! _.isArray(tree['dc:contributor'])) tree['dc:contributor'] = [ tree['dc:contributor'] ];
           var data = {
+              'openAccess': true,
               'identifier': _.map(tree['dc:identifier'], function(d) {
                   return d['#text'];
               }),
@@ -120,6 +121,10 @@ angular.module('pdscApp')
               'documents': constructItemList('documents', tree),
               'rights': get(tree, 'dcterms:accessRights')
           };
+          // if the item is closed - set a flag to make it easier to work with in the view
+          if (data.rights.match('Closed.*')) {
+              data.openAccess = false;
+          }
 
           // generate the thumbnails array
           data.thumbnails = _.map(data.images, function(d) {

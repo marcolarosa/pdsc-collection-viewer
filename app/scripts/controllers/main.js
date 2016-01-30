@@ -46,7 +46,6 @@ angular.module('pdscApp')
             // is a specific instance defined? if so, use this to determine which
             //  viewer to load.
             if ($scope.instanceId) {
-
                 // is it an image?
                 if (! _.isEmpty(data.images)) {
                     var m = _.filter(data.images, function(d) {
