@@ -12,9 +12,13 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
-    grunt.loadNpmTasks('grunt-build-control');
-  // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
+    // Automatically load required Grunt tasks
+  require('jit-grunt')(grunt, {
+      useminPrepare: 'grunt-usemin',
+      ngtemplates: 'grunt-angular-templates',
+      cdnify: 'grunt-google-cdn',
+      buildcontrol: 'grunt-build-control'
+  });
 
   // Configurable paths for the application
   var appConfig = {
