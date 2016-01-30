@@ -9,10 +9,10 @@
 
 module.exports = function (grunt) {
 
-  // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
 
-    // Automatically load required Grunt tasks
+  // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
       useminPrepare: 'grunt-usemin',
       ngtemplates: 'grunt-angular-templates',
