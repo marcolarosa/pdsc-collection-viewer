@@ -37,6 +37,7 @@ module.exports = function(config) {
       'bower_components/videojs/dist/video-js/video.js',
       'bower_components/pdfjs-dist/build/pdf.combined.js',
       'bower_components/pdfjs-dist/web/compatibility.js',
+      'bower_components/moment/moment.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/app/*.js",
