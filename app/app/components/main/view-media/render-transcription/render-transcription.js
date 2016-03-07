@@ -7,7 +7,7 @@ angular.module('pdsc')
     '_',
     function ($location, $anchorScroll, _) {
     return {
-      templateUrl: 'app/components/main/render-transcription/render-transcription.html',
+      templateUrl: 'app/components/main/view-media/render-transcription/render-transcription.html',
       restrict: 'E',
       scope: {
           transcription: '=',

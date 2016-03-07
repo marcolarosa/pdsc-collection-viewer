@@ -16,7 +16,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/:collectionId?/:itemId/:itemInstance?', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'app/components/main/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({

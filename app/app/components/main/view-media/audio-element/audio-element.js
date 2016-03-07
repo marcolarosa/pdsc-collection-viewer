@@ -6,7 +6,7 @@ angular.module('pdsc')
     '_',
     function ($timeout, _) {
     return {
-      templateUrl: 'app/components/main/audio-element/audio-element.html',
+      templateUrl: 'app/components/main/view-media/audio-element/audio-element.html',
       restrict: 'E',
       scope: {
           name: '=',

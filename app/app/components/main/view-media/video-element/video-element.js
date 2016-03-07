@@ -6,7 +6,7 @@ angular.module('pdsc')
     '_',
     function ($timeout, _) {
     return {
-      templateUrl: 'app/components/main/video-element/video-element.html',
+      templateUrl: 'app/components/main/view-media/video-element/video-element.html',
       restrict: 'E',
       scope: {
           name: '=',
