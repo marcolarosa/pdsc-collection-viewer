@@ -8,7 +8,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'moment',
+    'underscore',
   ])
   .config(function ($routeProvider) {
     $routeProvider
