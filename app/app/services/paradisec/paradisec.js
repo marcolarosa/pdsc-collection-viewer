@@ -9,14 +9,15 @@ angular.module('pdsc')
         'configuration', 
         'eafParser', 
         'trsParser',
-        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs) {
+        '_',
+        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, _) {
 
       // generic xml parser - pass in XML : get back JSON
       function parseXML(doc) {
           var parser = new DOMParser();
 
           // parse the xml document
-          var xmldoc = parser.parseFromString(doc, "text/xml");
+          var xmldoc = parser.parseFromString(doc, 'text/xml');
 
           // return it as JSON
           return xmlToJson.convert(xmldoc);
@@ -27,22 +28,22 @@ angular.module('pdsc')
           var tree = parseXML(d);
 
           // get a handle to the actual tree of data inside the OAI guff
-          tree = tree['OAI-PMH']['GetRecord']['record']['metadata']['olac:olac'];
+          tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
 
           // assemble and return the item data structure
-          return { 'data': createItemDataStructure(tree)}
+          return { 'data': createItemDataStructure(tree)};
       }
 
       // parse an EAF document and create a JSON data structure for the app to use
       function parseEAF(d) {
           // assemble and return the item data structure
-          return { 'data': eaf.parse(parseXML(d))}
+          return { 'data': eaf.parse(parseXML(d))};
       }
 
       // parse a TRS document and create a JSON data structure for the app to use
       function parseTRS(d) {
           // assemble and return the item data structure
-          return { 'data': trs.parse(parseXML(d))}
+          return { 'data': trs.parse(parseXML(d))};
       }
 
       // handler to extract a value for 'thing'
@@ -74,14 +75,16 @@ angular.module('pdsc')
               selector = 'trs';
           }
       
-          if (!_.isArray(tree['dcterms:tableOfContents'])) tree['dcterms:tableOfContents'] = [ tree['dcterms:tableOfContents'] ];
+          if (!_.isArray(tree['dcterms:tableOfContents'])) {
+              tree['dcterms:tableOfContents'] = [ tree['dcterms:tableOfContents'] ];
+          }
           var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
               var i = d['#text'];
               var ext = i.split('.').pop();
               if (ext !== undefined && selector !== undefined && selector.indexOf(ext.toLowerCase()) !== -1) {
                   return d['#text'];
               }
-          }))
+          }));
 
           if ([ 'audio', 'video', 'eaf', 'trs' ].indexOf(type) !== -1) {
               // audio and video can exist in multiple formats; so, group the data
@@ -96,8 +99,12 @@ angular.module('pdsc')
 
       // Given a tree of XML as JSON, create a data structure for the item
       function createItemDataStructure(tree) {
-          if (! _.isArray(tree['dc:identifier'])) tree['dc:identifier'] = [ tree['dc:identifier'] ];
-          if (! _.isArray(tree['dc:contributor'])) tree['dc:contributor'] = [ tree['dc:contributor'] ];
+          if (! _.isArray(tree['dc:identifier'])) {
+              tree['dc:identifier'] = [ tree['dc:identifier'] ];
+          }
+          if (! _.isArray(tree['dc:contributor'])) {
+              tree['dc:contributor'] = [ tree['dc:contributor'] ];
+          }
           var data = {
               'openAccess': true,
               'identifier': _.map(tree['dc:identifier'], function(d) {
@@ -111,7 +118,7 @@ angular.module('pdsc')
                   return { 
                       'name': d['#text'],
                       'role': d['@attributes']['olac:code']
-                  }
+                  };
               }),
               'images': constructItemList('images', tree),
               'video': constructItemList('video', tree),
@@ -138,13 +145,13 @@ angular.module('pdsc')
               var name = d[0].split('/').pop();
               var audioVisName = name.split('.')[0] + '-soundimage-PDSC_ADMIN.jpg'; 
               return d[0].replace(name, audioVisName);
-          })
+          });
           data.audioVisualisations = _(data.audioVisualisations).chain()
                              .groupBy(function(d) { return d.split('/').pop().split('.')[0].split('-soundimage')[0]; })
                              .value();
           _.each(data.audioVisualisations, function(d, i) {
               data.audioVisualisations[i] = d[0];
-          })
+          });
 
           // for each XML file in xml - kick off a retrieval
           //  each file is grabbed and parsed and the URL is then replaced
@@ -159,11 +166,11 @@ angular.module('pdsc')
                        data.eaf[i] = resp.data.data;
                   }
               },
-              function(resp) {
+              function() {
                   // failure
-                  $log.error("ParadisecService: error, couldn't get", url);
-              })
-          })
+                  $log.error('ParadisecService: error, couldn\'t get', url);
+              });
+          });
           _.each(data.trs, function(d, i) {
               var url = d[0];
               $http.get(url, { transformResponse: parseTRS, withCredentials: true }).then(function(resp) {
@@ -174,11 +181,11 @@ angular.module('pdsc')
                       data.trs[i] = resp.data.data;
                   }
               },
-              function(resp) {
+              function() {
                   // failure
-                  $log.error("ParadisecService: error, couldn't get", url);
-              })
-          })
+                  $log.error('ParadisecService: error, couldn\'t get', url);
+              });
+          });
 
           return data;
       }
@@ -191,10 +198,10 @@ angular.module('pdsc')
 
           var url = conf.datasource[project].getItem;
           url = url.replace('{{itemId}}', itemIdentifier);
-          $log.debug("ParadisecService: getItem", url, itemIdentifier);
+          $log.debug('ParadisecService: getItem', url, itemIdentifier);
 
           return $http.get(url, { transformResponse: parseOAI }).then(function(resp) {
-              $log.debug("ParadisecService: getItem response", resp.data.data);
+              $log.debug('ParadisecService: getItem response', resp.data.data);
               resp.data.data.collectionId = collectionId;
               resp.data.data.collectionLink = conf.datasource[project].collections + '/' + collectionId;
               resp.data.data.itemId = itemId;
@@ -207,8 +214,8 @@ angular.module('pdsc')
               // and return it to the caller which is expecting a promise
               return resp.data.data;
           }, 
-          function(resp) {
-              $log.error("ParadisecService: error, couldn't get", url);
+          function() {
+              $log.error('ParadisecService: error, couldn\'t get', url);
           });
       }
 
@@ -219,6 +226,6 @@ angular.module('pdsc')
           documentTypes: [ 'pdf' ],
           getItem: getItem,
           itemData: {}
-      }
+      };
       return paradisec;
   }]);

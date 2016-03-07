@@ -7,7 +7,7 @@ angular.module('pdsc')
       restrict: 'A',
       scope: {
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
           element.bind('click', function() {
               element.blur();
           });

@@ -5,7 +5,7 @@ angular.module('pdsc')
     return {
       template: '',
       restrict: 'A',
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
           element.on('timeupdate', function(time) {
               scope.$apply(function() {
                   scope.currentTime = time.currentTarget.currentTime;

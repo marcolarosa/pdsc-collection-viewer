@@ -3,7 +3,8 @@
 angular.module('pdsc')
   .directive('viewMedia', [ 
     '$routeParams', 
-    function ($routeParams) {
+    '_',
+    function ($routeParams, _) {
     return {
       templateUrl: 'app/components/main/view-media/view-media.html',
       restrict: 'E',
@@ -11,7 +12,7 @@ angular.module('pdsc')
           itemData: '=',
           instanceId: '=',
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
           scope.showMedia = true;
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
@@ -40,9 +41,9 @@ angular.module('pdsc')
                 _.each(scope.itemData.audio, function(d,k) {
                     d = _.map(d, function(e) {
                         return e + scope.time;
-                    })
+                    });
                     scope.itemData.audio[k] = d;
-                })
+                });
               }
 
               // process the video elements - extracting the specific instance if matching
@@ -51,9 +52,9 @@ angular.module('pdsc')
                   _.each(scope.itemData.video, function(d,k) {
                       d = _.map(d, function(e) {
                           return e + scope.time;
-                      })
+                      });
                       scope.itemData.video[k] = d;
-                  })
+                  });
               }
 
               // scroll to the specific transcription
@@ -61,8 +62,12 @@ angular.module('pdsc')
           }
 
           // are we dealing with audio or video?
-          if (!_.isEmpty(scope.itemData.video)) scope.loadVideoPlayer = true;
-          if (!_.isEmpty(scope.itemData.audio)) scope.loadAudioPlayer = true;
+          if (!_.isEmpty(scope.itemData.video)) {
+              scope.loadVideoPlayer = true;
+          }
+          if (!_.isEmpty(scope.itemData.audio)) {
+              scope.loadAudioPlayer = true;
+          }
 
       }
     };

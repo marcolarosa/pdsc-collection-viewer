@@ -4,7 +4,8 @@ angular.module('pdsc')
   .directive('renderTranscription', [ 
     '$location', 
     '$anchorScroll', 
-    function ($location, $anchorScroll) {
+    '_',
+    function ($location, $anchorScroll, _) {
     return {
       templateUrl: 'app/components/main/render-transcription/render-transcription.html',
       restrict: 'E',
@@ -14,13 +15,13 @@ angular.module('pdsc')
           name: '@',
           play: '&'
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
           scope.highlight = {};
           scope.$watch('currentTime', function() {
               if (scope.currentTime) {
                   var transformed = _.map(scope.transcript, function(t) {
                       if (t.time > scope.currentTime) { 
-                          return 1 
+                          return 1;
                       } else {
                           return 0;
                       }
@@ -38,8 +39,14 @@ angular.module('pdsc')
           // show or hide the transcription?
           scope.st = false;
 
-          var transcript = _.compact(_.map(scope.transcription, function(v) { if (v.value || v.referenceValue) return v; }));
-          if (!_.isEmpty(transcript)) scope.transcript = transcript;
+          var transcript = _.compact(_.map(scope.transcription, function(v) { 
+              if (v.value || v.referenceValue) {
+                  return v; 
+              }
+          }));
+          if (!_.isEmpty(transcript)) {
+              scope.transcript = transcript;
+          }
 
       }
     };

@@ -2,7 +2,8 @@
   "name": "pdsc",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-build-control": "^0.6.2"
+    "grunt-build-control": "^0.6.2",
+    "grunt-jscs": "^2.8.0"
   },
   "repository": {},
   "devDependencies": {

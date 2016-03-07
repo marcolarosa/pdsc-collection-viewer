@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('pdsc')
-  .service('trsParser', [ function () {
+  .service('trsParser', [ '_',
+    function (_) {
 
       var trsParser = {};
 
@@ -9,16 +10,18 @@ angular.module('pdsc')
       trsParser.parse = function(data) {
 
           // ignore the html representations
-          if (data.html) return;
+          if (data.html) {
+              return;
+          }
 
           // extract the speakers and group by id
           var speakers;
           if (data.Trans[1].Speakers) {
               speakers = _.map(data.Trans[1].Speakers.Speaker, function(d) {
                   return {
-                      'id': d['@attributes']['id'],
-                      'name': d['@attributes']['name']
-                  }
+                      'id': d['@attributes'].id,
+                      'name': d['@attributes'].name
+                  };
               });
               speakers = _.groupBy(speakers, function(d) { return d.id; });
           } else {
@@ -26,11 +29,15 @@ angular.module('pdsc')
           }
 
           var turns = [];
-          if (!_.isArray(data.Trans[1].Episode.Section.Turn)) data.Trans[1].Episode.Section.Turn = [data.Trans[1].Episode.Section.Turn];
+          if (!_.isArray(data.Trans[1].Episode.Section.Turn)) {
+              data.Trans[1].Episode.Section.Turn = [data.Trans[1].Episode.Section.Turn];
+          }
+
           _.each(data.Trans[1].Episode.Section.Turn, function(d) {
+              var spkr;
               // extract the speaker for use later
               if (d['@attributes']) {
-                  var spkr = d['@attributes']['speaker'];
+                  spkr = d['@attributes'].speaker;
               } else {
                   spkr = '';
               }
@@ -39,12 +46,13 @@ angular.module('pdsc')
               var texts = _.map(d['#text'], function(e) { return e.trim(); });
               texts = _.without(texts, '');
               
-              if (_.isArray(d['Sync'])) {
-                  var syncs = _.map(d['Sync'], function(e) {
-                      return e['@attributes']['time'];
-                  })
-              } else if (_.isObject(d['Sync'])) {
-                  syncs = [ d['Sync']['@attributes']['time'] ];
+              var syncs;
+              if (_.isArray(d.Sync)) {
+                  syncs = _.map(d.Sync, function(e) {
+                      return e['@attributes'].time;
+                  });
+              } else if (_.isObject(d.Sync)) {
+                  syncs = [ d.Sync['@attributes'].time ];
               }
               var transdata = _.zip(syncs, texts);
 
@@ -55,8 +63,8 @@ angular.module('pdsc')
                       'value': d[1],
                       'referenceValue': '',
                       'speaker': spkr
-                  }
-              })
+                  };
+              });
               turns.push(transdata);
           });
           data = _.groupBy(_.flatten(turns), function(d) { return d.id; });
@@ -77,7 +85,7 @@ angular.module('pdsc')
           //    }
           //    ...
           //  ]
-      }
+      };
 
       return trsParser;
   }]);

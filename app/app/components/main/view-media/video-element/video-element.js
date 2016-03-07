@@ -3,7 +3,8 @@
 angular.module('pdsc')
   .directive('videoElement', [ 
     '$timeout', 
-    function ($timeout) {
+    '_',
+    function ($timeout, _) {
     return {
       templateUrl: 'app/components/main/video-element/video-element.html',
       restrict: 'E',
@@ -12,19 +13,23 @@ angular.module('pdsc')
           itemData: '=',
           transcription: '='
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
           scope.$watch('transcription', function() {
               if (!_.isEmpty(scope.transcription.eaf)) {
                   _.each(scope.transcription.eaf, function(value, key) {
                       if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) {
-                          if (scope.transcription.eaf[key].length > 1) scope.trs = scope.transcription.eaf[key];
+                          if (scope.transcription.eaf[key].length > 1) {
+                              scope.trs = scope.transcription.eaf[key];
+                          }
                       }
                   });
               }
               if (!scope.trs && !_.isEmpty(scope.transcription.trs)) {
                   _.each(scope.transcription.trs, function(value, key) {
                       if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) {
-                          if (scope.transcription.trs[key].length > 1) scope.trs = scope.transcription.trs[key];
+                          if (scope.transcription.trs[key].length > 1) {
+                              scope.trs = scope.transcription.trs[key];
+                          }
                       }
                   });
               }
@@ -37,7 +42,7 @@ angular.module('pdsc')
           //  element to be ready - this makes the media element visible
           scope.mediaReady = function() {
               scope.mediaReadyToPlay = true;
-          }
+          };
 
           // play a fragment
           scope.playFragment = function(start, end) {
@@ -52,7 +57,7 @@ angular.module('pdsc')
               $timeout(function() {
                   videoElement.pause();
               }, (end.time - start.time) * 1000);
-          }
+          };
       }
     };
   }]);

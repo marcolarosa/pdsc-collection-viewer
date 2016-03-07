@@ -11,6 +11,7 @@ angular
     'ngTouch',
     'moment',
     'underscore',
+    'pdfjs',
   ])
   .config(function ($routeProvider) {
     $routeProvider

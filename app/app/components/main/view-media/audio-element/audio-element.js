@@ -3,7 +3,8 @@
 angular.module('pdsc')
   .directive('audioElement', [ 
     '$timeout', 
-    function ($timeout) {
+    '_',
+    function ($timeout, _) {
     return {
       templateUrl: 'app/components/main/audio-element/audio-element.html',
       restrict: 'E',
@@ -12,7 +13,7 @@ angular.module('pdsc')
           itemData: '=',
           transcription: '=',
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
           // defaults
           scope.mediaReadyToPlay = false;
 
@@ -33,7 +34,7 @@ angular.module('pdsc')
           //  element to be ready - this makes the media element visible
           scope.mediaReady = function() {
               scope.mediaReadyToPlay = true;
-          }
+          };
 
           // play a fragment
           scope.playFragment = function(start, end) {
@@ -48,7 +49,7 @@ angular.module('pdsc')
               $timeout(function() {
                   audioElement.pause();
               }, (end.time - start.time) * 1000);
-          }
+          };
       }
     };
   }]);

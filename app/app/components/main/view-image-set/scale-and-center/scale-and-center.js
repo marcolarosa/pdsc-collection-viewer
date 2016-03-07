@@ -9,7 +9,7 @@ angular.module('pdsc')
       restrict: 'A',
       scope: {
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
           element.on('load', function() {
               $timeout(function() {
                   scope.$emit('image-loaded');

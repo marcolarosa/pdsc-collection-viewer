@@ -11,7 +11,7 @@ angular.module('pdsc')
           scope: {
               itemData: '=',
           },
-          link: function postLink(scope, element, attrs) {
+          link: function postLink(scope) {
 
               scope.url = $location.absUrl();
 

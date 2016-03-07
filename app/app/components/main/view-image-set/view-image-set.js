@@ -7,7 +7,8 @@ angular.module('pdsc')
     '$location', 
     '$anchorScroll', 
     '$timeout',  
-    function ($log, $window, $location, $anchorScroll, $timeout) {
+    '_',
+    function ($log, $window, $location, $anchorScroll, $timeout, _) {
     return {
       templateUrl: 'app/components/main/view-image-set/view-image-set.html',
       restrict: 'E',
@@ -16,7 +17,7 @@ angular.module('pdsc')
           instanceId: '=',
           headerHeight: '='
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope) {
           // defaults
           scope.showImage = false;
           scope.showImageSet = false;
@@ -34,7 +35,7 @@ angular.module('pdsc')
           w.bind('resize', function() {
               scope.$apply(function() {
                 sizeThePanels();
-              })
+              });
           });
 
           scope.$on('image-loaded', function() {
@@ -54,7 +55,7 @@ angular.module('pdsc')
                   'left': '0',
                   'width': '5%',
                   'height': panelHeight + 'px'
-              }
+              };
               scope.contentPaneCenter = {
                   'position': 'absolute',
                   'top': scope.navbarHeight + 'px', 
@@ -62,14 +63,14 @@ angular.module('pdsc')
                   'width': '90%',
                   'height': panelHeight + 'px',
                   'overflow': 'auto'
-              }
+              };
               scope.contentPaneRight = {
                   'position': 'absolute',
                   'top': scope.navbarHeight + 'px', 
                   'left': '95%',
                   'width': '5%',
                   'height': panelHeight + 'px'
-              }
+              };
               scope.filmstripBackStyle = {
                   'position': 'absolute',
                   'top': scope.navbarHeight + panelHeight - scope.filmstripHeight + 'px',
@@ -78,7 +79,7 @@ angular.module('pdsc')
                   'height': scope.filmstripHeight + 'px',
                   'opacity': '0.5',
                   'z-index': '40'
-              }
+              };
               scope.filmstripBackStyle = {
                   'position': 'absolute',
                   'top': scope.navbarHeight + panelHeight - scope.filmstripHeight + 'px',
@@ -91,8 +92,8 @@ angular.module('pdsc')
                   'z-index': '50',
                   'padding': '5px 5px',
                   'border-top': '2px solid #ccc'
-              }
-          }
+              };
+          };
 
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData)) {
@@ -125,7 +126,7 @@ angular.module('pdsc')
               scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
               scope.highlightThumbnail();
-          }
+          };
 
           scope.figureOutPaginationControls = function() {
               // only 1 image? disable both controls
@@ -152,63 +153,71 @@ angular.module('pdsc')
                   scope.showNext = true;
                   scope.showPrevious = true;
               }
-          }
+          };
 
           // page to next image
           scope.next = function() {
-              if (scope.current === scope.itemData.images.length -1) return;
+              if (scope.current === scope.itemData.images.length -1) {
+                  return;
+              }
               scope.current += 1;
               scope.loadImage();
-          }
+          };
 
           // page to previous image
           scope.previous = function() {
-              if (scope.current === 0) return;
+              if (scope.current === 0) {
+                  return;
+              }
               scope.current -= 1;
               scope.loadImage();
-          }
+          };
 
           // jump to first image
           scope.jumpToStart = function(){
               scope.current = 0;
               scope.loadImage();
-          }
+          };
 
           // jump to last image
           scope.jumpToEnd = function(){
               scope.current = scope.itemData.images.length -1;
               scope.loadImage();
-          }
+          };
           
           // rotate left
           scope.rotateLeft = function() {
               scope.currentRotation -= 90;
               //if (scope.currentRotation === -360) scope.currentRotation = 0;
               scope.setTransform();
-          }
+          };
 
           // rotate right
           scope.rotateRight = function() {
               scope.currentRotation += 90;
               //if (scope.currentRotation === 360) scope.currentRotation = 0;
               scope.setTransform();
-          }
+          };
 
           // zoom in 
           scope.zoomIn = function() {
               scope.getCurrentScale();
               scope.currentScale += scope.scaleStep;
-              if (scope.currentScale < 0.2) scope.currentScale = 0.2;
+              if (scope.currentScale < 0.2) {
+                  scope.currentScale = 0.2;
+              }
               scope.setTransform();
-          }
+          };
 
           // zoom out
           scope.zoomOut = function() {
               scope.getCurrentScale();
               scope.currentScale -= scope.scaleStep;
-              if (scope.currentScale > 2) scope.currentScale = 2;
+              if (scope.currentScale > 2) {
+                  scope.currentScale = 2;
+              }
               scope.setTransform();
-          }
+          };
 
           // set transform
           scope.setTransform = function() {
@@ -230,8 +239,8 @@ angular.module('pdsc')
                   'transition': '0.5s ease-in-out',
                   'max-width': '100%',
                   'height': 'auto'
-              }
-          }
+              };
+          };
 
           scope.getCurrentScale = function() {
               if (!scope.currentScale) {
@@ -240,43 +249,47 @@ angular.module('pdsc')
                   scope.currentScale = cp[0].clientWidth / im[0].clientWidth;
                   scope.setTransform();
               }
-          }
+          };
 
           // highlight thumbnail
           scope.highlightThumbnail = function() {
               _.each(scope.smallImages, function(d, i) {
                   d.selected = '';
-                  if (i === scope.current) d.selected = 'filmstrip-highlight-current';
-              })
+                  if (i === scope.current) {
+                      d.selected = 'filmstrip-highlight-current';
+                  }
+              });
               scope.scrollThumbnails();
-          }
+          };
 
           // toggle the filmstrip view
           scope.toggleFilmstrip = function() {
               scope.showFilmstrip = !scope.showFilmstrip;
               scope.smallImages = _.map(scope.itemData.images, function(d, i) { 
                   var selected = '';
-                  if (i === scope.current) selected = 'filmstrip-highlight-current'; 
+                  if (i === scope.current) {
+                      selected = 'filmstrip-highlight-current'; 
+                  }
                   return {
                       'id': i,
                       'source': scope.itemData.images[i],
                       'selected': selected
-                  }
+                  };
               });
               sizeThePanels();
               $timeout(function() {
                   scope.scrollThumbnails();
               }, 100);
-          }
+          };
 
           scope.toggleItemInformation = function() {
               scope.showItemInformation = !scope.showItemInformation;
-          }
+          };
 
           scope.jumpToPage = function(i) {
               scope.current = i;
               scope.loadImage();
-          }
+          };
 
           scope.scrollThumbnails = function() {
               // scroll the thumbnails
@@ -284,7 +297,7 @@ angular.module('pdsc')
               $location.hash(scope.current);
               $anchorScroll();
               $location.hash(old);
-          }
+          };
 
       }
     };

@@ -6,7 +6,8 @@ angular.module('pdsc')
     '$scope', 
     'configuration', 
     'paradisec', 
-    function ($rootScope, $scope, conf, paradisec) {
+    '$log',
+    function ($rootScope, $scope, conf, paradisec, $log) {
 
       $rootScope.$on('item-data-ready', function() {
             if (conf.deployment === 'paradisec') {
@@ -14,7 +15,7 @@ angular.module('pdsc')
             } else if (conf.deployment === 'esrc') {
             } else if (conf.deployment === 'alveo') {
             } else {
-                $log.error("MainCtrl: unknown project", conf.deployment)
+                $log.error('MainCtrl: unknown project', conf.deployment);
             }
       });
   }]);
