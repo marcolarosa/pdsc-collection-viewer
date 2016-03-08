@@ -34,7 +34,8 @@ module.exports = function(config) {
       'bower_components/underscore/underscore.js',
       'bower_components/underscore-contrib/dist/underscore-contrib.min.js',
       'bower_components/videojs/dist/video-js/video.js',
-      'bower_components/pdfjs-dist/build/pdf.combined.js',
+      'bower_components/pdfjs-dist/build/pdf.js',
+      'bower_components/pdfjs-dist/build/pdf.worker.js',
       'bower_components/pdfjs-dist/web/compatibility.js',
       'bower_components/moment/moment.js',
       'bower_components/angular-aria/angular-aria.js',
@@ -45,7 +46,7 @@ module.exports = function(config) {
       "app/app/components/**/*.js",
       "app/app/components/**/*.html",
       "app/app/services/**/*.js",
-      //"app/app/filters/**/test-*.js"
+      "app/app/filters/**/*.js"
     ],
 
     // list of files / patterns to exclude
@@ -64,7 +65,6 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS"
     ],
 
     // Which plugins to enable

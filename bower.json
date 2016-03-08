@@ -15,7 +15,7 @@
     "animate.css": "~3.2.6",
     "videojs": "~4.12.6",
     "font-awesome": "~4.3.0",
-    "pdfjs-dist": "^1.4.35",
+    "pdfjs-dist": "^1.4.129",
     "moment": "^2.11.2",
     "angular-material": "^1.0.6"
   },
