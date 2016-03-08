@@ -1,35 +1,35 @@
-<!-- item information panel -->
-<div class="info-panel-background-colour" style="padding: 15px;">
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div ng-if="show" class="fade-in">
-                <p><strong>Collection: <a href="{{itemData.collectionLink}}">{{itemData.collectionId}}</a></strong></p>
-                <p><strong>Item: <a href="{{itemData.identifier[1]}}">{{itemData.itemId}}</a></strong></p>
-                <p>
-                    <strong>Contributors: </strong>
-                    <ul>
-                        <span ng-repeat="contributor in itemData.contributor">
-                            <li>{{contributor.name}} ({{contributor.role}})</li>
-                        </span>
-                    </ul>
-                </p>
-                <p><strong>Description:<br/></strong>{{itemData.description}}</p>
-                <p><strong>Cite this item:<br/></strong>
-                    <span style="word-wrap: break-word;">{{itemData.citation}}</span>
-                </p>
-                <hr/>
-                <p>
-                    <h5>Zotero and Mendeley Integration.</h5>
-                    <small>
-                        <p>This page has embedded metadata that is able to be read by both Zotero and Mendeley.</p>
-                        <p>Zotero users with the appropriate browser plugin (<a href="https://www.zotero.org/download/" target="_blank">
-                        https://www.zotero.org/download/</a>) 
-                        can save to Zotero directly whilst Mendeley users should install the <em>one click Web Importer</em> 
-                        (<a href="https://www.mendeley.com/import/" target="_blank">https://www.mendeley.com/import/</a>) to
-                        enable the same functionality.</p>
-                    </small>
-                </p>
-            </div>
-        </div>
+<md-content layout-padding class="info-panel-background-colour">
+    <div layout="column">
+        <p>
+            <strong>Collection: <a href="{{itemData.collectionLink}}">{{itemData.collectionId}}</a></strong>
+            <br/>
+            <strong>Item: <a href="{{itemData.identifier[1]}}">{{itemData.itemId}}</a></strong>
+        </p>
+        <p>
+            <strong>Contributors: </strong>
+            <ul>
+                <span ng-repeat="contributor in itemData.contributor">
+                    <li>{{contributor.name}} ({{contributor.role}})</li>
+                </span>
+            </ul>
+        </p>
+        <p>
+            <strong>Description:<br/></strong>{{itemData.description}}
+        </p>
+        <p>
+            <strong>Cite this item:<br/></strong>
+            <span style="word-wrap: break-word;">{{itemData.citation}}</span>
+        </p>
+        <p>
+            <h5>Zotero and Mendeley Integration.</h5>
+            <small>
+                <p>This page has embedded metadata that is able to be read by both Zotero and Mendeley.</p>
+                <p>Zotero users with the appropriate browser plugin (<a href="https://www.zotero.org/download/" target="_blank">
+                https://www.zotero.org/download/</a>) 
+                can save to Zotero directly whilst Mendeley users should install the <em>one click Web Importer</em> 
+                (<a href="https://www.mendeley.com/import/" target="_blank">https://www.mendeley.com/import/</a>) to
+                enable the same functionality.</p>
+            </small>
+        </p>
     </div>
-</div>
+</md-content>

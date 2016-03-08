@@ -12,12 +12,7 @@ angular.module('pdsc')
               itemData: '=',
           },
           link: function postLink(scope) {
-
               scope.url = $location.absUrl();
-
-              $timeout(function() {
-                  scope.show = true;
-              }, 80);
           }
         };
   }]);
