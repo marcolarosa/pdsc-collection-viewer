@@ -8,7 +8,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'moment',
     'underscore',
     'pdfjs',
