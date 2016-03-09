@@ -3,8 +3,7 @@
 angular.module('pdsc')
   .directive('itemInformation', [ 
     '$location', 
-    '$timeout', 
-    function ($location, $timeout) {
+    function ($location) {
         return {
           templateUrl: 'app/components/main/item-information/item-information.html',
           restrict: 'E',
