@@ -190,20 +190,20 @@ angular.module('pdsc')
           return data;
       }
 
-      // Given a project, collectionId and itemId - get the 
+      // Given a collectionId and itemId - get the 
       //  item data.
-      function getItem(project, collectionId, itemId) {
-          var itemIdentifier = conf.datasource[project].itemIdentifier;
+      function getItem(collectionId, itemId) {
+          var itemIdentifier = conf.datasource.itemIdentifier;
           itemIdentifier = itemIdentifier.replace('{{collectionId}}', collectionId).replace('{{itemId}}', itemId);
 
-          var url = conf.datasource[project].getItem;
+          var url = conf.datasource.getItem;
           url = url.replace('{{itemId}}', itemIdentifier);
           $log.debug('ParadisecService: getItem', url, itemIdentifier);
 
           return $http.get(url, { transformResponse: parseOAI }).then(function(resp) {
               $log.debug('ParadisecService: getItem response', resp.data.data);
               resp.data.data.collectionId = collectionId;
-              resp.data.data.collectionLink = conf.datasource[project].collections + '/' + collectionId;
+              resp.data.data.collectionLink = conf.datasource.collections + '/' + collectionId;
               resp.data.data.itemId = itemId;
 
               // store the object in the service and let the metadata
