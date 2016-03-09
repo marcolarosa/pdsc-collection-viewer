@@ -13,24 +13,17 @@ angular.module('pdsc')
         $scope.levelup = false;
 
         $log.debug('MainCtrl: $routeParams', $routeParams);
-        var collectionId    = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
-        var itemId          = _.has($routeParams, 'itemId')       ? $routeParams.itemId       : undefined;
+        $scope.collectionId = _.has($routeParams, 'collectionId') ? $routeParams.collectionId : undefined;
+        $scope.itemId       = _.has($routeParams, 'itemId')       ? $routeParams.itemId       : undefined;
         $scope.instanceId   = _.has($routeParams, 'itemInstance') ? $routeParams.itemInstance : undefined;
-        $log.debug('MainCtrl: project:', conf.deployment, 'and collectionId:', collectionId, 'and itemId:', itemId);
+        $log.debug('MainCtrl: project: PDSC and collectionId:', $scope.collectionId, 'and itemId:', $scope.itemId);
 
-        if (collectionId && itemId) {
-            if (conf.deployment === 'paradisec') {
-                var d = paradisec.getItem('paradisec', collectionId, itemId);
-                d.then(function(resp) {
-                    $scope.itemData = resp;
-                    $scope.whichViewer($scope.itemData);
-                });
-
-            } else if (conf.deployment === 'esrc') {
-            } else if (conf.deployment === 'alveo') {
-            } else {
-                $log.error('MainCtrl: unknown project', conf.deployment);
-            }
+        if ($scope.collectionId && $scope.itemId) {
+            var d = paradisec.getItem($scope.collectionId, $scope.itemId);
+            d.then(function(resp) {
+                $scope.itemData = resp;
+                $scope.whichViewer($scope.itemData);
+            });
         } else {
             $log.debug('MainCtrl: unknown datasource');
         }
