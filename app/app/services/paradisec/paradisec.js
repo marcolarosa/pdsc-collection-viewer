@@ -136,7 +136,7 @@ angular.module('pdsc')
           // generate the thumbnails array
           data.thumbnails = _.map(data.images, function(d) {
               var name = d.split('/').pop();
-              var thumbName = name.split('.')[0] + '-thumb-PDSC_ADMIN' + name.split('.')[1];
+              var thumbName = name.split('.')[0] + '-thumb-PDSC_ADMIN.' + name.split('.')[1];
               return d.replace(name, thumbName);
           });
 
