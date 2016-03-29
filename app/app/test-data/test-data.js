@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('pdsc')
     .constant('data', 
@@ -56,6 +56,55 @@ angular.module('pdsc')
                     'http://catalog.paradisec.org.au/repository/AC2/VUNU105/AC2-VUNU105-001-thumb-PDSC_ADMINjpg'
                 ],
                 'title': 'Untitled Unua story',
+                'trs': {
+                },
+                'video': {
+                }
+            }
+        },
+
+        'AA2': {
+            '003': {
+                'audio': {
+                    'AA2-003-A': 'http://catalog.paradisec.org.au/repository/AA2/003/AA2-003-A.mp3',
+                    'AA2-003-B': 'http://catalog.paradisec.org.au/repository/AA2/003/AA2-003-B.mp3'
+                },
+                'audioVisualisations': {
+                    'AA2-003-A': 'http://catalog.paradisec.org.au/repository/AA2/003/AA2-003-A-soundimage-PDSC_ADMIN.jpg',
+                    'AA2-003-B': 'http://catalog.paradisec.org.au/repository/AA2/003/AA2-003-B-soundimage-PDSC_ADMIN.jpg'
+                },
+                'citation': "Alexander Adelaar (collector), Alexander Adelaar (recorder), 1990; Continuation of 'Ule'-ule'an Titilong' till end + 'Ule'-ule'an Ma' Malui', MPEG/X-WAV,  2016-03-30. DOI: 10.4225/72/56E97AB7221A6",
+                'collectionId': 'AA2',
+                'collectionLink': 'http://catalog.paradisec.org.au/collections/AC2',
+                'contributor': [
+                    {
+                        'name': 'Alexander Adelaar',
+                        'role': 'compiler'
+                    },
+                    {
+                        'name': 'Alexander Adelaar',
+                        'role': 'recorder'
+                    }
+                ],
+                'date': '1990-07-05',
+                'description': "AA2-003 contains  the second and last part of the 'Ule'-ule'an Titilong' story, which  follows on from the part recorded in AA2-005. Language as given: Embaloh",
+                'documents': [
+                ],
+                'eaf': {
+                },
+                'identifier': [
+                    "AA2-003",
+                    "http://catalog.paradisec.org.au/repository/AA2/003"
+                ],
+                'images': [
+                    'http://catalog.paradisec.org.au/repository/AC2/VUNU105/AC2-VUNU105-001.jpg'
+                ],
+                'itemId': '003',
+                'openAccess': true,
+                'rights': 'Open (subject to agreeing to PDSC access conditions)',
+                'thumbnails': [
+                ],
+                'title': "Continuation of 'Ule'-ule'an Titilong' till end + 'Ule'-ule'an Ma' Malui'",
                 'trs': {
                 },
                 'video': {
