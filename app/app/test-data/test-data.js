@@ -97,7 +97,6 @@ angular.module('pdsc')
                     "http://catalog.paradisec.org.au/repository/AA2/003"
                 ],
                 'images': [
-                    'http://catalog.paradisec.org.au/repository/AC2/VUNU105/AC2-VUNU105-001.jpg'
                 ],
                 'itemId': '003',
                 'openAccess': true,
