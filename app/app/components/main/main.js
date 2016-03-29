@@ -109,5 +109,4 @@ angular.module('pdsc')
                 $scope.loadDocumentViewer = false;
             }
         };
-
   }]);

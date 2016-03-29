@@ -1,36 +1,46 @@
 'use strict';
 
+var $controller, $scope, $routeParams, $log, paradisec, configuration, data;
+function setup(collectionId, itemId) {
+      beforeEach(module('pdsc'));
+      beforeEach(inject(function (
+        _$controller_, _$rootScope_, _$log_, _configuration_, _paradisec_, _, _data_
+      ) {
+          $controller = _$controller_;
+          $scope = _$rootScope_;
+          $routeParams = {};
+          $log = _$log_; 
+          paradisec = _paradisec_;
+          configuration = _configuration_;
+          data = _data_;
+
+          $scope.itemData = data[collectionId][itemId];
+          $controller('MainCtrl', { 
+              '$scope': $scope,
+              '$log': $log,
+              '$routeParams': $routeParams,
+              'configuration': configuration,
+              'paradisec': paradisec,
+              '_': _
+          });
+      }));
+}
+
 describe('Controller: MainCtrl', function () {
-  var $controller, $scope, $routeParams, configuration;
 
-  beforeEach(module('pdsc'));
+  describe('the imageviewer should load', function() {
+      setup('AC2', 'VUNU105');
 
-  beforeEach(inject(function (
-    _$controller_, _$rootScope_, _$log_, _$routeParams_, _configuration_, _paradisec_, _
-  ) {
-      $controller = _$controller_;
-      $scope = _$rootScope_;
-      $routeParams = _$routeParams_;
-      configuration = _configuration_;
-
-      $routeParams.collectionId = 'AC2';
-      $routeParams.itemId = 'VUNU105';
-      $controller('MainCtrl', { 
-          '$scope': $scope,
-          '$log': _$log_,
-          '$routeParams': $routeParams,
-          'configuration': configuration,
-          'paradisec': _paradisec_,
-          '_': _
+      it('should set the collection and item id\'s on the scope', function() {
+          expect($scope.collectionId).toBe($routeParams.collectionId);
+          expect($scope.itemId).toBe($routeParams.itemId);
       });
 
-  }));
-  it('should set the collection and item id\'s on the scope', function() {
-      expect($scope.collectionId).toBe($routeParams.collectionId);
-      expect($scope.itemId).toBe($routeParams.itemId);
+      it('should select the image viewer', function() {
+          $scope.whichViewer();
+          expect($scope.loadImageViewer).toBe(true);
+      });
   });
-  it('should get the correct data for the item', function() {
-      console.log($scope.itemData);
-  });
+
 
 });
