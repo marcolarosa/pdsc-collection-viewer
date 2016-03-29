@@ -249,12 +249,12 @@ angular.module('pdscApp')
           // toggle the filmstrip view
           scope.toggleFilmstrip = function() {
               scope.showFilmstrip = !scope.showFilmstrip;
-              scope.smallImages = _.map(scope.itemData.images, function(d, i) { 
+              scope.smallImages = _.map(scope.itemData.thumbnails, function(d, i) { 
                   var selected = '';
                   if (i === scope.current) selected = 'filmstrip-highlight-current'; 
                   return {
                       'id': i,
-                      'source': scope.itemData.images[i],
+                      'source': d,
                       'selected': selected
                   }
               });
