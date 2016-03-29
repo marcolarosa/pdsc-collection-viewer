@@ -46,7 +46,8 @@ module.exports = function(config) {
       "app/app/components/**/*.js",
       "app/app/components/**/*.html",
       "app/app/services/**/*.js",
-      "app/app/filters/**/*.js"
+      "app/app/filters/**/*.js",
+      "app/app/test-data/**/*.js"
     ],
 
     // list of files / patterns to exclude
