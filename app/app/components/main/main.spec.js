@@ -28,18 +28,25 @@ function setup(collectionId, itemId) {
 
 describe('Controller: MainCtrl', function () {
 
-  describe('the imageviewer should load', function() {
+  describe('test imageviewer loading', function() {
       setup('AC2', 'VUNU105');
-
       it('should set the collection and item id\'s on the scope', function() {
           expect($scope.collectionId).toBe($routeParams.collectionId);
           expect($scope.itemId).toBe($routeParams.itemId);
       });
-
       it('should select the image viewer', function() {
           $scope.whichViewer();
           expect($scope.loadImageViewer).toBe(true);
       });
+  });
+
+  describe('test media player loading', function() {
+      setup('AA2', '003');
+      it('should select the media player', function() {
+          $scope.whichViewer();
+          expect($scope.loadMediaPlayer).toBe(true);
+      });
+
   });
 
 
