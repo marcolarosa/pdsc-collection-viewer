@@ -109,6 +109,48 @@ angular.module('pdsc')
                 'video': {
                 }
             }
+        },
+
+        'EAG1': {
+            'S1': {
+                'audio': {
+                    "EAG1-S1-wad20110702IMK": "http://catalog.paradisec.org.au/repository/EAG1/S1/EAG1-S1-wad20110702IMK.mp3"
+                },
+                'audioVisualisations': {
+                    "EAG1-S1-wad20110702IMK": "http://catalog.paradisec.org.au/repository/EAG1/S1/EAG1-S1-wad20110702IMK-soundimage-PDSC_ADMIN.jpg"
+                },
+                'citation': "Emily Gasser (collector), 2011; Session 1, X-WAV/MPEG/XML,  2016-03-30. http://catalog.paradisec.org.au/collections/EAG1/items/S1",
+                'collectionId': 'EAG1',
+                'collectionLink': 'http://catalog.paradisec.org.au/collections/EAG1',
+                'contributor': [
+                    {
+                        'name': 'Emily Gasser',
+                        'role': 'compiler'
+                    }
+                ],
+                'date': '2011-07-02',
+                'description': "AA2-003 contains  the second and last part of the 'Ule'-ule'an Titilong' story, which  follows on from the part recorded in AA2-005. Language as given: Embaloh",
+                'documents': [
+                ],
+                'eaf': {
+                },
+                'identifier': [
+                    "AA2-003",
+                    "http://catalog.paradisec.org.au/repository/AA2/003"
+                ],
+                'images': [
+                ],
+                'itemId': '003',
+                'openAccess': true,
+                'rights': 'Open (subject to agreeing to PDSC access conditions)',
+                'thumbnails': [
+                ],
+                'title': "Session 1",
+                'trs': {
+                },
+                'video': {
+                }
+            }
         }
     }
 )
