@@ -10,12 +10,6 @@ angular.module('pdsc')
     function ($rootScope, $scope, conf, paradisec, $log) {
 
       $rootScope.$on('item-data-ready', function() {
-            if (conf.deployment === 'paradisec') {
-                $scope.itemData = paradisec.itemData;
-            } else if (conf.deployment === 'esrc') {
-            } else if (conf.deployment === 'alveo') {
-            } else {
-                $log.error('MainCtrl: unknown project', conf.deployment);
-            }
+          $scope.itemData = paradisec.itemData;
       });
   }]);
