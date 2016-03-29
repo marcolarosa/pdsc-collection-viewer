@@ -13,6 +13,15 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '../',
 
+    // coverage reporter generates the coverage
+    reporters: ['progress', 'coverage'],
+
+    // optionally, configure the reporter
+    coverageReporter: {
+        type : 'html',
+        dir  : 'coverage/',
+    },
+
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
@@ -72,11 +81,13 @@ module.exports = function(config) {
     plugins: [
       "karma-phantomjs-launcher",
       "karma-jasmine",
+      "karma-coverage",
       "karma-ng-html2js-preprocessor"
     ],
 
     preprocessors: {
-        'app/app/components/**/*.html':['ng-html2js']
+        'app/app/components/**/*.html':['ng-html2js'],
+        'app/**/*.js': ['coverage']
     },
     ngHtml2JsPreprocessor: { 
         stripPrefix: 'app/', 

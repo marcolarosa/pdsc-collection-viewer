@@ -2,8 +2,6 @@
   "name": "pdsc",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-build-control": "^0.6.2",
-    "grunt-jscs": "^2.8.0"
   },
   "repository": {},
   "devDependencies": {
@@ -37,7 +35,10 @@
     "karma-ng-html2js-preprocessor": "^0.2.1",
     "karma-phantomjs-launcher": "^0.1.4",
     "phantomjs-prebuilt": "^2.1.4",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "karma-coverage": "^0.5.5",
+    "grunt-build-control": "^0.6.2",
+    "grunt-jscs": "^2.8.0"
   },
   "engines": {
     "node": ">=0.10.0"
