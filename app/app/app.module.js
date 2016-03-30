@@ -11,6 +11,7 @@ angular
     'moment',
     'underscore',
     'pdfjs',
+    'ngMaterial',
   ])
   .config(function ($routeProvider) {
     $routeProvider
