@@ -14,8 +14,7 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           itemData: '=',
-          instanceId: '=',
-          headerHeight: '='
+          instanceId: '='
       },
       link: function postLink(scope) {
           // defaults
@@ -26,7 +25,7 @@ angular.module('pdsc')
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
           scope.translate = '';
-          scope.currentScale = 1;
+          scope.currentScale = 0.5;
           scope.transformOrigin = '50% 50%';
           scope.scaleStep = 0.15;
           scope.isOpen = false; 
@@ -41,6 +40,7 @@ angular.module('pdsc')
 
           scope.$on('image-loaded', function() {
               scope.setTransform();
+              scope.showImage = true;
           });
 
           var sizeThePanels = function() {
@@ -123,7 +123,7 @@ angular.module('pdsc')
           });
 
           scope.loadImage = function() {
-              scope.showImage = true;
+              scope.showImage = false;
               scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
               scope.highlightThumbnail();
@@ -238,8 +238,8 @@ angular.module('pdsc')
                   '-ms-transition': '1s ease-in-out',
                   '-o-transition': '1s ease-in-out',
                   'transition': '0.5s ease-in-out',
-                  'max-width': '100%',
-                  'height': 'auto'
+                  'max-height': '500px',
+                  'width': 'auto'
               };
           };
 

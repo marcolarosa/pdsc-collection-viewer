@@ -1,19 +1,15 @@
-<div layout="row" layout-align="center center">
-    <span>
+<div layout="row" layout-align="center center" class="above">
+    <span class="md-subhead">
         Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
     </span>
+</div>
+<div layout="row" layout-align="center center" class="above">
     <span ng-if="!disableThumbnailView">
-        <md-button class="" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
+        <md-button class="small-button" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
             <span ng-show="showFilmstrip">hide thumbnails</span>
             <span ng-hide="showFilmstrip">show thumbnails</span>
         </md-button>
     </span>
-
-    <md-button class="" aria-label="download item" ng-href="{{itemData.images[current]}}" download blur-on-click>
-        <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
-    </md-button>
-</div>
-<div layout="row" layout-align="center center">
     <md-button class="small-button" aria-label="jump to start" ng-click="jumpToStart()" blur-on-click ng-if="!disableThumbnailView">
         <span class="fa fa-fast-backward fa-lg"></span>
     </md-button>
@@ -39,8 +35,12 @@
     <md-button class="small-button" aria-label="jump to end" ng-click="jumpToEnd()" blur-on-click ng-if="!disableThumbnailView">
         <span class="fa fa-fast-forward fa-lg"></span>
     </md-button>
+    <md-button class="small-button" aria-label="download item" ng-href="{{item.images[current]}}" download blur-on-click>
+        <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
+    </md-button>
 </div>
 <div layout="row" layout-align="center center">
+<!--
         <div ng-show="showPrevious">
             <a ng-click="previous()" class="left carousel-control" style="width: 100%;">
                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 26px;"></span>
@@ -56,9 +56,18 @@
                 <span class="glyphicon glyphicon-chevron-right" style="font-size: 26px;"></span>
             </a>
         </div>
+-->
+        <img 
+            id='largeImage' 
+            src="{{image}}" 
+            alt='You must be logged in to Nabu to view this image' 
+            ng-show="showImage" 
+            ng-style="transform" 
+            scale-and-center
+        >
+
 </div>
 <!--
-
 <div layout="row">
     <div ng-if="showFilmstrip" ng-style="filmstripBackStyle">
     <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
@@ -68,6 +77,5 @@
             </a>
         </span>
     </div>
-
 </div>
 -->

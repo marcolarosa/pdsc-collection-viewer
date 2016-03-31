@@ -44,3 +44,11 @@ body {
 .small-button {
     min-width: 40px;
 }
+
+.shrink-toolbar {
+    min-height: 20px;
+}
+.above {
+    position: relative;
+    z-index: 100;
+}
