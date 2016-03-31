@@ -24,10 +24,8 @@ angular.module('pdsc')
           scope.showItemInformation = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
-          scope.translate = '';
-          scope.currentScale = 0.5;
-          scope.transformOrigin = '50% 50%';
-          scope.scaleStep = 0.15;
+          scope.currentScale = 1;
+          scope.scaleStep = 0.5;
           scope.isOpen = false; 
 
           // handle window resize events
@@ -204,8 +202,8 @@ angular.module('pdsc')
           scope.zoomIn = function() {
               scope.getCurrentScale();
               scope.currentScale += scope.scaleStep;
-              if (scope.currentScale < 0.2) {
-                  scope.currentScale = 0.2;
+              if (scope.currentScale > 3) {
+                  scope.currentScale = 3;
               }
               scope.setTransform();
           };
@@ -214,31 +212,40 @@ angular.module('pdsc')
           scope.zoomOut = function() {
               scope.getCurrentScale();
               scope.currentScale -= scope.scaleStep;
-              if (scope.currentScale > 2) {
-                  scope.currentScale = 2;
+              if (scope.currentScale < 1) {
+                  scope.currentScale = 1;
               }
               scope.setTransform();
           };
 
+          scope.setTransformOrigin = function() {
+              if (scope.currentScale <= 2) {
+                  scope.transformOrigin = 'center top';
+              } else if (scope.currentScale > 2) {
+                  scope.transformOrigin = 'left top';
+              }
+          };
+
           // set transform
           scope.setTransform = function() {
+              scope.setTransformOrigin();
               scope.transform = {
-                  '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   '-webkit-transform-origin': scope.transformOrigin,
-                  '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   '-moz-transform-origin': scope.transformOrigin,
-                  '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   '-ms-transform-origin': scope.transformOrigin,
-                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   '-o-transform-origin': scope.transformOrigin,
-                  'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ' + scope.translate,
+                  'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   'transform-origin': scope.transformOrigin,
-                  '-webkit-transition': '1s ease-in-out',
-                  '-moz-transition': '1s ease-in-out',
-                  '-ms-transition': '1s ease-in-out',
-                  '-o-transition': '1s ease-in-out',
-                  'transition': '0.5s ease-in-out',
-                  'max-height': '500px',
+                  '-webkit-transition': '0.3s ease-in-out',
+                  '-moz-transition': '0.3s ease-in-out',
+                  '-ms-transition': '0.3s ease-in-out',
+                  '-o-transition': '0.3s ease-in-out',
+                  'transition': '0.3s ease-in-out',
+                  'max-height': '700px',
                   'width': 'auto'
               };
           };
