@@ -1,81 +1,73 @@
-<div ng-if="showImageSet" class="fade-in" >
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-offset-2 col-lg-8 text-center">
-                    <span ng-if="!disableThumbnailView">
-                        <button class="btn btn-default btn-sm" ng-click="jumpToStart()" blur-on-click>
-                            <span class="fa fa-fast-backward"></span>
-                        </button>
-                        <button class="btn btn-default btn-sm" ng-click="previous()" blur-on-click>
-                            <span class="fa fa-step-backward"></span>
-                        </button>
-                    </span>
-                    &dash;&nbsp;
-                    Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
-                    &nbsp;&dash;
-                    <span ng-if="!disableThumbnailView">
-                        <button class="btn btn-default btn-sm" ng-click="next()" blur-on-click>
-                            <span class="fa fa-step-forward"></span>
-                        </button>
-                        <button class="btn btn-default btn-sm" ng-click="jumpToEnd()" blur-on-click>
-                            <span class="fa fa-fast-forward"></span>
-                        </button>
-                    </span>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-default btn-sm" ng-click="rotateLeft()" blur-on-click>
-                        <span class="fa fa-rotate-left"></span>
-                    </button>
-                    <button class="btn btn-default btn-sm" ng-click="rotateRight()" blur-on-click>
-                        <span class="fa fa-rotate-right"></span>
-                    </button>
-                    <button class="btn btn-default btn-sm" ng-click="zoomOut()" blur-on-click>
-                        <span class="fa fa-search-minus"></span>
-                    </button>
-                    <button class="btn btn-default btn-sm" ng-click="zoomIn()" blur-on-click>
-                        <span class="fa fa-search-plus"></span>
-                    </button>
-                    <span ng-if="!disableThumbnailView">
-                        <button class="btn btn-default btn-sm" ng-click="toggleFilmstrip()" blur-on-click>
-                            <span ng-show="showFilmstrip">hide thumbnails</span>
-                            <span ng-hide="showFilmstrip">show thumbnails</span>
-                        </button>
-                    </span>
-                    <a class="btn btn-default btn-sm" href="{{itemData.images[current]}}" download>
-                        <i class="fa fa-download"></i> Download {{itemData.images[current] | extension}}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <!-- previous image control -->
-        <div ng-style="contentPaneLeft" ng-show="showPrevious">
+<div layout="row" layout-align="center center">
+    <span>
+        Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
+    </span>
+    <span ng-if="!disableThumbnailView">
+        <md-button class="" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
+            <span ng-show="showFilmstrip">hide thumbnails</span>
+            <span ng-hide="showFilmstrip">show thumbnails</span>
+        </md-button>
+    </span>
+
+    <md-button class="" aria-label="download item" ng-href="{{itemData.images[current]}}" download blur-on-click>
+        <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
+    </md-button>
+</div>
+<div layout="row" layout-align="center center">
+    <md-button class="small-button" aria-label="jump to start" ng-click="jumpToStart()" blur-on-click ng-if="!disableThumbnailView">
+        <span class="fa fa-fast-backward fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="previous" ng-click="previous()" blur-on-click ng-if="!disableThumbnailView">
+        <span class="fa fa-step-backward fa-lg"></span>
+    </md-button>
+
+    <md-button class="small-button" aria-label="rotate left" ng-click="rotateLeft()" blur-on-click>
+        <span class="fa fa-rotate-left fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="rotate-right" ng-click="rotateRight()" blur-on-click>
+        <span class="fa fa-rotate-right fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="zoom out" ng-click="zoomOut()" blur-on-click>
+        <span class="fa fa-search-minus fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="zoom in" ng-click="zoomIn()" blur-on-click>
+        <span class="fa fa-search-plus fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="next" ng-click="next()" blur-on-click ng-if="!disableThumbnailView">
+        <span class="fa fa-step-forward fa-lg"></span>
+    </md-button>
+    <md-button class="small-button" aria-label="jump to end" ng-click="jumpToEnd()" blur-on-click ng-if="!disableThumbnailView">
+        <span class="fa fa-fast-forward fa-lg"></span>
+    </md-button>
+</div>
+<div layout="row" layout-align="center center">
+        <div ng-show="showPrevious">
             <a ng-click="previous()" class="left carousel-control" style="width: 100%;">
                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 26px;"></span>
             </a>
         </div>
 
-        <!-- Image large view panel -->
-        <div ng-style="contentPaneCenter" id='contentPane'>
+        <div flex id='contentPane' style="max-height: 500px;">
             <img id='largeImage' src="{{image}}" alt='You must be logged in to Nabu to view this image' ng-show="showImage" ng-style="transform" scale-and-center>
         </div>
 
-        <!-- next image control -->
-        <div ng-style="contentPaneRight" ng-show="showNext">
+        <div ng-show="showNext">
             <a ng-click="next()" class="right carousel-control" style="width: 100%;">
                 <span class="glyphicon glyphicon-chevron-right" style="font-size: 26px;"></span>
             </a>
         </div>
-
-        <!-- Filmstrip -->
-        <div ng-if="showFilmstrip" ng-style="filmstripBackStyle">
-        <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
-            <span ng-repeat="img in smallImages">
-                <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
-                </a>
-            </span>
-        </div>
-    </div>
 </div>
+<!--
+
+<div layout="row">
+    <div ng-if="showFilmstrip" ng-style="filmstripBackStyle">
+    <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
+        <span ng-repeat="img in smallImages">
+            <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
+                <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
+            </a>
+        </span>
+    </div>
+
+</div>
+-->

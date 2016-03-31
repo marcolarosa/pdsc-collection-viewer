@@ -29,6 +29,7 @@ angular.module('pdsc')
           scope.currentScale = 1;
           scope.transformOrigin = '50% 50%';
           scope.scaleStep = 0.15;
+          scope.isOpen = false; 
 
           // handle window resize events
           var w = angular.element($window);

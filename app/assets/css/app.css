@@ -41,3 +41,6 @@ body {
     font-size: 12px;
 }
 
+.small-button {
+    min-width: 40px;
+}
