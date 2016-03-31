@@ -39,43 +39,24 @@
         <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
     </md-button>
 </div>
-<div layout="row" layout-align="center center">
-<!--
-        <div ng-show="showPrevious">
-            <a ng-click="previous()" class="left carousel-control" style="width: 100%;">
-                <span class="glyphicon glyphicon-chevron-left" style="font-size: 26px;"></span>
-            </a>
-        </div>
-
-        <div flex id='contentPane' style="max-height: 500px;">
-            <img id='largeImage' src="{{image}}" alt='You must be logged in to Nabu to view this image' ng-show="showImage" ng-style="transform" scale-and-center>
-        </div>
-
-        <div ng-show="showNext">
-            <a ng-click="next()" class="right carousel-control" style="width: 100%;">
-                <span class="glyphicon glyphicon-chevron-right" style="font-size: 26px;"></span>
-            </a>
-        </div>
--->
+<div layout="row" layout-align="center center" style="position:relative; overflow:auto;">
+    <div>
         <img 
             id='largeImage' 
-            src="{{image}}" 
+            ng-src="{{image}}" 
             alt='You must be logged in to Nabu to view this image' 
             ng-show="showImage" 
             ng-style="transform" 
-            scale-and-center
+            notify-ready
         >
-
-</div>
-<!--
-<div layout="row">
-    <div ng-if="showFilmstrip" ng-style="filmstripBackStyle">
-    <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="fade-in">
-        <span ng-repeat="img in smallImages">
-            <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-                <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
-            </a>
-        </span>
+        <!--
+        <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="above">
+            <span ng-repeat="img in smallImages">
+                <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
+                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
+                </a>
+            </span>
+        </div>
+        -->
     </div>
 </div>
--->
