@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pdsc')
-  .directive('scaleAndCenter', [ 
+  .directive('notifyReady', [ 
     '$timeout', 
     function ($timeout) {
     return {
