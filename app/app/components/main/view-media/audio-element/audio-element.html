@@ -1,13 +1,10 @@
-<div class="row" style="margin-bottom: 20px;">
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        <div style="padding: 5px;">{{name}}</div>
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
+<div layout="column">
+    <div layout="row">
+        <div flex="50">{{name}}</div>
         <span ng-repeat="src in itemData">
-            <!--<a href="" class="pull-right">annotate this selection</a>-->
-            <a class="btn btn-default btn-sm pull-right" href="{{src | stripTime}}" download>
-                <i class="fa fa-download"></i> Download {{src | stripTime | extension}}
-            </a>
+            <md-button class="small-button" href="{{src | stripTime}}" download>
+                <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
+            </md-button>
         </span>
     </div>
     <!--
@@ -15,25 +12,20 @@
         <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
     </div>
     -->
-    <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="margin: 5px 0px;">
-        <span ng-show="mediaReadyToPlay">
-            <audio id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;" media-ready time-update>
-                <source ng-repeat="src in itemData" src="{{src | trustAsHtml}}" />
-                <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a
-                    web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
-                </p>
-            </audio>
-        </span>
-        <span ng-show="!mediaReadyToPlay">Loading media... please wait.</span>
-    </div>
-</div>
-<div class="row" ng-if="mediaReadyToPlay && trs">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <render-transcription
-            transcription="trs"
-            name="{{name}}"
-            play="playFragment(start, end)"
-            current-time="currentTime">
-        </render-transcription>
-    </div>
+    <span ng-show="mediaReadyToPlay">
+        <audio id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 500px;" media-ready time-update>
+            <source ng-repeat="src in itemData" src="{{src | trustAsHtml}}" />
+            <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a
+                web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
+            </p>
+        </audio>
+    </span>
+    <span ng-show="!mediaReadyToPlay">Loading media... please wait.</span>
+    <render-transcription
+        transcription="trs"
+        name="{{name}}"
+        play="playFragment(start, end)"
+        current-time="currentTime"
+        ng-if="mediaReadyToPlay && trs">
+    </render-transcription>
 </div>

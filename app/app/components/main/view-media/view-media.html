@@ -1,25 +1,19 @@
 <div ng-if="showMedia" class="fade-in">
-    <div style="position: relative;">
-        <div class="row">
-            <div class="col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+        <div layout="column" layout-align="center center">
+            <!-- AUDIO -->
+            <span ng-repeat="(name, data) in itemData.audio" ng-if="loadAudioPlayer">
+                <audio-element name="name" item-data="data" 
+                    transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
+                </audio-element>
+                <hr/>
+            </span>
 
-                <!-- AUDIO -->
-                <span ng-repeat="(name, data) in itemData.audio" ng-if="loadAudioPlayer">
-                    <audio-element name="name" item-data="data" 
-                        transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
-                    </audio-element>
-                    <hr/>
-                </span>
-
-                <!-- VIDEO -->
-                <span ng-repeat="(name, data) in itemData.video" ng-if="loadVideoPlayer">
-                    <video-element name="name" item-data="data" 
-                        transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
-                    </video-element>
-                    <hr/>
-                </span>
-
-            </div>
+            <!-- VIDEO -->
+            <span ng-repeat="(name, data) in itemData.video" ng-if="loadVideoPlayer">
+                <video-element name="name" item-data="data" 
+                    transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
+                </video-element>
+                <hr/>
+            </span>
         </div>
-    </div>
 </div>
