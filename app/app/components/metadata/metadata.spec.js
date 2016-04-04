@@ -4,12 +4,11 @@ var $controller, $rootScope, $scope, paradisec, configuration, data;
 function setup() {
       beforeEach(module('pdsc'));
       beforeEach(inject(function (
-        _$controller_, _$rootScope_, _$log_, _configuration_, _paradisec_, _data_
+        _$controller_, _$rootScope_, _configuration_, _paradisec_, _data_
       ) {
           $controller = _$controller_;
           $rootScope = _$rootScope_;
           $scope = _$rootScope_;
-          $log = _$log_; 
           paradisec = _paradisec_;
           configuration = _configuration_;
           data = _data_;
@@ -32,7 +31,7 @@ describe('Controller: MetadataCtrl', function () {
       setup();
 
       it('should should set the data on the scope', function() {
-          paradisec.itemData = data['AC2']['1'];
+          paradisec.itemData = data.AC2['1'];
           $rootScope.$broadcast('item-data-ready');
           expect($scope.itemData).toBe(paradisec.itemData);
       });
