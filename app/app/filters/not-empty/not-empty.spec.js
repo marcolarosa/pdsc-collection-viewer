@@ -8,15 +8,15 @@ describe('Filter: not-empty', function () {
         notEmpty = _$filter_('notEmpty');
     }));
 
-    it('should return true', function() {
-        expect(notEmpty([])).toBe(true);
-        expect(notEmpty('')).toBe(true);
-        expect(notEmpty()).toBe(true);
+    it('should return false', function() {
+        expect(notEmpty([])).toBe(false);
+        expect(notEmpty('')).toBe(false);
+        expect(notEmpty()).toBe(false);
     });
 
-    it('should return false', function() {
-        expect(notEmpty('marco')).toBe(false);
+    it('should return true', function() {
+        expect(notEmpty('marco')).toBe(true);
         var something = 'banana';
-        expect(notEmpty(something)).toBe(false);
+        expect(notEmpty(something)).toBe(true);
     });
 });
