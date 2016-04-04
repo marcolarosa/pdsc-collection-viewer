@@ -12,8 +12,7 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           itemData: '=',
-          instanceId: '=',
-          headerHeight: '='
+          instanceId: '='
       },
       link: function postLink(scope) {
 
