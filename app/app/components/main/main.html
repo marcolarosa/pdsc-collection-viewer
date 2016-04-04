@@ -1,5 +1,5 @@
 <div flex layout="column">
-    <md-toolbar class="shrink-toolbar">
+    <md-toolbar class="shrink-toolbar" store-height element="toolbar">
         <div layout="row">
             <md-button class="small-font" ng-click="toggleItemInformation()" blur-on-click>
                 <i class="fa fa-info-circle fa-lg"></i> View Item Information
@@ -24,7 +24,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <div layout="row" layout-align="center center">
+    <div layout="row" layout-align="center center" store-height element="headline">
         <h3 class="md-headline">{{itemData.title}}</h3>
     </div>
     <div layout-margin ng-if="showItemInformation">

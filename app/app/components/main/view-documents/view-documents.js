@@ -54,7 +54,7 @@ angular.module('pdsc')
 
           var sizeThePanels = function() {
               scope.pdfPanelStyle = {
-                  'position': 'absolute',
+                  'position': 'relative',
                   'height': '600px',
                   'overflow': 'auto'
 

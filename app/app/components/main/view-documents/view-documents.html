@@ -1,5 +1,5 @@
 <div ng-if="showDocuments" class="above">
-    <div layout="row" layout-align="center center">
+    <div layout="row" layout-align="center center" store-height element="controls">
         <span ng-if="itemData.documents.length > 1">
             <md-button class="small-button" aria-label="previous document" ng-click="previousDocument()" blur-on-click>
                 <span class="fa fa-step-backward fa-lg"></span>
@@ -42,7 +42,10 @@
             <i class="fa fa-download fa-lg"></i> Download {{itemData.documents[doc] | extension}}
         </md-button>
     </div>
-    <div layout="row" layout-align="center center" ng-style="pdfPanelStyle">
-        <canvas id="the-canvas" />
+    <div layout="row" layout-align="center center" layout-fill>
+        <div size-to-parent ng-style="panelStyle">
+            <canvas id="the-canvas" />
+            {{panelStyle}}
+        </div>
     </div>
 </div>

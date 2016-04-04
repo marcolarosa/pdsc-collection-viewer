@@ -20,5 +20,7 @@ angular.module('pdsc')
           "collections": "http://catalog.paradisec.org.au/collections",
           "itemIdentifier": "oai:paradisec.org.au:{{collectionId}}-{{itemId}}",
           "getItem": "http://catalog.paradisec.org.au/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac",
+      },
+      "header": {
       }
   });
