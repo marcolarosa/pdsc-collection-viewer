@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('pdsc')
-  .filter('isEmpty', [
+  .filter('notEmpty', [
     '_',
     function (_) {
     return function (input) {
-        return _.isEmpty(input) ? true : false;
+        return ! _.isEmpty(input) ? true : false;
     };
   }]);
