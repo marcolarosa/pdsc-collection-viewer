@@ -5,6 +5,6 @@ angular.module('pdsc')
     '_',
     function (_) {
     return function (input) {
-        return _.isEmpty(input) ? false : true;
+        return _.isEmpty(input) ? true : false;
     };
   }]);
