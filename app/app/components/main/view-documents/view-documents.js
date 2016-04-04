@@ -22,8 +22,7 @@ angular.module('pdsc')
           scope.pdfInfo = {};
 
           // is a specific instance being requested? If so - strip the others
-          //  from the set. Support the instance being defined by the name or it's position
-          //  in the set.
+          //  from the set. Support the instance being defined by the name 
           if (scope.instanceId) {
               // it's not undefined
               scope.itemData.documents = _.filter(scope.itemData.documents, function(d) {
@@ -43,6 +42,7 @@ angular.module('pdsc')
           } else {
               scope.scale = 1.5;
           }
+          scope.scale = 0.5;
 
           // handle window resize events
           var w = angular.element($window);
@@ -55,8 +55,8 @@ angular.module('pdsc')
           var sizeThePanels = function() {
               scope.pdfPanelStyle = {
                   'position': 'absolute',
-                  'height': $window.innerHeight - scope.headerHeight - 40,
-                  'overflow': 'scroll'
+                  'height': '600px',
+                  'overflow': 'auto'
 
               };
           };
@@ -103,6 +103,7 @@ angular.module('pdsc')
               // Using promise to fetch the page
               scope.pdf.getPage(scope.current).then(function(page) {
                 var viewport = page.getViewport(scope.scale);
+                console.log(viewport);
 
                 //
                 // Prepare canvas using PDF page dimensions
