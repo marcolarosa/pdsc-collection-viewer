@@ -58,7 +58,12 @@ module.exports = function (grunt) {
             '<%= yeoman.app %>/app/services/**/*.spec.js',
             '<%= yeoman.app %>/app/filters/**/*.spec.js'
         ],
-        tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+        //tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+        // We disable karma here as we're running it independently of grunt
+        //  so we can attach the browsers in docker containers. This prevents
+        //  grunt trying to start a karma server and thus conflicting with the
+        //  one we're already running.
+        tasks: ['newer:jshint:test', 'newer:jscs:test']
       },
       styles: {
         files: ['<%= yeoman.app %>/assets/css/{,*/}*.css'],
