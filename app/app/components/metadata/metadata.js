@@ -6,9 +6,7 @@ angular.module('pdsc')
     '$scope', 
     'configuration', 
     'paradisec', 
-    '$log',
-    function ($rootScope, $scope, conf, paradisec, $log) {
-
+    function ($rootScope, $scope, conf, paradisec) {
       $rootScope.$on('item-data-ready', function() {
           $scope.itemData = paradisec.itemData;
       });
