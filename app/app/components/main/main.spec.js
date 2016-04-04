@@ -71,7 +71,7 @@ describe('Controller: MainCtrl', function () {
       it('should load the image viewer', function() {
           $scope.whichViewer();
           expect($scope.loadImageViewer).toBe(true);
-      })
+      });
   });
 
   describe('test loading a specific document', function() {
@@ -79,7 +79,7 @@ describe('Controller: MainCtrl', function () {
       it('should load the document viewer', function() {
           $scope.whichViewer();
           expect($scope.loadDocumentViewer).toBe(true);
-      })
+      });
   });
 
   describe('test loading a specific audio item', function() {
@@ -87,7 +87,7 @@ describe('Controller: MainCtrl', function () {
       it('should load the media player', function() {
           $scope.whichViewer();
           expect($scope.loadMediaPlayer).toBe(true);
-      })
+      });
   });
 
   describe('test loading a specific video item', function() {
@@ -95,7 +95,7 @@ describe('Controller: MainCtrl', function () {
       it('should load the media player', function() {
           $scope.whichViewer();
           expect($scope.loadMediaPlayer).toBe(true);
-      })
+      });
   });
 
   describe('generic tests', function() {
@@ -107,11 +107,12 @@ describe('Controller: MainCtrl', function () {
 
       it('should have item information hidden', function() {
           expect($scope.showItemInformation).toBe(false);
-      })
+      });
+
       it('should show item information ', function() {
           $scope.toggleItemInformation();
           expect($scope.showItemInformation).toBe(true);
-      })
+      });
   });
 
 
