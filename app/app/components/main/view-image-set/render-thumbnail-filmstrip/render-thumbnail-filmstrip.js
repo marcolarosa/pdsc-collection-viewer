@@ -23,13 +23,14 @@ angular.module('pdsc')
               };
           });
 
-
           scope.$watch('isOpen()', function(n, o) {
               if (n) {
                   scope.smallImages = _.map(scope.smallImages, function(d, i) {
                       var selected = '';
                       if (i === scope.selected) {
                           d.selected = 'filmstrip-highlight-current';
+                      } else {
+                          delete d.selected;
                       }
                       return d;
                   });
@@ -47,6 +48,9 @@ angular.module('pdsc')
             return $mdSidenav('thumbnailFilmstrip').isOpen();
           }
 
+          scope.jumpTo = function(i) {
+              scope.selected = i;
+          }
 
       }
     };

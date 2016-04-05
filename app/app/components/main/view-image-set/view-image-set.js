@@ -21,8 +21,6 @@ angular.module('pdsc')
           // defaults
           scope.showImage = false;
           scope.showImageSet = false;
-          scope.showFilmstrip = false;
-          scope.showItemInformation = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
           scope.currentScale = 0.5;
@@ -35,45 +33,8 @@ angular.module('pdsc')
               scope.showImage = true;
           });
 
-          var sizeThePanels = function() {
-              scope.width = $window.innerWidth;
-              scope.navbarHeight = 35;
-              var panelHeight = $window.innerHeight - scope.headerHeight - scope.navbarHeight - 40;
-              scope.filmstripHeight = 250;
-              scope.filmstripImageHeight = scope.filmstripHeight - 20;
-
-              scope.filmstripBackStyle = {
-                  'position': 'absolute',
-                  'top': '60vw',
-                  'left': '0',
-                  'width': '100%',
-                  'height': '100px',
-                  'opacity': '0.5',
-                  'z-index': '40'
-              };
-              scope.filmstripFrontStyle = {
-                  'position': 'absolute',
-                  'top': '60vw',
-                  'left': '0',
-                  'width': '100%',
-                  'height': '100px',
-                  'overflow-x': 'scroll',
-                  'white-space': 'nowrap',
-                  'display': 'inline-block',
-                  'z-index': '50',
-                  'padding': '5px 5px',
-                  'border-top': '2px solid #ccc'
-              };
-          };
-
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData)) {
-                  //$log.debug('D:view-set; image-set data', scope.itemData);
-
-                  // figure out sizes
-                  scope.showFilmstrip = false;
-                  sizeThePanels();
-                  
                   // load up the image
                   if (scope.instanceId) {
                       if (isNaN(parseInt(scope.instanceId))) {
@@ -91,12 +52,18 @@ angular.module('pdsc')
                   scope.showImageSet = true;
               }
           });
+          scope.$watch('current', function() {
+              if ($mdSidenav('thumbnailFilmstrip').isOpen()) {
+                  $mdSidenav('thumbnailFilmstrip').toggle();
+              }
+              scope.loadImage();
+          });
 
           scope.loadImage = function() {
               scope.showImage = false;
               scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
-              scope.highlightThumbnail();
+              //scope.highlightThumbnail();
           };
 
           scope.figureOutPaginationControls = function() {
@@ -172,7 +139,6 @@ angular.module('pdsc')
 
           // zoom in 
           scope.zoomIn = function() {
-              scope.getCurrentScale();
               scope.currentScale += scope.scaleStep;
               if (scope.currentScale > 3) {
                   scope.currentScale = 3;
@@ -182,7 +148,6 @@ angular.module('pdsc')
 
           // zoom out
           scope.zoomOut = function() {
-              scope.getCurrentScale();
               scope.currentScale -= scope.scaleStep;
               if (scope.currentScale < 0.5) {
                   scope.currentScale = 0.5;
@@ -220,55 +185,10 @@ angular.module('pdsc')
               }
           };
 
-          // highlight thumbnail
-          scope.highlightThumbnail = function() {
-              _.each(scope.smallImages, function(d, i) {
-                  d.selected = '';
-                  if (i === scope.current) {
-                      d.selected = 'filmstrip-highlight-current';
-                  }
-              });
-              scope.scrollThumbnails();
-          };
 
           // toggle the filmstrip view
           scope.toggleFilmstrip = function() {
               $mdSidenav('thumbnailFilmstrip').toggle();
-              /*
-              scope.showFilmstrip = !scope.showFilmstrip;
-              scope.smallImages = _.map(scope.itemData.thumbnails, function(d, i) { 
-                  var selected = '';
-                  if (i === scope.current) {
-                      selected = 'filmstrip-highlight-current'; 
-                  }
-                  return {
-                      'id': i,
-                      'source': d,
-                      'selected': selected
-                  };
-              });
-              sizeThePanels();
-              $timeout(function() {
-                  scope.scrollThumbnails();
-              }, 100);
-              */
-          };
-
-          scope.toggleItemInformation = function() {
-              scope.showItemInformation = !scope.showItemInformation;
-          };
-
-          scope.jumpToPage = function(i) {
-              scope.current = i;
-              scope.loadImage();
-          };
-
-          scope.scrollThumbnails = function() {
-              // scroll the thumbnails
-              var old = $location.hash();
-              $location.hash(scope.current);
-              $anchorScroll();
-              $location.hash(old);
           };
 
       }
