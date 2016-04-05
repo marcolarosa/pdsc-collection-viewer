@@ -1,26 +1,36 @@
 'use strict';
 
-var $compile, $rootScope, element, scope, $routeParams;
+var $compile, $rootScope, element, scope;
 
-var setup = function(collectionId, itemId, instanceId) {
+var setup = function(collectionId, itemId, name) {
     beforeEach(module('pdsc'));
     beforeEach(module('my.templates'));
 
-    beforeEach(inject(function (_$compile_, _$rootScope_, _data_, _$routeParams_) {
+    beforeEach(inject(function (_$compile_, _$rootScope_, _data_) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
-        $routeParams = _$routeParams_;
 
         scope = $rootScope.$new();
         scope.itemData = _data_[collectionId][itemId];
-        scope.instanceId = instanceId;
+        scope.name = name;
+        scope.src = scope.itemData.audio[scope.name];
 
-        element = $compile('<view-media item-data="itemData" instance-id="instanceId"></view-media>')(scope);
+        element = $compile('<audio-element name="name" media-src="src" item-data="itemData"></audio-element>')(scope);
         scope.$digest();
         scope = element.isolateScope();
     }));
 };
 
-describe('Directive: view-media - one audio file in set', function () {
-    setup('AC2', '2');
+describe('Directive: audio element', function () {
+    setup('AC2', '2', 'AC2-2-001');
+    it('should have trs transcription data', function() {
+        expect(scope.trs).toBe(scope.itemData.trs['AC2-2-001']);
+    });
+});
+
+describe('Directive: audio element', function () {
+    setup('AC2', '5', 'AC2-5-001');
+    it('should have eaf transcription data', function() {
+        expect(scope.trs).toBe(scope.itemData.eaf['AC2-5-001']);
+    });
 });
