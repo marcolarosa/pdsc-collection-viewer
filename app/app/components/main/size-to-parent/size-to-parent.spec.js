@@ -25,7 +25,9 @@ describe('Directive: sizeToParent', function () {
     });
 
     it('should calculate the panel height correctly', function() {
-        expect(scope.panelStyle.height).toBe('283px');
+        var expectedHeight = $window.innerHeight - conf.header.toolbar - conf.header.headline - 
+            conf.header.controls - 30;
+        expect(scope.panelStyle.height).toBe(expectedHeight + 'px');
     });
 
 });
