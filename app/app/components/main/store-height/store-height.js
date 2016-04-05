@@ -12,7 +12,7 @@ angular.module('pdsc')
       link: function postLink(scope, element) {
           var storeHeight = function() {
               conf.header[scope.element] = parseInt(element[0].clientHeight);
-          }
+          };
           storeHeight();
 
           // handle window resize events

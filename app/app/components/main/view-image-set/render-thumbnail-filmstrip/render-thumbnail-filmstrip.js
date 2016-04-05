@@ -6,7 +6,8 @@ angular.module('pdsc')
     '$location', 
     '$anchorScroll',
     '$mdSidenav',
-    function ($timeout, $location, $anchorScroll, $mdSidenav) {
+    '_',
+    function ($timeout, $location, $anchorScroll, $mdSidenav, _) {
     return {
       templateUrl: 'app/components/main/view-image-set/render-thumbnail-filmstrip/render-thumbnail-filmstrip.html',
       restrict: 'E',
@@ -16,17 +17,15 @@ angular.module('pdsc')
       },
       link: function postLink(scope) {
           scope.smallImages = _.map(scope.itemData.thumbnails, function(d, i) {
-              var selected = '';
               return {
                   'id': i,
                   'source': d,
               };
           });
 
-          scope.$watch('isOpen()', function(n, o) {
+          scope.$watch('isOpen()', function(n) {
               if (n) {
                   scope.smallImages = _.map(scope.smallImages, function(d, i) {
-                      var selected = '';
                       if (i === scope.selected) {
                           d.selected = 'filmstrip-highlight-current';
                       } else {
@@ -46,11 +45,11 @@ angular.module('pdsc')
           });
           scope.isOpen = function() {
             return $mdSidenav('thumbnailFilmstrip').isOpen();
-          }
+          };
 
           scope.jumpTo = function(i) {
               scope.selected = i;
-          }
+          };
 
       }
     };

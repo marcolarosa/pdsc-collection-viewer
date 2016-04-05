@@ -17,7 +17,7 @@ var setup = function(collectionId, itemId) {
         scope.$digest();
         scope = element.isolateScope();
     }));
-}
+};
 
 describe('Directive: viewImageSet - one image in set', function () {
     setup('AC2', '1');
@@ -59,7 +59,7 @@ describe('Directive: viewImageSet - multiple images in set', function() {
         scope.current = 0;
         scope.next();
         expect(scope.current).toBe(1);
-    })
+    });
 
     it('end of set so next should do nothing', function() {
         scope.current = scope.itemData.images.length - 1;
@@ -109,7 +109,7 @@ describe('Directive: viewImageSet - multiple images in set', function() {
         var scale = scope.currentScale;
         scope.zoomOut();
         expect(scope.currentScale).toBe(scale - scope.scaleStep);
-    })
+    });
 
     it('should not zoom in past a scale of 3', function() {
         scope.currentScale = 3;

@@ -2,8 +2,7 @@
 
 angular.module('pdsc')
   .directive('showWhenReady', [ 
-    '$timeout', 
-    function ($timeout) {
+    function () {
     return {
       template: '',
       restrict: 'A',
