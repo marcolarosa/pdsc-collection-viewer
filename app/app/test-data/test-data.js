@@ -27,19 +27,13 @@ angular.module('pdsc')
                 'identifier': [
                 ],
                 'images': [
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-002.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-003.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-004.jpg'
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001.jpg'
                 ],
                 'itemId': '1',
                 'openAccess': true,
                 'rights': 'Open (subject to agreeing to PDSC access conditions)',
                 'thumbnails': [
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001-thumb-PDSC_ADMIN.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-002-thumb-PDSC_ADMIN.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-003-thumb-PDSC_ADMIN.jpg',
-                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-004-thumb-PDSC_ADMIN.jpg'
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001-thumb-PDSC_ADMIN.jpg'
                 ],
                 'title': 'Untitled Unua story',
                 'trs': {
@@ -194,7 +188,50 @@ angular.module('pdsc')
                 'video': {
                     'AC2-4-001': 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4'
                 }
-            }
+            },
+            '6': {
+                'audio': {
+                },
+                'audioVisualisations': {
+                },
+                'citation': '',
+                'collectionId': 'AC2',
+                'collectionLink': 'http://catalog.paradisec.org.au/collections/AC2',
+                'contributor': [
+                    {
+                        'name': 'Arthur Capell',
+                        'role': 'compiler'
+                    }
+                ],
+                'date': '1957-01-01',
+                'description': '',
+                'documents': [
+                ],
+                'eaf': {
+                },
+                'identifier': [
+                ],
+                'images': [
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-002.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-003.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-004.jpg'
+                ],
+                'itemId': '1',
+                'openAccess': true,
+                'rights': 'Open (subject to agreeing to PDSC access conditions)',
+                'thumbnails': [
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-001-thumb-PDSC_ADMIN.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-002-thumb-PDSC_ADMIN.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-003-thumb-PDSC_ADMIN.jpg',
+                    'http://catalog.paradisec.org.au/repository/AC2/1/AC2-1-004-thumb-PDSC_ADMIN.jpg'
+                ],
+                'title': 'Untitled Unua story',
+                'trs': {
+                },
+                'video': {
+                }
+            },
         }
 
     }
