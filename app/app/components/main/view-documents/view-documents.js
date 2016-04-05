@@ -35,32 +35,7 @@ angular.module('pdsc')
           scope.doc = 0;
 
           // initial scale - depends on window width
-          if ($window.innerWidth < 780) {
-              scope.scale = 0.5;
-          } else if ($window.innerWidth > 780 && $window.innerWidth < 1030) {
-              scope.scale = 1;
-          } else {
-              scope.scale = 1.5;
-          }
-          scope.scale = 0.5;
-
-          // handle window resize events
-          var w = angular.element($window);
-          w.bind('resize', function() {
-              scope.$apply(function() {
-                sizeThePanels();
-              });
-          });
-
-          var sizeThePanels = function() {
-              scope.pdfPanelStyle = {
-                  'position': 'relative',
-                  'height': '600px',
-                  'overflow': 'auto'
-
-              };
-          };
-          sizeThePanels();
+          scope.scale = 1;
 
           var loadDocument = function() {
               //
@@ -103,7 +78,6 @@ angular.module('pdsc')
               // Using promise to fetch the page
               scope.pdf.getPage(scope.current).then(function(page) {
                 var viewport = page.getViewport(scope.scale);
-                console.log(viewport);
 
                 //
                 // Prepare canvas using PDF page dimensions
