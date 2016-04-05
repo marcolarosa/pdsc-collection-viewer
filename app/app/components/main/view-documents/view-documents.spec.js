@@ -18,8 +18,4 @@ describe('Directive: viewDocuments', function () {
         scope = element.isolateScope();
     }));
 
-    it('should set the url on the scope', function() {
-        console.log(scope.loadDocument);
-    });
-
 });

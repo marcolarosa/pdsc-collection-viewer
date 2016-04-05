@@ -34,7 +34,7 @@ angular.module('pdsc')
           //  documents count from zero - the array index
           scope.doc = 0;
 
-          // initial scale - depends on window width
+          // initial scale 
           scope.scale = 1;
 
           var loadDocument = function() {
