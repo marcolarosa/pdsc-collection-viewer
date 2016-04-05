@@ -146,7 +146,14 @@ describe('Directive: viewImageSet - multiple images in set', function() {
     it('should toggle the filmstrip view', function() {
         scope.toggleFilmstrip();
         expect($mdSidenav('thumbnailFilmstrip').isOpen()).toBe(true);
-        
+    });
+
+    it('should close the sidnav and load the next image', function() {
+        scope.current = 0;
+        scope.toggleFilmstrip();
+        scope.current = 2;
+        scope.$digest();
+        expect($mdSidenav('thumbnailFilmstrip').isOpen()).toBe(false);
     });
 
 });
