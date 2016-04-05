@@ -1,19 +1,18 @@
 'use strict';
 
 angular.module('pdsc')
-  .directive('notifyReady', [ 
+  .directive('showWhenReady', [ 
     '$timeout', 
     function ($timeout) {
     return {
       template: '',
       restrict: 'A',
-      scope: {
-      },
       link: function postLink(scope, element) {
           element.on('load', function() {
-              $timeout(function() {
-                  scope.$emit('image-loaded');
-              },1);
+              scope.$apply(function() {
+                  scope.setTransform();
+                  scope.showImage = true;
+              });
           });
       }
     };

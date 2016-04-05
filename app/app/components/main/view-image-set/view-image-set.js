@@ -27,11 +27,6 @@ angular.module('pdsc')
           scope.scaleStep = 0.2;
           scope.isOpen = false; 
 
-          scope.$on('image-loaded', function() {
-              scope.setTransform();
-              scope.showImage = true;
-          });
-
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData)) {
                   // load up the image
