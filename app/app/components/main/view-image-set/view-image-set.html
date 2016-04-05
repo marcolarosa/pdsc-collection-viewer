@@ -1,45 +1,48 @@
-<div layout="row" layout-align="center center" class="above">
-    <span class="md-subhead">
-        Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
-    </span>
-</div>
-<div layout="row" layout-align="center center" class="above">
-    <span ng-if="!disableThumbnailView">
-        <md-button class="small-button" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
-            <span ng-show="showFilmstrip">hide thumbnails</span>
-            <span ng-hide="showFilmstrip">show thumbnails</span>
+<div layout="column" layout-align="center center" class="" store-height element="controls">
+    <div layout="row">
+        <span class="md-subhead">
+            Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
+        </span>
+    </div>
+    <div layout="row">
+        <span ng-if="!disableThumbnailView">
+            <md-button class="small-button" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
+                <span ng-show="showFilmstrip">hide thumbnails</span>
+                <span ng-hide="showFilmstrip">show thumbnails</span>
+            </md-button>
+        </span>
+        <md-button class="small-button" aria-label="jump to start" ng-click="jumpToStart()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-fast-backward fa-lg"></span>
         </md-button>
-    </span>
-    <md-button class="small-button" aria-label="jump to start" ng-click="jumpToStart()" blur-on-click ng-if="!disableThumbnailView">
-        <span class="fa fa-fast-backward fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="previous" ng-click="previous()" blur-on-click ng-if="!disableThumbnailView">
-        <span class="fa fa-step-backward fa-lg"></span>
-    </md-button>
+        <md-button class="small-button" aria-label="previous" ng-click="previous()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-step-backward fa-lg"></span>
+        </md-button>
 
-    <md-button class="small-button" aria-label="rotate left" ng-click="rotateLeft()" blur-on-click>
-        <span class="fa fa-rotate-left fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="rotate-right" ng-click="rotateRight()" blur-on-click>
-        <span class="fa fa-rotate-right fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="zoom out" ng-click="zoomOut()" blur-on-click>
-        <span class="fa fa-search-minus fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="zoom in" ng-click="zoomIn()" blur-on-click>
-        <span class="fa fa-search-plus fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="next" ng-click="next()" blur-on-click ng-if="!disableThumbnailView">
-        <span class="fa fa-step-forward fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="jump to end" ng-click="jumpToEnd()" blur-on-click ng-if="!disableThumbnailView">
-        <span class="fa fa-fast-forward fa-lg"></span>
-    </md-button>
-    <md-button class="small-button" aria-label="download item" ng-href="{{item.images[current]}}" download blur-on-click>
-        <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
-    </md-button>
+        <md-button class="small-button" aria-label="rotate left" ng-click="rotateLeft()" blur-on-click>
+            <span class="fa fa-rotate-left fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="rotate-right" ng-click="rotateRight()" blur-on-click>
+            <span class="fa fa-rotate-right fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="zoom out" ng-click="zoomOut()" blur-on-click>
+            <span class="fa fa-search-minus fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="zoom in" ng-click="zoomIn()" blur-on-click>
+            <span class="fa fa-search-plus fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="next" ng-click="next()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-step-forward fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="jump to end" ng-click="jumpToEnd()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-fast-forward fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="download item" ng-href="{{item.images[current]}}" download blur-on-click>
+            <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
+        </md-button>
+    </div>
 </div>
-<div layout="row" layout-align="center center" style="position:relative; overflow:auto;">
+<div layout="row" layout-align="center center">
+    <div size-to-parent ng-style="panelStyle">
         <img 
             id='largeImage' 
             ng-src="{{image}}" 
@@ -48,13 +51,19 @@
             ng-style="transform" 
             notify-ready
         >
-        <!--
-        <div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="above">
-            <span ng-repeat="img in smallImages">
-                <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-                    <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
-                </a>
-            </span>
-        </div>
-        -->
+    </div>
 </div>
+
+<!--
+<div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="above">
+    <span ng-repeat="img in smallImages">
+        <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
+            <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
+        </a>
+    </span>
+</div>
+-->
+
+<md-sidenav class="md-sidenav-right" md-component-id="thumbnailFilmstrip">
+    <render-thumbnail-filmstrip item-data="itemData" selected="current"></render-thumbnail-filmstrip>
+</md-sidenav>
