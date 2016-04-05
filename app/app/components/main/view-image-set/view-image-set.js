@@ -152,18 +152,18 @@ angular.module('pdsc')
               switch(scope.currentRotation) {
                   case 0:
                       scope.transformOrigin = 'center top';
-                      break;;
+                      break;
                   case -360:
                       scope.transformOrigin = 'center top';
-                      break;;
+                      break;
                   case 360:
                       scope.transformOrigin = 'center top';
-                      break;;
+                      break;
                   default:
                       scope.transformOrigin = 'center center';
-                      break;;
+                      break;
               }
-          }
+          };
 
           // set transform
           scope.setTransform = function() {
