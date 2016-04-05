@@ -47,7 +47,6 @@ angular.module('pdsc')
           if (!_.isEmpty(transcript)) {
               scope.transcript = transcript;
           }
-
       }
     };
   }]);
