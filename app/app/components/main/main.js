@@ -34,6 +34,12 @@ angular.module('pdsc')
         };
 
         var filter = function(what) {
+            if (_.isPlainObject(what)) {
+                var values = _.map(what, function(d) {
+                    return d;
+                });
+                what = _.flatten(values);
+            }
             var m = _.filter(what, function(d) {
                 return d.match($scope.instanceId);
             });
