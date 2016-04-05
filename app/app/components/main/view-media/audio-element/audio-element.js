@@ -10,22 +10,22 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           name: '=',
+          mediaSrc: '=',
           itemData: '=',
-          transcription: '=',
       },
       link: function postLink(scope) {
           // defaults
           scope.mediaReadyToPlay = false;
 
-          scope.$watch('transcription', function() {
-              if (!_.isEmpty(scope.transcription.eaf)) {
-                  if (scope.transcription.eaf[scope.name] && scope.transcription.eaf[scope.name].length > 1) {
-                      scope.trs = scope.transcription.eaf[scope.name];
+          scope.$watch('itemData', function() {
+              if (!_.isEmpty(scope.itemData.eaf)) {
+                  if (scope.itemData.eaf[scope.name] && scope.itemData.eaf[scope.name].length > 1) {
+                      scope.trs = scope.itemData.eaf[scope.name];
                   }
               }
-              if (!_.isEmpty(scope.transcription.trs)) {
-                  if (scope.transcription.trs[scope.name] && scope.transcription.trs[scope.name].length > 1) {
-                      scope.trs = scope.transcription.trs[scope.name];
+              if (!_.isEmpty(scope.itemData.trs)) {
+                  if (scope.itemData.trs[scope.name] && scope.itemData.trs[scope.name].length > 1) {
+                      scope.trs = scope.itemData.trs[scope.name];
                   }
               }
           }, true);

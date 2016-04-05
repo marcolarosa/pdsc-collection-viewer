@@ -1,18 +1,14 @@
 <div ng-if="showMedia" class="fade-in">
         <div layout="column" layout-align="center center">
             <!-- AUDIO -->
-            <span ng-repeat="(name, data) in itemData.audio" ng-if="loadAudioPlayer">
-                <audio-element name="name" item-data="data" 
-                    transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
-                </audio-element>
+            <span ng-repeat="(name, src) in itemData.audio" ng-if="loadAudioPlayer">
+                <audio-element name="name" media-src="src" item-data="itemData"></audio-element>
                 <hr/>
             </span>
 
             <!-- VIDEO -->
-            <span ng-repeat="(name, data) in itemData.video" ng-if="loadVideoPlayer">
-                <video-element name="name" item-data="data" 
-                    transcription="{ 'eaf': itemData.eaf, 'trs': itemData.trs, 'collectionId': itemData.collectionId, 'itemId': itemData.itemId }">
-                </video-element>
+            <span ng-repeat="(name, src) in itemData.video" ng-if="loadVideoPlayer">
+                <video-element name="name" media-src="src" item-data="itemData"></video-element>
                 <hr/>
             </span>
         </div>

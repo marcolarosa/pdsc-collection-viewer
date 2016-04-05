@@ -1,7 +1,7 @@
 <div layout="column">
     <div layout="row">
         <div style="padding: 5px;">{{name}}</div>
-        <span ng-repeat="src in itemData">
+        <span ng-repeat="src in mediaSrc">
             <!--<a href="" class="pull-right">annotate this selection</a>-->
             <md-button class="small-button" href="{{src | stripTime}}" download>
                 <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
@@ -10,7 +10,7 @@
     </div>
     <span ng-show="mediaReadyToPlay">
         <video id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;" media-ready time-update>
-            <source ng-repeat="src in itemData" src="{{src | trustAsHtml}}" />
+            <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a
                 web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
             </p>

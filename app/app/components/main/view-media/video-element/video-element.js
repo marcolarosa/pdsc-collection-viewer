@@ -10,25 +10,25 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           name: '=',
-          itemData: '=',
-          transcription: '='
+          mediaSrc: '=',
+          itemData: '='
       },
       link: function postLink(scope) {
-          scope.$watch('transcription', function() {
-              if (!_.isEmpty(scope.transcription.eaf)) {
-                  _.each(scope.transcription.eaf, function(value, key) {
-                      if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) {
-                          if (scope.transcription.eaf[key].length > 1) {
-                              scope.trs = scope.transcription.eaf[key];
+          scope.$watch('itemData', function() {
+              if (!_.isEmpty(scope.itemData.eaf)) {
+                  _.each(scope.itemData.eaf, function(value, key) {
+                      if (key.match(scope.itemData.collectionId + '-' + scope.itemData.itemId)) {
+                          if (scope.itemData.eaf[key].length > 1) {
+                              scope.trs = scope.itemData.eaf[key];
                           }
                       }
                   });
               }
-              if (!scope.trs && !_.isEmpty(scope.transcription.trs)) {
-                  _.each(scope.transcription.trs, function(value, key) {
-                      if (key.match(scope.transcription.collectionId + '-' + scope.transcription.itemId)) {
-                          if (scope.transcription.trs[key].length > 1) {
-                              scope.trs = scope.transcription.trs[key];
+              if (!scope.trs && !_.isEmpty(scope.itemData.trs)) {
+                  _.each(scope.itemData.trs, function(value, key) {
+                      if (key.match(scope.itemData.collectionId + '-' + scope.itemData.itemId)) {
+                          if (scope.itemData.trs[key].length > 1) {
+                              scope.trs = scope.itemData.trs[key];
                           }
                       }
                   });

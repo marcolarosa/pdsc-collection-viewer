@@ -1,7 +1,7 @@
 <div layout="column">
     <div layout="row">
         <div flex="50">{{name}}</div>
-        <span ng-repeat="src in itemData">
+        <span ng-repeat="src in mediaSrc">
             <md-button class="small-button" href="{{src | stripTime}}" download>
                 <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
             </md-button>
@@ -14,8 +14,8 @@
     -->
     <span ng-show="mediaReadyToPlay">
         <audio id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 500px;" media-ready time-update>
-            <source ng-repeat="src in itemData" src="{{src | trustAsHtml}}" />
-            <p class="vjs-no-js">To listent to this audio please enable JavaScript, and consider upgrading to a
+            <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
+            <p class="vjs-no-js">To listen to this audio please enable JavaScript, and consider upgrading to a
                 web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
             </p>
         </audio>
