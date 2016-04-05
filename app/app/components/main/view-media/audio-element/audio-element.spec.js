@@ -34,3 +34,11 @@ describe('Directive: audio element', function () {
         expect(scope.trs).toBe(scope.itemData.eaf['AC2-5-001']);
     });
 });
+
+describe('Directive: audio element', function () {
+    setup('AC2', '5', 'AC2-5-001');
+    it('should enable the media when it\'s ready to play', function() {
+        scope.mediaReady();
+        expect(scope.mediaReadyToPlay).toBe(true);
+    });
+});
