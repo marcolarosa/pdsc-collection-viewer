@@ -148,6 +148,10 @@ angular.module('pdsc')
                 ],
                 'title': 'Untitled Unua story',
                 'trs': {
+                    'AC2-4-001': [
+                        { 'id': '0', 'referenceValue': '', 'speaker': 'spk1', 'time': '0', 'value': 'x' },
+                        { 'id': '20', 'referenceValue': '', 'speaker': 'spk1', 'time': '20', 'value': 'y' }
+                    ]
                 },
                 'video': {
                     'AC2-4-001': [ 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4',
@@ -179,6 +183,10 @@ angular.module('pdsc')
                     'AC2-5-001': [
                         { 'id': '0', 'referenceValue': '', 'speaker': 'spk1', 'time': '0', 'value': 'x' },
                         { 'id': '20', 'referenceValue': '', 'speaker': 'spk1', 'time': '20', 'value': 'y' }
+                    ],
+                    'AC2-5-002': [
+                        { 'id': '0', 'referenceValue': '', 'speaker': 'spk1', 'time': '0', 'value': 'x' },
+                        { 'id': '20', 'referenceValue': '', 'speaker': 'spk1', 'time': '20', 'value': 'y' }
                     ]
                 },
                 'identifier': [
@@ -196,7 +204,7 @@ angular.module('pdsc')
                 'trs': {
                 },
                 'video': {
-                    'AC2-5-001': [ 'http://catalog.paradisec.org.au/repository/AC2/5/AC2-5-001.mp4' ]
+                    'AC2-5-002': [ 'http://catalog.paradisec.org.au/repository/AC2/5/AC2-5-002.mp4' ]
                 }
             },
             '6': {
