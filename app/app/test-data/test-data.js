@@ -73,6 +73,10 @@ angular.module('pdsc')
                 ],
                 'title': 'Untitled Unua story',
                 'trs': {
+                    'AC2-2-001': [
+                        { 'id': '0', 'referenceValue': '', 'speaker': 'spk1', 'time': '0', 'value': 'x' },
+                        { 'id': '20', 'referenceValue': '', 'speaker': 'spk1', 'time': '20', 'value': 'y' }
+                    ]
                 },
                 'video': {
                 }
@@ -172,6 +176,10 @@ angular.module('pdsc')
                     'http://catalog.paradisec.org.au/repository/AC2/5/AC2-5-001.pdf'
                 ],
                 'eaf': {
+                    'AC2-5-001': [
+                        { 'id': '0', 'referenceValue': '', 'speaker': 'spk1', 'time': '0', 'value': 'x' },
+                        { 'id': '20', 'referenceValue': '', 'speaker': 'spk1', 'time': '20', 'value': 'y' }
+                    ]
                 },
                 'identifier': [
                 ],
