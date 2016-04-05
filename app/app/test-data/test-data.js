@@ -43,7 +43,7 @@ angular.module('pdsc')
             },
             '2': {
                 'audio': {
-                    'AC1-1-001': 'http://catalog.paradisec.org.au/repository/AC2/2/AC2-2-001.mp3',
+                    'AC2-1-001': [ 'http://catalog.paradisec.org.au/repository/AC2/AC2-1-001.mp3' ],
                 },
                 'audioVisualisations': {
                 },
@@ -66,7 +66,7 @@ angular.module('pdsc')
                 ],
                 'images': [
                 ],
-                'itemId': '2',
+                'itemId': '1',
                 'openAccess': true,
                 'rights': 'Open (subject to agreeing to PDSC access conditions)',
                 'thumbnails': [
@@ -146,12 +146,12 @@ angular.module('pdsc')
                 'trs': {
                 },
                 'video': {
-                    'AC2-4-001': 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4'
+                    'AC2-4-001': [ 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4' ]
                 }
             },
             '5': {
                 'audio': {
-                    'AC1-1-001': 'http://catalog.paradisec.org.au/repository/AC2/2/AC2-2-001.mp3',
+                    'AC1-1-001': [ 'http://catalog.paradisec.org.au/repository/AC2/2/AC2-2-001.mp3' ],
                 },
                 'audioVisualisations': {
                 },
@@ -186,7 +186,7 @@ angular.module('pdsc')
                 'trs': {
                 },
                 'video': {
-                    'AC2-4-001': 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4'
+                    'AC2-4-001': [ 'http://catalog.paradisec.org.au/repository/AC2/4/AC2-4-001.mp4' ]
                 }
             },
             '6': {
