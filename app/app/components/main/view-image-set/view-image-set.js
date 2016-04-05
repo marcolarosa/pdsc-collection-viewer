@@ -23,9 +23,8 @@ angular.module('pdsc')
           scope.showImageSet = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
-          scope.currentScale = 0.5;
-          scope.transformOrigin = 'left top';
-          scope.scaleStep = 0.5;
+          scope.currentScale = 1;
+          scope.scaleStep = 0.2;
           scope.isOpen = false; 
 
           scope.$on('image-loaded', function() {
@@ -126,16 +125,15 @@ angular.module('pdsc')
           // rotate left
           scope.rotateLeft = function() {
               scope.currentRotation -= 90;
-              //if (scope.currentRotation === -360) scope.currentRotation = 0;
               scope.setTransform();
           };
 
           // rotate right
           scope.rotateRight = function() {
               scope.currentRotation += 90;
-              //if (scope.currentRotation === 360) scope.currentRotation = 0;
               scope.setTransform();
           };
+
 
           // zoom in 
           scope.zoomIn = function() {
@@ -149,14 +147,32 @@ angular.module('pdsc')
           // zoom out
           scope.zoomOut = function() {
               scope.currentScale -= scope.scaleStep;
-              if (scope.currentScale < 0.5) {
-                  scope.currentScale = 0.5;
+              if (scope.currentScale < 0.2) {
+                  scope.currentScale = 0.2;
               }
               scope.setTransform();
           };
 
+          scope.setTransformOrigin = function() {
+              switch(scope.currentRotation) {
+                  case 0:
+                      scope.transformOrigin = 'center top';
+                      break;;
+                  case -360:
+                      scope.transformOrigin = 'center top';
+                      break;;
+                  case 360:
+                      scope.transformOrigin = 'center top';
+                      break;;
+                  default:
+                      scope.transformOrigin = 'center center';
+                      break;;
+              }
+          }
+
           // set transform
           scope.setTransform = function() {
+              scope.setTransformOrigin();
               scope.transform = {
                   '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
                   '-webkit-transform-origin': scope.transformOrigin,
@@ -175,16 +191,6 @@ angular.module('pdsc')
                   'transition': '0.3s ease-in-out',
               };
           };
-
-          scope.getCurrentScale = function() {
-              if (!scope.currentScale) {
-                  var cp = angular.element(document.getElementById('contentPane'));
-                  var im = angular.element(document.getElementById('largeImage'));
-                  scope.currentScale = cp[0].clientWidth / im[0].clientWidth;
-                  scope.setTransform();
-              }
-          };
-
 
           // toggle the filmstrip view
           scope.toggleFilmstrip = function() {
