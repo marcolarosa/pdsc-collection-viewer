@@ -14,15 +14,24 @@ describe('Service: supporters', function () {
           "    <child>" +
           "       <second text='something'>value</second>" +
           "    </child>" +
-          "</element>";
+          "</element>"; 
 
-    json = xmlToJson.convert(doc);
+    var parser = new DOMParser();
+    var xmldoc = parser.parseFromString(doc, 'text/xml');
+    json = xmlToJson.convert(xmldoc);
   }));
 
-  it('should do something', function() {
-      console.log(json);
+  it('should parse into a json object', function() {
+      expect(json).toBeDefined();
   });
 
+  it('should have a root element called element', function() {
+      expect(json.element).toBeDefined();
+  });
 
+  it('should have have sub sub element', function() {
+      expect(json.element.child.second).toBeDefined();
+      expect(json.element.child.second['@attributes'].text).toBe('something');
+  });
 
 });
