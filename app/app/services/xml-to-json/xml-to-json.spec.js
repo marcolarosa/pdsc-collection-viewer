@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: supporters', function () {
+describe('Service: xml-to-json', function () {
 
   // load the service's module
   beforeEach(module('pdsc'));
