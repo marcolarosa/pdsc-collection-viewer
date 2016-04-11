@@ -55,7 +55,7 @@ describe('Directive: view-media - load specific audio file with play times', fun
         element = $compile('<view-media item-data="itemData" instance-id="instanceId"></view-media>')(scope);
         scope.$digest();
         scope = element.isolateScope();
-    }
+    };
 
     it('should set start and end play time', function() {
         $routeParams.start = '0';

@@ -19,21 +19,21 @@ var setup = function(collectionId, itemId, extraData) {
     $httpBackend.expectGET(url);
 
     if (extraData) {
-        var path = '/repository/' + collectionId + '/' + itemId + '/' + extraData;
-        var url = host + path;
+        path = '/repository/' + collectionId + '/' + itemId + '/' + extraData;
+        url = host + path;
         $httpBackend.whenGET(url).respond(td.eaf[collectionId][itemId]);
         $httpBackend.expectGET(url);
     }
     itemData = paradisec.getItem(collectionId, itemId);
     $httpBackend.flush();
-    itemData = itemData["$$state"].value;
+    itemData = itemData.$$state.value;
   }));
 
   afterEach(function() {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   });
-}
+};
 
 describe('Service: paradisec', function () {
   it('images - should return a JSON object with the data', function() {

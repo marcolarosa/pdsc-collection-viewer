@@ -10,11 +10,11 @@ describe('Service: xml-to-json', function () {
   beforeEach(inject(function (_xmlToJson_) {
     xmlToJson = _xmlToJson_;
 
-    doc = "<element>" + 
-          "    <child>" +
-          "       <second text='something'>value</second>" +
-          "    </child>" +
-          "</element>"; 
+    doc = '<element>' + 
+          '    <child>' +
+          '       <second text="something">value</second>' +
+          '    </child>' +
+          '</element>'; 
 
     var parser = new DOMParser();
     var xmldoc = parser.parseFromString(doc, 'text/xml');
