@@ -8,7 +8,8 @@ angular.module('pdsc')
     'configuration', 
     'paradisec',
     '_',
-    function ($scope, $log, $routeParams, conf, paradisec, _) {
+    '$mdSidenav',
+    function ($scope, $log, $routeParams, conf, paradisec, _, $mdSidenav) {
         $scope.showItemInformation = false;
         $scope.levelup = false;
 
@@ -30,7 +31,7 @@ angular.module('pdsc')
 
         // show / hide item information panel
         $scope.toggleItemInformation = function() {
-            $scope.showItemInformation = ! $scope.showItemInformation;
+            $mdSidenav('left').toggle();
         };
 
         var filter = function(what) {

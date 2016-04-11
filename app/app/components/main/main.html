@@ -27,9 +27,6 @@
     <div layout="row" layout-align="center center" store-height element="headline">
         <h3 class="md-headline">{{itemData.title}}</h3>
     </div>
-    <div layout-margin ng-if="showItemInformation">
-        <item-information item-data="itemData" always-open="true" show="true"></item-information>
-    </div>
     <div layout="column" layout-padding flex ng-if="!showItemInformation">
         <div ng-if="itemData.openAccess">
             <view-image-set ng-if="loadImageViewer"    item-data="itemData" instance-id="instanceId"></view-image-set>
@@ -41,3 +38,7 @@
         </div>
     </div>
 </div>
+
+<md-sidenav class="md-sidenav-left fat-sidenav viewer-color" md-component-id="left">
+    <item-information item-data="itemData" close="toggleItemInformation()"></item-information>
+</md-sidenav>

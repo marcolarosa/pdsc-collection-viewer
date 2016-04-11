@@ -9,6 +9,7 @@ angular.module('pdsc')
           restrict: 'E',
           scope: {
               itemData: '=',
+              close: '&'
           },
           link: function postLink(scope) {
               scope.url = $location.absUrl();

@@ -54,3 +54,9 @@ body {
     position: relative;
     z-index: 100;
 }
+
+.fat-sidenav {
+    min-width: 304px !important;
+    width: 45vw !important;
+    max-width: 45vw !important;
+} 
