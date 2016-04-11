@@ -1,31 +1,34 @@
-<div layout="column">
-    <div layout="row">
-        <div flex="50">{{name}}</div>
-        <span ng-repeat="src in mediaSrc">
-            <md-button class="small-button" href="{{src | stripTime}}" download>
-                <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
-            </md-button>
-        </span>
-    </div>
-    <!--
-    <div class="col-sm-12 col-md-12 col-lg-12" style="margin: 5px 0px;">
-        <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
-    </div>
-    -->
-    <span ng-show="mediaReadyToPlay">
-        <audio id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 500px;" media-ready time-update>
+<div layout="column" flex="50" flex-offset="25" ng-show="mediaReadyToPlay">
+    <div layout="column" layout-align="center center">
+        <div layout="row" layout-align="end end">
+                <div ng-repeat="src in mediaSrc">
+                    <md-button class="small-button" href="{{src | stripTime}}" download>
+                        <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
+                    </md-button>
+                </div>
+        </div>
+        <!--
+        <div class="col-sm-12 col-md-12 col-lg-12" style="margin: 5px 0px;">
+            <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
+        </div>
+        -->
+        <audio id="{{name}}" class="" controls preload="auto" style="width: 100vw;" media-ready time-update>
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
             <p class="vjs-no-js">To listen to this audio please enable JavaScript, and consider upgrading to a
                 web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 audio</a>
             </p>
         </audio>
-    </span>
-    <span ng-show="!mediaReadyToPlay">Loading media... please wait.</span>
-    <render-transcription
-        transcription="trs"
-        name="{{name}}"
-        play="playFragment(start, end)"
-        current-time="currentTime"
-        ng-if="mediaReadyToPlay && trs">
-    </render-transcription>
+    </div>
+    <div layout="column">
+        <render-transcription
+            transcription="trs"
+            name="{{name}}"
+            play="playFragment(start, end)"
+            current-time="currentTime"
+            ng-if=" trs">
+        </render-transcription>
+    </div>
+</div>
+<div layout="column" layout-align="center center" flex="50" flex-offset="25" ng-show="!mediaReadyToPlay">
+    Loading media... please wait.
 </div>
