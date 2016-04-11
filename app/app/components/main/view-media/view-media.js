@@ -13,7 +13,6 @@ angular.module('pdsc')
           instanceId: '=',
       },
       link: function postLink(scope) {
-          scope.showMedia = true;
           scope.loadVideoPlayer = false;
           scope.loadAudioPlayer = false;
           scope.time = '';

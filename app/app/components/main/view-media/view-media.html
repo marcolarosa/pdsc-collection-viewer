@@ -1,4 +1,4 @@
-<div layout="column" ng-if="showMedia">
+<div layout="column">
     <!-- AUDIO -->
     <div ng-repeat="(name, src) in itemData.audio" ng-if="loadAudioPlayer">
         <audio-element name="name" media-src="src" item-data="itemData"></audio-element>
