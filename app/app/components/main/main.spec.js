@@ -109,10 +109,6 @@ describe('Controller: MainCtrl', function () {
           expect($scope.showItemInformation).toBe(false);
       });
 
-      it('should show item information ', function() {
-          $scope.toggleItemInformation();
-          expect($scope.showItemInformation).toBe(true);
-      });
   });
 
 
