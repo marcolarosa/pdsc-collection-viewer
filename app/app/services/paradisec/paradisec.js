@@ -28,10 +28,14 @@ angular.module('pdsc')
           var tree = parseXML(d);
 
           // get a handle to the actual tree of data inside the OAI guff
-          tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
+          try {
+              tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
 
-          // assemble and return the item data structure
-          return { 'data': createItemDataStructure(tree)};
+              // assemble and return the item data structure
+              return { 'data': createItemDataStructure(tree)};
+          } catch(e) {
+              return { 'data': '' };
+          }
       }
 
       // parse an EAF document and create a JSON data structure for the app to use
@@ -209,7 +213,7 @@ angular.module('pdsc')
               // store the object in the service and let the metadata
               //  controller know it's ready to go
               paradisec.itemData = resp.data.data;
-              $rootScope.$broadcast('item-data-ready');
+              //$rootScope.$broadcast('item-data-ready');
 
               // and return it to the caller which is expecting a promise
               return resp.data.data;
