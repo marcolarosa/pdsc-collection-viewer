@@ -35,31 +35,53 @@ var setup = function(collectionId, itemId, extraData) {
   });
 };
 
-describe('Service: paradisec', function () {
-  it('images - should return a JSON object with the data', function() {
-      setup('AC2', 'VUNU105');
+describe('Service: paradisec - test single image item', function () {
+  setup('AC2', 'VUNU105');
+  it('image - should return a JSON object with the data', function() {
       expect(itemData).toBeDefined();
   });
+});
+
+describe('Service: paradisec - test wrong selection', function () {
+  setup('AC2', 'VUNUN105');
+  it('should return nothing', function() {
+      expect(itemData).toBe('');
+  });
+});
+
+describe('Service: paradisec - test multi image item', function () {
+  setup('AC2', 'ETHGS102');
   it('images - should return a JSON object with the data', function() {
-      setup('AC2', 'ETHGS102');
       expect(itemData).toBeDefined();
   });
+});
+
+describe('Service: paradisec - test audio item', function () {
+  setup('AA2', '003');
   it('audio - should return a JSON object with the data', function() {
-      setup('AA2', '003');
       expect(itemData).toBeDefined();
   });
+});
+
+describe('Service: paradisec - test video item', function () {
+  setup('NT5', 'DickLauto');
   it('video - should return a JSON object with the data', function() {
-      setup('NT5', 'DickLauto');
       expect(itemData).toBeDefined();
   });
+});
+
+describe('Service: paradisec - test audio + eaf', function () {
+  setup('NT10', 'W13', 'NT10-W13-A.eaf');
   it('audio + eaf - should return a JSON object with the data', function() {
-      setup('NT10', 'W13', 'NT10-W13-A.eaf');
       expect(itemData).toBeDefined();
       expect(itemData.eaf).toBeDefined();
   });
-  it('should return nothing', function() {
-      setup('AC2', 'VUNUN105');
-      expect(itemData).toBe('');
-  });
+});
 
+describe('Service: paradisec - test audio + trs', function () {
+  setup('BN1', '001', 'BN1-001-A.trs');
+  it('audio + trs - should return a JSON object with the data', function() {
+      expect(itemData).toBeDefined();
+      expect(itemData.trs).toBeDefined();
+  });
 });
