@@ -1,10 +1,10 @@
 <div layout="column" layout-align="center center" class="" store-height element="controls">
-    <div layout="row">
+    <div layout="row" layout-wrap layout-align="center center">
         <span class="md-subhead">
             Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
         </span>
     </div>
-    <div layout="row">
+    <div layout="row" layout-wrap layout-align="center center">
         <span ng-if="!disableThumbnailView">
             <md-button class="small-button" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
                 <span ng-show="showFilmstrip">hide thumbnails</span>

@@ -31,6 +31,7 @@ body {
 
 .small-button {
     min-width: 40px;
+    margin: 6px 2px;
 }
 
 .shrink-toolbar {
