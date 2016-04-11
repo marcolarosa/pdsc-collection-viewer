@@ -13,7 +13,7 @@ angular
     'pdfjs',
     'ngMaterial',
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider
       .when('/:collectionId?/:itemId/:itemInstance?', {
         templateUrl: 'app/components/main/main.html',
@@ -22,4 +22,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      $mdThemingProvider.theme('default')
+        .primaryPalette('blue-grey')
+        .accentPalette('orange');
   });

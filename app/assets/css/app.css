@@ -1,21 +1,7 @@
 body {
 }
 .viewer-color {
-    background-color: #cfcfc4;
-}
-.info-panel-background-colour {
-    background-color: #fffff0;
-}
-
-.table-colour-fix {
-    border-top-color: #cfcfc4;
-}
-
-.fade-in.ng-enter {
-    animation: fadeIn 0.5s;
-}
-.fade-in.ng-leave {
-    animation: fadeOut 0.5s;
+    background-color: #EFEBE9;
 }
 
 .filmstrip-highlight-current {
@@ -36,7 +22,7 @@ body {
 }
 
 .transcription-selected {
-    background-color: #FCF8E3;
+    background-color: #FFD54F;
 }
 
 .small-font {
