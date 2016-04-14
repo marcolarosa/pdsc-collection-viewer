@@ -54,16 +54,6 @@
     </div>
 </div>
 
-<!--
-<div ng-if="showFilmstrip" ng-style="filmstripFrontStyle" class="above">
-    <span ng-repeat="img in smallImages">
-        <a ng-click="jumpToPage(img.id)" id="{{img.id}}" ng-class="img.selected" style="top:0; left: 0; right: 0; bottom: 0; margin: auto;">
-            <img src="{{img.source}}" class="img-thumbnail" style="height: {{filmstripImageHeight}}px;" ng-style="cssRotation" />
-        </a>
-    </span>
-</div>
--->
-
 <md-sidenav class="md-sidenav-right viewer-color" md-component-id="thumbnailFilmstrip">
     <render-thumbnail-filmstrip item-data="itemData" selected="current" jump-to-image="jumpToImage()"></render-thumbnail-filmstrip>
 </md-sidenav>
