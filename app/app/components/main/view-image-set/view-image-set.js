@@ -23,7 +23,7 @@ angular.module('pdsc')
           scope.showImageSet = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
-          scope.currentScale = 1;
+          scope.currentScale = 0.5;
           scope.scaleStep = 0.2;
           scope.isOpen = false; 
 
