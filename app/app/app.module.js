@@ -12,6 +12,7 @@ angular
     'underscore',
     'pdfjs',
     'ngMaterial',
+    'wavesurfer',
   ])
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider

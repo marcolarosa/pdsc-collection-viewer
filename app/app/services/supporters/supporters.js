@@ -14,3 +14,8 @@ angular.module('underscore', []).factory('_', function() {
 angular.module('pdfjs', []).factory('pdfjs', function() {
     return window.PDFJS;
 });
+
+// give me WaveSurfer
+angular.module('wavesurfer', []).factory('wavesurfer', function() {
+    return window.WaveSurfer;
+});
