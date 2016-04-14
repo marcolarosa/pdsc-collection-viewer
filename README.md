@@ -23,4 +23,6 @@ Items with varying types useful for testing
   * /#/BN1/001 : .trs XML
   * /#/NT10/W08 : .trs XML
   * /#/NT10/W13 : .eaf XML
+  * /#/NT1/98007 : images, audio and eopas data file
+  * /#/NT5/TokelauOf : video and eopas data file
 

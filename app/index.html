@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="pdscApp" ng-controller="MetadataCtrl">
+<html ng-app="pdsc" ng-controller="MetadataCtrl">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <link rel="stylesheet" href="bower_components/videojs/dist/video-js/video-js.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
+
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <!-- endbuild -->
-    <link rel="stylesheet" href="config/app.css">
+    <link rel="stylesheet" href="assets/css/app.css">
 
 
     <!-- namespace declarations -->
@@ -33,15 +35,13 @@
     <meta name="dc.publisher" content="PARADISEC" />
 
   </head>
-  <body>
+  <body class="viewer-color">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid">
-        <div ng-view=""></div>
-    </div>
+    <div class="viewer-color" layout="row" ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
      <script>
@@ -57,48 +57,59 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/underscore-contrib/dist/underscore-contrib.min.js"></script>
     <script src="bower_components/videojs/dist/video-js/video.js"></script>
     <script src="bower_components/pdfjs-dist/build/pdf.combined.js"></script>
     <script src="bower_components/pdfjs-dist/web/compatibility.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="config/configuration.js"></script>
-        <script src="scripts/services/paradisec.js"></script>
-        <script src="scripts/services/xml.js"></script>
-        <script src="scripts/directives/view-image-set.js"></script>
-        <script src="scripts/directives/view-media.js"></script>
-        <script src="scripts/directives/item-information.js"></script>
-        <script src="scripts/filters/trust-as-html.js"></script>
-        <script src="scripts/directives/view-documents.js"></script>
-        <script src="scripts/directives/blur-on-click.js"></script>
-        <script src="scripts/filters/is-empty.js"></script>
-        <script src="scripts/filters/extension.js"></script>
-        <script src="scripts/filters/strip-time.js"></script>
-        <script src="scripts/controllers/metadata.js"></script>
-        <script src="scripts/services/eaf-parser.js"></script>
-        <script src="scripts/services/trs-parser.js"></script>
-        <script src="scripts/directives/render-transcription.js"></script>
-        <script src="scripts/directives/video-element.js"></script>
-        <script src="scripts/directives/audio-element.js"></script>
-        <script src="scripts/directives/media-ready.js"></script>
-        <script src="scripts/directives/scale-and-center.js"></script>
-        <script src="scripts/directives/time-update.js"></script>
+        <script src="app/app.module.js"></script>
+        <script src="app/configuration.js"></script>
+
+        <script src="app/components/metadata/metadata.js"></script>
+
+        <script src="app/components/main/main.js"></script>
+        <script src="app/components/main/blur-on-click/blur-on-click.js"></script>
+        <script src="app/components/main/size-to-parent/size-to-parent.js"></script>
+        <script src="app/components/main/store-height/store-height.js"></script>
+        <script src="app/components/main/item-information/item-information.js"></script>
+
+        <script src="app/components/main/view-documents/view-documents.js"></script>
+
+        <script src="app/components/main/view-image-set/view-image-set.js"></script>
+        <script src="app/components/main/view-image-set/show-when-ready/show-when-ready.js"></script>
+        <script src="app/components/main/view-image-set/render-thumbnail-filmstrip/render-thumbnail-filmstrip.js"></script>
+
+        <script src="app/components/main/view-media/view-media.js"></script>
+        <script src="app/components/main/view-media/audio-element/audio-element.js"></script>
+        <script src="app/components/main/view-media/media-ready/media-ready.js"></script>
+        <script src="app/components/main/view-media/render-transcription/render-transcription.js"></script>
+        <script src="app/components/main/view-media/time-update/time-update.js"></script>
+        <script src="app/components/main/view-media/video-element/video-element.js"></script>
+
+        <script src="app/services/paradisec/paradisec.js"></script>
+        <script src="app/services/paradisec/eaf-parser/eaf-parser.js"></script>
+        <script src="app/services/paradisec/trs-parser/trs-parser.js"></script>
+        <script src="app/services/supporters/supporters.js"></script>
+        <script src="app/services/xml-to-json/xml-to-json.js"></script>
+
+        <script src="app/filters/extension/extension.js"></script>
+        <script src="app/filters/not-empty/not-empty.js"></script>
+        <script src="app/filters/strip-time/strip-time.js"></script>
+        <script src="app/filters/trust-as-html/trust-as-html.js"></script>
         <!-- endbuild -->
 </body>
 </html>

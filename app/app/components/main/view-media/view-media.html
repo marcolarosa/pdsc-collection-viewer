@@ -1,0 +1,13 @@
+<div layout="column">
+    <!-- AUDIO -->
+    <div ng-repeat="(name, src) in itemData.audio" ng-if="loadAudioPlayer">
+        <audio-element name="name" media-src="src" item-data="itemData"></audio-element>
+        <hr/>
+    </div>
+
+    <!-- VIDEO -->
+    <div ng-repeat="(name, src) in itemData.video" ng-if="loadVideoPlayer">
+        <video-element name="name" media-src="src" item-data="itemData"></video-element>
+        <hr/>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div layout="row">
+    <md-button class="small-button" ng-click="st = !st" ng-show="!st">Show Transcription</md-button>
+    <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
+</div>
+<div layout="row">
+    <div style="position: relative; height: 300px; overflow: auto; border: 1px solid white; border-radius: 4px;" ng-show="st">
+        <table class="">
+            <tbody>
+                <tr ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" id="{{name}}_{{k}}" ng-class="{ 'transcription-selected': $index==selectedIndex}">
+                    <td style="vertical-align: middle;">
+                        <md-button class="" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
+                            <i class="fa fa-play fa-lg"></i> Play ({{v.time}}s)
+                        </md-button>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        {{v.value}}
+                        <br/>
+                        {{v.referenceValue}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

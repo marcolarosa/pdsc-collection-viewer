@@ -1,0 +1,34 @@
+<div
+    layout="column" flex="100" flex-gt-sm="70" flex-offset-gt-sm="15" flex-gt-md="50" flex-offset-gt-md="25"
+        ng-show="mediaReadyToPlay">
+
+    <div layout="row">
+        <div class="md-subhead" flex>{{name}}</div>
+        <div ng-repeat="src in mediaSrc">
+            <!--<a href="" class="pull-right">annotate this selection</a>-->
+            <md-button class="small-button" href="{{src | stripTime}}" download>
+                <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
+            </md-button>
+        </div>
+    </div>
+    <div layout="column" layout-align="start start">
+        <video id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;" media-ready time-update>
+            <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a
+                web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+        </video>
+    </div>
+    <div layout="column">
+        <render-transcription
+            transcription="trs"
+            name="{{name}}"
+            play="playFragment(start, end)"
+            current-time="currentTime"
+            ng-if="mediaReadyToPlay && trs">
+        </render-transcription>
+    </div>
+</div>
+<div layout="column" layout-align="center center" flex="50" flex-offset="25" ng-show="!mediaReadyToPlay">
+    Loading media... please wait.
+</div>

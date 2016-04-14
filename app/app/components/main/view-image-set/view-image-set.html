@@ -1,0 +1,61 @@
+<div layout="column" layout-align="center center" class="" store-height element="controls">
+    <div layout="row" layout-wrap layout-align="center center">
+        <span class="md-subhead">
+            Image {{current + 1}}&nbsp;of&nbsp;{{itemData.images.length}}
+        </span>
+    </div>
+    <div layout="row" layout-wrap layout-align="center center">
+        <span ng-if="!disableThumbnailView">
+            <md-button class="small-button" aria-label="toggle filmstrip" ng-click="toggleFilmstrip()" blur-on-click>
+                <span ng-show="showFilmstrip">hide thumbnails</span>
+                <span ng-hide="showFilmstrip">show thumbnails</span>
+            </md-button>
+        </span>
+        <md-button class="small-button" aria-label="jump to start" ng-click="jumpToStart()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-fast-backward fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="previous" ng-click="previous()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-step-backward fa-lg"></span>
+        </md-button>
+
+        <md-button class="small-button" aria-label="rotate left" ng-click="rotateLeft()" blur-on-click>
+            <span class="fa fa-rotate-left fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="rotate-right" ng-click="rotateRight()" blur-on-click>
+            <span class="fa fa-rotate-right fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="zoom out" ng-click="zoomOut()" blur-on-click>
+            <span class="fa fa-search-minus fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="zoom in" ng-click="zoomIn()" blur-on-click>
+            <span class="fa fa-search-plus fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="next" ng-click="next()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-step-forward fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="jump to end" ng-click="jumpToEnd()" blur-on-click ng-if="!disableThumbnailView">
+            <span class="fa fa-fast-forward fa-lg"></span>
+        </md-button>
+        <md-button class="small-button" aria-label="download item" ng-href="{{item.images[current]}}" download blur-on-click>
+            <i class="fa fa-download fa-lg"></i> Download {{itemData.images[current] | extension}}
+        </md-button>
+    </div>
+</div>
+<div layout="row" layout-align="center center">
+    <div size-to-parent ng-style="panelStyle">
+        <img 
+            id='largeImage' 
+            ng-src="{{image}}" 
+            alt='You must be logged in to Nabu to view this image' 
+            ng-show="showImage" 
+            ng-style="transform" 
+            show-when-ready
+        >
+    </div>
+</div>
+
+<md-sidenav class="md-sidenav-right viewer-color" md-component-id="thumbnailFilmstrip">
+    <render-thumbnail-filmstrip item-data="itemData" selected="current" jump-to-image="jumpToImage()"></render-thumbnail-filmstrip>
+</md-sidenav>
+
+
