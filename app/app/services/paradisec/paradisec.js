@@ -137,61 +137,66 @@ angular.module('pdsc')
               data.openAccess = false;
           }
 
-          // generate the thumbnails array
-          data.thumbnails = _.map(data.images, function(d) {
+          data.thumbnails = generateThumbnails(data.images);
+          data.audioVisualisations = generateAudioVisualisations(data.audio);
+          getTranscriptions('eaf', data);
+          getTranscriptions('trs', data);
+          return data;
+      }
+
+      function generateThumbnails(images) {
+          return _.map(images, function(d) {
               var name = d.split('/').pop();
               var thumbName = name.split('.')[0] + '-thumb-PDSC_ADMIN.' + name.split('.')[1];
               return d.replace(name, thumbName);
           });
+      }
 
+      function generateAudioVisualisations(audio) {
           // generate the audio visualisation object keyed on name
-          data.audioVisualisations = _.map(data.audio, function(d) {
+          var audioVisualisations = _.map(audio, function(d) {
               var name = d[0].split('/').pop();
               var audioVisName = name.split('.')[0] + '-soundimage-PDSC_ADMIN.jpg'; 
               return d[0].replace(name, audioVisName);
           });
-          data.audioVisualisations = _(data.audioVisualisations).chain()
+          audioVisualisations = _(audioVisualisations).chain()
                              .groupBy(function(d) { return d.split('/').pop().split('.')[0].split('-soundimage')[0]; })
                              .value();
-          _.each(data.audioVisualisations, function(d, i) {
-              data.audioVisualisations[i] = d[0];
+
+          _.each(audioVisualisations, function(d, i) {
+              audioVisualisations[i] = d[0];
           });
+          return audioVisualisations;
+      }
+
+      function getTranscriptions(type, data) {
+          var transform, what;
+          if (type === 'eaf') {
+              transform = parseEAF;
+              what = data.eaf;
+          } else if (type === 'trs') {
+              transform = parseTRS;
+              what = data.trs;
+          } else {
+              return;
+          }
 
           // for each XML file in xml - kick off a retrieval
           //  each file is grabbed and parsed and the URL is then replaced
           //   with the JSON data structure of the document
-          _.each(data.eaf, function(d, i) {
+          _.each(what, function(d, i) {
               var url = d[0];
-              $http.get(url, { transformResponse: parseEAF, withCredentials: true }).then(function(resp) {
-                  // success
+              $http.get(url, { transformResponse: transform, withCredentials: true }).then(function(resp) {
                   if (_.isEmpty(resp.data.data)) {
-                      delete data.eaf[i];
+                      delete what[i];
                   } else {
-                       data.eaf[i] = resp.data.data;
+                      what[i] = resp.data.data;
                   }
               },
               function() {
-                  // failure
                   $log.error('ParadisecService: error, couldn\'t get', url);
               });
           });
-          _.each(data.trs, function(d, i) {
-              var url = d[0];
-              $http.get(url, { transformResponse: parseTRS, withCredentials: true }).then(function(resp) {
-                  // success
-                  if (_.isEmpty(resp.data.data)) {
-                      delete data.trs[i];
-                  } else {
-                      data.trs[i] = resp.data.data;
-                  }
-              },
-              function() {
-                  // failure
-                  $log.error('ParadisecService: error, couldn\'t get', url);
-              });
-          });
-
-          return data;
       }
 
       // Given a collectionId and itemId - get the 
@@ -213,7 +218,6 @@ angular.module('pdsc')
               // store the object in the service and let the metadata
               //  controller know it's ready to go
               paradisec.itemData = resp.data.data;
-              //$rootScope.$broadcast('item-data-ready');
 
               // and return it to the caller which is expecting a promise
               return resp.data.data;
