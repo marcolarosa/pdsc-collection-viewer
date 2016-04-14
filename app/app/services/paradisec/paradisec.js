@@ -230,7 +230,7 @@ angular.module('pdsc')
       var paradisec = {
           imageTypes:    [ 'jpg', 'jpeg', 'png' ],
           videoTypes:    [ 'mp4', 'webm', 'ogg', 'ogv', 'mov', 'webm' ],
-          audioTypes:    [ 'mp3', 'webm', 'ogg', 'oga' ],
+          audioTypes:    [ 'mp3', 'webm', 'ogg', 'oga', 'wav' ],
           documentTypes: [ 'pdf' ],
           getItem: getItem,
           itemData: {}
