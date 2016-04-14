@@ -35,53 +35,63 @@ var setup = function(collectionId, itemId, extraData) {
   });
 };
 
+/*
+fdescribe('Service: paradisec - test parseOAI function', function() {
+    setup('AC2', 'VUNU105'); 
+    it('should return a json object when passed in valid XML', function() {
+    });
+
+});
+*/
+
 describe('Service: paradisec - test single image item', function () {
-  setup('AC2', 'VUNU105');
-  it('image - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-  });
+    setup('AC2', 'VUNU105');
+    it('image - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+    });
 });
 
 describe('Service: paradisec - test wrong selection', function () {
-  setup('AC2', 'VUNUN105');
-  it('should return nothing', function() {
-      expect(itemData).toBe('');
-  });
+    setup('AC2', 'VUNUN105');
+    it('should return nothing', function() {
+        expect(itemData).toBe('');
+    });
 });
 
 describe('Service: paradisec - test multi image item', function () {
-  setup('AC2', 'ETHGS102');
-  it('images - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-  });
+    setup('AC2', 'ETHGS102');
+    it('images - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+    });
 });
 
 describe('Service: paradisec - test audio item', function () {
-  setup('AA2', '003');
-  it('audio - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-  });
+    setup('AA2', '003');
+    it('audio - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+    });
 });
 
 describe('Service: paradisec - test video item', function () {
-  setup('NT5', 'DickLauto');
-  it('video - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-  });
+    setup('NT5', 'DickLauto');
+    it('video - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+    });
 });
 
 describe('Service: paradisec - test audio + eaf', function () {
-  setup('NT10', 'W13', 'NT10-W13-A.eaf');
-  it('audio + eaf - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-      expect(itemData.eaf).toBeDefined();
-  });
+    setup('NT10', 'W13', 'NT10-W13-A.eaf');
+    it('audio + eaf - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+        expect(itemData.eaf).toBeDefined();
+    });
 });
 
 describe('Service: paradisec - test audio + trs', function () {
-  setup('BN1', '001', 'BN1-001-A.trs');
-  it('audio + trs - should return a JSON object with the data', function() {
-      expect(itemData).toBeDefined();
-      expect(itemData.trs).toBeDefined();
-  });
+    setup('BN1', '001', 'BN1-001-A.trs');
+    it('audio + trs - should return a JSON object with the data', function() {
+        expect(itemData).toBeDefined();
+        expect(itemData.trs).toBeDefined();
+    });
 });
+
