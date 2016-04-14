@@ -15,6 +15,9 @@
         <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
     </div>
     -->
+    <div layout="column">
+        <wavesurfer name="{{name}}" item-data="itemData"></wavesurfer>
+    </div>
     <div layout="column" layout-align="start start">
         <audio id="{{name}}" class="" controls preload="auto" style="width: 100%;" media-ready time-update>
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
