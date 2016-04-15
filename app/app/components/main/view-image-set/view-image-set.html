@@ -43,6 +43,9 @@
 </div>
 <div layout="row" layout-align="center center">
     <div size-to-parent ng-style="panelStyle">
+        <div ng-if="!showImage" style="width: 500px; margin: 40px;">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </div>
         <img 
             id='largeImage' 
             ng-src="{{image}}" 
