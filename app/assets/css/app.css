@@ -42,8 +42,15 @@ body {
     z-index: 100;
 }
 
-.fat-sidenav {
-    min-width: 304px !important;
-    width: 45vw !important;
-    max-width: 45vw !important;
-} 
+@media (min-width: 900px) {
+    .fat-sidenav {
+        width: 50vw !important;
+        max-width: 50vw !important;
+    } 
+}
+@media (max-width: 900px) {
+    .fat-sidenav {
+        width: 75vw !important;
+        max-width: 75vw !important;
+    } 
+}
