@@ -35,15 +35,6 @@ var setup = function(collectionId, itemId, extraData) {
   });
 };
 
-/*
-fdescribe('Service: paradisec - test parseOAI function', function() {
-    setup('AC2', 'VUNU105'); 
-    it('should return a json object when passed in valid XML', function() {
-    });
-
-});
-*/
-
 describe('Service: paradisec - test single image item', function () {
     setup('AC2', 'VUNU105');
     it('image - should return a JSON object with the data', function() {
@@ -54,6 +45,7 @@ describe('Service: paradisec - test single image item', function () {
 describe('Service: paradisec - test wrong selection', function () {
     setup('AC2', 'VUNUN105');
     it('should return nothing', function() {
+        console.log(itemData);
         expect(itemData).toBe('');
     });
 });

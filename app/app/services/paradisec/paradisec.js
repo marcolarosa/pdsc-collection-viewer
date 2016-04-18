@@ -9,10 +9,10 @@ angular.module('pdsc')
         'configuration', 
         'eafParser', 
         'trsParser',
+        'eopasParser',
         '_',
-        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, _) {
+        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, eopas, _) {
 
-      // generic xml parser - pass in XML : get back JSON
       function parseXML(doc) {
           var parser = new DOMParser();
 
@@ -23,31 +23,28 @@ angular.module('pdsc')
           return xmlToJson.convert(xmldoc);
       }
 
-      // parse an OAI feed and create a JSON data structure for the app to use
       function parseOAI(d) {
           var tree = parseXML(d);
 
-          // get a handle to the actual tree of data inside the OAI guff
           try {
               tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
 
-              // assemble and return the item data structure
               return { 'data': createItemDataStructure(tree)};
           } catch(e) {
               return { 'data': '' };
           }
       }
 
-      // parse an EAF document and create a JSON data structure for the app to use
       function parseEAF(d) {
-          // assemble and return the item data structure
-          return { 'data': eaf.parse(parseXML(d))};
+          return { 'data': eaf.parse(parseXML(d)) };
       }
 
-      // parse a TRS document and create a JSON data structure for the app to use
       function parseTRS(d) {
-          // assemble and return the item data structure
-          return { 'data': trs.parse(parseXML(d))};
+          return { 'data': trs.parse(parseXML(d)) };
+      }
+
+      function parseEopas(d) {
+          return { 'data': eopas.parse(parseXML(d)) };
       }
 
       // handler to extract a value for 'thing'
@@ -101,6 +98,19 @@ angular.module('pdsc')
           }
       }
 
+      function constructEopasItemList(tree) {
+          var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
+              if (d['#text'].match('eopas')) {
+                  return d['#text'];
+              }
+          }));
+          return _(items).chain()
+                         .groupBy(function(d) { 
+                             return _.last(d.split('/')).split('.')[0].replace('eopas', ''); 
+                         })
+                         .value();
+      }
+
       // Given a tree of XML as JSON, create a data structure for the item
       function createItemDataStructure(tree) {
           if (! _.isArray(tree['dc:identifier'])) {
@@ -129,6 +139,7 @@ angular.module('pdsc')
               'audio': constructItemList('audio', tree),
               'eaf': constructItemList('eaf', tree),
               'trs': constructItemList('trs', tree),
+              'eopas': constructEopasItemList(tree),
               'documents': constructItemList('documents', tree),
               'rights': get(tree, 'dcterms:accessRights')
           };
@@ -141,6 +152,7 @@ angular.module('pdsc')
           data.audioVisualisations = generateAudioVisualisations(data.audio);
           getTranscriptions('eaf', data);
           getTranscriptions('trs', data);
+          getTranscriptions('eopas', data);
           return data;
       }
 
@@ -177,6 +189,9 @@ angular.module('pdsc')
           } else if (type === 'trs') {
               transform = parseTRS;
               what = data.trs;
+          } else if (type === 'eopas') {
+              transform = parseEopas;
+              what = data.eopas;
           } else {
               return;
           }
