@@ -74,6 +74,8 @@ angular.module('pdsc')
               selector = 'eaf';
           } else if (type === 'trs') {
               selector = 'trs';
+          } else if (type === 'ixt') {
+              selector = 'ixt';
           }
       
           if (!_.isArray(tree['dcterms:tableOfContents'])) {
@@ -87,7 +89,7 @@ angular.module('pdsc')
               }
           }));
 
-          if ([ 'audio', 'video', 'eaf', 'trs' ].indexOf(type) !== -1) {
+          if ([ 'audio', 'video', 'eaf', 'trs', 'ixt' ].indexOf(type) !== -1) {
               // audio and video can exist in multiple formats; so, group the data
               //  by name and then return an array of arrays - sorting by item name 
               return _(items).chain()
@@ -96,19 +98,6 @@ angular.module('pdsc')
           } else {
             return items;
           }
-      }
-
-      function constructEopasItemList(tree) {
-          var items = _.compact(_.map(tree['dcterms:tableOfContents'], function(d) {
-              if (d['#text'].match('eopas')) {
-                  return d['#text'];
-              }
-          }));
-          return _(items).chain()
-                         .groupBy(function(d) { 
-                             return _.last(d.split('/')).split('.')[0].replace('eopas', ''); 
-                         })
-                         .value();
       }
 
       // Given a tree of XML as JSON, create a data structure for the item
@@ -139,7 +128,7 @@ angular.module('pdsc')
               'audio': constructItemList('audio', tree),
               'eaf': constructItemList('eaf', tree),
               'trs': constructItemList('trs', tree),
-              'eopas': constructEopasItemList(tree),
+              'eopas': constructItemList('ixt', tree),
               'documents': constructItemList('documents', tree),
               'rights': get(tree, 'dcterms:accessRights')
           };
