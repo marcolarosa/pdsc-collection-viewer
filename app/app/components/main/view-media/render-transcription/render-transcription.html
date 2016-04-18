@@ -3,8 +3,8 @@
     <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
 </div>
 <div layout="row">
-    <div style="position: relative; height: 300px; overflow: auto; border: 1px solid white; border-radius: 4px;" ng-show="st">
-        <table class="">
+    <div class="transcription-panel" ng-show="!st">
+        <table ng-if="transcript">
             <tbody>
                 <tr ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" id="{{name}}_{{k}}" ng-class="{ 'transcription-selected': $index==selectedIndex}">
                     <td style="vertical-align: middle;">
@@ -20,5 +20,27 @@
                 </tr>
             </tbody>
         </table>
+
+        <div ng-if="eopas">
+            <div ng-repeat="sentence in eopas" layout="column" layout-padding>
+                <div>{{sentence.transcription}}</div>
+                <div>{{sentence.translation}}</div>
+                <div layout="row" layout-padding style="background-color: green;">
+                    <table ng-repeat="word in sentence.words">
+                        <tbody>
+                            <tr>
+                                <td colspan="{{word.words.length}}">{{word.text}}</td>
+                            </tr>
+                            <tr style="background-color: blue;">
+                                <td ng-repeat="w in word.words">{{w.morpheme}}</td>
+                            </tr>
+                            <tr style="background-color: blue;">
+                                <td ng-repeat="w in word.words">{{w.gloss}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

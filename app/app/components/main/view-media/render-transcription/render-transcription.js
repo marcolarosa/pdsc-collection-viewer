@@ -11,6 +11,7 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           transcription: '=',
+          eopas: '=',
           currentTime: '=',
           name: '@',
           play: '&'

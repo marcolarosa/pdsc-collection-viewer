@@ -29,7 +29,16 @@
             name="{{name}}"
             play="playFragment(start, end)"
             current-time="currentTime"
-            ng-if=" trs">
+            ng-if="trs">
+        </render-transcription>
+    </div>
+    <div layout="column">
+        <render-transcription
+            eopas="eopas"
+            name="{{name}}"
+            play="playFragment(start, end)"
+            current-time="currentTime"
+            ng-if="eopas">
         </render-transcription>
     </div>
 </div>

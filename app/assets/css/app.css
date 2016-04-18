@@ -1,5 +1,6 @@
 body {
 }
+
 .viewer-color {
     background-color: #EFEBE9;
 }
@@ -53,4 +54,13 @@ body {
         width: 75vw !important;
         max-width: 75vw !important;
     } 
+}
+
+.transcription-panel {
+    position: relative; 
+    height: 300px; 
+    overflow: auto; 
+    border: 1px solid white; 
+    border-radius: 4px; 
+    padding: 5px;
 }

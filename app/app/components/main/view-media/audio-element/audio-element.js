@@ -28,6 +28,11 @@ angular.module('pdsc')
                       scope.trs = scope.itemData.trs[scope.name];
                   }
               }
+              if (!_.isEmpty(scope.itemData.eopas)) {
+                  if (scope.itemData.eopas[scope.name] && scope.itemData.eopas[scope.name].length > 1) {
+                      scope.eopas = scope.itemData.eopas[scope.name];
+                  }
+              }
           }, true);
 
           // required by the directive which watches for the 
