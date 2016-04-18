@@ -123,18 +123,18 @@ describe('Directive: viewImageSet - multiple images in set', function() {
         expect(scope.currentScale).toBe(0.2);
     });
 
-    it('should set transformOrigin to "center top"', function() {
+    it('should set transformOrigin to "left top"', function() {
         scope.currentRotation = 0;
         scope.setTransformOrigin();
-        expect(scope.transformOrigin).toBe('center top');
+        expect(scope.transformOrigin).toBe('left top');
 
         scope.currentRotation = 360;
         scope.setTransformOrigin();
-        expect(scope.transformOrigin).toBe('center top');
+        expect(scope.transformOrigin).toBe('left top');
 
         scope.currentRotation = -360;
         scope.setTransformOrigin();
-        expect(scope.transformOrigin).toBe('center top');
+        expect(scope.transformOrigin).toBe('left top');
     });
 
     it('should set transformOrigin to "center center"', function() {
