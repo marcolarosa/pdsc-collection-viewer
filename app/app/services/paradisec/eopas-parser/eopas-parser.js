@@ -10,8 +10,12 @@ angular.module('pdsc')
       eopasParser.parse = function(data) {
           var text = _.map(data.eopas.interlinear.phrase, function(d) {
               var words = _.map(d.wordlist.word, function(w) {
-                  if (!_.isArray(w.morphemelist.morpheme)) {
-                      w.morphemelist.morpheme = [ w.morphemelist.morpheme ];
+                  try {
+                      if (!_.isArray(w.morphemelist.morpheme)) {
+                          w.morphemelist.morpheme = [ w.morphemelist.morpheme ];
+                      }
+                  } catch(e) {
+                      return {};
                   }
                   var word = _.map(w.morphemelist.morpheme, function(m) {
                       return {
@@ -19,10 +23,10 @@ angular.module('pdsc')
                           'gloss': m.text[1]['#text']
                       };
                   });
-                  var w = {
+                  w = {
                       'text': w.text['#text'],
                       'words': word
-                  }
+                  };
                   return w;
               });
               return {
