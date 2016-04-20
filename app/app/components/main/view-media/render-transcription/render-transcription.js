@@ -18,15 +18,23 @@ angular.module('pdsc')
       },
       link: function postLink(scope) {
           scope.highlight = {};
+          scope.st = false;
+          scope.se = false;
+
           scope.$watch('currentTime', function() {
               if (scope.currentTime) {
-                  var transformed = _.map(scope.transcript, function(t) {
+                  var d;
+                  if (scope.transcript) {
+                      d = scope.transcript;
+                  } else if (scope.eopas) {
+                      d = scope.eopas;
+                  }
+                  var transformed = _.map(d, function(t) {
                       if (t.time > scope.currentTime) { 
                           return 1;
                       } else {
                           return 0;
                       }
-                      
                   });
                   scope.selectedIndex = _.indexOf(transformed, 1, true) - 1;
                   var o = $location.hash();
@@ -36,9 +44,6 @@ angular.module('pdsc')
 
               }
           });
-
-          // show or hide the transcription?
-          scope.st = false;
 
           var transcript = _.compact(_.map(scope.transcription, function(v) { 
               if (v.value || v.referenceValue) {

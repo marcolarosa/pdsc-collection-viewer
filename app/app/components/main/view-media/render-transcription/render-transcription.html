@@ -1,46 +1,64 @@
-<div layout="row">
-    <md-button class="small-button" ng-click="st = !st" ng-show="!st">Show Transcription</md-button>
-    <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
-</div>
-<div layout="row">
-    <div class="transcription-panel" ng-show="!st">
-        <table ng-if="transcript && !eopas">
-            <tbody>
-                <tr ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" id="{{name}}_{{k}}" ng-class="{ 'transcription-selected': $index==selectedIndex}">
-                    <td style="vertical-align: middle;">
-                        <md-button class="" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
+<div ng-if="transcript">
+    <div layout="row">
+        <md-button class="small-button" ng-click="st = !st" ng-show="!st">Show Transcription</md-button>
+        <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
+    </div>
+    <div layout="row">
+        <div class="transcription-panel" ng-show="!st">
+            <div ng-if="transcript">
+                <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
+                    <div id="{{name}}_{{k}}"></div>
+                    <div layout-align="start start">
+                        <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
                             <i class="fa fa-play fa-lg"></i> Play ({{v.time}}s)
                         </md-button>
-                    </td>
-                    <td style="vertical-align: middle;">
+                    </div>
+                    <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}">
                         {{v.value}}
                         <br/>
                         {{v.referenceValue}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div ng-if="eopas">
-            <div ng-repeat="sentence in eopas" layout="column" class="md-margin">
-                <div>{{sentence.transcription}}</div>
-                <div class="highlight-translation">{{sentence.translation}}</div>
-                <div layout="row" layout-padding>
-                    <table ng-repeat="word in sentence.words">
-                        <tbody class="highlight-word">
-                            <tr class="">
-                                <td colspan="{{word.words.length}}">{{word.text}}</td>
-                            </tr>
-                            <tr class="highlight-morpheme">
-                                <td ng-repeat="w in word.words">{{w.morpheme}}</td>
-                            </tr>
-                            <tr class="highlight-gloss">
-                                <td ng-repeat="w in word.words">{{w.gloss}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    </div>
+                    <md-divider></md-divider>
                 </div>
-                <md-divider></md-divider>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="eopas">
+    <div layout="row">
+        <md-button class="small-button" ng-click="se = !se" ng-show="!se">Show Interlinear Text</md-button>
+        <md-button class="small-button" ng-click="se = !se" ng-show="se">Hide Interlinear Text</md-button>
+    </div>
+    <div layout="row" ng-if="eopas">
+        <div class="transcription-panel" ng-show="!se">
+            <div ng-if="eopas">
+                <div ng-repeat="(k, sentence) in eopas" layout="column" class="md-margin">
+                    <div id="{{name}}_{{k}}"></div>
+                    <div>
+                        <md-button class="small-button" ng-click="play({ 'start': eopas[k], 'end': eopas[k+1] })">
+                            <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}s)
+                        </md-button>
+                    </div>
+                    <div ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+                    <div class="highlight-translation">{{sentence.translation}}</div>
+                    <div layout="row" layout-padding>
+                        <table ng-repeat="word in sentence.words" class="table-style">
+                            <tbody class="highlight-word">
+                                <tr class="">
+                                    <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                                </tr>
+                                <tr class="highlight-morpheme">
+                                    <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
+                                </tr>
+                                <tr class="highlight-gloss">
+                                    <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
             </div>
         </div>
     </div>
