@@ -32,8 +32,6 @@ angular.module('pdsc')
                 'words': words
               };
           });
-          //console.log(data.eopas.interlinear.phrase);
-          console.log(text);
           return text;
       };
 
