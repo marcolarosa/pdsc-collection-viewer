@@ -4,7 +4,7 @@
 </div>
 <div layout="row">
     <div class="transcription-panel" ng-show="!st">
-        <table ng-if="transcript">
+        <table ng-if="transcript && !eopas">
             <tbody>
                 <tr ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" id="{{name}}_{{k}}" ng-class="{ 'transcription-selected': $index==selectedIndex}">
                     <td style="vertical-align: middle;">
@@ -22,24 +22,25 @@
         </table>
 
         <div ng-if="eopas">
-            <div ng-repeat="sentence in eopas" layout="column" layout-padding>
+            <div ng-repeat="sentence in eopas" layout="column" class="md-margin">
                 <div>{{sentence.transcription}}</div>
-                <div>{{sentence.translation}}</div>
-                <div layout="row" layout-padding style="background-color: green;">
+                <div class="highlight-translation">{{sentence.translation}}</div>
+                <div layout="row" layout-padding>
                     <table ng-repeat="word in sentence.words">
-                        <tbody>
-                            <tr>
+                        <tbody class="highlight-word">
+                            <tr class="">
                                 <td colspan="{{word.words.length}}">{{word.text}}</td>
                             </tr>
-                            <tr style="background-color: blue;">
+                            <tr class="highlight-morpheme">
                                 <td ng-repeat="w in word.words">{{w.morpheme}}</td>
                             </tr>
-                            <tr style="background-color: blue;">
+                            <tr class="highlight-gloss">
                                 <td ng-repeat="w in word.words">{{w.gloss}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <md-divider></md-divider>
             </div>
         </div>
     </div>

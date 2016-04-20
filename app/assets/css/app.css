@@ -64,3 +64,26 @@ body {
     border-radius: 4px; 
     padding: 5px;
 }
+
+.highlight-word {
+    background-color: #B0BEC5;
+}
+.highlight-morpheme {
+    background-color: #EFEBE9;
+}
+.highlight-gloss {
+    background-color: #EFEBE9;
+}
+.highlight-translation {
+    color: #00C853;
+}
+td {
+    margin: 0px;
+    padding: 5px;
+    border-left: 1px solid #B0BEC5;
+    border-right: 1px solid #B0BEC5;
+    border-bottom: 1px solid #B0BEC5;
+}
+table {
+    border-spacing: 0px;
+}
