@@ -4,7 +4,7 @@
         <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
     </div>
     <div layout="row">
-        <div class="transcription-panel" ng-show="!st">
+        <div class="transcription-panel" ng-show="st">
             <div ng-if="transcript">
                 <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
                     <div id="{{name}}_{{k}}"></div>
@@ -31,7 +31,7 @@
         <md-button class="small-button" ng-click="se = !se" ng-show="se">Hide Interlinear Text</md-button>
     </div>
     <div layout="row" ng-if="eopas">
-        <div class="transcription-panel" ng-show="!se">
+        <div class="transcription-panel" ng-show="se">
             <div ng-if="eopas">
                 <div ng-repeat="(k, sentence) in eopas" layout="column" class="md-margin">
                     <div id="{{name}}_{{k}}"></div>
