@@ -189,16 +189,19 @@ angular.module('pdsc')
           //  each file is grabbed and parsed and the URL is then replaced
           //   with the JSON data structure of the document
           _.each(what, function(d, i) {
-              var url = d[0];
-              $http.get(url, { transformResponse: transform, withCredentials: true }).then(function(resp) {
-                  if (_.isEmpty(resp.data.data)) {
-                      delete what[i];
-                  } else {
-                      what[i] = resp.data.data;
-                  }
-              },
-              function() {
-                  $log.error('ParadisecService: error, couldn\'t get', url);
+              what[i] = {};
+              _.each(d, function(url) {
+                  $http.get(url, { transformResponse: transform, withCredentials: true }).then(function(resp) {
+                      if (_.isEmpty(resp.data.data)) {
+                          delete what[i];
+                      } else {
+                          var name = url.split('/').pop();
+                          what[i][name] = resp.data.data;
+                      }
+                  },
+                  function() {
+                      $log.error('ParadisecService: error, couldn\'t get', url);
+                  });
               });
           });
       }
