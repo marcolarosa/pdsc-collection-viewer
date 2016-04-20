@@ -1,7 +1,11 @@
 <div ng-if="transcript">
     <div layout="row">
-        <md-button class="small-button" ng-click="st = !st" ng-show="!st">Show Transcription</md-button>
-        <md-button class="small-button" ng-click="st = !st" ng-show="st">Hide Transcription</md-button>
+        <md-button class="small-button" ng-click="st = !st" ng-show="!st">
+            <i class="fa fa-plus fa-lg"></i> Show Transcription
+        </md-button>
+        <md-button class="small-button" ng-click="st = !st" ng-show="st">
+            <i class="fa fa-minus fa-lg"></i> Hide Transcription
+        </md-button>
     </div>
     <div layout="row">
         <div class="transcription-panel" ng-show="st">
@@ -27,8 +31,12 @@
 
 <div ng-if="eopas">
     <div layout="row">
-        <md-button class="small-button" ng-click="se = !se" ng-show="!se">Show Interlinear Text</md-button>
-        <md-button class="small-button" ng-click="se = !se" ng-show="se">Hide Interlinear Text</md-button>
+        <md-button class="small-button" ng-click="se = !se" ng-show="!se">
+            <i class="fa fa-plus fa-lg"></i> Show Interlinear Text
+        </md-button>
+        <md-button class="small-button" ng-click="se = !se" ng-show="se">
+            <i class="fa fa-minus fa-lg"></i> Hide Interlinear Text
+        </md-button>
     </div>
     <div layout="row" ng-if="eopas">
         <div class="transcription-panel" ng-show="se">
