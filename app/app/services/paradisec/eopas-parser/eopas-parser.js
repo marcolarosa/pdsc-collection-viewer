@@ -28,11 +28,7 @@ angular.module('pdsc')
               return {
                 'transcription': d.transcription['#text'],
                 'translation': d.translation['#text'],
-                'metadata': {
-                    'id': d['@attributes'].id,
-                    'start': d['@attributes'].startTime,
-                    'end': d['@attributes'].endTime
-                },
+                'time': d['@attributes'].startTime,
                 'words': words
               };
           });
