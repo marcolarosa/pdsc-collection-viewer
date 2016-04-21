@@ -45,14 +45,37 @@ angular.module('pdsc')
               }
           });
 
-          var transcript = _.compact(_.map(scope.transcription, function(v) { 
-              if (v.value || v.referenceValue) {
-                  return v; 
+          scope.$watch('transcription', function() {
+              if (scope.transcription === undefined) { 
+                  return;
               }
-          }));
-          if (!_.isEmpty(transcript)) {
-              scope.transcript = transcript;
-          }
+              scope.availableTranscripts = _.keys(scope.transcription);
+              scope.selectedTranscript = scope.availableTranscripts[0];
+              scope.loadTranscript();
+              if (scope.availableTranscripts.length > 1) {
+                  scope.transcriptsSelector = true;
+              }
+          }, true);
+
+          scope.$watch('eopas', function() {
+              if (scope.eopas === undefined) {
+                  return;
+              }
+              scope.availableInterlinearTexts = _.keys(scope.eopas);
+              scope.selectedInterlinearText = scope.availableInterlinearTexts[0];
+              scope.loadInterlinearText();
+              if (scope.availableInterlinearTexts.length > 1) {
+                  scope.interlinearTextsSelector = true;
+              }
+          }, true);
+
+          scope.loadInterlinearText = function() {
+              scope.interlinearText = scope.eopas[scope.selectedInterlinearText];
+          };
+
+          scope.loadTranscript = function() {
+              scope.transcript = scope.transcription[scope.selectedTranscript];
+          };
       }
     };
   }]);

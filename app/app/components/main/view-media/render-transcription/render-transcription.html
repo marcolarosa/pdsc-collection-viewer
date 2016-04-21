@@ -1,11 +1,21 @@
 <div ng-if="transcript">
     <div layout="row">
-        <md-button class="small-button" ng-click="st = !st" ng-show="!st">
-            <i class="fa fa-plus fa-lg"></i> Show Transcription
-        </md-button>
-        <md-button class="small-button" ng-click="st = !st" ng-show="st">
-            <i class="fa fa-minus fa-lg"></i> Hide Transcription
-        </md-button>
+        <md-input-container>
+            <md-button class="small-button" ng-click="st = !st" ng-show="!st">
+                <i class="fa fa-plus fa-lg"></i> Show Transcription
+            </md-button>
+            <md-button class="small-button" ng-click="st = !st" ng-show="st">
+                <i class="fa fa-minus fa-lg"></i> Hide Transcription
+            </md-button>
+        </md-input-container>
+        <div flex></div>
+        <md-input-container ng-if="transcriptsSelector">
+            <md-select ng-model="selectedTranscript" ng-change="loadTranscript()" class="shift-down">
+                <md-option ng-repeat="text in selectedTranscript" value="{{text}}">
+                    {{text}}
+                </md-option>
+            </md-select>
+        </md-input-container>
     </div>
     <div layout="row">
         <div class="transcription-panel" ng-show="st">
@@ -31,20 +41,30 @@
 
 <div ng-if="eopas">
     <div layout="row">
-        <md-button class="small-button" ng-click="se = !se" ng-show="!se">
-            <i class="fa fa-plus fa-lg"></i> Show Interlinear Text
-        </md-button>
-        <md-button class="small-button" ng-click="se = !se" ng-show="se">
-            <i class="fa fa-minus fa-lg"></i> Hide Interlinear Text
-        </md-button>
+        <md-input-container>
+            <md-button class="small-button" ng-click="se = !se" ng-show="!se">
+                <i class="fa fa-plus fa-lg"></i> Show Interlinear Text
+            </md-button>
+            <md-button class="small-button" ng-click="se = !se" ng-show="se">
+                <i class="fa fa-minus fa-lg"></i> Hide Interlinear Text
+            </md-button>
+        </md-input-container>
+        <div flex></div>
+        <md-input-container ng-if="interlinearTextsSelector">
+            <md-select ng-model="selectedInterlinearText" ng-change="loadInterlinearText()" class="shift-down">
+                <md-option ng-repeat="text in availableInterlinearTexts" value="{{text}}">
+                    {{text}}
+                </md-option>
+            </md-select>
+        </md-input-container>
     </div>
     <div layout="row" ng-if="eopas">
         <div class="transcription-panel" ng-show="se">
             <div ng-if="eopas">
-                <div ng-repeat="(k, sentence) in eopas" layout="column" class="md-margin">
+                <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
                     <div id="{{name}}_{{k}}"></div>
                     <div>
-                        <md-button class="small-button" ng-click="play({ 'start': eopas[k], 'end': eopas[k+1] })">
+                        <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
                             <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}s)
                         </md-button>
                     </div>

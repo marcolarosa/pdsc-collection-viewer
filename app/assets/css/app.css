@@ -87,3 +87,7 @@ body {
 .table-style {
     border-spacing: 0px;
 }
+
+.shift-down {
+    margin-top: 8px;
+}
