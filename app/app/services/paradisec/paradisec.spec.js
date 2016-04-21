@@ -42,14 +42,6 @@ describe('Service: paradisec - test single image item', function () {
     });
 });
 
-describe('Service: paradisec - test wrong selection', function () {
-    setup('AC2', 'VUNUN105');
-    it('should return nothing', function() {
-        console.log(itemData);
-        expect(itemData).toBe('');
-    });
-});
-
 describe('Service: paradisec - test multi image item', function () {
     setup('AC2', 'ETHGS102');
     it('images - should return a JSON object with the data', function() {

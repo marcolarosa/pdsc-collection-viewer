@@ -32,7 +32,10 @@ describe('Directive: render transcription', function () {
     it('should create the transcript variable on the scope', function() {
         expect(scope.transcript).toBeDefined();
     });
-    it('the transcript variable should have two elements', function() {
-        expect(scope.transcript.length).toBe(2);
+    it('the transcript id should be 0', function() {
+        expect(scope.transcript.id).toBe('0');
+    });
+    it('the transcript speaker should be spk1', function() {
+        expect(scope.transcript.speaker).toBe('spk1');
     });
 });
