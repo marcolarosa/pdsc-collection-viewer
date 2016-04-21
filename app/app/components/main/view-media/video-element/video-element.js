@@ -16,22 +16,13 @@ angular.module('pdsc')
       link: function postLink(scope) {
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData.eaf)) {
-                  _.each(scope.itemData.eaf, function(value, key) {
-                      if (key.match(scope.itemData.collectionId + '-' + scope.itemData.itemId)) {
-                          if (scope.itemData.eaf[key].length > 1) {
-                              scope.trs = scope.itemData.eaf[key];
-                          }
-                      }
-                  });
+                  scope.trs = scope.itemData.eaf[scope.name];
               }
-              if (!scope.trs && !_.isEmpty(scope.itemData.trs)) {
-                  _.each(scope.itemData.trs, function(value, key) {
-                      if (key.match(scope.itemData.collectionId + '-' + scope.itemData.itemId)) {
-                          if (scope.itemData.trs[key].length > 1) {
-                              scope.trs = scope.itemData.trs[key];
-                          }
-                      }
-                  });
+              if (!_.isEmpty(scope.itemData.trs)) {
+                  scope.trs = scope.itemData.trs[scope.name];
+              }
+              if (!_.isEmpty(scope.itemData.eopas)) {
+                  scope.eopas = scope.itemData.eopas[scope.name];
               }
           }, true);
 

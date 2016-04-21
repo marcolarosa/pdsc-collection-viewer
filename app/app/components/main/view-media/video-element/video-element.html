@@ -28,6 +28,15 @@
             ng-if="mediaReadyToPlay && trs">
         </render-transcription>
     </div>
+    <div layout="column">
+        <render-transcription
+            eopas="eopas"
+            name="{{name}}"
+            play="playFragment(start, end)"
+            current-time="currentTime"
+            ng-if="eopas">
+        </render-transcription>
+    </div>
 </div>
 <div layout="column" layout-align="center center" flex="50" flex-offset="25" ng-show="!mediaReadyToPlay">
     Loading media... please wait.
