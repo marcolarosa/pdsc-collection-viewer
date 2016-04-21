@@ -19,19 +19,13 @@ angular.module('pdsc')
 
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData.eaf)) {
-                  if (scope.itemData.eaf[scope.name] && scope.itemData.eaf[scope.name].length > 1) {
-                      scope.trs = scope.itemData.eaf[scope.name];
-                  }
+                  scope.trs = scope.itemData.eaf[scope.name];
               }
               if (!_.isEmpty(scope.itemData.trs)) {
-                  if (scope.itemData.trs[scope.name] && scope.itemData.trs[scope.name].length > 1) {
-                      scope.trs = scope.itemData.trs[scope.name];
-                  }
+                  scope.trs = scope.itemData.trs[scope.name];
               }
               if (!_.isEmpty(scope.itemData.eopas)) {
-                  if (scope.itemData.eopas[scope.name] && scope.itemData.eopas[scope.name].length > 1) {
-                      scope.eopas = scope.itemData.eopas[scope.name];
-                  }
+                  scope.eopas = scope.itemData.eopas[scope.name];
               }
           }, true);
 
