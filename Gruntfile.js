@@ -31,6 +31,20 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    buildcontrol: {
+        options: {
+            dir: 'dist',
+            commit: true,
+            push: true,
+        },
+        testing: {
+            options: {
+                remote: 'git@github.com:MLR-au/pdsc-collection-viewer.git',
+                branch: 'testing',
+            },
+        },
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
