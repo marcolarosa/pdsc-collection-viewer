@@ -368,10 +368,14 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true
+          collapseBooleanAttributes:      true,
+          collapseWhitespace:             true,
+          removeAttributeQuotes:          true,
+          removeComments:                 true, // Only if you don't use comment directives! 
+          removeEmptyAttributes:          true,
+          removeRedundantAttributes:      true,
+          removeScriptTypeAttributes:     true,
+          removeStyleLinkTypeAttributes:  true
         },
         files: [{
           expand: true,
@@ -391,7 +395,7 @@ module.exports = function (grunt) {
         },
         cwd: '<%= yeoman.app %>',
         src: 'app/app/components/**/*.html',
-        dest: '.tmp/templateCache.js'
+        dest: '.tmp/concat/scripts/templateCache.js'
       }
     },
 
