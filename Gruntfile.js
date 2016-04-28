@@ -391,11 +391,11 @@ module.exports = function (grunt) {
         options: {
           module: 'pdsc',
           htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 'scripts/scripts.js'
+          usemin: 'dist/scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: '**/*.html',
-        dest: '.tmp/concat/scripts/templateCache.js'
+        src: 'app/components/**/*.html',
+        dest: 'dist/scripts/scripts.js'
       }
     },
 
@@ -513,7 +513,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'postcss',
-    //'ngtemplates',
+    'ngtemplates',
     'concat',
     'ngAnnotate',
     'copy:dist',
