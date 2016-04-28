@@ -37,6 +37,7 @@
             </div>
         </div>
     </div>
+    <md-divider></md-divider>
 </div>
 
 <div ng-if="eopas">
@@ -68,8 +69,8 @@
                             <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}s)
                         </md-button>
                     </div>
-                    <div ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
-                    <div class="highlight-translation">{{sentence.translation}}</div>
+                    <div class="md-headline" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+                    <div class="md-headline highlight-translation">{{sentence.translation}}</div>
                     <div layout="row" layout-padding>
                         <table ng-repeat="word in sentence.words" class="table-style">
                             <tbody class="highlight-word">
