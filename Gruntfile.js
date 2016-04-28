@@ -394,7 +394,7 @@ module.exports = function (grunt) {
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'app/app/components/**/*.html',
+        src: '**/*.html',
         dest: '.tmp/concat/scripts/templateCache.js'
       }
     },
@@ -513,7 +513,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'postcss',
-    'ngtemplates',
+    //'ngtemplates',
     'concat',
     'ngAnnotate',
     'copy:dist',
