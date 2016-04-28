@@ -81,7 +81,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'newer:jscs:test']
       },
       styles: {
-        files: ['<%= yeoman.app %>/assets/css/{,*/}*.css'],
+        files: ['<%= yeoman.app %>/app/assets/css/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'postcss']
       },
       gruntfile: {
@@ -95,6 +95,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/index.html',
           '<%= yeoman.app %>/app/components/**/*.html',
           '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/app/assets/css/{,*/}*.css',
           '<%= yeoman.app %>/app/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -438,6 +439,11 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        },{
+            expand: true,
+            flatten: true,
+            src: 'bower_components/font-awesome/fonts/*',
+            dest: 'dist/fonts'
         }]
       },
       styles: {
