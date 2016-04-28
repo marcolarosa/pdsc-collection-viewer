@@ -385,12 +385,12 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'contextualliUiApp',
+          module: 'pdsc',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: 'app/app/components/**/*.html',
         dest: '.tmp/templateCache.js'
       }
     },
