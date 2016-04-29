@@ -322,13 +322,6 @@ module.exports = function (grunt) {
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
     cssmin: {
-        dist: {
-            files: {
-                '<%= yeoman.app %>/assets/css/app.css': [
-                    '.tmp/styles/{,*/}*.css'
-                ]
-            }
-        }
     },
 
     uglify: {
@@ -439,9 +432,9 @@ module.exports = function (grunt) {
                 dest: 'dist/fonts'
             },{
                 expand: true,
-                cwd: '<%= yeoman.app %>/assets/css',
-                dest: '.tmp/styles/',
-            src: '*.css'
+                cwd: '.tmp/styles',
+                dest: '<%= yeoman.dist %>/styles',
+                src: '*.css'
             }]
         },
         styles: {
@@ -500,18 +493,18 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
       'clean:dist',
       'wiredep',
-      //'useminPrepare',
-      //'concurrent:dist',
-      //'postcss',
-      //'ngtemplates',
-      //'concat',
-      //'ngAnnotate',
-      //'copy:dist',
-      //'cssmin',
-      //'uglify',
-      //'filerev',
-      //'usemin',
-      //'htmlmin'
+      'useminPrepare',
+      'concurrent:dist',
+      'postcss',
+      'ngtemplates',
+      'concat',
+      'ngAnnotate',
+      'copy:dist',
+      'cssmin',
+      'uglify',
+      'filerev',
+      'usemin',
+      'htmlmin'
   ]);
 
 };
