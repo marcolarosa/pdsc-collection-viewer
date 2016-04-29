@@ -5,7 +5,8 @@ angular.module('pdsc')
     '$location', 
     '$anchorScroll', 
     '_',
-    function ($location, $anchorScroll, _) {
+    '$timeout',
+    function ($location, $anchorScroll, _, $timeout) {
     return {
       templateUrl: 'app/components/main/view-media/render-transcription/render-transcription.html',
       restrict: 'E',
@@ -20,6 +21,8 @@ angular.module('pdsc')
           scope.highlight = {};
           scope.st = false;
           scope.se = false;
+          scope.selected = {};
+          scope.available = {};
 
           scope.$watch('currentTime', function() {
               if (scope.currentTime) {
@@ -49,10 +52,10 @@ angular.module('pdsc')
               if (scope.transcription === undefined) { 
                   return;
               }
-              scope.availableTranscripts = _.keys(scope.transcription);
-              scope.selectedTranscript = scope.availableTranscripts[0];
-              scope.loadTranscript();
-              if (scope.availableTranscripts.length > 1) {
+              scope.available.transcripts = _.keys(scope.transcription).sort();
+              scope.selected.transcript = scope.available.transcripts[0];
+              scope.load('transcript');
+              if (scope.available.transcripts.length > 1) {
                   scope.transcriptsSelector = true;
               }
           }, true);
@@ -61,21 +64,24 @@ angular.module('pdsc')
               if (scope.eopas === undefined) {
                   return;
               }
-              scope.availableInterlinearTexts = _.keys(scope.eopas);
-              scope.selectedInterlinearText = scope.availableInterlinearTexts[0];
-              scope.loadInterlinearText();
-              if (scope.availableInterlinearTexts.length > 1) {
+              scope.available.interlinear = _.keys(scope.eopas).sort();
+              scope.selected.interlinear = scope.available.interlinear[0];
+              scope.load('interlinear');
+              if (scope.available.interlinear.length > 1) {
                   scope.interlinearTextsSelector = true;
               }
           }, true);
 
-          scope.loadInterlinearText = function() {
-              scope.interlinearText = scope.eopas[scope.selectedInterlinearText];
+          scope.load = function(what) {
+              $timeout(function() {
+                  if (what === 'transcript') {
+                    scope.transcript = scope.transcription[scope.selected.transcript];
+                  } else if (what === 'interlinear') {
+                    scope.interlinearText = scope.eopas[scope.selected.interlinear];
+                  }
+              }, 100);
           };
 
-          scope.loadTranscript = function() {
-              scope.transcript = scope.transcription[scope.selectedTranscript];
-          };
       }
     };
   }]);

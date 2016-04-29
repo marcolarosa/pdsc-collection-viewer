@@ -10,8 +10,8 @@
         </md-input-container>
         <div flex></div>
         <md-input-container ng-if="transcriptsSelector">
-            <md-select ng-model="selectedTranscript" ng-change="loadTranscript()" class="shift-down" aria-label="select transcription">
-                <md-option ng-repeat="text in selectedTranscript" value="{{text}}">
+            <md-select ng-model="selected.transcript" ng-change="load('transcript')" class="shift-down" aria-label="select transcription">
+                <md-option ng-repeat="text in available.transcripts" value="{{text}}">
                     {{text}}
                 </md-option>
             </md-select>
@@ -52,8 +52,8 @@
         </md-input-container>
         <div flex></div>
         <md-input-container ng-if="interlinearTextsSelector">
-            <md-select ng-model="selectedInterlinearText" ng-change="loadInterlinearText()" class="shift-down" aria-label="select interlinear text">
-                <md-option ng-repeat="text in availableInterlinearTexts" value="{{text}}">
+            <md-select ng-model="selected.interlinear" ng-change="load('interlinear')" class="shift-down" aria-label="select interlinear text">
+                <md-option ng-repeat="text in available.interlinear" ng-value="text">
                     {{text}}
                 </md-option>
             </md-select>
