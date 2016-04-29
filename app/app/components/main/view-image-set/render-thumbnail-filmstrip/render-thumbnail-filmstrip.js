@@ -13,7 +13,7 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           itemData: '=',
-          selected: '='
+          selectedItem: '='
       },
       link: function postLink(scope) {
           scope.smallImages = _.map(scope.itemData.thumbnails, function(d, i) {
@@ -26,7 +26,7 @@ angular.module('pdsc')
           scope.$watch('isOpen()', function(n) {
               if (n) {
                   scope.smallImages = _.map(scope.smallImages, function(d, i) {
-                      if (i === scope.selected) {
+                      if (i === scope.selectedItem) {
                           d.selected = 'filmstrip-highlight-current';
                       } else {
                           delete d.selected;
@@ -37,7 +37,7 @@ angular.module('pdsc')
                   // scroll the thumbnails
                   $timeout(function() {
                       var old = $location.hash();
-                      $location.hash(scope.selected);
+                      $location.hash(scope.selectedItem);
                       $anchorScroll();
                       $location.hash(old);
                   }, 500);
@@ -48,7 +48,7 @@ angular.module('pdsc')
           };
 
           scope.jumpTo = function(i) {
-              scope.selected = i;
+              scope.selectedItem = i;
           };
 
       }
