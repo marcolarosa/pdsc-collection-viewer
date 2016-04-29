@@ -21,7 +21,7 @@ angular.module('pdsc')
           // defaults
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
-          scope.currentScale = 0.5;
+          scope.currentScale = 1;
           scope.scaleStep = 0.2;
           scope.isOpen = false; 
 
@@ -168,15 +168,15 @@ angular.module('pdsc')
               scope.setTransformOrigin();
               scope.transform = {
                   '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
-                  '-webkit-transform-origin': scope.transformOrigin,
+                  //'-webkit-transform-origin': scope.transformOrigin,
                   '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
-                  '-moz-transform-origin': scope.transformOrigin,
+                  //'-moz-transform-origin': scope.transformOrigin,
                   '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
-                  '-ms-transform-origin': scope.transformOrigin,
+                  //'-ms-transform-origin': scope.transformOrigin,
                   '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
-                  '-o-transform-origin': scope.transformOrigin,
+                  //'-o-transform-origin': scope.transformOrigin,
                   'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
-                  'transform-origin': scope.transformOrigin,
+                  //'transform-origin': scope.transformOrigin,
                   '-webkit-transition': '0.3s ease-in-out',
                   '-moz-transition': '0.3s ease-in-out',
                   '-ms-transition': '0.3s ease-in-out',
