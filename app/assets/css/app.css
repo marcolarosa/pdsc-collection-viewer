@@ -6,9 +6,10 @@ body {
 }
 
 .filmstrip-highlight-current {
-    border: 4px solid yellow;
-    border-radius: 8px;
-    display: inline-block;
+    border: 6px solid #FFD54F;
+    background-color: #FFD54F;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .section-heading {
