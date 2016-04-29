@@ -10,6 +10,7 @@ angular.module('pdsc')
           element.on('load', function() {
               scope.$apply(function() {
                   scope.setTransform();
+                  scope.showProgress = false;
                   scope.showImage = true;
               });
           });

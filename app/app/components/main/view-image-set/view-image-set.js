@@ -19,8 +19,6 @@ angular.module('pdsc')
       },
       link: function postLink(scope) {
           // defaults
-          scope.showImage = false;
-          scope.showImageSet = false;
           scope.disableThumbnailView = false;
           scope.currentRotation = 0;
           scope.currentScale = 0.5;
@@ -41,9 +39,6 @@ angular.module('pdsc')
                       scope.current = 0;
                   }
                   scope.loadImage();
-
-                  // set the viewer to visible
-                  scope.showImageSet = true;
               }
           });
           scope.$watch('current', function() {
@@ -55,6 +50,9 @@ angular.module('pdsc')
 
           scope.loadImage = function() {
               scope.showImage = false;
+              $timeout(function() {
+                  scope.showProgress = true;
+              }, 500);
               scope.image = scope.itemData.images[scope.current];
               scope.figureOutPaginationControls();
               //scope.highlightThumbnail();
