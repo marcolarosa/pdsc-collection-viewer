@@ -69,11 +69,11 @@
                             <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}s)
                         </md-button>
                     </div>
-                    <div class="md-headline" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
-                    <div class="md-headline highlight-translation">{{sentence.translation}}</div>
-                    <div layout="row" layout-padding>
+                    <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+                    <div class="md-title highlight-translation">{{sentence.translation}}</div>
+                    <div layout="row" layout-padding layout-wrap>
                         <table ng-repeat="word in sentence.words" class="table-style">
-                            <tbody class="highlight-word">
+                            <tbody class="md-caption highlight-word">
                                 <tr class="">
                                     <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
                                 </tr>

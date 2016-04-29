@@ -58,7 +58,7 @@ body {
 
 .transcription-panel {
     position: relative; 
-    height: 300px; 
+    height: 400px; 
     overflow: auto; 
     border: 1px solid white; 
     border-radius: 4px; 
