@@ -19,7 +19,7 @@ angular.module('pdsc')
       },
       link: function postLink(scope) {
           scope.highlight = {};
-          scope.st = false;
+          scope.st = true;
           scope.se = false;
           scope.selected = {};
           scope.available = {};

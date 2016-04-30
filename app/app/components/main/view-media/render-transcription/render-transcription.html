@@ -22,10 +22,16 @@
             <div ng-if="transcript">
                 <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
                     <div id="{{name}}_{{k}}"></div>
-                    <div layout-align="start start">
-                        <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
-                            <i class="fa fa-play fa-lg"></i> Play ({{v.time}}s)
-                        </md-button>
+                    <div layout="row">
+                        <div>
+                            <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
+                                <i class="fa fa-play fa-lg"></i> Play ({{v.time}}<span style="text-transform: lowercase;"> seconds</span>)
+                            </md-button>
+                        </div>
+                        <div flex></div>
+                        <div>
+                            <fragment-citation type="transcript" selected="selected.transcript" fragment-data="transcript[k]"></fragment-citation>
+                        </div>
                     </div>
                     <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}">
                         {{v.value}}
@@ -66,7 +72,7 @@
                     <div id="{{name}}_{{k}}"></div>
                     <div>
                         <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
-                            <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}s)
+                            <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}<span style="text-transform: lowercase;"> seconds</span>)
                         </md-button>
                     </div>
                     <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>

@@ -1,3 +1,25 @@
-<md-button class="small-button">
-    <i class="fa fa-clone fa-lg"></i> Cite this fragment
-</md-button>
+<div layout="column" layout-align="end end">
+    <div ng-if="!hidden">{{fragmentCitation}}</div>
+    <div layout="row">
+        <md-button class="small-button" data-clipboard-text="{{fragmentCitation}}" aria-label="copy to fragment citation to clipboard">
+            <md-tooltip>
+                Copy fragment citation
+            </md-tooltip>
+            <i class="fa fa-clone fa-lg"></i>
+        </md-button>
+        <md-button class="small-button" ng-click="hidden = !hidden" aria-label="show / hide citation">
+            <span ng-if="hidden">
+                <md-tooltip>
+                    Show fragment citation
+                </md-tooltip>
+                <i class="fa fa-plus fa-lg"></i>
+            </span>
+            <span ng-if="!hidden">
+                <md-tooltip>
+                    Hide fragment citation
+                </md-tooltip>
+                <i class="fa fa-minus fa-lg"></i>
+            </span>
+        </md-button>
+    </div>
+</div>
