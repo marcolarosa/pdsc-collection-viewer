@@ -14,3 +14,8 @@ angular.module('underscore', []).factory('_', function() {
 angular.module('pdfjs', []).factory('pdfjs', function() {
     return window.PDFJS;
 });
+
+// give me clipboard
+angular.module('clipboard', []).factory('clipboard', function() {
+    return window.clipboard;
+});
