@@ -17,5 +17,5 @@ angular.module('pdfjs', []).factory('pdfjs', function() {
 
 // give me clipboard
 angular.module('clipboard', []).factory('clipboard', function() {
-    return window.clipboard;
+    return window.Clipboard;
 });
