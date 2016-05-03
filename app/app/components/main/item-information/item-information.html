@@ -24,6 +24,16 @@
     <div layout="column">
         <div class="md-title">Cite this item</div>
         <div style="word-wrap: break-word;">{{itemData.citation}}</div>
+
+        <div layout="row">
+            <div flex></div>
+            <md-button class="small-button" data-clipboard-text="{{itemData.citation}}" aria-label="copy citation to clipboard">
+                <md-tooltip>
+                    Copy citation
+                </md-tooltip>
+                <i class="fa fa-clone fa-lg"></i>
+            </md-button>
+        </div>
     </div>
     <div layout="column">
         <div class="md-title">Zotero and Mendeley Integration.</div>
