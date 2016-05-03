@@ -12,7 +12,7 @@ angular
     'underscore',
     'pdfjs',
     'ngMaterial',
-    'clipboard',
+    'Clipboard',
   ])
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider

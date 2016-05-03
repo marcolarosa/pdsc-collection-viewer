@@ -25,15 +25,17 @@
                     <div layout="row">
                         <div>
                             <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
-                                <i class="fa fa-play fa-lg"></i> Play ({{v.time}}<span style="text-transform: lowercase;"> seconds</span>)
+                                <i class="fa fa-play fa-lg"></i>
+                                Play ({{v.time}}<span style="text-transform: lowercase;"> seconds</span>)
                             </md-button>
                         </div>
                         <div flex></div>
                         <div>
-                            <fragment-citation type="transcript" selected="selected.transcript" fragment-data="transcript[k]"></fragment-citation>
+                            <fragment-citation type="transcript" selected="selected.transcript" 
+                                fragment-data="transcript[k]"></fragment-citation>
                         </div>
                     </div>
-                    <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}">
+                    <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}" class="md-title">
                         {{v.value}}
                         <br/>
                         {{v.referenceValue}}
