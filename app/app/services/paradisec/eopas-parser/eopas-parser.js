@@ -30,6 +30,7 @@ angular.module('pdsc')
                   return w;
               });
               return {
+                'id': d['@attributes'].startTime ? d['@attributes'].startTime : 0,
                 'transcription': d.transcription['#text'],
                 'translation': d.translation['#text'],
                 'time': d['@attributes'].startTime,
