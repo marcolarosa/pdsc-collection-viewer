@@ -42,9 +42,6 @@ angular.module('pdsc')
               }
           });
           scope.$watch('current', function() {
-              if ($mdSidenav('thumbnailFilmstrip').isOpen()) {
-                  $mdSidenav('thumbnailFilmstrip').toggle();
-              }
               scope.loadImage();
           });
 
