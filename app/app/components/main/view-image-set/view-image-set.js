@@ -20,8 +20,6 @@ angular.module('pdsc')
       link: function postLink(scope) {
           // defaults
           scope.disableThumbnailView = false;
-          scope.currentRotation = 0;
-          scope.currentScale = 1;
           scope.scaleStep = 0.2;
           scope.isOpen = false; 
 
@@ -42,13 +40,12 @@ angular.module('pdsc')
               }
           });
           scope.$watch('current', function() {
-              if ($mdSidenav('thumbnailFilmstrip').isOpen()) {
-                  $mdSidenav('thumbnailFilmstrip').toggle();
-              }
               scope.loadImage();
           });
 
           scope.loadImage = function() {
+              scope.currentScale = 1;
+              scope.currentRotation = 0;
               scope.showImage = false;
               $timeout(function() {
                   scope.showProgress = true;
@@ -166,16 +163,17 @@ angular.module('pdsc')
           // set transform
           scope.setTransform = function() {
               scope.setTransformOrigin();
+              var transformation = 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ')';
               scope.transform = {
-                  '-webkit-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
+                  '-webkit-transform': transformation,
                   //'-webkit-transform-origin': scope.transformOrigin,
-                  '-moz-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
+                  '-moz-transform': transformation,
                   //'-moz-transform-origin': scope.transformOrigin,
-                  '-ms-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
+                  '-ms-transform': transformation,
                   //'-ms-transform-origin': scope.transformOrigin,
-                  '-o-transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
+                  '-o-transform': transformation,
                   //'-o-transform-origin': scope.transformOrigin,
-                  'transform': 'rotate(' + scope.currentRotation + 'deg) scale(' + scope.currentScale + ') ',
+                  'transform': transformation,
                   //'transform-origin': scope.transformOrigin,
                   '-webkit-transition': '0.3s ease-in-out',
                   '-moz-transition': '0.3s ease-in-out',

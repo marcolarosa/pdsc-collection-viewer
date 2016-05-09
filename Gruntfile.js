@@ -38,6 +38,12 @@ module.exports = function (grunt) {
             commit: true,
             push: true,
         },
+        production: {
+            options: {
+                remote: 'git@github.com:MLR-au/pdsc-collection-viewer.git',
+                branch: 'production',
+            },
+        },
         testing: {
             options: {
                 remote: 'git@github.com:MLR-au/pdsc-collection-viewer.git',
