@@ -8,39 +8,47 @@ angular.module('pdsc')
 
       // parse an eopas XML file and return an object keyed on timeslot id
       flextextParser.parse = function(data) {
-          console.log(data);
-          /*
-          var text = _.map(data.eopas.interlinear.phrase, function(d) {
-              var words = _.map(d.wordlist.word, function(w) {
+          var text = _.map(data.document['interlinear-text'].paragraphs.paragraph, function(p) {
+              var words = _.map(p.phrases.phrase.words.word, function(w) {
+
+
                   try {
-                      if (!_.isArray(w.morphemelist.morpheme)) {
-                          w.morphemelist.morpheme = [ w.morphemelist.morpheme ];
+                      if (!_.isArray(w.morphemes.morph)) {
+                          w.morphemes.morph = [ w.morphemes.morph ];
                       }
                   } catch(e) {
                       return {};
                   }
-                  var word = _.map(w.morphemelist.morpheme, function(m) {
-                      return {
-                          'morpheme': m.text[0]['#text'],
-                          'gloss': m.text[1]['#text']
-                      };
+                  var word = _.map(w.morphemes.morph, function(m) {
+                      try {
+                          return {
+                              morpheme: m.item[2]['#text'],
+                              gloss: m.item[3]['#text']
+                          }
+                      } catch(e) {
+                          // bad data...
+                      }
                   });
-                  w = {
-                      'text': w.text['#text'],
-                      'words': word
-                  };
+                  try {
+                      w = {
+                          text: w.morphemes.morph[0].item[0]['#text'],
+                          words: word
+                      }
+                  } catch(e) {
+                      // bad data...
+                  }
                   return w;
               });
+
               return {
-                'id': d['@attributes'].startTime ? d['@attributes'].startTime : 0,
-                'transcription': d.transcription['#text'],
-                'translation': d.translation['#text'],
-                'time': d['@attributes'].startTime,
-                'words': words
-              };
+                  id: p.phrases.phrase['@attributes']['begin-time-offset'],
+                  transcription: p.phrases.phrase.item[0]['#text'],
+                  translation: p.phrases.phrase.item[1]['#text'],
+                  time: p.phrases.phrase['@attributes']['begin-time-offset'],
+                  words: words
+              }
           });
           return text;
-          */
       };
 
       return flextextParser;
