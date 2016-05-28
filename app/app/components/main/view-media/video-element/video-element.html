@@ -12,11 +12,8 @@
         </div>
     </div>
     <div layout="column" layout-align="start start">
-        <video id="{{name}}" class="video-js vjs-default-skin" controls preload="auto" style="width: 100%;" media-ready time-update>
+        <video id="{{name}}" controls preload="auto" style="width: 100%;" media-ready time-update>
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
-            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a
-                web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-            </p>
         </video>
     </div>
     <div layout="column">
