@@ -9,9 +9,9 @@ angular.module('pdsc')
         'configuration', 
         'eafParser', 
         'trsParser',
-        'eopasParser',
+        'ixtParser',
         '_',
-        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, eopas, _) {
+        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, ixt, _) {
 
       function parseXML(doc) {
           var parser = new DOMParser();
@@ -43,8 +43,8 @@ angular.module('pdsc')
           return { 'data': trs.parse(parseXML(d)) };
       }
 
-      function parseEopas(d) {
-          return { 'data': eopas.parse(parseXML(d)) };
+      function parseIxt(d) {
+          return { 'data': ixt.parse(parseXML(d)) };
       }
 
       // handler to extract a value for 'thing'
@@ -144,7 +144,7 @@ angular.module('pdsc')
           data.audioVisualisations = generateAudioVisualisations(data.audio);
           getTranscriptions('eaf', data);
           getTranscriptions('trs', data);
-          getTranscriptions('eopas', data);
+          getTranscriptions('ixt', data);
           return data;
       }
 
@@ -181,9 +181,9 @@ angular.module('pdsc')
           } else if (type === 'trs') {
               transform = parseTRS;
               what = data.trs;
-          } else if (type === 'eopas') {
-              transform = parseEopas;
-              what = data.eopas;
+          } else if (type === 'ixt') {
+              transform = parseIxt;
+              what = data.ixt;
           } else {
               return;
           }

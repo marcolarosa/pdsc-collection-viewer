@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('pdsc')
-  .service('eopasParser', [ '_',
+  .service('ixtParser', [ '_',
     function (_) {
 
-      var eopasParser = {};
+      var ixtParser = {};
 
-      // parse an eopas XML file and return an object keyed on timeslot id
-      eopasParser.parse = function(data) {
+      // parse an ixt XML file and return an object keyed on timeslot id
+      ixtParser.parse = function(data) {
           var text = _.map(data.eopas.interlinear.phrase, function(d) {
               var words = _.map(d.wordlist.word, function(w) {
                   try {
@@ -40,5 +40,5 @@ angular.module('pdsc')
           return text;
       };
 
-      return eopasParser;
+      return ixtParser;
   }]);

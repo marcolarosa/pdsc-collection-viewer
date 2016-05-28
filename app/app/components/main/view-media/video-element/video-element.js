@@ -21,8 +21,8 @@ angular.module('pdsc')
               if (!_.isEmpty(scope.itemData.trs)) {
                   scope.trs = scope.itemData.trs[scope.name];
               }
-              if (!_.isEmpty(scope.itemData.eopas)) {
-                  scope.eopas = scope.itemData.eopas[scope.name];
+              if (!_.isEmpty(scope.itemData.ixt)) {
+                  scope.interlinear = scope.itemData.ixt[scope.name];
               }
           }, true);
 

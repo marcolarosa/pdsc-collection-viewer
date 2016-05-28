@@ -13,7 +13,7 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           transcription: '=',
-          eopas: '=',
+          interlinear: '=',
           currentTime: '=',
           name: '@',
           play: '&'
@@ -57,11 +57,11 @@ angular.module('pdsc')
               }
           }, true);
 
-          scope.$watch('eopas', function() {
-              if (scope.eopas === undefined) {
+          scope.$watch('interlinear', function() {
+              if (scope.interlinear === undefined) {
                   return;
               }
-              scope.available.interlinear = _.keys(scope.eopas).sort();
+              scope.available.interlinear = _.keys(scope.interlinear).sort();
               scope.set();
               scope.load('interlinear');
               if (scope.available.interlinear.length > 1) {
@@ -74,7 +74,7 @@ angular.module('pdsc')
                   if (what === 'transcript') {
                     scope.transcript = scope.transcription[scope.selected.transcript];
                   } else if (what === 'interlinear') {
-                    scope.interlinearText = scope.eopas[scope.selected.interlinear];
+                    scope.interlinearText = scope.interlinear[scope.selected.interlinear];
                   }
               }, 100);
           };
