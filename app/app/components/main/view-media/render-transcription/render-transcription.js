@@ -2,12 +2,10 @@
 
 angular.module('pdsc')
   .directive('renderTranscription', [ 
-    '$location', 
-    '$anchorScroll', 
     '_',
     '$timeout',
     '$routeParams',
-    function ($location, $anchorScroll, _, $timeout, $routeParams) {
+    function (_, $timeout, $routeParams) {
     return {
       templateUrl: 'app/components/main/view-media/render-transcription/render-transcription.html',
       restrict: 'E',
@@ -72,9 +70,27 @@ angular.module('pdsc')
           scope.load = function(what) {
               $timeout(function() {
                   if (what === 'transcript') {
-                    scope.transcript = scope.transcription[scope.selected.transcript];
+                      if ($routeParams.segment) {
+                          var data = scope.transcription[scope.selected.transcript];
+                          scope.transcript = _.compact(_.map(data, function(d) {
+                              if (d.id === $routeParams.segment) {
+                                  return d;
+                              }
+                          }));
+                      } else {
+                          scope.transcript = scope.transcription[scope.selected.transcript];
+                      }
                   } else if (what === 'interlinear') {
-                    scope.interlinearText = scope.interlinear[scope.selected.interlinear];
+                      if ($routeParams.segment) {
+                          var data = scope.interlinear[scope.selected.interlinear];
+                          scope.interlinearText = _.compact(_.map(data, function(d) {
+                              if (d.id === $routeParams.segment) {
+                                  return d;
+                              }
+                          }));
+                      } else {
+                          scope.interlinearText = scope.interlinear[scope.selected.interlinear];
+                      }
                   }
               }, 100);
           };
