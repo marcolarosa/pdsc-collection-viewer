@@ -19,13 +19,13 @@ angular.module('pdsc')
                   }
                   var word = _.map(w.morphemelist.morpheme, function(m) {
                       return {
-                          'morpheme': m.text[0]['#text'],
-                          'gloss': m.text[1]['#text']
+                          morpheme: m.text[0]['#text'],
+                          gloss: m.text[1]['#text']
                       };
                   });
                   w = {
-                      'text': w.text['#text'],
-                      'words': word
+                      text: w.text['#text'],
+                      words: word
                   };
                   return w;
               });
