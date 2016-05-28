@@ -19,29 +19,27 @@
     </div>
     <div layout="row">
         <div class="transcription-panel" ng-show="st">
-            <div ng-if="transcript">
-                <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
-                    <div id="{{name}}_{{k}}"></div>
-                    <div layout="row">
-                        <div>
-                            <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
-                                <i class="fa fa-play fa-lg"></i>
-                                Play ({{v.time}}<span style="text-transform: lowercase;"> seconds</span>)
-                            </md-button>
-                        </div>
-                        <div flex></div>
-                        <div>
-                            <fragment-citation type="transcript" selected="selected.transcript" 
-                                fragment-data="transcript[k]"></fragment-citation>
-                        </div>
+            <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
+                <div id="{{name}}_{{k}}"></div>
+                <div layout="row">
+                    <div>
+                        <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
+                            <i class="fa fa-play fa-lg"></i>
+                            Play ({{v.time}}<span style="text-transform: lowercase;"> seconds</span>)
+                        </md-button>
                     </div>
-                    <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}" class="md-title">
-                        {{v.value}}
-                        <br/>
-                        {{v.referenceValue}}
+                    <div flex></div>
+                    <div>
+                        <fragment-citation type="transcript" selected="selected.transcript" 
+                            fragment-data="transcript[k]"></fragment-citation>
                     </div>
-                    <md-divider></md-divider>
                 </div>
+                <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}" class="md-title">
+                    {{v.value}}
+                    <br/>
+                    {{v.referenceValue}}
+                </div>
+                <md-divider></md-divider>
             </div>
         </div>
     </div>
@@ -67,42 +65,40 @@
             </md-select>
         </md-input-container>
     </div>
-    <div layout="row" ng-if="eopas">
+    <div layout="row">
         <div class="transcription-panel" ng-show="se">
-            <div ng-if="eopas">
-                <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
-                    <div id="{{name}}_{{k}}"></div>
-                    <div layout="row">
-                        <div>
-                            <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
-                                <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}<span style="text-transform: lowercase;"> seconds</span>)
-                            </md-button>
-                        </div>
-                        <div flex></div>
-                        <div>
-                            <fragment-citation type="interlinear" selected="selected.interlinear" 
-                                fragment-data="interlinearText[k]"></fragment-citation>
-                        </div>
+            <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
+                <div id="{{name}}_{{k}}"></div>
+                <div layout="row">
+                    <div>
+                        <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
+                            <i class="fa fa-play fa-lg"></i> Play ({{sentence.time}}<span style="text-transform: lowercase;"> seconds</span>)
+                        </md-button>
                     </div>
-                    <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
-                    <div class="md-title highlight-translation">{{sentence.translation}}</div>
-                    <div layout="row" layout-padding layout-wrap>
-                        <table ng-repeat="word in sentence.words" class="table-style">
-                            <tbody class="md-caption highlight-word">
-                                <tr class="">
-                                    <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
-                                </tr>
-                                <tr class="highlight-morpheme">
-                                    <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
-                                </tr>
-                                <tr class="highlight-gloss">
-                                    <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div flex></div>
+                    <div>
+                        <fragment-citation type="interlinear" selected="selected.interlinear" 
+                            fragment-data="interlinearText[k]"></fragment-citation>
                     </div>
-                    <md-divider></md-divider>
                 </div>
+                <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+                <div class="md-title highlight-translation">{{sentence.translation}}</div>
+                <div layout="row" layout-padding layout-wrap>
+                    <table ng-repeat="word in sentence.words" class="table-style">
+                        <tbody class="md-caption highlight-word">
+                            <tr class="">
+                                <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                            </tr>
+                            <tr class="highlight-morpheme">
+                                <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
+                            </tr>
+                            <tr class="highlight-gloss">
+                                <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <md-divider></md-divider>
             </div>
         </div>
     </div>
