@@ -36,10 +36,11 @@ angular.module('pdsc')
                   }
                   scope.currentTime = $routeParams.segment;
               } else {
-                  try {
+                  if (scope.available.transcripts) {
                       scope.selected.transcript = scope.available.transcripts[0];
+                  }
+                  if (scope.available.interlinear) {
                       scope.selected.interlinear = scope.available.interlinear[0];
-                  } catch (e) {
                   }
               }
           };
@@ -49,7 +50,7 @@ angular.module('pdsc')
                   return;
               }
               scope.available.transcripts = _.keys(scope.transcription).sort();
-              scope.set()
+              scope.set();
               scope.load('transcript');
               if (scope.available.transcripts.length > 1) {
                   scope.transcriptsSelector = true;
