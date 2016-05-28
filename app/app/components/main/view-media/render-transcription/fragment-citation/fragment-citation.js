@@ -10,11 +10,11 @@ angular.module('pdsc')
       restrict: 'E',
       scope: {
           type: '@',
-          fragmentData: '=',
-          selected: '='
+          selection: '@',
+          fragmentData: '='
       },
       link: function postLink(scope) {
-          scope.fragmentCitation = $location.absUrl() + '?type=' + scope.type + '&selected=' + scope.selected + '&segment=' + scope.fragmentData.id;
+          scope.fragmentCitation = $location.absUrl() + '?type=' + scope.type + '&selected=' + scope.selection + '&segment=' + scope.fragmentData.id;
       }
     };
   }]);
