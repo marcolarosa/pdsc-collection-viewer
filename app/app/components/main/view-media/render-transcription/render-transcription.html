@@ -86,8 +86,11 @@
                 <div layout="row" layout-padding layout-wrap>
                     <table ng-repeat="word in sentence.words" class="table-style">
                         <tbody class="md-caption highlight-word">
-                            <tr class="">
+                            <tr class="" ng-if="word.text">
                                 <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                            </tr>
+                            <tr class="" ng-if="!word.text">
+                                <td class="td-style" ng-repeat="w in word.words">{{w.text}}</td>
                             </tr>
                             <tr class="highlight-morpheme">
                                 <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
