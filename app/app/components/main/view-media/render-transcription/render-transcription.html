@@ -1,4 +1,4 @@
-<div ng-if="selected.transcript">
+<div ng-if="selected.transcript && transcript">
     <div layout="row">
         <md-input-container>
             <md-button class="small-button" ng-click="st = !st" ng-show="!st">
@@ -46,7 +46,7 @@
     <md-divider></md-divider>
 </div>
 
-<div ng-if="selected.interlinear">
+<div ng-if="selected.interlinear && eopas">
     <div layout="row">
         <md-input-container>
             <md-button class="small-button" ng-click="se = !se" ng-show="!se">
