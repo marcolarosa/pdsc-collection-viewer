@@ -10,8 +10,9 @@ angular.module('pdsc')
         'eafParser', 
         'trsParser',
         'ixtParser',
+        'flextextParser',
         '_',
-        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, ixt, _) {
+        function ($rootScope, $log, $http, xmlToJson, conf, eaf, trs, ixt, ftp, _) {
 
       function parseXML(doc) {
           var parser = new DOMParser();
@@ -45,6 +46,10 @@ angular.module('pdsc')
 
       function parseIxt(d) {
           return { 'data': ixt.parse(parseXML(d)) };
+      }
+
+      function parseFlextext(d) {
+          return { 'data': ftp.parse(parseXML(d)) };
       }
 
       // handler to extract a value for 'thing'
@@ -145,6 +150,7 @@ angular.module('pdsc')
           getTranscriptions('eaf', data);
           getTranscriptions('trs', data);
           getTranscriptions('ixt', data);
+          getTranscriptions('flextext', data);
           return data;
       }
 
@@ -184,6 +190,9 @@ angular.module('pdsc')
           } else if (type === 'ixt') {
               transform = parseIxt;
               what = data.ixt;
+          } else if (type === 'flextext') {
+              transform = parseFlextext;
+              what = data.flextext;
           } else {
               return;
           }
