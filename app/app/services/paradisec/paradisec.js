@@ -76,6 +76,8 @@ angular.module('pdsc')
               selector = 'trs';
           } else if (type === 'ixt') {
               selector = 'ixt';
+          } else if (type === 'flextext') {
+              selector = 'flextext';
           }
       
           if (!_.isArray(tree['dcterms:tableOfContents'])) {
@@ -89,7 +91,7 @@ angular.module('pdsc')
               }
           }));
 
-          if ([ 'audio', 'video', 'eaf', 'trs', 'ixt' ].indexOf(type) !== -1) {
+          if ([ 'audio', 'video', 'eaf', 'trs', 'ixt', 'flextext' ].indexOf(type) !== -1) {
               // audio and video can exist in multiple formats; so, group the data
               //  by name and then return an array of arrays - sorting by item name 
               return _(items).chain()
@@ -128,7 +130,8 @@ angular.module('pdsc')
               'audio': constructItemList('audio', tree),
               'eaf': constructItemList('eaf', tree),
               'trs': constructItemList('trs', tree),
-              'eopas': constructItemList('ixt', tree),
+              'ixt': constructItemList('ixt', tree),
+              'flextext': constructItemList('flextext', tree),
               'documents': constructItemList('documents', tree),
               'rights': get(tree, 'dcterms:accessRights')
           };
