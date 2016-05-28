@@ -22,6 +22,7 @@ angular.module('pdsc')
                   var word = _.map(w.morphemes.morph, function(m) {
                       try {
                           return {
+                              text: m.item[0]['#text'],
                               morpheme: m.item[2]['#text'],
                               gloss: m.item[3]['#text']
                           }
@@ -31,7 +32,6 @@ angular.module('pdsc')
                   });
                   try {
                       w = {
-                          text: w.morphemes.morph[0].item[0]['#text'],
                           words: word
                       }
                   } catch(e) {
