@@ -14,6 +14,9 @@ angular.module('pdsc')
           itemData: '='
       },
       link: function postLink(scope) {
+          scope.mediaReadyToPlay = false;
+          scope.interlinear = {};
+
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData.eaf)) {
                   scope.trs = scope.itemData.eaf[scope.name];
@@ -22,7 +25,10 @@ angular.module('pdsc')
                   scope.trs = scope.itemData.trs[scope.name];
               }
               if (!_.isEmpty(scope.itemData.ixt)) {
-                  scope.interlinear = scope.itemData.ixt[scope.name];
+                  _.extend(scope.interlinear, scope.itemData.ixt[scope.name]);
+              }
+              if (!_.isEmpty(scope.itemData.flextext)) {
+                  _.extend(scope.interlinear, scope.itemData.flextext[scope.name]);
               }
           }, true);
 

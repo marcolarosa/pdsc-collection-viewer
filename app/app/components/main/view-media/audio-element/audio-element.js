@@ -16,6 +16,7 @@ angular.module('pdsc')
       link: function postLink(scope) {
           // defaults
           scope.mediaReadyToPlay = false;
+          scope.interlinear = {};
 
           scope.$watch('itemData', function() {
               if (!_.isEmpty(scope.itemData.eaf)) {
@@ -25,7 +26,10 @@ angular.module('pdsc')
                   scope.trs = scope.itemData.trs[scope.name];
               }
               if (!_.isEmpty(scope.itemData.ixt)) {
-                  scope.interlinear = scope.itemData.ixt[scope.name];
+                  _.extend(scope.interlinear, scope.itemData.ixt[scope.name]);
+              }
+              if (!_.isEmpty(scope.itemData.flextext)) {
+                  _.extend(scope.interlinear, scope.itemData.flextext[scope.name]);
               }
           }, true);
 
