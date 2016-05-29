@@ -4,7 +4,8 @@ angular.module('pdsc')
   .directive('audioElement', [ 
     '$timeout', 
     '_',
-    function ($timeout, _) {
+    '$location',
+    function ($timeout, _, $location) {
     return {
       templateUrl: 'app/components/main/view-media/audio-element/audio-element.html',
       restrict: 'E',
@@ -39,7 +40,6 @@ angular.module('pdsc')
               scope.mediaReadyToPlay = true;
           };
 
-          // play a fragment
           scope.playFragment = function(start, end) {
               // seek to start.time
               var audioElement = document.getElementById(scope.name);
@@ -52,6 +52,12 @@ angular.module('pdsc')
               $timeout(function() {
                   audioElement.pause();
               }, (end.time - start.time) * 1000);
+          };
+
+          scope.loadItem = function() {
+              var url = '/' + scope.itemData.collectionId + '/' + scope.itemData.itemId + '/' + scope.name;
+              $location.url(url);
+
           };
       }
     };

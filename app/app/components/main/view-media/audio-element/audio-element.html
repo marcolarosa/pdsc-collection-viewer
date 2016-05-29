@@ -3,7 +3,10 @@
     ng-show="mediaReadyToPlay">
 
     <div layout="row">
-        <div class="md-subhead" flex>{{name}}</div>
+        <div class="md-subhead">
+            <md-button class="small-button" ng-click="loadItem()">{{name}}</md-button>
+        </div>
+        <div flex></div>
         <div ng-repeat="src in mediaSrc">
             <md-button class="small-button" href="{{src | stripTime}}" download>
                 <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}

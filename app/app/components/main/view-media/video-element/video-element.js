@@ -4,7 +4,8 @@ angular.module('pdsc')
   .directive('videoElement', [ 
     '$timeout', 
     '_',
-    function ($timeout, _) {
+    '$location',
+    function ($timeout, _, $location) {
     return {
       templateUrl: 'app/components/main/view-media/video-element/video-element.html',
       restrict: 'E',
@@ -41,7 +42,6 @@ angular.module('pdsc')
               scope.mediaReadyToPlay = true;
           };
 
-          // play a fragment
           scope.playFragment = function(start, end) {
               // seek to start.time
               var videoElement = document.getElementById(scope.name);
@@ -55,6 +55,12 @@ angular.module('pdsc')
                   videoElement.pause();
               }, (end.time - start.time) * 1000);
           };
+
+          scope.loadItem = function() {
+              var url = '/' + scope.itemData.collectionId + '/' + scope.itemData.itemId + '/' + scope.name;
+              $location.url(url);
+          }
+
       }
     };
   }]);
