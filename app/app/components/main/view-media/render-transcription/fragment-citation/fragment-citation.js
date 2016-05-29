@@ -23,7 +23,7 @@ angular.module('pdsc')
           scope.updateUrl = function() {
               if (scope.itemData) {
                   var url;
-                  url =  $location.absUrl().split($location.url())[0];
+                  url =  $location.absUrl().split($location.url())[0] + '/';
                   url += scope.itemData.collectionId + '/' + scope.itemData.itemId + '/' + scope.name;
                   url += '?type=' + scope.type + '&selected=' + scope.selection + '&segment=' + scope.fragmentData.id;
                   scope.fragmentCitation = url;
