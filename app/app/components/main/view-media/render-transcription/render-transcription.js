@@ -10,10 +10,11 @@ angular.module('pdsc')
       templateUrl: 'app/components/main/view-media/render-transcription/render-transcription.html',
       restrict: 'E',
       scope: {
+          itemData: '=',
+          name: '@',
           transcription: '=',
           interlinear: '=',
           currentTime: '=',
-          name: '@',
           play: '&'
       },
       link: function postLink(scope) {
