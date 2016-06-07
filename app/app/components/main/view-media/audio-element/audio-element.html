@@ -19,7 +19,7 @@
     </div>
     -->
     <div layout="column" layout-align="start start">
-        <audio id="{{name}}" class="" controls preload="auto" style="width: 100%;" media-ready time-update>
+        <audio id="{{name}}" class="" controls preload="metadata" style="width: 100%;" media-ready time-update>
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
         </audio>
     </div>

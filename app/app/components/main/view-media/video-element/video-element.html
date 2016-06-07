@@ -15,7 +15,7 @@
         </div>
     </div>
     <div layout="column" layout-align="start start">
-        <video id="{{name}}" controls preload="auto" style="width: 100%;" media-ready time-update>
+        <video id="{{name}}" controls preload="metadata" style="width: 100%;" media-ready time-update>
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
         </video>
     </div>
