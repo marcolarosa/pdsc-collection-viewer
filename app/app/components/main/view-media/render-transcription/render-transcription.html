@@ -1,13 +1,5 @@
 <div ng-if="selected.transcript && transcript">
     <div layout="row">
-        <md-input-container>
-            <md-button class="small-button" ng-click="st = !st" ng-show="!st">
-                <i class="fa fa-plus fa-lg"></i> Show Transcription
-            </md-button>
-            <md-button class="small-button" ng-click="st = !st" ng-show="st">
-                <i class="fa fa-minus fa-lg"></i> Hide Transcription
-            </md-button>
-        </md-input-container>
         <div flex></div>
         <md-input-container ng-if="transcriptsSelector">
             <md-select ng-model="selected.transcript" ng-change="load('transcript')" class="shift-down" aria-label="select transcription">
@@ -18,7 +10,7 @@
         </md-input-container>
     </div>
     <div layout="row">
-        <div class="transcription-panel" ng-show="st">
+        <div class="transcription-panel">
             <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
                 <div id="{{name}}_{{k}}"></div>
                 <div layout="row">
@@ -53,14 +45,6 @@
 
 <div ng-if="selected.interlinear && interlinear">
     <div layout="row">
-        <md-input-container>
-            <md-button class="small-button" ng-click="se = !se" ng-show="!se">
-                <i class="fa fa-plus fa-lg"></i> Show Interlinear Text
-            </md-button>
-            <md-button class="small-button" ng-click="se = !se" ng-show="se">
-                <i class="fa fa-minus fa-lg"></i> Hide Interlinear Text
-            </md-button>
-        </md-input-container>
         <div flex></div>
         <md-input-container ng-if="interlinearTextsSelector">
             <md-select ng-model="selected.interlinear" ng-change="load('interlinear')" class="shift-down" aria-label="select interlinear text">
@@ -71,7 +55,7 @@
         </md-input-container>
     </div>
     <div layout="row">
-        <div class="transcription-panel" ng-show="se">
+        <div class="transcription-panel">
             <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
                 <div id="{{name}}_{{k}}"></div>
                 <div layout="row">
