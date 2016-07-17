@@ -12,7 +12,7 @@
     <div layout="row">
         <div class="transcription-panel">
             <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
-                <div id="{{name}}_{{k}}"></div>
+                <div id="{{k}}"></div>
                 <div layout="row">
                     <div>
                         <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
@@ -57,7 +57,7 @@
     <div layout="row">
         <div class="transcription-panel">
             <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
-                <div id="{{name}}_{{k}}"></div>
+                <div id="{{k}}"></div>
                 <div layout="row">
                     <div>
                         <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
@@ -75,25 +75,27 @@
                         ></fragment-citation>
                     </div>
                 </div>
-                <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
-                <div class="md-title highlight-translation">{{sentence.translation}}</div>
-                <div layout="row" layout-padding layout-wrap>
-                    <table ng-repeat="word in sentence.words" class="table-style">
-                        <tbody class="md-caption highlight-word">
-                            <tr class="" ng-if="word.text">
-                                <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
-                            </tr>
-                            <tr class="" ng-if="!word.text">
-                                <td class="td-style" ng-repeat="w in word.words">{{w.text}}</td>
-                            </tr>
-                            <tr class="highlight-morpheme">
-                                <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
-                            </tr>
-                            <tr class="highlight-gloss">
-                                <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div layout-padding>
+                    <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+                    <div class="md-title highlight-translation">{{sentence.translation}}</div>
+                    <div layout="row" layout-padding layout-wrap>
+                        <table ng-repeat="word in sentence.words" class="table-style">
+                            <tbody class="md-caption highlight-word">
+                                <tr class="" ng-if="word.text">
+                                    <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                                </tr>
+                                <tr class="" ng-if="!word.text">
+                                    <td class="td-style" ng-repeat="w in word.words">{{w.text}}</td>
+                                </tr>
+                                <tr class="highlight-morpheme">
+                                    <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
+                                </tr>
+                                <tr class="highlight-gloss">
+                                    <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <md-divider></md-divider>
             </div>

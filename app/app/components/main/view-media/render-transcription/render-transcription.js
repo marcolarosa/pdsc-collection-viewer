@@ -29,8 +29,8 @@ angular.module('pdsc')
                   var d;
                   if (scope.transcript) {
                       d = scope.transcript;
-                  } else if (scope.eopas) {
-                      d = scope.eopas;
+                  } else if (scope.interlinearText) {
+                      d = scope.interlinearText;
                   }
                   var transformed = _.map(d, function(t) {
                       if (t.time > scope.currentTime) {
@@ -41,7 +41,7 @@ angular.module('pdsc')
                   });
                   scope.selectedIndex = _.indexOf(transformed, 1, true) - 1;
                   var o = $location.hash();
-                  $location.hash(scope.name + '_' + scope.selectedIndex);
+                  $location.hash(scope.selectedIndex);
                   $anchorScroll();
                   $location.hash(o);
 
