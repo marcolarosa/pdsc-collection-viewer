@@ -25,6 +25,7 @@ body {
 
 .transcription-selected {
     background-color: #FFD54F;
+    border-radius: 4px;
 }
 
 .small-font {
