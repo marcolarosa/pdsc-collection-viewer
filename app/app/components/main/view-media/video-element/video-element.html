@@ -19,6 +19,9 @@
             <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
         </video>
     </div>
+    <div layout="column" layout-align="top center">
+        <transcription-selector></transcription-selector>
+    </div>
     <div layout="column">
         <render-transcription
             item-data="itemData"
