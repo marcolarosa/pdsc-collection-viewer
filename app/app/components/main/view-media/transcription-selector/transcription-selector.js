@@ -22,6 +22,13 @@ angular.module('pdsc')
               scope.loadSelector = true;
           } else {
               scope.loadSelector = false;
+              if (_.isEmpty(interlinear) && !_.isEmpty(transcription)) {
+                  scope.showTranscription = true;
+                  scope.showInterlinear = false;
+              } else if (!_.isEmpty(interlinear) && _.isEmpty(transcription)) {
+                  scope.showTranscription = false;
+                  scope.showInterlinear = true;
+              }
           }
 
           scope.$watch('transcript.selected', function() {
