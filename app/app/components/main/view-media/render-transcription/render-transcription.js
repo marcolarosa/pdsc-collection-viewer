@@ -17,12 +17,23 @@ angular.module('pdsc')
           transcription: '=',
           interlinear: '=',
           currentTime: '=',
-          play: '&'
+          play: '&',
+          pause: '&'
       },
       link: function postLink(scope) {
           scope.highlight = {};
           scope.selected = {};
           scope.available = {};
+          scope.showTranscription = true;
+          scope.showInterlinear = true;
+          scope.isPlaying = false;
+
+          scope.toggleTranscription = function() {
+              scope.showTranscription = !scope.showTranscription;
+          }
+          scope.toggleInterlinear = function() {
+              scope.showInterlinear = !scope.showInterlinear;
+          }
 
           scope.$watch('currentTime', function() {
               if (scope.currentTime) {
