@@ -2,6 +2,7 @@
 
 require('./app.states');
 require('./main/module');
+require('./services/module');
 require('./supporting-services/module');
 
 angular
@@ -17,7 +18,8 @@ angular
     'ngMaterial',
     'clipboard',
     'pdsc.routes',
-    'pdsc.main'
+    'pdsc.main',
+    'pdsc.services'
   ])
   .config(Configure);
 

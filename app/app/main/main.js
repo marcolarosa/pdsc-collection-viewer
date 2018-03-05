@@ -12,7 +12,7 @@ Controller.$inject = [
   '$log',
   '$routeParams',
   'configuration',
-  'paradisec',
+  'dataService',
   'lodash',
   '$mdSidenav'
 ];
@@ -22,7 +22,7 @@ function Controller(
   $log,
   $routeParams,
   configuration,
-  paradisec,
+  dataService,
   lodash,
   $mdSidenav
 ) {
