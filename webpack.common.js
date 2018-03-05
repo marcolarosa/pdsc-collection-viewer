@@ -18,12 +18,30 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Nabu Collection Viewer'
+      title: 'Nabu Collection Viewer',
+      template: './app/index.html'
     })
   ],
   module: {
-    noParse: [/dtrace-provider/, /safe-json-stringify/, /mv/],
-    rules: [{test: /\.css$/, use: 'css-loader'}]
+    rules: [
+      {
+        test: /\.html$/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader?presets[]=es2015',
+        exclude: /node_modules|bower_components/
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+        loader: 'file-loader?name=res/[name].[ext]?[hash]'
+      }
+    ]
   },
   resolve: {
     alias: {
