@@ -3,6 +3,7 @@
 require('./app.states');
 require('./main/module');
 require('./services/module');
+require('./filters/module');
 require('./supporting-services/module');
 
 angular
@@ -19,7 +20,8 @@ angular
     'clipboard',
     'pdsc.routes',
     'pdsc.main',
-    'pdsc.services'
+    'pdsc.services',
+    'pdsc.filters'
   ])
   .config(Configure);
 
