@@ -1,30 +1,31 @@
 'use strict';
 
+require('./app.states');
+require('./main/module');
+require('./supporting-services/module');
+
 angular
   .module('pdsc', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
-    'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'moment',
-    'underscore',
+    'lodash',
     'pdfjs',
     'ngMaterial',
-    'Clipboard',
+    'clipboard',
+    'pdsc.routes',
+    'pdsc.main'
   ])
-  .config(function ($routeProvider, $mdThemingProvider) {
-    $routeProvider
-      .when('/:collectionId?/:itemId/:itemInstance?', {
-        templateUrl: 'app/components/main/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(Configure);
 
-      $mdThemingProvider.theme('default')
-        .primaryPalette('blue-grey')
-        .accentPalette('orange');
-  });
+Configure.$inject = ['$mdThemingProvider'];
+
+function Configure($mdThemingProvider) {
+  $mdThemingProvider
+    .theme('default')
+    .primaryPalette('blue-grey')
+    .accentPalette('orange');
+}

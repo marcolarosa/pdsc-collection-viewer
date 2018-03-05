@@ -1,0 +1,44 @@
+<div flex layout="column">
+    <md-toolbar class="shrink-toolbar" store-height element="toolbar">
+        <div layout="row">
+            <md-button class="small-font" ng-click="toggleItemInformation()" blur-on-click>
+                <i class="fa fa-info-circle fa-lg"></i> View Item Information
+            </md-button>
+            <md-button class="small-font" ng-click="loadViewer('images')" blur-on-click ng-if="itemData.images | notEmpty">
+                <i class="fa fa-file-image-o fa-lg"></i> Images
+            </md-button>
+            <md-button class="small-font" ng-click="loadViewer('media')" blur-on-click ng-if="itemData.audio | notEmpty">
+                <i class="fa fa-file-audio-o fa-lg"></i> Audio
+            </md-button>
+            <md-button class="small-font" ng-click="loadViewer('media')" blur-on-click ng-if="itemData.video | notEmpty">
+                <i class="fa fa-file-video-o"></i> Video
+            </md-button>
+            <md-button class="small-font" ng-click="loadViewer('documents')" blur-on-click ng-if="itemData.documents | notEmpty">
+                <i class="fa fa-file-pdf-o fa-lg"></i> Documents
+            </md-button>
+            <md-button class="small-font" ng-href="{{levelup}}" ng-if="levelup">
+                <i class="fa fa-level-up fa-lg"></i> View Item 
+            </md-button>
+            <md-button class="small-font" ng-href="{{itemData.identifier[1]}}" target="_blank">
+                <i class="fa fa-external-link fa-lg"></i> View Item in Catalog
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div layout="row" layout-align="center center" store-height element="headline">
+        <h3 class="md-headline">{{itemData.title}}</h3>
+    </div>
+    <div layout="column" layout-padding flex ng-if="!showItemInformation">
+        <div ng-if="itemData.openAccess">
+            <view-image-set ng-if="loadImageViewer"    item-data="itemData" instance-id="instanceId"></view-image-set>
+            <view-documents ng-if="loadDocumentViewer" item-data="itemData" instance-id="instanceId"></view-documents>
+            <view-media     ng-if="loadMediaPlayer"    item-data="itemData" instance-id="instanceId"></view-media>
+        </div>
+        <div ng-if="!itemData.openAccess" class="text-center">
+            {{itemData.rights}}
+        </div>
+    </div>
+</div>
+
+<md-sidenav class="md-sidenav-left fat-sidenav viewer-color" md-component-id="left">
+    <item-information item-data="itemData" close="toggleItemInformation()"></item-information>
+</md-sidenav>
