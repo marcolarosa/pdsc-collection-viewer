@@ -7,9 +7,9 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$transitions'];
+Controller.$inject = ['$state', '$transitions', '$window'];
 
-function Controller($state, $transitions) {
+function Controller($state, $transitions, $window) {
   var vm = this;
 
   var onBeforeHandler;
@@ -26,7 +26,9 @@ function Controller($state, $transitions) {
   }
 
   function viewSetup(stateName) {
-    vm.showErrorMessage = stateName === 'root' ? true : false;
+    if (stateName === 'root') {
+      $window.location.href = 'http://catalog.paradisec.org.au';
+    }
   }
 
   function destroy() {
