@@ -2,6 +2,7 @@
 
 require('./app.states');
 require('./main/module');
+require('./image-viewer/module');
 require('./services/module');
 require('./filters/module');
 require('./supporting-services/module');
@@ -21,15 +22,18 @@ angular
     'pdsc.routes',
     'pdsc.main',
     'pdsc.services',
-    'pdsc.filters'
+    'pdsc.filters',
+    'pdsc.imageViewer'
   ])
   .config(Configure);
 
-Configure.$inject = ['$mdThemingProvider'];
+Configure.$inject = ['$mdThemingProvider', '$locationProvider'];
 
-function Configure($mdThemingProvider) {
+function Configure($mdThemingProvider, $locationProvider) {
   $mdThemingProvider
     .theme('default')
     .primaryPalette('blue-grey')
     .accentPalette('orange');
+
+  $locationProvider.hashPrefix('');
 }
