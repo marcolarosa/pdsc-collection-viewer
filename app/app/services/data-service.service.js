@@ -256,21 +256,21 @@ function DataService(
   // Given a collectionId and itemId - get the
   //  item data.
   function getItem(collectionId, itemId) {
-    var itemIdentifier = conf.datasource.itemIdentifier;
+    var itemIdentifier = configuration.datasource.itemIdentifier;
     itemIdentifier = itemIdentifier
       .replace('{{collectionId}}', collectionId)
       .replace('{{itemId}}', itemId);
 
-    var url = conf.datasource.getItem;
+    var url = configuration.datasource.getItem;
     url = url.replace('{{itemId}}', itemIdentifier);
     $log.debug('ParadisecService: getItem', url, itemIdentifier);
 
     return $http.get(url, {transformResponse: parseOAI}).then(
       function(resp) {
-        $log.debug('ParadisecService: getItem response', resp.data.data);
+        $log.debug('dataService: getItem response', resp.data.data);
         resp.data.data.collectionId = collectionId;
         resp.data.data.collectionLink =
-          conf.datasource.collections + '/' + collectionId;
+          configuration.datasource.collections + '/' + collectionId;
         resp.data.data.itemId = itemId;
 
         // store the object in the service and let the metadata
@@ -281,7 +281,7 @@ function DataService(
         return resp.data.data;
       },
       function() {
-        $log.error("ParadisecService: error, couldn't get", url);
+        $log.error("dataService: error, couldn't get", url);
       }
     );
   }
