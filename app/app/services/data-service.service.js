@@ -47,11 +47,11 @@ function DataService(
       '{{itemId}}',
       itemIdentifier
     );
-    $log.info(`ds getItem ${url}`);
 
     if (ds.data[collectionId] && ds.data[collectionId][itemId]) {
       return Promise.resolve(ds.data[collectionId][itemId]);
     } else {
+      $log.info(`ds getItem ${url}`);
       return $http
         .get(url, {transformResponse: parseOAI})
         .then(processResponse)
