@@ -11,6 +11,10 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
 
   $stateProvider.state('root', {
     url: '/',
+    component: 'pdscCollectionViewerRootComponent'
+  });
+  $stateProvider.state('root.main', {
+    url: '{collectionId}/{itemId}',
     component: 'pdscCollectionViewerMainComponent'
   });
 }
