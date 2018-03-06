@@ -13,8 +13,20 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/',
     component: 'pdscCollectionViewerRootComponent'
   });
-  $stateProvider.state('root.main', {
-    url: '{collectionId}/{itemId}',
+  $stateProvider.state('main', {
+    url: '/{collectionId}/{itemId}',
     component: 'pdscCollectionViewerMainComponent'
+  });
+  $stateProvider.state('main.images', {
+    url: '/images',
+    component: 'pdscImageViewerComponent'
+  });
+  $stateProvider.state('main.media', {
+    url: '/media'
+    // component: 'pdscMediaViewerComponent'
+  });
+  $stateProvider.state('main.documents', {
+    url: '/documents'
+    // component: 'pdscDocumentViewerComponent'
   });
 }
