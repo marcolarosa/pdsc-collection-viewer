@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  template: require('./root.html'),
+  template: require('./root.component.html'),
   bindings: {},
   controller: Controller,
   controllerAs: 'vm'
