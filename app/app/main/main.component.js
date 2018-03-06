@@ -34,11 +34,6 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
         loadItemData();
       }
     });
-
-    vm.collectionId = $state.params.collectionId;
-    vm.itemId = $state.params.itemId;
-    vm.instanceId = $state.params.instanceId;
-    loadItemData();
   }
 
   function destroy() {
@@ -46,10 +41,11 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
   }
 
   function loadItemData() {
+    const collectionId = $state.params.collectionId;
+    const itemId = $state.params.itemId;
     vm.loadingData = true;
-    dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
+    return dataService.getItem(collectionId, itemId).then(resp => {
       vm.itemData = resp;
-      console.log(vm.itemData);
       vm.loadingData = false;
       vm.loadViewer();
     });
