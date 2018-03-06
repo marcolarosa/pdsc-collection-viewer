@@ -26,51 +26,79 @@ function DataService(
   ftp,
   lodash
 ) {
-  function parseXML(doc) {
-    var parser = new DOMParser();
+  var ds = {
+    imageTypes: ['jpg', 'jpeg', 'png'],
+    videoTypes: ['mp4', 'webm', 'ogg', 'ogv', 'mov', 'webm'],
+    audioTypes: ['mp3', 'webm', 'ogg', 'oga'],
+    documentTypes: ['pdf'],
+    getItem: getItem,
+    data: {}
+  };
+  return ds;
 
-    // parse the xml document
-    var xmldoc = parser.parseFromString(doc, 'text/xml');
+  // Given a collectionId and itemId - get the
+  //  item data.
+  function getItem(collectionId, itemId) {
+    const itemIdentifier = configuration.datasource.itemIdentifier
+      .replace('{{collectionId}}', collectionId)
+      .replace('{{itemId}}', itemId);
 
-    // return it as JSON
-    return xmlToJson.convert(xmldoc);
-  }
+    const url = configuration.datasource.getItem.replace(
+      '{{itemId}}',
+      itemIdentifier
+    );
+    $log.info(`ds getItem ${url}`);
 
-  function parseOAI(d) {
-    var tree = parseXML(d);
-
-    try {
-      tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
-
-      return {data: createItemDataStructure(tree)};
-    } catch (e) {
-      return {data: ''};
+    if (ds.data[collectionId] && ds.data[collectionId][itemId]) {
+      return Promise.resolve(ds.data[collectionId][itemId]);
+    } else {
+      return $http
+        .get(url, {transformResponse: parseOAI})
+        .then(processResponse)
+        .catch(handleError);
     }
-  }
 
-  function parseEAF(d) {
-    return {data: eaf.parse(parseXML(d))};
-  }
+    function processResponse(resp) {
+      resp.data.data.collectionId = collectionId;
+      resp.data.data.collectionLink =
+        configuration.datasource.collections + '/' + collectionId;
+      resp.data.data.itemId = itemId;
 
-  function parseTRS(d) {
-    return {data: trs.parse(parseXML(d))};
-  }
+      // store the object in the service and let the metadata
+      //  controller know it's ready to go
+      if (!ds.data[collectionId]) {
+        ds.data[collectionId] = {};
+      }
+      ds.data[collectionId][itemId] = resp.data.data;
 
-  function parseIxt(d) {
-    return {data: ixt.parse(parseXML(d))};
-  }
+      // and return it to the caller which is expecting a promise
+      return resp.data.data;
+    }
 
-  function parseFlextext(d) {
-    return {data: ftp.parse(parseXML(d))};
-  }
+    function handleError(err) {
+      $log.error("dataService: error, couldn't get", url);
+    }
 
-  // handler to extract a value for 'thing'
-  function get(tree, thing) {
-    // not every item has every datapoint
-    try {
-      return tree[thing]['#text'];
-    } catch (e) {
-      return '';
+    function parseOAI(d) {
+      var tree = parseXML(d);
+
+      try {
+        tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
+
+        return {data: createItemDataStructure(tree)};
+      } catch (e) {
+        return {data: ''};
+      }
+
+      function parseXML(doc) {
+        var parser = new DOMParser();
+
+        // parse the xml document
+        var xmldoc = parser.parseFromString(doc, 'text/xml');
+
+        // return it as JSON
+        return xmlToJson.convert(xmldoc);
+      }
     }
   }
 
@@ -80,13 +108,13 @@ function DataService(
   function constructItemList(type, tree) {
     var selector;
     if (type === 'images') {
-      selector = paradisec.imageTypes;
+      selector = ds.imageTypes;
     } else if (type === 'video') {
-      selector = paradisec.videoTypes;
+      selector = ds.videoTypes;
     } else if (type === 'audio') {
-      selector = paradisec.audioTypes;
+      selector = ds.audioTypes;
     } else if (type === 'documents') {
-      selector = paradisec.documentTypes;
+      selector = ds.documentTypes;
     } else if (type === 'eaf') {
       selector = 'eaf';
     } else if (type === 'trs') {
@@ -175,6 +203,16 @@ function DataService(
     getTranscriptions('ixt', data);
     getTranscriptions('flextext', data);
     return data;
+
+    // helper to extract a value for 'thing'
+    //  not every item has every datapoint
+    function get(tree, thing) {
+      try {
+        return tree[thing]['#text'];
+      } catch (e) {
+        return '';
+      }
+    }
   }
 
   function generateThumbnails(images) {
@@ -251,48 +289,21 @@ function DataService(
           );
       });
     });
+
+    function parseEAF(d) {
+      return {data: eaf.parse(parseXML(d))};
+    }
+
+    function parseTRS(d) {
+      return {data: trs.parse(parseXML(d))};
+    }
+
+    function parseIxt(d) {
+      return {data: ixt.parse(parseXML(d))};
+    }
+
+    function parseFlextext(d) {
+      return {data: ftp.parse(parseXML(d))};
+    }
   }
-
-  // Given a collectionId and itemId - get the
-  //  item data.
-  function getItem(collectionId, itemId) {
-    var itemIdentifier = configuration.datasource.itemIdentifier;
-    itemIdentifier = itemIdentifier
-      .replace('{{collectionId}}', collectionId)
-      .replace('{{itemId}}', itemId);
-
-    var url = configuration.datasource.getItem;
-    url = url.replace('{{itemId}}', itemIdentifier);
-    $log.debug('ParadisecService: getItem', url, itemIdentifier);
-
-    return $http.get(url, {transformResponse: parseOAI}).then(
-      function(resp) {
-        $log.debug('dataService: getItem response', resp.data.data);
-        resp.data.data.collectionId = collectionId;
-        resp.data.data.collectionLink =
-          configuration.datasource.collections + '/' + collectionId;
-        resp.data.data.itemId = itemId;
-
-        // store the object in the service and let the metadata
-        //  controller know it's ready to go
-        paradisec.itemData = resp.data.data;
-
-        // and return it to the caller which is expecting a promise
-        return resp.data.data;
-      },
-      function() {
-        $log.error("dataService: error, couldn't get", url);
-      }
-    );
-  }
-
-  var paradisec = {
-    imageTypes: ['jpg', 'jpeg', 'png'],
-    videoTypes: ['mp4', 'webm', 'ogg', 'ogv', 'mov', 'webm'],
-    audioTypes: ['mp3', 'webm', 'ogg', 'oga'],
-    documentTypes: ['pdf'],
-    getItem: getItem,
-    itemData: {}
-  };
-  return paradisec;
 }
