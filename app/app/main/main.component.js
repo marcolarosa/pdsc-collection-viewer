@@ -46,9 +46,11 @@ function Controller(
   function destroy() {}
 
   function loadItemData() {
+    vm.loadingData = true;
     dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
       console.log(vm.itemData);
+      vm.loadingData = false;
       vm.whichViewer();
     });
   }
