@@ -34,7 +34,13 @@ function Controller(
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
+  vm.previous = previous;
+  vm.next = next;
+  vm.jumpToStart = jumpToStart;
+  vm.jumpToEnd = jumpToEnd;
+  vm.toggleFilmstrip = toggleFilmstrip;
   vm.jump = jump;
+  vm.toggleFullScreen = toggleFullScreen;
 
   function init() {
     vm.config = {
@@ -68,12 +74,12 @@ function Controller(
       const imageId = $state.params.imageId;
       vm.config.current = vm.images.indexOf(imageId);
 
-      vm.loadImage();
+      loadImage();
       vm.loadingData = false;
     }
   }
 
-  vm.loadImage = function() {
+  function loadImage() {
     // vm.config.currentScale = 1;
     // vm.config.currentRotation = 0;
     vm.showImage = false;
@@ -82,9 +88,9 @@ function Controller(
     }, 500);
     setCurrentImage();
     vm.image = vm.item.images[vm.config.current];
-    vm.figureOutPaginationControls();
+    figureOutPaginationControls();
     //vm.highlightThumbnail();
-  };
+  }
 
   function setCurrentImage() {
     const imageId = $state.params.imageId;
@@ -103,7 +109,7 @@ function Controller(
     });
   }
 
-  vm.figureOutPaginationControls = function() {
+  function figureOutPaginationControls() {
     // only 1 image? disable both controls
     if (vm.item.images.length === 1) {
       vm.showNext = false;
@@ -128,37 +134,42 @@ function Controller(
       vm.showNext = true;
       vm.showPrevious = true;
     }
-  };
+  }
 
-  // page to next image
-  vm.next = function() {
+  function next() {
     if (vm.config.current === vm.item.images.length - 1) {
       return;
     }
     vm.config.current += 1;
     jump();
-  };
+  }
 
-  // page to previous image
-  vm.previous = function() {
+  function previous() {
     if (vm.config.current === 0) {
       return;
     }
     vm.config.current -= 1;
     jump();
-  };
+  }
 
-  // jump to first image
-  vm.jumpToStart = function() {
+  function jumpToStart() {
     vm.config.current = 0;
     jump();
-  };
+  }
 
-  // jump to last image
-  vm.jumpToEnd = function() {
+  function jumpToEnd() {
     vm.config.current = vm.item.images.length - 1;
     jump();
-  };
+  }
+
+  function toggleFilmstrip() {
+    $mdSidenav('thumbnailFilmstrip').toggle();
+  }
+
+  function toggleFullScreen(image) {
+    const viewer = ImageViewer();
+    viewer.show(image);
+  }
 
   // // rotate left
   // vm.rotateLeft = function() {
@@ -216,9 +227,4 @@ function Controller(
   //     transition: '0.3s ease-in-out'
   //   };
   // };
-
-  // toggle the filmstrip view
-  vm.toggleFilmstrip = function() {
-    $mdSidenav('thumbnailFilmstrip').toggle();
-  };
 }
