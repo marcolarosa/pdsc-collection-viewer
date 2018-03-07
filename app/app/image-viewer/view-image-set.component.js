@@ -127,80 +127,62 @@ function Controller(
     vm.loadImage();
   };
 
-  // rotate left
-  vm.rotateLeft = function() {
-    vm.config.currentRotation -= 90;
-    vm.setTransform();
-  };
-
-  // rotate right
-  vm.rotateRight = function() {
-    vm.config.currentRotation += 90;
-    vm.setTransform();
-  };
-
-  // zoom in
-  vm.zoomIn = function() {
-    vm.config.currentScale += vm.config.scaleStep;
-    if (vm.config.currentScale > 3) {
-      vm.config.currentScale = 3;
-    }
-    vm.setTransform();
-  };
-
-  // zoom out
-  vm.zoomOut = function() {
-    vm.config.currentScale -= vm.config.scaleStep;
-    if (vm.config.currentScale < 0.2) {
-      vm.config.currentScale = 0.2;
-    }
-    vm.setTransform();
-  };
-
-  vm.setTransformOrigin = function() {
-    switch (vm.config.currentRotation) {
-      case 0:
-        vm.config.transformOrigin = 'left top';
-        break;
-      case -360:
-        vm.config.transformOrigin = 'left top';
-        break;
-      case 360:
-        vm.config.transformOrigin = 'left top';
-        break;
-      default:
-        vm.config.transformOrigin = 'center center';
-        break;
-    }
-  };
-
-  // set transform
-  vm.setTransform = function() {
-    vm.setTransformOrigin();
-    var transformation =
-      'rotate(' +
-      vm.config.currentRotation +
-      'deg) scale(' +
-      vm.config.currentScale +
-      ')';
-    vm.transform = {
-      '-webkit-transform': transformation,
-      //'-webkit-transform-origin': vm.transformOrigin,
-      '-moz-transform': transformation,
-      //'-moz-transform-origin': vm.transformOrigin,
-      '-ms-transform': transformation,
-      //'-ms-transform-origin': vm.transformOrigin,
-      '-o-transform': transformation,
-      //'-o-transform-origin': vm.transformOrigin,
-      transform: transformation,
-      //'transform-origin': vm.transformOrigin,
-      '-webkit-transition': '0.3s ease-in-out',
-      '-moz-transition': '0.3s ease-in-out',
-      '-ms-transition': '0.3s ease-in-out',
-      '-o-transition': '0.3s ease-in-out',
-      transition: '0.3s ease-in-out'
-    };
-  };
+  // // rotate left
+  // vm.rotateLeft = function() {
+  //   vm.config.currentRotation -= 90;
+  //   vm.setTransform();
+  // };
+  //
+  // // rotate right
+  // vm.rotateRight = function() {
+  //   vm.config.currentRotation += 90;
+  //   vm.setTransform();
+  // };
+  //
+  // vm.setTransformOrigin = function() {
+  //   switch (vm.config.currentRotation) {
+  //     case 0:
+  //       vm.config.transformOrigin = 'left top';
+  //       break;
+  //     case -360:
+  //       vm.config.transformOrigin = 'left top';
+  //       break;
+  //     case 360:
+  //       vm.config.transformOrigin = 'left top';
+  //       break;
+  //     default:
+  //       vm.config.transformOrigin = 'center center';
+  //       break;
+  //   }
+  // };
+  //
+  // // set transform
+  // vm.setTransform = function() {
+  //   vm.setTransformOrigin();
+  //   var transformation =
+  //     'rotate(' +
+  //     vm.config.currentRotation +
+  //     'deg) scale(' +
+  //     vm.config.currentScale +
+  //     ')';
+  //   vm.transform = {
+  //     '-webkit-transform': transformation,
+  //     //'-webkit-transform-origin': vm.transformOrigin,
+  //     '-moz-transform': transformation,
+  //     //'-moz-transform-origin': vm.transformOrigin,
+  //     '-ms-transform': transformation,
+  //     //'-ms-transform-origin': vm.transformOrigin,
+  //     '-o-transform': transformation,
+  //     //'-o-transform-origin': vm.transformOrigin,
+  //     transform: transformation,
+  //     //'transform-origin': vm.transformOrigin,
+  //     '-webkit-transition': '0.3s ease-in-out',
+  //     '-moz-transition': '0.3s ease-in-out',
+  //     '-ms-transition': '0.3s ease-in-out',
+  //     '-o-transition': '0.3s ease-in-out',
+  //     transition: '0.3s ease-in-out'
+  //   };
+  // };
 
   // toggle the filmstrip view
   vm.toggleFilmstrip = function() {

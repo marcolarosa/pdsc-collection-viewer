@@ -10,17 +10,14 @@ module.exports = () => {
 
 Linker.$inject = ['scope', 'element'];
 function Linker(scope, element) {
-  let viewer;
+  scope.vm.showImage = false;
   element.on('load', function() {
-    if (viewer) {
-      viewer = viewer.destroy();
-    }
     scope.$apply(function() {
       scope.vm.showProgress = false;
       scope.vm.imageStyle = {
         width: '800px'
       };
-      viewer = $('.pannable-image').ImageViewer();
+      let viewer = $('.pannable-image').ImageViewer();
       scope.vm.showImage = true;
     });
   });
