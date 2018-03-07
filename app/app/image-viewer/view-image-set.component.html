@@ -56,7 +56,6 @@
                     close="vm.toggleItemInformation()">
                 </pdsc-item-information-component>
             </div>
-
         </span>
     </div>
     <div layout="row" layout-align="center center" flex>
@@ -74,6 +73,16 @@
     </div>
 </div>
 
-<md-sidenav class="md-sidenav-right viewer-color" md-component-id="thumbnailFilmstrip">
-    <render-thumbnail-filmstrip item-data="vm.item" selected-item="vm.config.current"></render-thumbnail-filmstrip>
+<md-sidenav
+    class="md-sidenav-right viewer-color"
+    md-component-id="thumbnailFilmstrip"
+    md-is-open="vm.config.sideNavIsOpen"
+    ng-if="!vm.loadingData">
+        <pdsc-image-viewer-thumbnail-strip-component
+            item="vm.item"
+            selected-item="vm.config.current"
+            is-open="vm.config.sideNavIsOpen"
+            jump="vm.jump()"
+            ng-if="vm.config.sideNavIsOpen">
+        </pdsc-image-viewer-thumbnail-strip-component>
 </md-sidenav>

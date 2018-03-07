@@ -34,12 +34,13 @@ function Controller(
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
+  vm.jump = jump;
 
   function init() {
     vm.config = {
       disableThumbnailView: false,
       scaleStep: 0.2,
-      isOpen: false,
+      sideNavIsOpen: false,
       current: null
     };
     loaditem();

@@ -1,11 +1,11 @@
-<div layout="column" layout-align="center center" layout-margin>
-    <span ng-repeat="img in smallImages">
+<div layout="column" layout-align="center center" layout-margin ng-if="vm.isOpen">
+    <span ng-repeat="img in vm.thumbnails">
         <div layout="row" layout-align="center center">
-            <span flex="10">
+            <span flex="20">
                 {{$index + 1}}
             </span>
-            <a flex="90" ng-click="jumpTo(img.id)" id="{{img.id}}" ng-class="img.selected">
-                <img src="{{img.source}}" class="img-thumbnail" style="width: 200px;" />
+            <a flex="80" ng-click="vm.loadImage(img.name)" id="{{img.id}}" ng-class="img.selected">
+                <img ng-src="{{img.source}}" class="filmstrip-thumbnail" />
             </a>
         </div>
     </span>
