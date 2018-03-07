@@ -12,6 +12,10 @@ module.exports = angular
     'pdscCollectionViewerMainComponent',
     require('./main.component.js')
   )
+  .component(
+    'pdscItemInformationComponent',
+    require('./item-information.component')
+  )
   .directive('sizeToParent', require('./size-to-parent.directive'))
   .directive('blurOnClick', require('./blur-on-click.directive'))
   .directive('storeHeight', require('./store-height.directive'));

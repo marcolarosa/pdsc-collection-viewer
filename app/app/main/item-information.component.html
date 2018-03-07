@@ -1,0 +1,66 @@
+<div layout="column" layout-padding>
+    <!-- <div layout="column" layout-margin>
+        <div class="md-headline">{{vm.itemData.title}}</div>
+        <md-divider></md-divider>
+    </div> -->
+    <div layout="row" layout-align="center center">
+        <md-button
+            class="small-button md-primary md-raised"
+            ng-href="{{vm.itemData.collectionLink}}"
+            target="_blank">
+                <i class="fa fa-external-link fa-sm"></i>
+                Collection: {{vm.itemData.collectionId}}
+        </md-button>
+        <md-button
+            class="small-button md-primary md-raised"
+            ng-href="{{vm.itemData.identifier[1]}}"
+            target="_blank">
+                <i class="fa fa-external-link fa-sm"></i>
+                Item: {{vm.itemData.itemId}}
+        </md-button>
+    </div>
+    <div layout="column">
+        <div class="md-subhead">Contributors</div>
+        <div ng-repeat="contributor in vm.itemData.contributor" class="md-caption">
+            <li>{{contributor.name}} ({{contributor.role}})</li>
+        </div>
+    </div>
+    <div layout="column">
+        <div class="md-subhead">Description</div>
+        <div class="md-caption">{{vm.itemData.description}}</div>
+    </div>
+    <div layout="column">
+        <div class="md-subhead">
+            <div layout="row">
+                <div style="line-height: 40px;">Cite this item</div>
+                <div flex></div>
+                <md-button
+                    style="margin: 0; padding: 0;"
+                    class="small-button"
+                    data-clipboard-text="{{vm.itemData.citation}}"
+                    aria-label="copy citation to clipboard">
+                    <md-tooltip>
+                        Copy citation
+                    </md-tooltip>
+                    <i class="fa fa-clone fa-lg"></i>
+                </md-button>
+            </div>
+        </div>
+        <div style="word-wrap: break-word;" class="md-caption">{{vm.itemData.citation}}</div>
+
+    </div>
+    <div layout="column">
+        <div class="md-subhead">Zotero and Mendeley Integration.</div>
+        <div class="md-caption">
+            <p>This page has embedded metadata that is able to be read by both Zotero and Mendeley.</p>
+            <p>Zotero users with the appropriate browser plugin (<a href="https://www.zotero.org/download/" target="_blank">
+            https://www.zotero.org/download/</a>)
+            can save to Zotero directly whilst Mendeley users should install the <em>one click Web Importer</em>
+            (<a href="https://www.mendeley.com/import/" target="_blank">https://www.mendeley.com/import/</a>) to
+            enable the same functionality.</p>
+        </div>
+    </div>
+    <!-- <div layout="row">
+        <md-button class="small-button md-primary md-raised" ng-click="vm.close()">close</md-button>
+    </div> -->
+</div>
