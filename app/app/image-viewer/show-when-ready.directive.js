@@ -18,7 +18,7 @@ function Linker(scope, element) {
     scope.$apply(function() {
       scope.vm.showProgress = false;
       scope.vm.imageStyle = {
-        height: '800px'
+        width: '800px'
       };
       viewer = $('.pannable-image').ImageViewer();
       scope.vm.showImage = true;
