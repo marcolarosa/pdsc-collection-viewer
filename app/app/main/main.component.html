@@ -4,6 +4,12 @@
             <!-- <md-button class="small-font" ng-click="vm.toggleItemInformation()" blur-on-click>
                 <i class="fa fa-info-circle fa-lg"></i> View Item Information
             </md-button> -->
+            <md-button class="small-font" ng-href="{{vm.itemData.collectionLink}}" target="_blank">
+                <i class="fa fa-external-link fa-lg"></i> View Collection in Catalog
+            </md-button>
+            <md-button class="small-font" ng-href="{{vm.itemData.identifier[1]}}" target="_blank">
+                <i class="fa fa-external-link fa-lg"></i> View Item in Catalog
+            </md-button>
             <md-button class="small-font" ui-sref="main.images" blur-on-click ng-if="vm.itemData.images.length">
                 <i class="fa fa-file-image-o fa-lg"></i> Images
             </md-button>
@@ -18,9 +24,6 @@
             </md-button>
             <md-button class="small-font" ng-href="{{vm.levelup}}" ng-if="vm.levelup">
                 <i class="fa fa-level-up fa-lg"></i> View Item
-            </md-button>
-            <md-button class="small-font" ng-href="{{vm.itemData.identifier[1]}}" target="_blank">
-                <i class="fa fa-external-link fa-lg"></i> View Item in Catalog
             </md-button>
         </div>
     </md-toolbar>

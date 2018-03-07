@@ -42,10 +42,10 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
   }
 
   function loadItemData() {
-    const collectionId = $state.params.collectionId;
-    const itemId = $state.params.itemId;
+    vm.collectionId = $state.params.collectionId;
+    vm.itemId = $state.params.itemId;
     vm.loadingData = true;
-    return dataService.getItem(collectionId, itemId).then(resp => {
+    return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
       vm.loadingData = false;
       vm.loadViewer();
