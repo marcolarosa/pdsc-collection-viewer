@@ -47,37 +47,29 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
     vm.loadingData = true;
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
-      console.log(vm.itemData);
       vm.loadingData = false;
       vm.loadViewer();
     });
   }
 
-  // show / hide item information panel
   function toggleItemInformation() {
     $mdSidenav('left').toggle();
   }
 
-  // load an appropriate viewer
   function loadViewer() {
-    // some of the viewers need to know the header height so they
-    //  can size themselves accordingly
-    //vm.headerHeight = document.getElementById('header').clientHeight;
-
-    // always ditch info when loading a viewer
-    vm.showItemInformation = false;
-
-    // now load the required viewer
-    if (vm.itemData.images) {
-      let image = vm.itemData.images[0]
-        .split('/')
-        .pop()
-        .split('.')[0];
-      $state.go('main.imagesInstance', {imageId: image});
-    } else if (vm.itemData.documents) {
-      $state.go('main.documents');
-    } else {
-      $state.go('main.media');
+    // load the required viewer if we're at the item root
+    if ($state.current.name === 'main.images') {
+      if (vm.itemData.images) {
+        let image = vm.itemData.images[0]
+          .split('/')
+          .pop()
+          .split('.')[0];
+        $state.go('main.imagesInstance', {imageId: image});
+      } else if (vm.itemData.documents) {
+        $state.go('main.documents');
+      } else {
+        $state.go('main.media');
+      }
     }
   }
 }
