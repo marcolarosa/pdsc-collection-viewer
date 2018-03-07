@@ -15,9 +15,11 @@ function Linker(scope, element) {
     scope.$apply(function() {
       scope.vm.showProgress = false;
       scope.vm.imageStyle = {
-        width: '800px'
+        width: '600px',
+        'max-width': '600px',
+        overflow: 'auto'
       };
-      let viewer = $('.pannable-image').ImageViewer();
+      // let viewer = $('.pannable-image').ImageViewer();
       scope.vm.showImage = true;
     });
   });

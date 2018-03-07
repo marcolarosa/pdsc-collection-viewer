@@ -1,5 +1,7 @@
-<div layout="row">
-    <div layout="column" layout-align="top center" flex="30">
+<div
+    layout-gt-sm="row"
+    layout="column">
+    <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
         <span ng-if="!vm.loadingData">
             <div layout="row" layout-align="center center">
                 <div class="md-subhead">
@@ -46,11 +48,17 @@
                     </md-button>
                     <md-button class="small-button"
                         aria-label="download item"
-                        ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click>
+                        ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click
+                        hide show-gt-sm>
                             <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
                     </md-button>
+                    <md-button class="small-button"
+                        aria-label="view item in full screen mode"
+                        ng-click="vm.toggleFullScreen(vm.image)">
+                            <i class="fa fa-expand fa-lg"></i>
+                    </md-button>
             </div>
-            <div layout="row">
+            <div layout="row" hide show-gt-sm>
                 <pdsc-item-information-component
                     item-data="vm.item"
                     close="vm.toggleItemInformation()">
