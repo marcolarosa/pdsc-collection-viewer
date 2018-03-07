@@ -4,18 +4,32 @@ html.md-default-theme,
 html {
   color: #212121;
 }
+
 .viewer-color {
   background-color: rgb(242, 241, 239);
 }
 
-.filmstrip-highlight-current {
-  border: 4px solid #607d8b;
-  border-radius: 2px;
-  padding: 4px 37px 2px 4px;
+.viewer-panel {
+  max-width: 370px;
+  width: 370px;
 }
-
-.filmstrip-thumbnail {
-  width: 150px;
+@media (min-width: 650px) {
+  .viewer-panel {
+    max-width: 650px;
+    width: 650px;
+  }
+}
+@media (min-width: 700px) {
+  .viewer-panel {
+    max-width: 700px;
+    width: 700px;
+  }
+}
+@media (min-width: 960px) {
+  .viewer-panel {
+    max-width: 1000px;
+    width: 1000px;
+  }
 }
 
 .section-heading {
@@ -101,4 +115,16 @@ html {
 
 .shift-down {
   margin-top: 8px;
+}
+
+/*  Imageviewer styles */
+
+.filmstrip-highlight-current {
+  border: 4px solid #607d8b;
+  border-radius: 2px;
+  padding: 4px 37px 2px 4px;
+}
+
+.filmstrip-thumbnail {
+  width: 150px;
 }
