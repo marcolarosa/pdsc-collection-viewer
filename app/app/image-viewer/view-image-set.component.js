@@ -40,7 +40,7 @@ function Controller(
       disableThumbnailView: false,
       scaleStep: 0.2,
       isOpen: false,
-      current: 0
+      current: null
     };
     loaditem();
   }
@@ -51,24 +51,53 @@ function Controller(
     const collectionId = $state.params.collectionId;
     const itemId = $state.params.itemId;
     vm.loadingData = true;
-    dataService.getItem(collectionId, itemId).then(resp => {
+    dataService.getItem(collectionId, itemId).then(processResponse);
+
+    function processResponse(resp) {
       vm.item = resp;
+      vm.images = lodash.map(
+        vm.item.images,
+        image =>
+          image
+            .split('/')
+            .pop()
+            .split('.')[0]
+      );
+
       vm.loadImage();
       vm.loadingData = false;
-    });
+    }
   }
 
   vm.loadImage = function() {
-    vm.config.currentScale = 1;
-    vm.config.currentRotation = 0;
+    // vm.config.currentScale = 1;
+    // vm.config.currentRotation = 0;
     vm.showImage = false;
     $timeout(function() {
       vm.showProgress = true;
     }, 500);
+    setCurrentImage();
     vm.image = vm.item.images[vm.config.current];
     vm.figureOutPaginationControls();
     //vm.highlightThumbnail();
   };
+
+  function setCurrentImage() {
+    const imageId = $state.params.imageId;
+    lodash.each(vm.images, (image, idx) => {
+      if (image === imageId) {
+        vm.config.current = idx;
+      }
+    });
+  }
+
+  function jump() {
+    lodash.each(vm.images, (image, idx) => {
+      if (vm.config.current === idx) {
+        $state.go('main.imagesInstance', {imageId: image});
+      }
+    });
+  }
 
   vm.figureOutPaginationControls = function() {
     // only 1 image? disable both controls
@@ -103,7 +132,7 @@ function Controller(
       return;
     }
     vm.config.current += 1;
-    vm.loadImage();
+    jump();
   };
 
   // page to previous image
@@ -112,19 +141,19 @@ function Controller(
       return;
     }
     vm.config.current -= 1;
-    vm.loadImage();
+    jump();
   };
 
   // jump to first image
   vm.jumpToStart = function() {
     vm.config.current = 0;
-    vm.loadImage();
+    jump();
   };
 
   // jump to last image
   vm.jumpToEnd = function() {
     vm.config.current = vm.item.images.length - 1;
-    vm.loadImage();
+    jump();
   };
 
   // // rotate left

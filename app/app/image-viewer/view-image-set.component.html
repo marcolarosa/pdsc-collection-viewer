@@ -10,24 +10,28 @@
                     <md-button class="small-button"
                         aria-label="jump to start"
                         ng-click="vm.jumpToStart()"
+                        ng-disabled="{{vm.config.current === 0}}"
                         blur-on-click>
                             <span class="fa fa-fast-backward fa-lg"></span>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="previous"
                         ng-click="vm.previous()"
+                        ng-disabled="{{vm.config.current === 0}}"
                         blur-on-click>
                             <span class="fa fa-step-backward fa-lg"></span>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="next"
                         ng-click="vm.next()"
+                        ng-disabled="{{vm.config.current === vm.images.length - 1}}"
                         blur-on-click>
                             <span class="fa fa-step-forward fa-lg"></span>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="jump to end"
                         ng-click="vm.jumpToEnd()"
+                        ng-disabled="{{vm.config.current === vm.images.length - 1}}"
                         blur-on-click>
                             <span class="fa fa-fast-forward fa-lg"></span>
                     </md-button>

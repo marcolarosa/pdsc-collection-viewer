@@ -47,6 +47,7 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
     vm.loadingData = true;
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
+      console.log(vm.itemData);
       vm.loadingData = false;
       vm.loadViewer();
     });
@@ -68,7 +69,11 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
 
     // now load the required viewer
     if (vm.itemData.images) {
-      $state.go('main.images');
+      let image = vm.itemData.images[0]
+        .split('/')
+        .pop()
+        .split('.')[0];
+      $state.go('main.imagesInstance', {imageId: image});
     } else if (vm.itemData.documents) {
       $state.go('main.documents');
     } else {

@@ -21,6 +21,10 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/images',
     component: 'pdscImageViewerComponent'
   });
+  $stateProvider.state('main.imagesInstance', {
+    url: '/images/:imageId',
+    component: 'pdscImageViewerComponent'
+  });
   $stateProvider.state('main.media', {
     url: '/media'
     // component: 'pdscMediaViewerComponent'
