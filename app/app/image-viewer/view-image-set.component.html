@@ -1,0 +1,66 @@
+<div layout="column" layout-align="center center" class="" store-height element="controls">
+    <div layout="row" layout-wrap layout-align="center center">
+        <span class="md-subhead">
+            Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
+        </span>
+    </div>
+    <div layout="row" layout-wrap layout-align="center center" ng-if="!vm.loadingData">
+        <span ng-if="!vm.disableThumbnailView">
+            <md-button class="small-button"
+                aria-label="toggle filmstrip"
+                ng-click="vm.toggleFilmstrip()"
+                blur-on-click>
+                    <span ng-show="showFilmstrip">hide thumbnails</span>
+                    <span ng-hide="showFilmstrip">show thumbnails</span>
+            </md-button>
+            <md-button class="small-button"
+                aria-label="jump to start"
+                ng-click="vm.jumpToStart()"
+                blur-on-click>
+                    <span class="fa fa-fast-backward fa-lg"></span>
+            </md-button>
+            <md-button class="small-button"
+                aria-label="previous"
+                ng-click="vm.previous()"
+                blur-on-click>
+                    <span class="fa fa-step-backward fa-lg"></span>
+            </md-button>
+        </span>
+        <md-button class="small-button"
+            aria-label="download item"
+            ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click>
+                <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
+        </md-button>
+        <span ng-if="!vm.disableThumbnailView">
+            <md-button class="small-button"
+                aria-label="next"
+                ng-click="vm.next()"
+                blur-on-click>
+                    <span class="fa fa-step-forward fa-lg"></span>
+            </md-button>
+            <md-button class="small-button"
+                aria-label="jump to end"
+                ng-click="vm.jumpToEnd()"
+                blur-on-click>
+                    <span class="fa fa-fast-forward fa-lg"></span>
+            </md-button>
+        </span>
+    </div>
+</div>
+<div layout="row" layout-align="center center">
+    <div ng-show="vm.showProgress" style="width: 500px; margin: 40px;">
+        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <img
+        class="pannable-image"
+        id='largeImage'
+        ng-src="{{vm.image}}"
+        ng-style="vm.imageStyle"
+        alt='You must be logged in to Nabu to view this image'
+        ng-show="vm.showImage"
+        show-when-ready>
+</div>
+
+<md-sidenav class="md-sidenav-right viewer-color" md-component-id="thumbnailFilmstrip">
+    <render-thumbnail-filmstrip item-data="vm.item" selected-item="vm.config.current"></render-thumbnail-filmstrip>
+</md-sidenav>
