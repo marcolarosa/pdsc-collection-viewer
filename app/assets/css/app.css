@@ -1,8 +1,14 @@
 body {
 }
 
+body.md-default-theme,
+body,
+html.md-default-theme,
+html {
+  color: #212121;
+}
 .viewer-color {
-  background-color: #efebe9;
+  background-color: rgb(242, 241, 239);
 }
 
 .filmstrip-highlight-current {
