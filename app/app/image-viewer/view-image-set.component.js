@@ -65,6 +65,9 @@ function Controller(
             .split('.')[0]
       );
 
+      const imageId = $state.params.imageId;
+      vm.config.current = vm.images.indexOf(imageId);
+
       vm.loadImage();
       vm.loadingData = false;
     }
