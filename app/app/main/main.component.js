@@ -34,6 +34,7 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
         loadItemData();
       }
     });
+    loadItemData();
   }
 
   function destroy() {
