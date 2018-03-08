@@ -33,4 +33,8 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/documents',
     component: 'pdscDocumentViewerComponent'
   });
+  $stateProvider.state('main.documentInstance', {
+    url: '/documents/:documentId',
+    component: 'pdscDocumentViewerComponent'
+  });
 }
