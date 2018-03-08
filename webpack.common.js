@@ -16,7 +16,6 @@ module.exports = {
   },
   target: 'web',
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Nabu Collection Viewer',
       template: './app/index.html'
