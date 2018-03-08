@@ -32,13 +32,38 @@ function DataService(
     audioTypes: ['mp3', 'webm', 'ogg', 'oga'],
     documentTypes: ['pdf'],
     getItem: getItem,
-    data: {}
+    data: {},
+    loading: {}
   };
   return ds;
 
   // Given a collectionId and itemId - get the
   //  item data.
   function getItem(collectionId, itemId) {
+    if (!ds.data[collectionId]) {
+      ds.data[collectionId] = {};
+      ds.data[collectionId][itemId] = {};
+    }
+
+    if (!ds.loading[collectionId]) {
+      ds.loading[collectionId] = {};
+    }
+
+    if (ds.loading[collectionId][itemId]) {
+      const data = ds.data[collectionId][itemId];
+      return Promise.resolve(data);
+    }
+
+    if (
+      !ds.loading[collectionId][itemId] &&
+      !lodash.isEmpty(ds.data[collectionId][itemId])
+    ) {
+      const data = ds.data[collectionId][itemId];
+      return Promise.resolve(data);
+    }
+
+    ds.loading[collectionId][itemId] = true;
+
     const itemIdentifier = configuration.datasource.itemIdentifier
       .replace('{{collectionId}}', collectionId)
       .replace('{{itemId}}', itemId);
@@ -48,15 +73,11 @@ function DataService(
       itemIdentifier
     );
 
-    if (ds.data[collectionId] && ds.data[collectionId][itemId]) {
-      return Promise.resolve(ds.data[collectionId][itemId]);
-    } else {
-      $log.info(`ds getItem ${url}`);
-      return $http
-        .get(url, {transformResponse: parseOAI})
-        .then(processResponse)
-        .catch(handleError);
-    }
+    $log.info(`ds getItem ${url}`);
+    return $http
+      .get(url, {transformResponse: parseOAI})
+      .then(processResponse)
+      .catch(handleError);
 
     function processResponse(resp) {
       resp.data.data.collectionId = collectionId;
@@ -66,10 +87,9 @@ function DataService(
 
       // store the object in the service and let the metadata
       //  controller know it's ready to go
-      if (!ds.data[collectionId]) {
-        ds.data[collectionId] = {};
-      }
       ds.data[collectionId][itemId] = resp.data.data;
+      ds.loading[collectionId][itemId] = false;
+      $rootScope.$broadcast('item data loaded');
 
       // and return it to the caller which is expecting a promise
       return resp.data.data;

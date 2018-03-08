@@ -9,6 +9,7 @@ module.exports = {
 
 Controller.$inject = [
   '$state',
+  '$rootScope',
   '$log',
   '$window',
   '$location',
@@ -21,6 +22,7 @@ Controller.$inject = [
 
 function Controller(
   $state,
+  $rootScope,
   $log,
   $window,
   $location,
@@ -31,6 +33,8 @@ function Controller(
   $mdSidenav
 ) {
   var vm = this;
+
+  var broadcastListener;
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
@@ -43,24 +47,31 @@ function Controller(
   vm.toggleFullScreen = toggleFullScreen;
 
   function init() {
+    broadcastListener = $rootScope.$on('item data loaded', loadItem);
+
     vm.config = {
       disableThumbnailView: false,
       scaleStep: 0.2,
       sideNavIsOpen: false,
       current: null
     };
-    loaditem();
+    loadItem();
   }
 
-  function destroy() {}
+  function destroy() {
+    broadcastListener();
+  }
 
-  function loaditem() {
+  function loadItem() {
     const collectionId = $state.params.collectionId;
     const itemId = $state.params.itemId;
     vm.loadingData = true;
     dataService.getItem(collectionId, itemId).then(processResponse);
 
     function processResponse(resp) {
+      if (lodash.isEmpty(resp)) {
+        return;
+      }
       vm.item = resp;
       vm.images = lodash.map(
         vm.item.images,
@@ -71,6 +82,9 @@ function Controller(
             .split('.')[0]
       );
 
+      if (!$state.params.imageId) {
+        $state.go('main.imagesInstance', {imageId: vm.images[0]});
+      }
       const imageId = $state.params.imageId;
       vm.config.current = vm.images.indexOf(imageId);
 

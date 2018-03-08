@@ -10,12 +10,20 @@ module.exports = {
 Controller.$inject = [
   '$state',
   '$transitions',
-  '$log',
+  '$rootScope',
   'dataService',
-  '$mdSidenav'
+  '$mdSidenav',
+  'lodash'
 ];
 
-function Controller($state, $transitions, $log, dataService, $mdSidenav) {
+function Controller(
+  $state,
+  $transitions,
+  $rootScope,
+  dataService,
+  $mdSidenav,
+  lodash
+) {
   var vm = this;
 
   var onSuccessHandler;
@@ -31,22 +39,23 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
   function init() {
     onSuccessHandler = $transitions.onSuccess({}, function(transition) {
       if (transition.$to().name === 'main') {
-        loadItemData();
+        loadItem();
       }
     });
-    loadItemData();
+    loadItem();
   }
 
   function destroy() {
     onSuccessHandler();
   }
 
-  function loadItemData() {
+  function loadItem() {
     vm.collectionId = $state.params.collectionId;
     vm.itemId = $state.params.itemId;
     vm.loadingData = true;
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
+      console.log(vm.itemData);
       vm.loadingData = false;
       vm.loadViewer();
     });
@@ -58,7 +67,7 @@ function Controller($state, $transitions, $log, dataService, $mdSidenav) {
 
   function loadViewer() {
     // load the required viewer if we're at the item root
-    if ($state.current.name === 'main.images') {
+    if (lodash.includes(['main', 'main.images'], $state.current.name)) {
       if (vm.itemData.images) {
         let image = vm.itemData.images[0]
           .split('/')
