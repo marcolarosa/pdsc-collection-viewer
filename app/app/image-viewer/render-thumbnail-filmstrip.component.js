@@ -59,6 +59,6 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
   }
 
   function loadImage(image) {
-    $state.go('main.imagesInstance', {imageId: image});
+    $state.go('main.imageInstance', {imageId: image});
   }
 }

@@ -10,10 +10,8 @@ module.exports = () => {
 
 Linker.$inject = ['scope', 'element'];
 function Linker(scope, element) {
-  scope.vm.showImage = false;
   element.on('load', function() {
     scope.$apply(function() {
-      scope.vm.showProgress = false;
       scope.vm.imageStyle = {
         width: '600px',
         'max-width': '600px',
@@ -22,5 +20,8 @@ function Linker(scope, element) {
       // let viewer = $('.pannable-image').ImageViewer();
       scope.vm.showImage = true;
     });
+  });
+  element.on('error', function(err) {
+    console.log(err);
   });
 }

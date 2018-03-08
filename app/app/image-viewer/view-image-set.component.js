@@ -65,60 +65,45 @@ function Controller(
   function loadItem() {
     const collectionId = $state.params.collectionId;
     const itemId = $state.params.itemId;
+    vm.showImage = false;
     vm.loadingData = true;
     dataService.getItem(collectionId, itemId).then(processResponse);
 
     function processResponse(resp) {
+      vm.loadingData = false;
       if (lodash.isEmpty(resp)) {
         return;
       }
       vm.item = resp;
-      vm.images = lodash.map(
-        vm.item.images,
-        image =>
-          image
-            .split('/')
-            .pop()
-            .split('.')[0]
-      );
+      vm.images = lodash.map(vm.item.images, image => image.split('/').pop());
 
       if (!$state.params.imageId) {
-        $state.go('main.imagesInstance', {imageId: vm.images[0]});
+        $state.go('main.imageInstance', {imageId: vm.images[0]});
       }
       const imageId = $state.params.imageId;
       vm.config.current = vm.images.indexOf(imageId);
 
-      loadImage();
-      vm.loadingData = false;
+      // vm.config.currentScale = 1;
+      // vm.config.currentRotation = 0;
+      setCurrentImage();
+      vm.image = vm.item.images[vm.config.current];
+      figureOutPaginationControls();
     }
-  }
 
-  function loadImage() {
-    // vm.config.currentScale = 1;
-    // vm.config.currentRotation = 0;
-    vm.showImage = false;
-    $timeout(function() {
-      vm.showProgress = true;
-    }, 500);
-    setCurrentImage();
-    vm.image = vm.item.images[vm.config.current];
-    figureOutPaginationControls();
-    //vm.highlightThumbnail();
-  }
-
-  function setCurrentImage() {
-    const imageId = $state.params.imageId;
-    lodash.each(vm.images, (image, idx) => {
-      if (image === imageId) {
-        vm.config.current = idx;
-      }
-    });
+    function setCurrentImage() {
+      const imageId = $state.params.imageId;
+      lodash.each(vm.images, (image, idx) => {
+        if (image === imageId) {
+          vm.config.current = idx;
+        }
+      });
+    }
   }
 
   function jump() {
     lodash.each(vm.images, (image, idx) => {
       if (vm.config.current === idx) {
-        $state.go('main.imagesInstance', {imageId: image});
+        $state.go('main.imageInstance', {imageId: image});
       }
     });
   }

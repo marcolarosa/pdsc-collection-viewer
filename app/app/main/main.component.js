@@ -55,7 +55,6 @@ function Controller(
     vm.loadingData = true;
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
-      console.log(vm.itemData);
       vm.loadingData = false;
       vm.loadViewer();
     });
@@ -69,11 +68,8 @@ function Controller(
     // load the required viewer if we're at the item root
     if (lodash.includes(['main', 'main.images'], $state.current.name)) {
       if (vm.itemData.images) {
-        let image = vm.itemData.images[0]
-          .split('/')
-          .pop()
-          .split('.')[0];
-        $state.go('main.imagesInstance', {imageId: image});
+        let image = vm.itemData.images[0].split('/').pop();
+        $state.go('main.imageInstance', {imageId: image});
       } else if (vm.itemData.documents) {
         $state.go('main.documents');
       } else {

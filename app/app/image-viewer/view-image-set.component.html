@@ -68,16 +68,17 @@
         </span>
     </div>
     <div layout="row" layout-align="center center" flex>
-        <div ng-show="vm.showProgress" style="width: 500px; margin: 40px;">
+        <div ng-show="!vm.showImage" style="width: 500px; margin: 40px;">
             <md-progress-linear md-mode="indeterminate"></md-progress-linear>
         </div>
         <img
+            ng-if="!vm.loadingData"
             class="pannable-image"
             id='largeImage'
-            src="{{vm.image}}"
+            ng-src="{{vm.image}}"
+            ng-if="vm.image"
             ng-style="vm.imageStyle"
             alt='You must be logged in to Nabu to view this image'
-            ng-show="vm.showImage"
             show-when-ready>
     </div>
 </div>
