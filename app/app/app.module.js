@@ -2,9 +2,10 @@
 
 require('./app.states');
 require('./main/module');
-require('./image-viewer/module');
 require('./services/module');
 require('./filters/module');
+require('./image-viewer/module');
+require('./document-viewer/module');
 require('./supporting-services/module');
 
 angular
@@ -23,7 +24,8 @@ angular
     'pdsc.main',
     'pdsc.services',
     'pdsc.filters',
-    'pdsc.imageViewer'
+    'pdsc.imageViewer',
+    'pdsc.documentViewer'
   ])
   .config(Configure);
 
