@@ -19,3 +19,6 @@ require('pdfjs-dist');
 require('clipboard');
 require('jquery');
 require('../node_modules/ImageViewer/imageviewer.js');
+
+import pdflib from 'pdfjs-dist';
+pdflib.PDFJS.workerSrc = 'lib/pdf.worker.js';
