@@ -8,13 +8,14 @@
                     Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
                 </div>
             </div>
-            <div layout="row" layout-align="center center"ng-if="!vm.disableThumbnailView">
+            <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
                     <md-button class="small-button"
                         aria-label="jump to start"
                         ng-click="vm.jumpToStart()"
                         ng-disabled="{{vm.config.current === 0}}"
                         blur-on-click>
                             <span class="fa fa-fast-backward fa-lg"></span>
+                            <md-tooltip>First Image</md-tooltip>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="previous"
@@ -22,6 +23,7 @@
                         ng-disabled="{{vm.config.current === 0}}"
                         blur-on-click>
                             <span class="fa fa-step-backward fa-lg"></span>
+                            <md-tooltip>Previous Image</md-tooltip>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="next"
@@ -29,6 +31,7 @@
                         ng-disabled="{{vm.config.current === vm.images.length - 1}}"
                         blur-on-click>
                             <span class="fa fa-step-forward fa-lg"></span>
+                            <md-tooltip>Next Image</md-tooltip>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="jump to end"
@@ -36,6 +39,7 @@
                         ng-disabled="{{vm.config.current === vm.images.length - 1}}"
                         blur-on-click>
                             <span class="fa fa-fast-forward fa-lg"></span>
+                            <md-tooltip>Last Image</md-tooltip>
                     </md-button>
             </div>
             <div layout="row" layout-align="center center">
@@ -46,17 +50,20 @@
                         ng-if="!vm.disableThumbnailView">
                             <span ng-show="showFilmstrip">hide thumbnails</span>
                             <span ng-hide="showFilmstrip">show thumbnails</span>
+                            <md-tooltip>Toggle Thumbnail Strip</md-tooltip>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="download item"
                         ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click
                         hide show-gt-sm>
                             <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
+                            <md-tooltip>Download Image</md-tooltip>
                     </md-button>
                     <md-button class="small-button"
                         aria-label="view item in full screen mode"
                         ng-click="vm.toggleFullScreen(vm.image)">
                             <i class="fa fa-expand fa-lg"></i>
+                            <md-tooltip>Toggle Fullscreen and Zoom</md-tooltip>
                     </md-button>
             </div>
             <div layout="row" hide show-gt-sm>
