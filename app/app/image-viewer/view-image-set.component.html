@@ -38,11 +38,12 @@
                             <span class="fa fa-fast-forward fa-lg"></span>
                     </md-button>
             </div>
-            <div layout="row" layout-align="center center"ng-if="!vm.disableThumbnailView">
+            <div layout="row" layout-align="center center">
                     <md-button class="small-button"
                         aria-label="toggle filmstrip"
                         ng-click="vm.toggleFilmstrip()"
-                        blur-on-click>
+                        blur-on-click
+                        ng-if="!vm.disableThumbnailView">
                             <span ng-show="showFilmstrip">hide thumbnails</span>
                             <span ng-hide="showFilmstrip">show thumbnails</span>
                     </md-button>
