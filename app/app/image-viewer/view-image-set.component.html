@@ -3,11 +3,6 @@
     layout="column">
     <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
         <span ng-if="!vm.loadingData">
-            <div layout="row" layout-align="center center">
-                <div class="md-subhead">
-                    Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
-                </div>
-            </div>
             <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
                     <md-button class="small-button"
                         aria-label="jump to start"
@@ -25,6 +20,9 @@
                             <span class="fa fa-step-backward fa-lg"></span>
                             <md-tooltip>Previous Image</md-tooltip>
                     </md-button>
+                    <div class="md-subhead">
+                        Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
+                    </div>
                     <md-button class="small-button"
                         aria-label="next"
                         ng-click="vm.next()"
