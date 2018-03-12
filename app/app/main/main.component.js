@@ -1,5 +1,7 @@
 'use strict';
 
+const {includes, isEmpty, isUndefined} = require('lodash');
+
 module.exports = {
   template: require('./main.component.html'),
   bindings: {},
@@ -12,18 +14,10 @@ Controller.$inject = [
   '$transitions',
   '$rootScope',
   'dataService',
-  '$mdSidenav',
-  'lodash'
+  '$mdSidenav'
 ];
 
-function Controller(
-  $state,
-  $transitions,
-  $rootScope,
-  dataService,
-  $mdSidenav,
-  lodash
-) {
+function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   var vm = this;
 
   var onSuccessHandler;
@@ -65,12 +59,18 @@ function Controller(
   }
 
   function loadViewer() {
-    // load the required viewer if we're at the item root
-    if (lodash.includes(['main', 'main.images'], $state.current.name)) {
-      if (vm.itemData.images) {
-        let image = vm.itemData.images[0].split('/').pop();
-        $state.go('main.imageInstance', {imageId: image});
-      } else if (vm.itemData.documents) {
+    // load a viewer if we're at the item root
+    if (
+      !isUndefined(vm.itemData) &&
+      !isEmpty(vm.itemData) &&
+      includes(
+        ['main', 'main.images', 'main.documents', 'main.media'],
+        $state.current.name
+      )
+    ) {
+      if (!isEmpty(vm.itemData.images)) {
+        $state.go('main.images');
+      } else if (!isEmpty(vm.itemData.documents)) {
         $state.go('main.documents');
       } else {
         $state.go('main.media');
