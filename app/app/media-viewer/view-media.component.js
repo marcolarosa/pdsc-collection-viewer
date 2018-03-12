@@ -1,6 +1,6 @@
 'use strict';
 
-const {isEmpty, keys} = require('lodash');
+const {isEmpty, keys, each} = require('lodash');
 
 module.exports = {
   template: require('./view-media.component.html'),
@@ -17,6 +17,8 @@ function Controller($state, $rootScope, dataService) {
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
+  vm.previousItem = previousItem;
+  vm.nextItem = nextItem;
 
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
@@ -52,6 +54,30 @@ function Controller($state, $rootScope, dataService) {
       const mediaId = $state.params.mediaId;
       vm.config.current = vm.media.indexOf(mediaId);
     }
+  }
+
+  function jump() {
+    each(vm.media, (item, idx) => {
+      if (vm.config.current === idx) {
+        $state.go('main.mediaInstance', {mediaId: item});
+      }
+    });
+  }
+
+  function nextItem() {
+    if (vm.config.current === vm.item.media.length - 1) {
+      return;
+    }
+    vm.config.current += 1;
+    jump();
+  }
+
+  function previousItem() {
+    if (vm.config.current === 0) {
+      return;
+    }
+    vm.config.current -= 1;
+    jump();
   }
 
   // scope.loadVideoPlayer = false;

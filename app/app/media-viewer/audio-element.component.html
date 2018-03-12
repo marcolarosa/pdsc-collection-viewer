@@ -28,8 +28,16 @@
         <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
     </div>
     -->
-    <audio id="{{vm.element.name}}" class="" controls preload="metadata" style="width: 500px;" media-ready time-update>
-        <source ng-repeat="src in vm.element.files" ng-src="{{src}}" />
+    <audio
+        id="{{vm.element.name}}"
+        class=""
+        controls
+        controlsList="nodownload"
+        preload="metadata"
+        style="min-width: 500px;"
+        media-ready
+        time-update>
+            <source ng-repeat="src in vm.element.files" ng-src="{{src}}" />
     </audio>
     <!-- <div layout="column" layout-align="top center">
         <transcription-selector></transcription-selector>
