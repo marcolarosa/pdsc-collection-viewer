@@ -30,17 +30,9 @@
                 class="small-font"
                 ui-sref="main.media"
                 blur-on-click
-                ng-if="vm.itemData.audio.length">
-                    <i class="fa fa-file-audio-o fa-lg"></i> Audio
-                    <md-tooltip>View Audio</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ui-sref="main.media"
-                blur-on-click
-                ng-if="vm.itemData.video.length">
-                    <i class="fa fa-file-video-o"></i> Video
-                    <md-tooltip>View Video</md-tooltip>
+                ng-if="vm.itemData.media.length">
+                    <i class="fa fa-file-audio-o fa-lg"></i> Multimedia
+                    <md-tooltip>View Multimedia</md-tooltip>
             </md-button>
             <md-button
                 class="small-font"
