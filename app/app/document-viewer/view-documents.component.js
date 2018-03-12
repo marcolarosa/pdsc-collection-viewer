@@ -114,6 +114,9 @@ function Controller(
     //  pages count from 1 - NOT 0
     // When loading a document, always start at the beginning
 
+    if (!what.url) {
+      return;
+    }
     pdfjs.getDocument(what).then(function(pdf) {
       vm.pdf = pdf;
       getDocumentMetadata();

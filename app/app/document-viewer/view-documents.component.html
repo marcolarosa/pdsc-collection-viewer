@@ -8,7 +8,7 @@
                     class="small-button"
                     aria-label="previous document"
                     ng-click="vm.previousDocument()"
-                    ng-disabled="{{vm.config.current === 0}}"
+                    ng-disabled="vm.config.current === 0"
                     blur-on-click>
                         <span class="fa fa-step-backward fa-lg"></span>
                         <md-tooltip>Previous Document</md-tooltip>
@@ -20,7 +20,7 @@
                     class="small-button"
                     aria-label="next document"
                     ng-click="vm.nextDocument()"
-                    ng-disabled="{{vm.config.current === vm.documents.length - 1}}"
+                    ng-disabled="vm.config.current === vm.documents.length - 1"
                     blur-on-click>
                         <span class="fa fa-step-forward fa-lg"></span>
                         <md-tooltip>Next Document</md-tooltip>
@@ -31,6 +31,7 @@
                     class="small-button"
                     aria-label="first page"
                     ng-click="vm.firstPage()"
+                    ng-disabled="vm.config.currentPage === 1"
                     blur-on-click>
                         <span class="fa fa-fast-backward fa-lg"></span>
                         <md-tooltip>First Page</md-tooltip>
@@ -39,6 +40,7 @@
                     class="small-button"
                     aria-label="previous page"
                     ng-click="vm.previousPage()"
+                    ng-disabled="vm.config.currentPage === 1"
                     blur-on-click>
                         <span class="fa fa-step-backward fa-lg"></span>
                         <md-tooltip>Previous Page</md-tooltip>
@@ -52,6 +54,7 @@
                     class="small-button"
                     aria-label="next page"
                     ng-click="vm.nextPage()"
+                    ng-disabled="vm.config.currentPage === vm.config.pdfInfo.totalPages"
                     blur-on-click>
                         <span class="fa fa-step-forward fa-lg"></span>
                         <md-tooltip>Next Page</md-tooltip>
@@ -60,6 +63,7 @@
                     class="small-button"
                     aria-label="last page"
                     ng-click="vm.lastPage()"
+                    ng-disabled="vm.config.currentPage === vm.config.pdfInfo.totalPages"
                     blur-on-click>
                         <span class="fa fa-fast-forward fa-lg"></span>
                         <md-tooltip>Last Page</md-tooltip>
