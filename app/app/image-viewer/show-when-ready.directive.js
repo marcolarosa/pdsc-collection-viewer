@@ -11,7 +11,7 @@ module.exports = () => {
 Linker.$inject = ['scope', 'element'];
 function Linker(scope, element) {
   element.on('load', function() {
-    scope.$apply(function() {
+    scope.$apply(() => {
       scope.vm.imageStyle = {
         width: '600px',
         'max-width': '600px',
@@ -22,6 +22,8 @@ function Linker(scope, element) {
     });
   });
   element.on('error', function(err) {
-    console.log(err);
+    scope.$apply(() => {
+      scope.vm.showImage = true;
+    });
   });
 }

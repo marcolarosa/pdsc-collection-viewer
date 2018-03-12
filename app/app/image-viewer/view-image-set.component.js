@@ -49,6 +49,7 @@ function Controller(
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
 
+    vm.showImage = false;
     vm.config = {
       disableThumbnailView: false,
       scaleStep: 0.2,
