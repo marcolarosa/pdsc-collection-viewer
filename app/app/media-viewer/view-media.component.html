@@ -1,0 +1,93 @@
+<div
+    layout-gt-sm="row"
+    layout="column">
+    <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
+        <span ng-if="!vm.loadingData">
+            <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
+                <!-- <md-button class="small-button"
+                    aria-label="jump to start"
+                    ng-click="vm.jumpToStart()"
+                    ng-disabled="vm.config.current === 0"
+                    blur-on-click>
+                        <span class="fa fa-fast-backward fa-lg"></span>
+                        <md-tooltip>First Image</md-tooltip>
+                </md-button>
+                <md-button class="small-button"
+                    aria-label="previous"
+                    ng-click="vm.previous()"
+                    ng-disabled="vm.config.current === 0"
+                    blur-on-click>
+                        <span class="fa fa-step-backward fa-lg"></span>
+                        <md-tooltip>Previous Image</md-tooltip>
+                </md-button>
+                <div class="md-subhead">
+                    Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
+                </div>
+                <md-button class="small-button"
+                    aria-label="next"
+                    ng-click="vm.next()"
+                    ng-disabled="vm.config.current === vm.images.length - 1"
+                    blur-on-click>
+                        <span class="fa fa-step-forward fa-lg"></span>
+                        <md-tooltip>Next Image</md-tooltip>
+                </md-button>
+                <md-button class="small-button"
+                    aria-label="jump to end"
+                    ng-click="vm.jumpToEnd()"
+                    ng-disabled="vm.config.current === vm.images.length - 1"
+                    blur-on-click>
+                        <span class="fa fa-fast-forward fa-lg"></span>
+                        <md-tooltip>Last Image</md-tooltip>
+                </md-button> -->
+            </div>
+            <div layout="row" layout-align="center center">
+                <!-- <md-button class="small-button"
+                    aria-label="toggle filmstrip"
+                    ng-click="vm.toggleFilmstrip()"
+                    blur-on-click
+                    ng-if="!vm.disableThumbnailView">
+                        <span ng-show="showFilmstrip">hide thumbnails</span>
+                        <span ng-hide="showFilmstrip">show thumbnails</span>
+                        <md-tooltip>Toggle Thumbnail Strip</md-tooltip>
+                </md-button>
+                <md-button class="small-button"
+                    aria-label="download item"
+                    ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click
+                    hide show-gt-sm>
+                        <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
+                        <md-tooltip>Download Image</md-tooltip>
+                </md-button>
+                <md-button class="small-button"
+                    aria-label="view item in full screen mode"
+                    ng-click="vm.toggleFullScreen(vm.image)">
+                        <i class="fa fa-expand fa-lg"></i>
+                        <md-tooltip>Toggle Fullscreen and Zoom</md-tooltip>
+                </md-button> -->
+            </div>
+            <div layout="row" hide show-gt-sm>
+                <pdsc-item-information-component
+                    item-data="vm.item"
+                    close="vm.toggleItemInformation()">
+                </pdsc-item-information-component>
+            </div>
+        </span>
+    </div>
+    <div layout="row" layout-align="center center" flex>
+        <pdsc-audio-player-component
+            element="vm.item.media[vm.config.current]"
+            ng-if="vm.item.media[vm.config.current].type === 'audio'">
+        </pdsc-audio-player-component>
+    </div>
+</div>
+
+<!-- <div layout="column">
+    <div ng-repeat="(name, src) in itemData.audio" ng-if="loadAudioPlayer">
+        <audio-element name="name" media-src="src" item-data="itemData"></audio-element>
+        <hr/>
+    </div>
+
+    <div ng-repeat="(name, src) in itemData.video" ng-if="loadVideoPlayer">
+        <video-element name="name" media-src="src" item-data="itemData"></video-element>
+        <hr/>
+    </div>
+</div> -->

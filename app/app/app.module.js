@@ -6,6 +6,7 @@ require('./services/module');
 require('./filters/module');
 require('./image-viewer/module');
 require('./document-viewer/module');
+require('./media-viewer/module');
 require('./supporting-services/module');
 
 angular
@@ -25,7 +26,8 @@ angular
     'pdsc.services',
     'pdsc.filters',
     'pdsc.imageViewer',
-    'pdsc.documentViewer'
+    'pdsc.documentViewer',
+    'pdsc.mediaViewer'
   ])
   .config(Configure);
 
