@@ -1,5 +1,7 @@
 'use strict';
 
+const {isEmpty} = require('lodash');
+
 module.exports = {
   template: require('./view-image-set.component.html'),
   bindings: {},
@@ -72,7 +74,7 @@ function Controller(
 
     function processResponse(resp) {
       vm.loadingData = false;
-      if (lodash.isEmpty(resp)) {
+      if (isEmpty(resp)) {
         return;
       }
       vm.item = resp;
