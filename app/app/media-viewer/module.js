@@ -5,4 +5,5 @@ module.exports = angular
   .directive('mediaReady', require('./media-ready.directive'))
   .directive('timeUpdate', require('./time-update.directive'))
   .component('pdscMediaViewerComponent', require('./view-media.component'))
-  .component('pdscAudioPlayerComponent', require('./audio-element.component'));
+  .component('pdscAudioPlayerComponent', require('./audio-element.component'))
+  .component('pdscVideoPlayerComponent', require('./video-element.component'));

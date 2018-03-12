@@ -39,6 +39,10 @@
             element="vm.item.media[vm.config.current]"
             ng-if="vm.item.media[vm.config.current].type === 'audio'">
         </pdsc-audio-player-component>
+        <pdsc-video-player-component
+            element="vm.item.media[vm.config.current]"
+            ng-if="vm.item.media[vm.config.current].type === 'video'">
+        </pdsc-video-player-component>
     </div>
 </div>
 

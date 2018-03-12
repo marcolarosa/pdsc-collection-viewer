@@ -1,25 +1,38 @@
 <div
-    layout="column" flex="100" flex-gt-sm="70" flex-offset-gt-sm="15" flex-gt-md="50" flex-offset-gt-md="25"
-        ng-show="mediaReadyToPlay">
+    layout="column"
+    layout-align="center center"
+    ng-show="!vm.mediaReadyToPlay">
+        Loading media... please wait.
+</div>
+<div
+    layout="column"
+    flex="100"
+    flex-gt-sm="70"
+    flex-offset-gt-sm="15"
+    flex-gt-md="50"
+    flex-offset-gt-md="25"
+    ng-show="vm.mediaReadyToPlay">
 
     <div layout="row">
-        <div class="md-subhead">
-            <md-button class="small-button" ng-click="loadItem()">{{name}}</md-button>
-        </div>
-        <div flex></div>
-        <div ng-repeat="src in mediaSrc">
-            <!--<a href="" class="pull-right">annotate this selection</a>-->
+        <div ng-repeat="src in vm.element.files">
             <md-button class="small-button" href="{{src | stripTime}}" download>
                 <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
             </md-button>
         </div>
     </div>
     <div layout="column" layout-align="start start">
-        <video id="{{name}}" controls preload="metadata" style="width: 100%;" media-ready time-update>
-            <source ng-repeat="src in mediaSrc" src="{{src | trustAsHtml}}" />
+        <video
+            id="{{vm.element.name}}"
+            controls
+            controlsList="nodownload"
+            preload="metadata"
+            style="min-width: 500px;"
+            media-ready
+            time-update>
+                <source ng-repeat="src in vm.element.files" src="{{src}}" />
         </video>
     </div>
-    <div layout="column" layout-align="top center">
+    <!-- <div layout="column" layout-align="top center">
         <transcription-selector></transcription-selector>
     </div>
     <div layout="column">
@@ -41,8 +54,5 @@
             current-time="currentTime"
             ng-if="interlinear">
         </render-transcription>
-    </div>
-</div>
-<div layout="column" layout-align="center center" flex="50" flex-offset="25" ng-show="!mediaReadyToPlay">
-    Loading media... please wait.
+    </div> -->
 </div>

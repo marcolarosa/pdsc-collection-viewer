@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  template: require('./audio-element.component.html'),
+  template: require('./video-element.component.html'),
   bindings: {
     element: '<'
   },
@@ -26,26 +26,26 @@ function Controller($state, $timeout, $location) {
 
   // function playFragment(start, end) {
   //   // seek to start.time
-  //   var audioElement = document.getElementById(vm.element.name);
-  //   audioElement.currentTime = start.time;
+  //   var videoElement = document.getElementById(scope.name);
+  //   videoElement.currentTime = start.time;
   //
   //   // hit play
-  //   audioElement.play();
+  //   videoElement.play();
   //
   //   // then set a timeout to pause at end.time
   //   $timeout(function() {
-  //     audioElement.pause();
+  //     videoElement.pause();
   //   }, (end.time - start.time) * 1000);
-  // }
-
+  // };
+  //
   // function loadItem() {
   //   var url =
   //     '/' +
-  //     $state.params.collectionId +
+  //     scope.itemData.collectionId +
   //     '/' +
-  //     $state.params.itemId +
+  //     scope.itemData.itemId +
   //     '/' +
-  //     vm.element.name;
+  //     scope.name;
   //   $location.url(url);
-  // }
+  // };
 }

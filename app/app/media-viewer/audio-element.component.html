@@ -1,14 +1,11 @@
 <div
     layout="column"
     layout-align="center center"
-    flex="50"
-    flex-offset="25"
     ng-show="!vm.mediaReadyToPlay">
         Loading media... please wait.
 </div>
 <div
     layout="column"
-    layout-align="start center"
     flex="100"
     flex-gt-sm="80"
     flex-offset-gt-sm="10"
@@ -16,7 +13,7 @@
     flex-offset-gt-md="20"
     ng-show="vm.mediaReadyToPlay">
 
-    <div layout="row" layout-align="start end">
+    <div layout="row">
         <div ng-repeat="src in vm.element.files">
             <md-button class="small-button" href="{{src | stripTime}}" download>
                 <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
