@@ -28,7 +28,7 @@ function EAFParserService(lodash) {
 
     // extract the annotations
     var annotations = [];
-    if (!lodash.isArray(data.ANNOTATIONlodashDOCUMENT.TIER)) {
+    if (!lodash.isArray(data.ANNOTATION_DOCUMENT.TIER)) {
       data.ANNOTATION_DOCUMENT.TIER = [data.ANNOTATION_DOCUMENT.TIER];
     }
     lodash.each(data.ANNOTATION_DOCUMENT.TIER, function(d) {

@@ -1,5 +1,7 @@
 'use strict';
 
+const {includes, isEmpty, compact, isArray, each} = require('lodash');
+
 module.exports = DataService;
 
 DataService.$inject = [
@@ -56,7 +58,7 @@ function DataService(
 
     if (
       !ds.loading[collectionId][itemId] &&
-      !lodash.isEmpty(ds.data[collectionId][itemId])
+      !isEmpty(ds.data[collectionId][itemId])
     ) {
       const data = ds.data[collectionId][itemId];
       return Promise.resolve(data);
@@ -109,21 +111,21 @@ function DataService(
       } catch (e) {
         return {data: ''};
       }
-
-      function parseXML(doc) {
-        var parser = new DOMParser();
-
-        // parse the xml document
-        var xmldoc = parser.parseFromString(doc, 'text/xml');
-
-        // return it as JSON
-        return xmlToJson.convert(xmldoc);
-      }
     }
   }
 
+  function parseXML(doc) {
+    var parser = new DOMParser();
+
+    // parse the xml document
+    var xmldoc = parser.parseFromString(doc, 'text/xml');
+
+    // return it as JSON
+    return xmlToJson.convert(xmldoc);
+  }
+
   // handler to process item lists:
-  //  - knows how to handle images sets, audio and video sets,
+  //  - knows how to handle image sets, audio and video sets,
   //  document sets: pdf and xml
   function constructItemList(type, tree) {
     var selector;
@@ -145,26 +147,24 @@ function DataService(
       selector = 'flextext';
     }
 
-    if (!lodash.isArray(tree['dcterms:tableOfContents'])) {
+    if (!isArray(tree['dcterms:tableOfContents'])) {
       tree['dcterms:tableOfContents'] = [tree['dcterms:tableOfContents']];
     }
-    var items = lodash.compact(
+    var items = compact(
       lodash.map(tree['dcterms:tableOfContents'], function(d) {
         var i = d['#text'];
         var ext = i.split('.').pop();
         if (
           ext !== undefined &&
           selector !== undefined &&
-          selector.indexOf(ext.toLowerCase()) !== -1
+          includes(selector, ext.toLowerCase())
         ) {
           return d['#text'];
         }
       })
     );
 
-    if (
-      ['audio', 'video', 'eaf', 'trs', 'ixt', 'flextext'].indexOf(type) !== -1
-    ) {
+    if (includes(['audio', 'video', 'eaf', 'trs', 'ixt', 'flextext'], type)) {
       // audio and video can exist in multiple formats; so, group the data
       //  by name and then return an array of arrays - sorting by item name
       return lodash(items)
@@ -202,15 +202,11 @@ function DataService(
         };
       }),
       images: constructItemList('images', tree),
-      video: constructItemList('video', tree),
-      audio: constructItemList('audio', tree),
-      eaf: constructItemList('eaf', tree),
-      trs: constructItemList('trs', tree),
-      ixt: constructItemList('ixt', tree),
-      flextext: constructItemList('flextext', tree),
       documents: constructItemList('documents', tree),
+      media: processMedia(tree),
       rights: get(tree, 'dcterms:accessRights')
     };
+
     // if the item is closed - set a flag to make it easier to work with in the view
     if (data.rights.match('Closed.*')) {
       data.openAccess = false;
@@ -218,11 +214,37 @@ function DataService(
 
     data.thumbnails = generateThumbnails(data.images);
     data.audioVisualisations = generateAudioVisualisations(data.audio);
-    getTranscriptions('eaf', data);
-    getTranscriptions('trs', data);
-    getTranscriptions('ixt', data);
-    getTranscriptions('flextext', data);
     return data;
+
+    function processMedia(tree) {
+      const audio = constructItemList('audio', tree);
+      const video = constructItemList('video', tree);
+      const eaf = constructItemList('eaf', tree);
+      const trs = constructItemList('trs', tree);
+      const ixt = constructItemList('ixt', tree);
+      const flextext = constructItemList('flextext', tree);
+
+      let media = [];
+      each(audio, (files, key) => {
+        media.push(createMediaItemDataStructure(key, files, 'audio'));
+      });
+      each(video, (files, key) => {
+        media.push(createMediaItemDataStructure(key, files, 'video'));
+      });
+      return media;
+
+      function createMediaItemDataStructure(key, files, type) {
+        return {
+          name: key,
+          type: type,
+          files: files,
+          eaf: eaf[key] ? eaf[key][0] : [],
+          trs: trs[key] ? trs[key][0] : [],
+          ixt: ixt[key] ? ixt[key][0] : [],
+          flextext: flextext[key] ? flextext[key][0] : []
+        };
+      }
+    }
 
     // helper to extract a value for 'thing'
     //  not every item has every datapoint
@@ -268,20 +290,17 @@ function DataService(
     return audioVisualisations;
   }
 
-  function getTranscriptions(type, data) {
-    var transform, what;
+  function getTranscription(type, sources) {
+    let transform,
+      what = {};
     if (type === 'eaf') {
       transform = parseEAF;
-      what = data.eaf;
     } else if (type === 'trs') {
       transform = parseTRS;
-      what = data.trs;
     } else if (type === 'ixt') {
       transform = parseIxt;
-      what = data.ixt;
     } else if (type === 'flextext') {
       transform = parseFlextext;
-      what = data.flextext;
     } else {
       return;
     }
@@ -289,25 +308,23 @@ function DataService(
     // for each XML file in xml - kick off a retrieval
     //  each file is grabbed and parsed and the URL is then replaced
     //   with the JSON data structure of the document
-    lodash.each(what, function(d, i) {
+    lodash.each(sources, function(url, i) {
       what[i] = {};
-      lodash.each(d, function(url) {
-        $http
-          .get(url, {transformResponse: transform, withCredentials: true})
-          .then(
-            function(resp) {
-              if (lodash.isEmpty(resp.data.data)) {
-                delete what[i];
-              } else {
-                var name = url.split('/').pop();
-                what[i][name] = resp.data.data;
-              }
-            },
-            function() {
-              $log.error("ParadisecService: error, couldn't get", url);
-            }
-          );
-      });
+      $http
+        .get(url, {transformResponse: transform, withCredentials: true})
+        .then(resp => {
+          if (isEmpty(resp.data.data)) {
+            delete what[i];
+          } else {
+            console.log(resp.data.data);
+            var name = url.split('/').pop();
+            what[i][name] = resp.data.data;
+          }
+        })
+        .catch(err => {
+          $log.error("ParadisecService: error, couldn't get", url);
+          console.log(err);
+        });
     });
 
     function parseEAF(d) {
