@@ -34,13 +34,12 @@ function DataService(
     audioTypes: ['mp3', 'webm', 'ogg', 'oga'],
     documentTypes: ['pdf'],
     getItem: getItem,
+    loadTranscription: loadTranscription,
     data: {},
     loading: {}
   };
   return ds;
 
-  // Given a collectionId and itemId - get the
-  //  item data.
   function getItem(collectionId, itemId) {
     if (!ds.data[collectionId]) {
       ds.data[collectionId] = {};
@@ -117,16 +116,11 @@ function DataService(
   function parseXML(doc) {
     var parser = new DOMParser();
 
-    // parse the xml document
     var xmldoc = parser.parseFromString(doc, 'text/xml');
 
-    // return it as JSON
     return xmlToJson.convert(xmldoc);
   }
 
-  // handler to process item lists:
-  //  - knows how to handle image sets, audio and video sets,
-  //  document sets: pdf and xml
   function constructItemList(type, tree) {
     var selector;
     if (type === 'images') {
@@ -178,7 +172,6 @@ function DataService(
     }
   }
 
-  // Given a tree of XML as JSON, create a data structure for the item
   function createItemDataStructure(tree) {
     if (!lodash.isArray(tree['dc:identifier'])) {
       tree['dc:identifier'] = [tree['dc:identifier']];
@@ -238,10 +231,10 @@ function DataService(
           name: key,
           type: type,
           files: files,
-          eaf: eaf[key] ? eaf[key][0] : [],
-          trs: trs[key] ? trs[key][0] : [],
-          ixt: ixt[key] ? ixt[key][0] : [],
-          flextext: flextext[key] ? flextext[key][0] : []
+          eaf: eaf[key] ? eaf[key][0] : null,
+          trs: trs[key] ? trs[key][0] : null,
+          ixt: ixt[key] ? ixt[key][0] : null,
+          flextext: flextext[key] ? flextext[key][0] : null
         };
       }
     }
@@ -267,7 +260,6 @@ function DataService(
   }
 
   function generateAudioVisualisations(audio) {
-    // generate the audio visualisation object keyed on name
     var audioVisualisations = lodash.map(audio, function(d) {
       var name = d[0].split('/').pop();
       var audioVisName = name.split('.')[0] + '-soundimage-PDSC_ADMIN.jpg';
@@ -290,9 +282,9 @@ function DataService(
     return audioVisualisations;
   }
 
-  function getTranscription(type, sources) {
-    let transform,
-      what = {};
+  function loadTranscription(type, item) {
+    let transform;
+    let what = {};
     if (type === 'eaf') {
       transform = parseEAF;
     } else if (type === 'trs') {
@@ -305,27 +297,15 @@ function DataService(
       return;
     }
 
-    // for each XML file in xml - kick off a retrieval
-    //  each file is grabbed and parsed and the URL is then replaced
-    //   with the JSON data structure of the document
-    lodash.each(sources, function(url, i) {
-      what[i] = {};
-      $http
-        .get(url, {transformResponse: transform, withCredentials: true})
-        .then(resp => {
-          if (isEmpty(resp.data.data)) {
-            delete what[i];
-          } else {
-            console.log(resp.data.data);
-            var name = url.split('/').pop();
-            what[i][name] = resp.data.data;
-          }
-        })
-        .catch(err => {
-          $log.error("ParadisecService: error, couldn't get", url);
-          console.log(err);
-        });
-    });
+    return $http
+      .get(item[type], {transformResponse: transform, withCredentials: true})
+      .then(resp => {
+        return resp.data.data;
+      })
+      .catch(err => {
+        $log.error("ParadisecService: error, couldn't get", url);
+        console.log(err);
+      });
 
     function parseEAF(d) {
       return {data: eaf.parse(parseXML(d))};
