@@ -35,7 +35,12 @@
                             close="vm.toggleItemInformation()">
                         </pdsc-item-information-component>
                     </md-tab>
-                    <md-tab label="View Transcriptions">
+                    <md-tab label="View Transcriptions" ng-if="
+                        vm.config.item.eaf ||
+                        vm.config.item.trs ||
+                        vm.config.item.ixt ||
+                        vm.config.item.flextext
+                    ">
                         <pdsc-transcription-render-component
                             element="vm.config.item"
                             ng-if="vm.config.item">

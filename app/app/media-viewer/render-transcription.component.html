@@ -40,7 +40,10 @@
         <div id="{{k}}"></div>
         <div layout="row">
             <div>
-                <md-button class="small-button" ng-click="play({ 'start': transcript[k], 'end': transcript[k+1] })">
+                <md-button class="small-button" ng-click="play({
+                    'start': vm.selectedTranscription[k],
+                    'end': vm.selectedTranscription[k+1]
+                })">
                     <i class="fa fa-play fa-lg"></i>
                     Play ({{v.time | minutesSeconds}})
                 </md-button>
@@ -50,13 +53,13 @@
                 <fragment-citation
                     type="transcript"
                     selection="selected.transcript"
-                    fragment-data="transcript[k]"
+                    fragment-data="vm.selectedTranscription[k]"
                     item-data="itemData"
                     name="name"
                 ></fragment-citation>
             </div>
         </div>
-        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==selectedIndex}" class="md-subhead">
+        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==vm.selectedIndex}" class="md-subhead">
             {{v.value}}
             <br/>
             {{v.referenceValue}}

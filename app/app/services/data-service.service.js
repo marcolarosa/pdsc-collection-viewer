@@ -35,6 +35,8 @@ function DataService(
     documentTypes: ['pdf'],
     getItem: getItem,
     loadTranscription: loadTranscription,
+    broadcastMediaElementTime: broadcastMediaElementTime,
+    listenForMediaElementBroadcast: listenForMediaElementBroadcast,
     data: {},
     loading: {}
   };
@@ -322,5 +324,14 @@ function DataService(
     function parseFlextext(d) {
       return {data: ftp.parse(parseXML(d))};
     }
+  }
+
+  function broadcastMediaElementTime(time) {
+    ds.mediaElementTime = time;
+    $rootScope.$broadcast('media time updated');
+  }
+
+  function listenForMediaElementBroadcast(callback) {
+    return $rootScope.$on('media time updated', callback);
   }
 }

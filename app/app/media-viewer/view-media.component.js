@@ -46,7 +46,6 @@ function Controller($state, $rootScope, dataService) {
         return;
       }
       vm.item = resp;
-      console.log(vm.item);
       vm.media = vm.item.media.map(m => m.name);
 
       if (!$state.params.mediaId) {
