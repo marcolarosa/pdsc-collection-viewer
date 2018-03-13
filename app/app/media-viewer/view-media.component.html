@@ -1,6 +1,7 @@
 <div
     layout-gt-sm="row"
-    layout="column">
+    layout="column"
+    kayout-padding>
     <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
         <span ng-if="!vm.loadingData">
             <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
@@ -26,34 +27,32 @@
                         <md-tooltip>Next Item</md-tooltip>
                 </md-button>
             </div>
-            <div layout="row" hide show-gt-sm layout-padding>
-                <pdsc-item-information-component
-                    item-data="vm.item"
-                    close="vm.toggleItemInformation()">
-                </pdsc-item-information-component>
+            <div layout="row" hide show-gt-sm>
+                <md-tabs md-dynamic-height style="width: 400px;" layout-padding md-selected="1">
+                    <md-tab label="Information">
+                        <pdsc-item-information-component
+                            item-data="vm.item"
+                            close="vm.toggleItemInformation()">
+                        </pdsc-item-information-component>
+                    </md-tab>
+                    <md-tab label="View Transcriptions">
+                        <pdsc-transcription-render-component
+                            element="vm.config.item"
+                            ng-if="vm.config.item">
+                        </pdsc-transcription-render-component>
+                    </md-tab>
+                </md-tabs>
             </div>
         </span>
     </div>
-    <div layout="row" layout-align="center center" flex>
+    <div layout="row" layout-align="center start" flex>
         <pdsc-audio-player-component
-            element="vm.item.media[vm.config.current]"
-            ng-if="vm.item.media[vm.config.current].type === 'audio'">
+            element="vm.config.item"
+            ng-if="vm.config.item.type === 'audio'">
         </pdsc-audio-player-component>
         <pdsc-video-player-component
-            element="vm.item.media[vm.config.current]"
-            ng-if="vm.item.media[vm.config.current].type === 'video'">
+            element="vm.config.item"
+            ng-if="vm.config.item.type === 'video'">
         </pdsc-video-player-component>
     </div>
 </div>
-
-<!-- <div layout="column">
-    <div ng-repeat="(name, src) in itemData.audio" ng-if="loadAudioPlayer">
-        <audio-element name="name" media-src="src" item-data="itemData"></audio-element>
-        <hr/>
-    </div>
-
-    <div ng-repeat="(name, src) in itemData.video" ng-if="loadVideoPlayer">
-        <video-element name="name" media-src="src" item-data="itemData"></video-element>
-        <hr/>
-    </div>
-</div> -->

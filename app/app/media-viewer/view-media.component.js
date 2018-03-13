@@ -23,7 +23,8 @@ function Controller($state, $rootScope, dataService) {
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
     vm.config = {
-      current: 0
+      current: 0,
+      item: null
     };
     loadItem();
   }
@@ -53,6 +54,7 @@ function Controller($state, $rootScope, dataService) {
       }
       const mediaId = $state.params.mediaId;
       vm.config.current = vm.media.indexOf(mediaId);
+      vm.config.item = vm.item.media[vm.config.current];
     }
   }
 

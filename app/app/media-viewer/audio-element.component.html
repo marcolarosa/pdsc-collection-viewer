@@ -6,11 +6,6 @@
 </div>
 <div
     layout="column"
-    flex="100"
-    flex-gt-sm="80"
-    flex-offset-gt-sm="10"
-    flex-gt-md="60"
-    flex-offset-gt-md="20"
     ng-show="vm.mediaReadyToPlay">
 
     <div layout="row">
@@ -25,17 +20,19 @@
         <img ng-src="{{itemData.audioVisualisations[k]}}" style="width: 100%;" alt="&nbsp;Visualisation unavailable at this time">
     </div>
     -->
-    <audio
-        id="{{vm.element.name}}"
-        class=""
-        controls
-        controlsList="nodownload"
-        preload="metadata"
-        style="min-width: 500px;"
-        media-ready
-        time-update>
-            <source ng-repeat="src in vm.element.files" ng-src="{{src}}" />
-    </audio>
+    <div layout="row">
+        <audio
+            id="{{vm.element.name}}"
+            class=""
+            controls
+            controlsList="nodownload"
+            preload="metadata"
+            style="min-width: 500px;"
+            media-ready
+            time-update>
+                <source ng-repeat="src in vm.element.files" ng-src="{{src}}" />
+        </audio>
+    </div>
     <!-- <div layout="column" layout-align="top center">
         <transcription-selector></transcription-selector>
     </div>
