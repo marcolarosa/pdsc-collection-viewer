@@ -1,5 +1,7 @@
 'use strict';
 
+const hljs = require('highlightjs');
+
 require('./app.states');
 require('./main/module');
 require('./services/module');
@@ -40,4 +42,6 @@ function Configure($mdThemingProvider, $locationProvider) {
     .accentPalette('orange');
 
   $locationProvider.hashPrefix('');
+
+  hljs.initHighlightingOnLoad();
 }
