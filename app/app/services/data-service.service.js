@@ -1,6 +1,13 @@
 'use strict';
 
-const {includes, isEmpty, compact, isArray, each} = require('lodash');
+const {
+  includes,
+  isEmpty,
+  compact,
+  isArray,
+  each,
+  flattenDeep
+} = require('lodash');
 
 module.exports = DataService;
 
@@ -117,11 +124,12 @@ function DataService(
     }
   }
 
-  function parseXML(doc) {
+  function parseXML(doc, as) {
     var parser = new DOMParser();
-
     var xmldoc = parser.parseFromString(doc, 'text/xml');
-
+    if (as === 'xml') {
+      return doc;
+    }
     return xmlToJson.convert(xmldoc);
   }
 
@@ -203,6 +211,12 @@ function DataService(
       media: processMedia(tree),
       rights: get(tree, 'dcterms:accessRights')
     };
+
+    data.transcriptions = flattenDeep(
+      data.media.map(m => {
+        return compact([m.eaf, m.trs, m.ixt, m.flextext]);
+      })
+    ).sort();
 
     // if the item is closed - set a flag to make it easier to work with in the view
     if (data.rights.match('Closed.*')) {
@@ -286,7 +300,7 @@ function DataService(
     return audioVisualisations;
   }
 
-  function loadTranscription(type, item) {
+  function loadTranscription(type, item, as) {
     let transform;
     let what = {};
     if (type === 'eaf') {
@@ -307,24 +321,40 @@ function DataService(
         return resp.data.data;
       })
       .catch(err => {
-        $log.error("ParadisecService: error, couldn't get", url);
+        $log.error("ParadisecService: error, couldn't get", item[type]);
         console.log(err);
       });
 
     function parseEAF(d) {
-      return {data: eaf.parse(parseXML(d))};
+      if (as === 'xml') {
+        return {data: parseXML(d, 'xml')};
+      } else {
+        return {data: eaf.parse(parseXML(d))};
+      }
     }
 
     function parseTRS(d) {
-      return {data: trs.parse(parseXML(d))};
+      if (as === 'xml') {
+        return {data: parseXML(d, 'xml')};
+      } else {
+        return {data: trs.parse(parseXML(d))};
+      }
     }
 
     function parseIxt(d) {
-      return {data: ixt.parse(parseXML(d))};
+      if (as === 'xml') {
+        return {data: parseXML(d, 'xml')};
+      } else {
+        return {data: ixt.parse(parseXML(d))};
+      }
     }
 
     function parseFlextext(d) {
-      return {data: ftp.parse(parseXML(d))};
+      if (as === 'xml') {
+        return {data: parseXML(d, 'xml')};
+      } else {
+        return {data: ftp.parse(parseXML(d))};
+      }
     }
   }
 
