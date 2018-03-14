@@ -81,7 +81,7 @@ function Controller(
       vm.images = lodash.map(vm.item.images, image => image.split('/').pop());
 
       if (!$state.params.imageId) {
-        $state.go('main.imageInstance', {imageId: vm.images[0]});
+        return $state.go('main.imageInstance', {imageId: vm.images[0]});
       }
       const imageId = $state.params.imageId;
       vm.config.current = vm.images.indexOf(imageId);
@@ -106,7 +106,7 @@ function Controller(
   function jump() {
     lodash.each(vm.images, (image, idx) => {
       if (vm.config.current === idx) {
-        $state.go('main.imageInstance', {imageId: image});
+        return $state.go('main.imageInstance', {imageId: image});
       }
     });
   }

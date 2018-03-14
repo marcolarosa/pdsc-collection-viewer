@@ -75,7 +75,9 @@ function Controller(
           document.split('/').pop()
         );
         if (!$state.params.documentId) {
-          $state.go('main.documentInstance', {documentId: vm.documents[0]});
+          return $state.go('main.documentInstance', {
+            documentId: vm.documents[0]
+          });
         }
         const documentId = $state.params.documentId;
         vm.config.current = vm.documents.indexOf(documentId);
@@ -161,7 +163,7 @@ function Controller(
   function jump() {
     lodash.each(vm.documents, (document, idx) => {
       if (vm.config.current === idx) {
-        $state.go('main.documentInstance', {documentId: document});
+        return $state.go('main.documentInstance', {documentId: document});
       }
     });
   }

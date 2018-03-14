@@ -49,7 +49,7 @@ function Controller($state, $rootScope, dataService) {
       vm.media = vm.item.media.map(m => m.name);
 
       if (!$state.params.mediaId) {
-        $state.go('main.mediaInstance', {mediaId: vm.media[0]});
+        return $state.go('main.mediaInstance', {mediaId: vm.media[0]});
       }
       const mediaId = $state.params.mediaId;
       vm.config.current = vm.media.indexOf(mediaId);
@@ -60,7 +60,7 @@ function Controller($state, $rootScope, dataService) {
   function jump() {
     each(vm.media, (item, idx) => {
       if (vm.config.current === idx) {
-        $state.go('main.mediaInstance', {mediaId: item});
+        return $state.go('main.mediaInstance', {mediaId: item});
       }
     });
   }
