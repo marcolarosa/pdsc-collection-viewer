@@ -30,7 +30,7 @@
 </div>
 
 <div layout="row" layout-align="center center" flex>
-    <div ng-show="vm.loadingTranscriptions" style="width: 500px; margin: 40px;">
+    <div ng-show="vm.loadingTranscriptions" style="width: 500px;">
         <md-progress-linear md-mode="indeterminate"></md-progress-linear>
     </div>
 </div>
@@ -40,11 +40,11 @@
         <div id="{{k}}"></div>
         <div layout="row">
             <div>
-                <md-button class="small-button" ng-click="play({
+                <md-button class="small-button" ng-click="vm.play({
                     'start': vm.selectedTranscription[k],
                     'end': vm.selectedTranscription[k+1]
                 })">
-                    <i class="fa fa-play fa-lg"></i>
+                    <i class="fa fa-play fa-sm"></i>
                     Play ({{v.time | minutesSeconds}})
                 </md-button>
             </div>
@@ -59,11 +59,12 @@
                 ></fragment-citation>
             </div>
         </div>
-        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index==vm.selectedIndex}" class="md-subhead">
+        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
             {{v.value}}
             <br/>
             {{v.referenceValue}}
         </div>
+        <md-divider ng-if="$index !== vm.selectedIndex"></md-divider>
     </div>
 </div>
 
@@ -72,8 +73,11 @@
         <div id="{{k}}"></div>
         <div layout="row">
             <div>
-                <md-button class="small-button" ng-click="play({ 'start': interlinearText[k], 'end': interlinearText[k+1] })">
-                    <i class="fa fa-play fa-lg"></i> Play ({{sentence.time | minutesSeconds}})
+                <md-button class="small-button" ng-click="vm.play({
+                    'start': vm.selectedTranscription[k],
+                    'end': vm.selectedTranscription[k+1]
+                })">
+                    <i class="fa fa-play fa-sm"></i> Play ({{sentence.time | minutesSeconds}})
                 </md-button>
             </div>
             <div flex></div>
@@ -88,7 +92,7 @@
             </div>
         </div>
         <div layout-padding>
-            <div class="md-title" ng-class="{ 'transcription-selected': $index==selectedIndex}">{{sentence.transcription}}</div>
+            <div class="" ng-class="{ 'transcription-selected': $index === vm.selectedIndex}">{{sentence.transcription}}</div>
             <div class="md-title highlight-translation">{{sentence.translation}}</div>
             <div layout="row" layout-padding layout-wrap>
                 <table ng-repeat="word in sentence.words" class="table-style">
@@ -109,5 +113,6 @@
                 </table>
             </div>
         </div>
+        <md-divider ng-if="$index !== vm.selectedIndex"></md-divider>
     </div>
 </div>

@@ -37,6 +37,8 @@ function DataService(
     loadTranscription: loadTranscription,
     broadcastMediaElementTime: broadcastMediaElementTime,
     listenForMediaElementBroadcast: listenForMediaElementBroadcast,
+    broadcastPlayFrom: broadcastPlayFrom,
+    listenForPlayFrom: listenForPlayFrom,
     data: {},
     loading: {}
   };
@@ -333,5 +335,14 @@ function DataService(
 
   function listenForMediaElementBroadcast(callback) {
     return $rootScope.$on('media time updated', callback);
+  }
+
+  function broadcastPlayFrom(range) {
+    ds.playFrom = range;
+    $rootScope.$broadcast('media play from');
+  }
+
+  function listenForPlayFrom(callback) {
+    return $rootScope.$on('media play from', callback);
   }
 }

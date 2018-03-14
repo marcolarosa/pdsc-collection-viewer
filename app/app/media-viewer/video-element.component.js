@@ -9,35 +9,41 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$timeout', '$location'];
-function Controller($state, $timeout, $location) {
+Controller.$inject = ['$state', '$timeout', '$location', 'dataService'];
+function Controller($state, $timeout, $location, dataService) {
   var vm = this;
+
+  var playFromListener;
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
-  // vm.playFragment = playFragment;
-  // vm.loadItem = loadItem;
 
   function init() {
+    playFromListener = dataService.listenForPlayFrom(playFragment);
     vm.mediaReadyToPlay = false;
     vm.loginRequired = false;
   }
 
-  function destroy() {}
+  function destroy() {
+    playFromListener();
+  }
 
-  // function playFragment(start, end) {
-  //   // seek to start.time
-  //   var videoElement = document.getElementById(scope.name);
-  //   videoElement.currentTime = start.time;
-  //
-  //   // hit play
-  //   videoElement.play();
-  //
-  //   // then set a timeout to pause at end.time
-  //   $timeout(function() {
-  //     videoElement.pause();
-  //   }, (end.time - start.time) * 1000);
-  // };
+  function playFragment() {
+    const start = dataService.playFrom.start;
+    const end = dataService.playFrom.end;
+
+    // seek to start.time
+    var videoElement = document.getElementById(scope.name);
+    videoElement.currentTime = start.time;
+
+    // hit play
+    videoElement.play();
+
+    // then set a timeout to pause at end.time
+    $timeout(function() {
+      videoElement.pause();
+    }, (end.time - start.time) * 1000);
+  }
   //
   // function loadItem() {
   //   var url =

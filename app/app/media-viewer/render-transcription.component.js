@@ -31,6 +31,7 @@ function Controller(dataService, $timeout, $q, $location, $anchorScroll) {
   vm.$onInit = init;
   vm.$onDestroy = destroy;
   vm.select = select;
+  vm.play = play;
 
   function init() {
     timeUpdateListener = dataService.listenForMediaElementBroadcast(
@@ -117,5 +118,9 @@ function Controller(dataService, $timeout, $q, $location, $anchorScroll) {
     $location.hash(vm.selectedIndex);
     $anchorScroll();
     $location.hash(o);
+  }
+
+  function play(range) {
+    dataService.broadcastPlayFrom(range);
   }
 }
