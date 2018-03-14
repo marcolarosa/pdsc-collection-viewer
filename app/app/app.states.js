@@ -36,6 +36,15 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     component: 'pdscDocumentViewerComponent'
   });
 
+  $stateProvider.state('main.transcriptions', {
+    url: '/transcriptions',
+    component: 'pdscTranscriptionViewerComponent'
+  });
+  $stateProvider.state('main.transcriptionInstance', {
+    url: '/transcriptions/:transcriptionId',
+    component: 'pdscTranscriptionViewerComponent'
+  });
+
   $stateProvider.state('main.media', {
     url: '/media',
     component: 'pdscMediaViewerComponent'

@@ -42,6 +42,15 @@
                     <i class="fa fa-file-pdf-o fa-lg"></i> Documents
                     <md-tooltip>View Documents</md-tooltip>
             </md-button>
+            <md-button
+                class="small-font"
+                ui-sref="main.transcriptions"
+                blur-on-click
+                ng-if="vm.itemData.transcriptions">
+                    <i class="fa fa-file-code-o fa-lg"></i> Transcriptions
+                    <md-tooltip>View Transcriptions</md-tooltip>
+            </md-button>
+
             <!-- <md-button
                 class="small-font"
                 ng-href="{{vm.levelup}}"
