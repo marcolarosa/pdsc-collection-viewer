@@ -6,4 +6,5 @@ module.exports = angular
   .filter('minutesSeconds', require('./minutes-seconds.filter'))
   .filter('notEmpty', require('./not-empty.filter'))
   .filter('stripTime', require('./strip-time.filter'))
-  .filter('trustAsHtml', require('./trust-as-html.filter'));
+  .filter('trustAsHtml', require('./trust-as-html.filter'))
+  .filter('escapeHtml', require('./escape-html.filter'));
