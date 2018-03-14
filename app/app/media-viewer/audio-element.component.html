@@ -1,8 +1,14 @@
 <div
     layout="column"
     layout-align="center center"
-    ng-show="!vm.mediaReadyToPlay">
+    ng-show="!vm.mediaReadyToPlay && !vm.loginRequired">
         Loading media... please wait.
+</div>
+<div
+    layout="column"
+    layout-align="center center"
+    ng-show="vm.loginRequired">
+        You must be logged in to Nabu to view this item.
 </div>
 <div
     layout="column"

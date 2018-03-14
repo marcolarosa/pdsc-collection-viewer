@@ -1,23 +1,23 @@
 'use strict';
 
-module.exports = () => {
-  return {
-    template: '',
-    restrict: 'A',
-    link: Linker
-  };
-};
-
-Linker.$inject = ['scope', 'element'];
-function Linker(scope, element) {
-  element.on('canplaythrough', () => {
-    scope.$apply(function() {
-      scope.vm.mediaReadyToPlay = true;
-    });
-  });
-  element.on('abort', err => {
-    scope.$apply(() => {
-      console.log(err);
-    });
-  });
-}
+module.exports = [
+  '$timeout',
+  $timeout => {
+    return {
+      template: '',
+      restrict: 'A',
+      link: function(scope, element) {
+        $timeout(() => {
+          if (!scope.vm.mediaReadyToPlay) {
+            scope.vm.loginRequired = true;
+          }
+        }, 2000);
+        element.on('canplaythrough', () => {
+          scope.$apply(function() {
+            scope.vm.mediaReadyToPlay = true;
+          });
+        });
+      }
+    };
+  }
+];

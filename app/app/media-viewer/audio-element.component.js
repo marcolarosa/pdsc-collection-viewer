@@ -20,6 +20,7 @@ function Controller($state, $timeout, $location) {
 
   function init() {
     vm.mediaReadyToPlay = false;
+    vm.loginRequired = false;
   }
 
   function destroy() {}
