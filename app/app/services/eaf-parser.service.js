@@ -18,7 +18,7 @@ function EAFParserService(lodash) {
         //  to give seconds.milliseconds
         return {
           id: d['@attributes'].TIME_SLOT_ID,
-          time: d['@attributes'].TIME_VALUE / 1000
+          time: parseFloat(d['@attributes'].TIME_VALUE / 1000)
         };
       }
     );

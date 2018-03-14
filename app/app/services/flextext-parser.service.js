@@ -45,7 +45,9 @@ function FlextextParserService(lodash) {
           id: p.phrases.phrase['@attributes']['begin-time-offset'],
           transcription: p.phrases.phrase.item[0]['#text'],
           translation: p.phrases.phrase.item[1]['#text'],
-          time: p.phrases.phrase['@attributes']['begin-time-offset'],
+          time: parseFloat(
+            p.phrases.phrase['@attributes']['begin-time-offset']
+          ),
           words: words
         };
       }
