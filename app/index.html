@@ -10,12 +10,12 @@
     <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
 
     <!-- item metadata -->
-    <meta name="dc.title" content="{{itemData.title}}" />
-    <meta name="citation_public_url"  content="{{itemData.identifier[1]}}" />
-    <meta ng-repeat="contributor in itemData.contributor" name="dc.creator" content="({{contributor.role}}) {{contributor.name}}" />
-    <meta name="dc.date" content="{{itemData.date}}" />
-    <meta name="dc.description" content="{{itemData.description}}" />
-    <meta name="dc.rights" content="{{itemData.rights}}" />
+    <meta name="dc.title" content="{{item.title}}" />
+    <meta name="citation_public_url"  content="{{item.identifier[1]}}" />
+    <meta ng-repeat="contributor in item.contributor" name="dc.creator" content="({{contributor.role}}) {{contributor.name}}" />
+    <meta name="dc.date" content="{{item.date}}" />
+    <meta name="dc.description" content="{{item.description}}" />
+    <meta name="dc.rights" content="{{item.rights}}" />
     <meta name="dc.publisher" content="PARADISEC" />
 
   </head>

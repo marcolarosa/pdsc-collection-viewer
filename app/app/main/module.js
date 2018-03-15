@@ -3,7 +3,7 @@
 module.exports = angular
   .module('pdsc.main', [])
   .constant('configuration', require('./configuration'))
-  .controller('MetadataCtrl', require('./metadata.js'))
+  .controller('MetadataCtrl', require('./metadata.controller.js'))
   .component(
     'pdscCollectionViewerRootComponent',
     require('./root.component.js')
