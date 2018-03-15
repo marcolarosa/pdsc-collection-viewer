@@ -63,10 +63,7 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
     if (
       !isUndefined(vm.itemData) &&
       !isEmpty(vm.itemData) &&
-      includes(
-        ['main', 'main.images', 'main.documents', 'main.media'],
-        $state.current.name
-      )
+      $state.current.name === 'main'
     ) {
       if (!isEmpty(vm.itemData.images)) {
         $state.go('main.images');

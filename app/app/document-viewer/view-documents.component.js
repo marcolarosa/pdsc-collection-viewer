@@ -15,7 +15,8 @@ Controller.$inject = [
   '$sce',
   '$window',
   'lodash',
-  'pdfjs'
+  'pdfjs',
+  '$timeout'
 ];
 function Controller(
   $rootScope,
@@ -25,7 +26,8 @@ function Controller(
   $sce,
   $window,
   lodash,
-  pdfjs
+  pdfjs,
+  $timeout
 ) {
   var vm = this;
 
@@ -69,22 +71,27 @@ function Controller(
     dataService.getItem(collectionId, itemId).then(processResponse);
 
     function processResponse(resp) {
+      vm.loadingData = false;
+      if (isEmpty(resp)) {
+        return;
+      }
       vm.item = resp;
-      if (!lodash.isEmpty(vm.item)) {
-        vm.documents = vm.item.documents.map(document =>
-          document.split('/').pop()
-        );
-        if (!$state.params.documentId) {
+
+      vm.documents = vm.item.documents.map(document =>
+        document.split('/').pop()
+      );
+      if (!$state.params.documentId) {
+        $timeout(() => {
           return $state.go('main.documentInstance', {
             documentId: vm.documents[0]
           });
-        }
-        const documentId = $state.params.documentId;
-        vm.config.current = vm.documents.indexOf(documentId);
-
-        vm.loadingData = false;
-        loadDocument();
+        });
       }
+      const documentId = $state.params.documentId;
+      vm.config.current = vm.documents.indexOf(documentId);
+
+      vm.loadingData = false;
+      loadDocument();
     }
   }
 

@@ -9,8 +9,14 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$rootScope', 'dataService', 'hljs'];
-function Controller($state, $rootScope, dataService, hljs) {
+Controller.$inject = [
+  '$state',
+  '$rootScope',
+  'dataService',
+  'hljs',
+  '$timeout'
+];
+function Controller($state, $rootScope, dataService, hljs, $timeout) {
   var vm = this;
 
   var broadcastListener;
@@ -51,8 +57,10 @@ function Controller($state, $rootScope, dataService, hljs) {
         transcription.split('/').pop()
       );
       if (!$state.params.transcriptionId) {
-        return $state.go('main.transcriptionInstance', {
-          transcriptionId: vm.transcriptions[0]
+        $timeout(() => {
+          return $state.go('main.transcriptionInstance', {
+            transcriptionId: vm.transcriptions[0]
+          });
         });
       }
       const transcriptionId = $state.params.transcriptionId;

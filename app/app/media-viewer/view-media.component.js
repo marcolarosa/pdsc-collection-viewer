@@ -9,8 +9,8 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$rootScope', 'dataService'];
-function Controller($state, $rootScope, dataService) {
+Controller.$inject = ['$state', '$rootScope', 'dataService', '$timeout'];
+function Controller($state, $rootScope, dataService, $timeout) {
   var vm = this;
 
   var broadcastListener;
@@ -49,7 +49,9 @@ function Controller($state, $rootScope, dataService) {
       vm.media = vm.item.media.map(m => m.name);
 
       if (!$state.params.mediaId) {
-        return $state.go('main.mediaInstance', {mediaId: vm.media[0]});
+        $timeout(() => {
+          return $state.go('main.mediaInstance', {mediaId: vm.media[0]});
+        });
       }
       const mediaId = $state.params.mediaId;
       vm.config.current = vm.media.indexOf(mediaId);
