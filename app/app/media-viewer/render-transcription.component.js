@@ -40,10 +40,18 @@ function Controller(
   vm.$onDestroy = destroy;
   vm.queueTranscription = queueTranscription;
   vm.play = play;
+  vm.scrollTranscription = scrollTranscription;
 
   vm.transcriptionOptions = ['eaf', 'trs', 'ixt', 'flextext'];
 
   function init() {
+    if (!$state.params.transcription) {
+      queueTranscription[queue[0]];
+    }
+
+    if ($state.params.segment) {
+      dataService.mediaElementTime = $state.params.segment;
+    }
     timeUpdateListener = dataService.listenForMediaElementBroadcast(
       scrollTranscription
     );
@@ -72,10 +80,6 @@ function Controller(
     queue.forEach(function(t) {
       chain = chain.then(chainTranscription(t));
     });
-
-    if (!$state.params.transcription) {
-      queueTranscription[queue[0]];
-    }
 
     return chain.then(() => {
       vm.loadingTranscriptions = false;
