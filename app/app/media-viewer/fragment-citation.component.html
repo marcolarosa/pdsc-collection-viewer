@@ -1,0 +1,10 @@
+<md-button
+    class="small-button"
+    data-clipboard-text="{{vm.citation}}"
+    aria-label="copy citation to clipboard"
+    ng-if="vm.citation">
+        <md-tooltip>
+            Copy fragment citation
+        </md-tooltip>
+        <i class="fa fa-clipboard fa-sm"></i>
+</md-button>

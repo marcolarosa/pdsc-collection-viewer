@@ -50,13 +50,11 @@
             </div>
             <div flex></div>
             <div>
-                <fragment-citation
-                    type="transcript"
-                    selection="selected.transcript"
-                    fragment-data="vm.selectedTranscription[k]"
-                    item-data="itemData"
-                    name="name"
-                ></fragment-citation>
+                <pdsc-fragment-citation-component
+                    selected="vm.element[vm.selected]"
+                    element="vm.element"
+                    fragment="vm.selectedTranscription[k]">
+                </pdsc-fragment-citation>
             </div>
         </div>
         <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
@@ -82,13 +80,11 @@
             </div>
             <div flex></div>
             <div>
-                <fragment-citation
-                    type="interlinear"
-                    selection="selected.interlinear"
-                    fragment-data="interlinearText[k]"
-                    item-data="itemData"
-                    name="name"
-                ></fragment-citation>
+                <pdsc-fragment-citation-component
+                    selected="vm.selected"
+                    element="vm.element"
+                    fragment="vm.selectedTranscription[k]">
+                </pdsc-fragment-citation>
             </div>
         </div>
         <div layout-padding>

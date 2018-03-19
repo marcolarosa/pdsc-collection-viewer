@@ -10,4 +10,8 @@ module.exports = angular
   .component(
     'pdscTranscriptionRenderComponent',
     require('./render-transcription.component')
+  )
+  .component(
+    'pdscFragmentCitationComponent',
+    require('./fragment-citation.component')
   );
