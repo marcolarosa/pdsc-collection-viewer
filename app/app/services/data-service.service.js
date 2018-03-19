@@ -6,6 +6,7 @@ const {
   compact,
   isArray,
   each,
+  map,
   flattenDeep
 } = require('lodash');
 
@@ -230,10 +231,10 @@ function DataService(
     function processMedia(tree) {
       const audio = constructItemList('audio', tree);
       const video = constructItemList('video', tree);
-      const eaf = constructItemList('eaf', tree);
-      const trs = constructItemList('trs', tree);
-      const ixt = constructItemList('ixt', tree);
-      const flextext = constructItemList('flextext', tree);
+      const eaf = processMediaItem('eaf', tree);
+      const trs = processMediaItem('trs', tree);
+      const ixt = processMediaItem('ixt', tree);
+      const flextext = processMediaItem('flextext', tree);
 
       let media = [];
       each(audio, (files, key) => {
@@ -244,15 +245,28 @@ function DataService(
       });
       return media;
 
+      function processMediaItem(key, tree) {
+        let item = constructItemList(key, tree);
+        each(item, (v, k) => {
+          item[k] = map(v, url => {
+            return {
+              name: url.split('/').pop(),
+              url: url
+            };
+          });
+        });
+        return item;
+      }
+
       function createMediaItemDataStructure(key, files, type) {
         return {
           name: key,
           type: type,
           files: files,
-          eaf: eaf[key] ? eaf[key][0] : null,
-          trs: trs[key] ? trs[key][0] : null,
-          ixt: ixt[key] ? ixt[key][0] : null,
-          flextext: flextext[key] ? flextext[key][0] : null
+          eaf: eaf[key] ? eaf[key] : [],
+          trs: trs[key] ? trs[key] : [],
+          ixt: ixt[key] ? ixt[key] : [],
+          flextext: flextext[key] ? flextext[key] : []
         };
       }
     }
@@ -316,7 +330,7 @@ function DataService(
     }
 
     return $http
-      .get(item[type], {transformResponse: transform, withCredentials: true})
+      .get(item.url, {transformResponse: transform, withCredentials: true})
       .then(resp => {
         return resp.data.data;
       })
