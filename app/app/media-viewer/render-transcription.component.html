@@ -2,29 +2,29 @@
     <md-button
         class="md-primary small-button"
         ng-if="vm.element.eaf"
-        ng-disabled="!vm.transcriptions['eaf'] || vm.selected === 'eaf'"
-        ng-click="vm.select('eaf')">
+        ng-disabled="!vm.transcriptions['eaf'] || vm.selectedType === 'eaf'"
+        ng-click="vm.queueTranscription('eaf')">
             EAF
     </md-button>
     <md-button
         class="md-primary small-button"
         ng-if="vm.element.trs"
-        ng-disabled="!vm.transcriptions['trs'] || vm.selected === 'trs'"
-        ng-click="vm.select('trs')">
+        ng-disabled="!vm.transcriptions['trs'] || vm.selectedType === 'trs'"
+        ng-click="vm.queueTranscription('trs')">
             TRS
     </md-button>
     <md-button
         class="md-primary small-button"
         ng-if="vm.element.ixt"
-        ng-disabled="!vm.transcriptions['ixt'] || vm.selected === 'ixt'"
-        ng-click="vm.select('ixt')">
+        ng-disabled="!vm.transcriptions['ixt'] || vm.selectedType === 'ixt'"
+        ng-click="vm.queueTranscription('ixt')">
             IXT
     </md-button>
     <md-button
         class="md-primary small-button"
         ng-if="vm.element.flextext"
-        ng-disabled="!vm.transcriptions['flextext'] || vm.selected === 'flextext'"
-        ng-click="vm.select('flextext')">
+        ng-disabled="!vm.transcriptions['flextext'] || vm.selectedType === 'flextext'"
+        ng-click="vm.queueTranscription('flextext')">
             FLEXTEXT
     </md-button>
 </div>
@@ -51,7 +51,7 @@
             <div flex></div>
             <div>
                 <pdsc-fragment-citation-component
-                    selected="vm.element[vm.selected]"
+                    selected="vm.selectedTranscriptionName"
                     element="vm.element"
                     fragment="vm.selectedTranscription[k]">
                 </pdsc-fragment-citation>
@@ -81,7 +81,7 @@
             <div flex></div>
             <div>
                 <pdsc-fragment-citation-component
-                    selected="vm.selected"
+                    selected="vm.selectedTranscriptionName"
                     element="vm.element"
                     fragment="vm.selectedTranscription[k]">
                 </pdsc-fragment-citation>

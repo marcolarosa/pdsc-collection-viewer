@@ -21,11 +21,15 @@ function Controller($state, $rootScope, dataService, $timeout) {
   vm.nextItem = nextItem;
 
   function init() {
+    vm.selectedTab = $state.params.transcription ? 1 : 0;
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
     vm.config = {
       current: 0,
       item: null
     };
+    $timeout(() => {
+      vm.selectedTab = $state.params.transcription ? 1 : 0;
+    }, 500);
     loadItem();
   }
 

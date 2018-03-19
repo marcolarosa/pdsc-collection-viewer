@@ -25,7 +25,7 @@ function Controller($location, $state) {
     const instanceId = vm.element.name;
     const selected = vm.selected.split('/').pop();
     const segment = vm.fragment.time;
-    vm.citation = `${url}/${collectionId}/${itemId}/media/${instanceId}?selected=${selected}&segment=${segment}`;
+    vm.citation = `${url}/${collectionId}/${itemId}/media/${instanceId}?transcription=${selected}&segment=${segment}`;
   }
 
   function destroy() {}
