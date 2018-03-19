@@ -23,7 +23,6 @@ angular
     'lodash',
     'pdfjs',
     'ngMaterial',
-    'clipboard',
     'highlightjs',
     'pdsc.routes',
     'pdsc.main',
