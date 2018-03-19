@@ -28,6 +28,20 @@
             FLEXTEXT
     </md-button>
 </div>
+<div layout="row" layout-align="center center">
+    <md-input-container ng-show="vm.element[vm.selectedType].length > 1">
+        <md-select
+            ng-model="vm.selectedTranscriptionName"
+            ng-change="vm.queueTranscription(vm.selectedType, vm.selectedTranscriptionName)"
+            aria-label="select the transcription to display">
+            <md-option
+                ng-repeat="transcription in vm.element[vm.selectedType]"
+                ng-value="transcription.name">
+              {{transcription.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+</div>
 
 <div layout="row" layout-align="center center" flex>
     <div ng-show="vm.loadingTranscriptions" style="width: 500px;">

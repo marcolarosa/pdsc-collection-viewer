@@ -41,6 +41,8 @@ function Controller(
   vm.queueTranscription = queueTranscription;
   vm.play = play;
 
+  vm.transcriptionOptions = ['eaf', 'trs', 'ixt', 'flextext'];
+
   function init() {
     timeUpdateListener = dataService.listenForMediaElementBroadcast(
       scrollTranscription
@@ -85,13 +87,6 @@ function Controller(
         return loadTranscription(item);
       };
     }
-
-    // vm.highlight = {};
-    // vm.selected = {};
-    // vm.available = {};
-    // vm.showTranscription = true;
-    // vm.showInterlinear = true;
-    // vm.isPlaying = false;
   }
 
   function loadTranscription(type) {
@@ -111,12 +106,10 @@ function Controller(
 
   function select() {
     $timeout(() => {
-      if ($state.params.transcription) {
-        vm.selectedTranscription =
-          vm.transcriptionsByName[$state.params.transcription];
-        vm.selectedType = $state.params.transcription.split('.').pop();
-        vm.selectedTranscriptionName = $state.params.transcription;
-      }
+      vm.selectedTranscription =
+        vm.transcriptionsByName[$state.params.transcription];
+      vm.selectedType = $state.params.transcription.split('.').pop();
+      vm.selectedTranscriptionName = $state.params.transcription;
       if (includes(['eaf', 'trs'], vm.selectedType)) {
         vm.showTranscription = true;
         vm.showInterlinearText = false;
@@ -127,9 +120,11 @@ function Controller(
     }, 10);
   }
 
-  function queueTranscription(what) {
+  function queueTranscription(what, selected) {
     vm.selectedType = what;
-    vm.selectedTranscriptionName = vm.element[vm.selectedType][0].name;
+    vm.selectedTranscriptionName = selected
+      ? selected
+      : vm.element[vm.selectedType][0].name;
     vm.selectedTranscription =
       vm.transcriptionsByName[vm.selectedTranscriptionName];
     $location.search('transcription', vm.selectedTranscriptionName);
