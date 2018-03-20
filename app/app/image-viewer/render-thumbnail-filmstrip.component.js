@@ -4,9 +4,9 @@ module.exports = {
   template: require('./render-thumbnail-filmstrip.component.html'),
   bindings: {
     item: '<',
-    selectedItem: '=',
-    isOpen: '<',
-    jump: '&'
+    selectedItem: '<',
+    loadItem: '&',
+    isOpen: '<'
   },
   controller: Controller,
   controllerAs: 'vm'
@@ -25,6 +25,7 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
   vm.$onInit = init;
   vm.$onDestroy = destroy;
   vm.loadImage = loadImage;
+  vm.highlightSelectedItem = highlightSelectedItem;
 
   function init() {
     vm.thumbnails = vm.item.thumbnails.map((thumb, idx) => {
@@ -34,7 +35,7 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
         name: thumb
           .split('/')
           .pop()
-          .split('-thumb')[0]
+          .replace('-thumb-PDSC_ADMIN', '')
       };
     });
     highlightSelectedItem();
@@ -55,10 +56,13 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
       $location.hash(vm.selectedItem);
       $anchorScroll();
       $location.hash(old);
-    }, 1000);
+    }, 1500);
   }
 
   function loadImage(image) {
-    $state.go('main.imageInstance', {imageId: image});
+    vm.loadItem({item: image});
+    $timeout(() => {
+      // highlightSelectedItem();
+    });
   }
 }

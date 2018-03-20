@@ -1,6 +1,6 @@
 'use strict';
 
-const {isEmpty} = require('lodash');
+const {isEmpty, each, map} = require('lodash');
 
 module.exports = {
   template: require('./view-image-set.component.html'),
@@ -18,7 +18,6 @@ Controller.$inject = [
   '$anchorScroll',
   '$timeout',
   'dataService',
-  'lodash',
   '$mdSidenav'
 ];
 
@@ -31,7 +30,6 @@ function Controller(
   $anchorScroll,
   $timeout,
   dataService,
-  lodash,
   $mdSidenav
 ) {
   var vm = this;
@@ -47,6 +45,7 @@ function Controller(
   vm.toggleFilmstrip = toggleFilmstrip;
   vm.jump = jump;
   vm.toggleFullScreen = toggleFullScreen;
+  vm.selectItem = selectItem;
 
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
@@ -78,26 +77,23 @@ function Controller(
         return;
       }
       vm.item = resp;
-      vm.images = lodash.map(vm.item.images, image => image.split('/').pop());
+      vm.images = map(vm.item.images, image => image.split('/').pop());
 
       if (!$state.params.imageId) {
-        $timeout(() => {
-          return $state.go('main.imageInstance', {imageId: vm.images[0]});
-        });
+        $state.go('main.images.instance', {imageId: vm.images[0]});
       }
-      const imageId = $state.params.imageId;
-      vm.config.current = vm.images.indexOf(imageId);
-
-      // vm.config.currentScale = 1;
-      // vm.config.currentRotation = 0;
-      setCurrentImage();
-      vm.image = vm.item.images[vm.config.current];
-      figureOutPaginationControls();
+      $timeout(() => {
+        const imageId = $state.params.imageId;
+        vm.config.current = vm.images.indexOf(imageId);
+        setCurrentImage();
+        vm.image = vm.item.images[vm.config.current];
+        figureOutPaginationControls();
+      });
     }
 
     function setCurrentImage() {
       const imageId = $state.params.imageId;
-      lodash.each(vm.images, (image, idx) => {
+      each(vm.images, (image, idx) => {
         if (image === imageId) {
           vm.config.current = idx;
         }
@@ -105,10 +101,23 @@ function Controller(
     }
   }
 
+  function selectItem(setImage) {
+    each(vm.images, (image, idx) => {
+      if (image === setImage) {
+        vm.config.current = idx;
+      }
+    });
+    jump();
+  }
+
   function jump() {
-    lodash.each(vm.images, (image, idx) => {
+    each(vm.images, (image, idx) => {
       if (vm.config.current === idx) {
-        return $state.go('main.imageInstance', {imageId: image});
+        vm.image = null;
+        $timeout(() => {
+          vm.image = vm.item.images[vm.config.current];
+          $state.go('main.images.instance', {imageId: image});
+        });
       }
     });
   }

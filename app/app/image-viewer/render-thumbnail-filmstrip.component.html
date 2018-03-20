@@ -4,8 +4,12 @@
             <span flex="20">
                 {{$index + 1}}
             </span>
-            <a flex="80" ng-click="vm.loadImage(img.name)" id="{{img.id}}" ng-class="img.selected">
-                <img ng-src="{{img.source}}" class="filmstrip-thumbnail" />
+            <a
+                flex="80"
+                ng-click="vm.loadImage(img.name)"
+                id="{{img.id}}"
+                ng-class="img.selected">
+                    <img ng-src="{{img.source}}" class="filmstrip-thumbnail" />
             </a>
         </div>
     </span>

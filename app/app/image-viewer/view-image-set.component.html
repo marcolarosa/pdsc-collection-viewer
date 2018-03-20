@@ -77,11 +77,10 @@
             <md-progress-linear md-mode="indeterminate"></md-progress-linear>
         </div>
         <img
-            ng-if="!vm.loadingData"
             class="pannable-image"
             id='largeImage'
             ng-src="{{vm.image}}"
-            ng-if="vm.image"
+            ng-if="vm.image && !vm.loadingData"
             ng-style="vm.imageStyle"
             alt='You must be logged in to Nabu to view this image.'
             show-when-ready>
@@ -96,8 +95,8 @@
         <pdsc-image-viewer-thumbnail-strip-component
             item="vm.item"
             selected-item="vm.config.current"
+            load-item="vm.selectItem(item)"
             is-open="vm.config.sideNavIsOpen"
-            jump="vm.jump()"
             ng-if="vm.config.sideNavIsOpen">
         </pdsc-image-viewer-thumbnail-strip-component>
 </md-sidenav>
