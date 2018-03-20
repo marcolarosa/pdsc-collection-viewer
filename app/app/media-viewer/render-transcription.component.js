@@ -117,10 +117,6 @@ function Controller(
     vm.showTranscription = false;
     vm.showInterlinearText = false;
     $timeout(() => {
-      // vm.selectedTranscription =
-      //   vm.transcriptionsByName[$state.params.transcription];
-      // vm.selectedType = $state.params.transcription.split('.').pop();
-      // vm.selectedTranscriptionName = $state.params.transcription;
       if (includes(['eaf', 'trs'], vm.selectedType)) {
         vm.showTranscription = true;
         vm.showInterlinearText = false;
