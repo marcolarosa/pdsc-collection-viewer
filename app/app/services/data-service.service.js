@@ -38,8 +38,8 @@ function DataService(
 ) {
   var ds = {
     imageTypes: ['jpg', 'jpeg', 'png'],
-    videoTypes: ['mp4', 'webm', 'ogg', 'ogv', 'mov', 'webm'],
-    audioTypes: ['mp3', 'webm', 'ogg', 'oga'],
+    videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
+    audioTypes: ['mp3', 'ogg', 'oga'],
     documentTypes: ['pdf'],
     getItem: getItem,
     loadTranscription: loadTranscription,
