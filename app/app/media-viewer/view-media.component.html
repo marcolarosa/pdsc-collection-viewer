@@ -41,12 +41,7 @@
                     <md-tab
                         label="View Transcriptions"
                         ng-click="vm.activateTab(1)"
-                        ng-if="
-                            vm.config.item.eaf ||
-                            vm.config.item.trs ||
-                            vm.config.item.ixt ||
-                            vm.config.item.flextext
-                        ">
+                        ng-if="vm.item.transcriptions.length">
                             <pdsc-transcription-render-component
                                 element="vm.config.item"
                                 ng-if="vm.config.item && vm.activeTab === 1">
