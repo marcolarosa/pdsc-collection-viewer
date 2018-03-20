@@ -80,10 +80,12 @@
             class="pannable-image"
             id='largeImage'
             ng-src="{{vm.image}}"
-            ng-if="vm.image && !vm.loadingData"
+            ng-if="vm.image && !vm.loadingData && !vm.showError"
             ng-style="vm.imageStyle"
-            alt='You must be logged in to Nabu to view this image.'
             show-when-ready>
+        <a href="http://catalog.paradisec.org.au/users/sign_in" ng-if="vm.showError">
+            Please log in to Nabu to view this item.
+        </a>
     </div>
 </div>
 

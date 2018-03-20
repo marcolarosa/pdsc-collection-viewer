@@ -24,6 +24,7 @@ function Linker(scope, element) {
   element.on('error', function(err) {
     scope.$apply(() => {
       scope.vm.showImage = true;
+      scope.vm.showError = true;
     });
   });
 }
