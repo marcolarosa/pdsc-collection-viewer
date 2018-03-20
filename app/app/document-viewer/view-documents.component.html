@@ -106,7 +106,12 @@
             </div>
         </span>
     </div>
-    <div layout="row" layout-align="center center" flex>
+    <div layout="row" layout-align="center center" flex ng-if="vm.showError">
+        <a href="http://catalog.paradisec.org.au/users/sign_in">
+            Please log in to Nabu to view this item.
+        </a>
+    </div>
+    <div layout="row" layout-align="center center" flex ng-if="!vm.showError">
         <div size-to-parent ng-style="panelStyle" style="overflow: auto;">
             <canvas id="the-canvas" />
         </div>

@@ -1,5 +1,7 @@
 'use strict';
 
+const {isEmpty, each} = require('lodash');
+
 module.exports = {
   template: require('./view-documents.component.html'),
   bindings: {},
@@ -14,7 +16,6 @@ Controller.$inject = [
   'dataService',
   '$sce',
   '$window',
-  'lodash',
   'pdfjs',
   '$timeout'
 ];
@@ -25,7 +26,6 @@ function Controller(
   dataService,
   $sce,
   $window,
-  lodash,
   pdfjs,
   $timeout
 ) {
@@ -126,12 +126,19 @@ function Controller(
     if (!what.url) {
       return;
     }
-    pdfjs.getDocument(what).then(function(pdf) {
-      vm.pdf = pdf;
-      getDocumentMetadata();
+    pdfjs
+      .getDocument(what)
+      .then(function(pdf) {
+        vm.pdf = pdf;
+        getDocumentMetadata();
 
-      loadPage();
-    });
+        loadPage();
+      })
+      .catch(error => {
+        $scope.$apply(() => {
+          vm.showError = true;
+        });
+      });
 
     function getDocumentMetadata() {
       vm.pdf.getMetadata().then(function(data) {
@@ -168,7 +175,7 @@ function Controller(
   }
 
   function jump() {
-    lodash.each(vm.documents, (document, idx) => {
+    each(vm.documents, (document, idx) => {
       if (vm.config.current === idx) {
         return $state.go('main.documentInstance', {documentId: document});
       }
