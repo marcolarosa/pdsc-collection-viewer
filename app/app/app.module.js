@@ -43,4 +43,5 @@ function Configure($mdThemingProvider, $locationProvider) {
     .accentPalette('orange');
 
   $locationProvider.hashPrefix('');
+  // $locationProvider.html5mode(true);
 }
