@@ -1,38 +1,37 @@
 'use strict';
 
+const {flatten, compact, groupBy, map, isArray, each} = require('lodash');
 module.exports = EAFParserService;
 
-EAFParserService.$inject = ['lodash'];
-
-function EAFParserService(lodash) {
+EAFParserService.$inject = [];
+function EAFParserService() {
   var eafParser = {};
 
   // parse an EAF XML file and return an array of object keyed on
   //  timeslot id
   eafParser.parse = function(data) {
     // extract the time slots and group then by id
-    var timeslots = lodash.map(
-      data.ANNOTATION_DOCUMENT.TIME_ORDER.TIME_SLOT,
-      function(d) {
-        // TIME_VALUE needs to be divided by 1000
-        //  to give seconds.milliseconds
-        return {
-          id: d['@attributes'].TIME_SLOT_ID,
-          time: parseFloat(d['@attributes'].TIME_VALUE / 1000)
-        };
-      }
-    );
-    timeslots = lodash.groupBy(timeslots, function(d) {
+    var timeslots = map(data.ANNOTATION_DOCUMENT.TIME_ORDER.TIME_SLOT, function(
+      d
+    ) {
+      // TIME_VALUE needs to be divided by 1000
+      //  to give seconds.milliseconds
+      return {
+        id: d['@attributes'].TIME_SLOT_ID,
+        time: parseFloat(d['@attributes'].TIME_VALUE / 1000)
+      };
+    });
+    timeslots = groupBy(timeslots, function(d) {
       return d.id;
     });
 
     // extract the annotations
     var annotations = [];
-    if (!lodash.isArray(data.ANNOTATION_DOCUMENT.TIER)) {
+    if (!isArray(data.ANNOTATION_DOCUMENT.TIER)) {
       data.ANNOTATION_DOCUMENT.TIER = [data.ANNOTATION_DOCUMENT.TIER];
     }
-    lodash.each(data.ANNOTATION_DOCUMENT.TIER, function(d) {
-      var a = lodash.map(d.ANNOTATION, function(e) {
+    each(data.ANNOTATION_DOCUMENT.TIER, function(d) {
+      var a = map(d.ANNOTATION, function(e) {
         if (e.ALIGNABLE_ANNOTATION) {
           return {
             id: e.ALIGNABLE_ANNOTATION['@attributes'].ANNOTATION_ID,
@@ -51,16 +50,16 @@ function EAFParserService(lodash) {
           };
         }
       });
-      annotations.push(a);
+      annotations.push(compact(a));
     });
 
     // group the annotations by type
-    annotations = lodash.groupBy(lodash.flatten(annotations), function(d) {
+    annotations = groupBy(flatten(annotations), function(d) {
       return d.type;
     });
 
     // then group the alignable annotations by id:
-    annotations.alignableAnnotation = lodash.groupBy(
+    annotations.alignableAnnotation = groupBy(
       annotations.alignableAnnotation,
       function(d) {
         return d.id;
@@ -68,7 +67,7 @@ function EAFParserService(lodash) {
     );
 
     // iterate over the reference annotations and join the data into the alignable annotations
-    lodash.each(annotations.referenceAnnotation, function(d) {
+    each(annotations.referenceAnnotation, function(d) {
       try {
         annotations.alignableAnnotation[d.ref][0].referenceValue =
           d.value || undefined;
@@ -76,14 +75,14 @@ function EAFParserService(lodash) {
     });
 
     // iterate over the alignable annotations and join the data into the timeslot data
-    lodash.each(annotations.alignableAnnotation, function(d) {
+    each(annotations.alignableAnnotation, function(d) {
       timeslots[d[0].ts1][0].value = d[0].value;
       timeslots[d[0].ts1][0].referenceValue = d[0].referenceValue;
       timeslots[d[0].ts1][0].speaker = d[0].speaker;
     });
 
     // finally, collapse it into an array of objects
-    timeslots = lodash.map(timeslots, function(d) {
+    timeslots = map(timeslots, function(d) {
       return d[0];
     });
 
