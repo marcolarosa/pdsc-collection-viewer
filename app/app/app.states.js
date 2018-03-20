@@ -31,9 +31,8 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/documents',
     component: 'pdscDocumentViewerComponent'
   });
-  $stateProvider.state('main.documentInstance', {
-    url: '/documents/:documentId',
-    component: 'pdscDocumentViewerComponent'
+  $stateProvider.state('main.documents.instance', {
+    url: '/:documentId'
   });
 
   $stateProvider.state('main.transcriptions', {

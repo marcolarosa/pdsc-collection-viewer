@@ -81,28 +81,19 @@ function Controller(
         document.split('/').pop()
       );
       if (!$state.params.documentId) {
-        $timeout(() => {
-          return $state.go('main.documentInstance', {
-            documentId: vm.documents[0]
-          });
+        $state.go('main.documents.instance', {
+          documentId: vm.documents[0]
         });
       }
-      const documentId = $state.params.documentId;
-      vm.config.current = vm.documents.indexOf(documentId);
+      $timeout(() => {
+        const documentId = $state.params.documentId;
+        vm.config.current = vm.documents.indexOf(documentId);
 
-      vm.loadingData = false;
-      loadDocument();
+        vm.loadingData = false;
+        loadDocument();
+      });
     }
   }
-
-  // is a specific instance being requested? If so - strip the others
-  //  from the set. Support the instance being defined by the name
-  // if (vm.instanceId) {
-  //   // it's not undefined
-  //   vm.itemData.documents = _.filter(vm.itemData.documents, function(d) {
-  //     return d.match(vm.instanceId);
-  //   });
-  // }
 
   function loadDocument() {
     //
@@ -131,7 +122,6 @@ function Controller(
       .then(function(pdf) {
         vm.pdf = pdf;
         getDocumentMetadata();
-
         loadPage();
       })
       .catch(error => {
@@ -177,7 +167,12 @@ function Controller(
   function jump() {
     each(vm.documents, (document, idx) => {
       if (vm.config.current === idx) {
-        return $state.go('main.documentInstance', {documentId: document});
+        vm.pdf = null;
+        vm.config.currentPage = 1;
+        $timeout(() => {
+          loadDocument();
+          $state.go('main.documents.instance', {documentId: document});
+        });
       }
     });
   }
