@@ -46,6 +46,9 @@ function Controller(
     vm.transcriptions = {};
     vm.transcriptionsByName = {};
     const queue = determineTranscriptionsToLoad();
+    if (isEmpty(queue)) {
+      return;
+    }
 
     if ($state.params.segment) {
       dataService.mediaElementTime = $state.params.segment;
