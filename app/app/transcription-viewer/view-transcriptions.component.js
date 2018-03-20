@@ -53,39 +53,47 @@ function Controller($state, $rootScope, dataService, hljs, $timeout) {
       }
 
       vm.item = resp;
-      vm.transcriptions = vm.item.transcriptions.map(transcription =>
-        transcription.split('/').pop()
+      vm.transcriptions = vm.item.transcriptions.map(
+        transcription => transcription.name
       );
       if (!$state.params.transcriptionId) {
         $timeout(() => {
-          return $state.go('main.transcriptionInstance', {
+          $state.go('main.transcriptions.instance', {
             transcriptionId: vm.transcriptions[0]
           });
         });
       }
-      const transcriptionId = $state.params.transcriptionId;
-      vm.config.current = vm.transcriptions.indexOf(transcriptionId);
-
-      const type = vm.transcriptions[vm.config.current].split('.').pop();
-      const item = {};
-      item[type] = vm.item.transcriptions[vm.config.current];
-      dataService.loadTranscription(type, item, 'xml').then(data => {
-        hljs.configure({
-          tabReplace: '    ',
-          useBr: true
-        });
-        data = hljs.highlight('xml', data).value;
-        vm.data = data;
-        hljs.initHighlighting();
+      $timeout(() => {
+        const transcriptionId = $state.params.transcriptionId;
+        vm.config.current = vm.transcriptions.indexOf(transcriptionId);
+        loadTranscription();
       });
     }
+  }
+
+  function loadTranscription() {
+    const type = vm.transcriptions[vm.config.current].split('.').pop();
+    const item = vm.item.transcriptions[vm.config.current];
+    dataService.loadTranscription(type, item, 'xml').then(data => {
+      hljs.configure({
+        tabReplace: '    ',
+        useBr: true
+      });
+      data = hljs.highlight('xml', data).value;
+      vm.data = data;
+      hljs.initHighlighting();
+    });
   }
 
   function jump() {
     each(vm.transcriptions, (transcription, idx) => {
       if (vm.config.current === idx) {
-        return $state.go('main.transcriptionInstance', {
-          transcriptionId: transcription
+        vm.data = null;
+        $timeout(() => {
+          loadTranscription();
+          $state.go('main.transcriptions.instance', {
+            transcriptionId: transcription
+          });
         });
       }
     });
