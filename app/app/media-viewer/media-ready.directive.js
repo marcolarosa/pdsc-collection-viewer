@@ -2,7 +2,8 @@
 
 module.exports = [
   '$timeout',
-  $timeout => {
+  'dataService',
+  ($timeout, dataService) => {
     return {
       template: '',
       restrict: 'A',
@@ -10,11 +11,14 @@ module.exports = [
         $timeout(() => {
           if (!scope.vm.mediaReadyToPlay) {
             scope.vm.loginRequired = true;
+            dataService.userLoggedIn = false;
           }
-        }, 2000);
+        }, 5000);
         element.on('canplaythrough', () => {
           scope.$apply(function() {
             scope.vm.mediaReadyToPlay = true;
+            scope.vm.loginRequired = false;
+            dataService.userLoggedIn = true;
           });
         });
       }

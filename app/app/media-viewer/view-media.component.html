@@ -28,23 +28,29 @@
                 </md-button>
             </div>
             <div layout="row" hide show-gt-sm>
-                <md-tabs md-dynamic-height style="width: 400px;" layout-padding md-selected="vm.selectedTab">
-                    <md-tab label="Information">
-                        <pdsc-item-information-component
-                            item-data="vm.item"
-                            close="vm.toggleItemInformation()">
-                        </pdsc-item-information-component>
+                <md-tabs md-dynamic-height style="width: 400px;" layout-padding md-selected="vm.activeTab">
+                    <md-tab
+                        label="Information"
+                        ng-click="vm.activateTab(0)">
+                            <pdsc-item-information-component
+                                item-data="vm.item"
+                                close="vm.toggleItemInformation()"
+                                ng-if="vm.activeTab === 0">
+                            </pdsc-item-information-component>
                     </md-tab>
-                    <md-tab label="View Transcriptions" ng-if="
-                        vm.config.item.eaf ||
-                        vm.config.item.trs ||
-                        vm.config.item.ixt ||
-                        vm.config.item.flextext
-                    ">
-                        <pdsc-transcription-render-component
-                            element="vm.config.item"
-                            ng-if="vm.config.item">
-                        </pdsc-transcription-render-component>
+                    <md-tab
+                        label="View Transcriptions"
+                        ng-click="vm.activateTab(1)"
+                        ng-if="
+                            vm.config.item.eaf ||
+                            vm.config.item.trs ||
+                            vm.config.item.ixt ||
+                            vm.config.item.flextext
+                        ">
+                            <pdsc-transcription-render-component
+                                element="vm.config.item"
+                                ng-if="vm.config.item && vm.activeTab === 1">
+                            </pdsc-transcription-render-component>
                     </md-tab>
                 </md-tabs>
             </div>

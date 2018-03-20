@@ -9,8 +9,14 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$rootScope', 'dataService', '$timeout'];
-function Controller($state, $rootScope, dataService, $timeout) {
+Controller.$inject = [
+  '$state',
+  '$rootScope',
+  'dataService',
+  '$timeout',
+  '$location'
+];
+function Controller($state, $rootScope, dataService, $timeout, $location) {
   var vm = this;
 
   var broadcastListener;
@@ -21,16 +27,20 @@ function Controller($state, $rootScope, dataService, $timeout) {
   vm.nextItem = nextItem;
 
   function init() {
-    vm.selectedTab = $state.params.transcription ? 1 : 0;
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
     vm.config = {
       current: 0,
       item: null
     };
     $timeout(() => {
-      vm.selectedTab = $state.params.transcription ? 1 : 0;
-    }, 500);
-    loadItem();
+      if ($state.params.transcription) {
+        activateTab(1);
+      } else {
+        activateTab(0);
+      }
+      loadItem();
+      vm.activateTab = activateTab;
+    }, 1500);
   }
 
   function destroy() {
@@ -53,20 +63,26 @@ function Controller($state, $rootScope, dataService, $timeout) {
       vm.media = vm.item.media.map(m => m.name);
 
       if (!$state.params.mediaId) {
-        $timeout(() => {
-          return $state.go('main.mediaInstance', {mediaId: vm.media[0]});
-        });
+        $location.search({});
+        $state.go('main.media.instance', {mediaId: vm.media[0]});
       }
-      const mediaId = $state.params.mediaId;
-      vm.config.current = vm.media.indexOf(mediaId);
-      vm.config.item = vm.item.media[vm.config.current];
+      $timeout(() => {
+        const mediaId = $state.params.mediaId;
+        vm.config.current = vm.media.indexOf(mediaId);
+        vm.config.item = vm.item.media[vm.config.current];
+      });
     }
   }
 
   function jump() {
     each(vm.media, (item, idx) => {
       if (vm.config.current === idx) {
-        return $state.go('main.mediaInstance', {mediaId: item});
+        $location.search({});
+        vm.config.item = null;
+        $timeout(() => {
+          vm.config.item = vm.item.media[vm.config.current];
+          $state.go('main.media.instance', {mediaId: item});
+        });
       }
     });
   }
@@ -87,6 +103,12 @@ function Controller($state, $rootScope, dataService, $timeout) {
     jump();
   }
 
+  function activateTab(tabIndex) {
+    vm.activeTab = tabIndex;
+    if (tabIndex === 0) {
+      $location.search({});
+    }
+  }
   // scope.loadVideoPlayer = false;
   // scope.loadAudioPlayer = false;
   // scope.time = '';

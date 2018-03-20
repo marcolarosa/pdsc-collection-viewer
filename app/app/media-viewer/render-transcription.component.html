@@ -1,28 +1,28 @@
 <div layout="row" layout-align="center center">
     <md-button
         class="md-primary small-button"
-        ng-if="vm.element.eaf"
+        ng-if="vm.element.eaf.length"
         ng-disabled="!vm.transcriptions['eaf'] || vm.selectedType === 'eaf'"
         ng-click="vm.queueTranscription('eaf')">
             EAF
     </md-button>
     <md-button
         class="md-primary small-button"
-        ng-if="vm.element.trs"
+        ng-if="vm.element.trs.length"
         ng-disabled="!vm.transcriptions['trs'] || vm.selectedType === 'trs'"
         ng-click="vm.queueTranscription('trs')">
             TRS
     </md-button>
     <md-button
         class="md-primary small-button"
-        ng-if="vm.element.ixt"
+        ng-if="vm.element.ixt.length"
         ng-disabled="!vm.transcriptions['ixt'] || vm.selectedType === 'ixt'"
         ng-click="vm.queueTranscription('ixt')">
             IXT
     </md-button>
     <md-button
         class="md-primary small-button"
-        ng-if="vm.element.flextext"
+        ng-if="vm.element.flextext.length"
         ng-disabled="!vm.transcriptions['flextext'] || vm.selectedType === 'flextext'"
         ng-click="vm.queueTranscription('flextext')">
             FLEXTEXT

@@ -1,6 +1,6 @@
 'use strict';
 
-const {includes, map} = require('lodash');
+const {includes, map, isEmpty} = require('lodash');
 
 module.exports = {
   template: require('./render-transcription.component.html'),
@@ -28,11 +28,6 @@ function Controller(
   $state
 ) {
   var vm = this;
-  // '_',
-  // '$timeout',
-  // '$routeParams',
-  // '$location',
-  // '$anchorScroll',
 
   var timeUpdateListener;
 
@@ -45,46 +40,55 @@ function Controller(
   vm.transcriptionOptions = ['eaf', 'trs', 'ixt', 'flextext'];
 
   function init() {
-    if (!$state.params.transcription) {
-      queueTranscription[queue[0]];
-    }
-
-    if ($state.params.segment) {
-      dataService.mediaElementTime = $state.params.segment;
-    }
     timeUpdateListener = dataService.listenForMediaElementBroadcast(
       scrollTranscription
     );
     vm.transcriptions = {};
     vm.transcriptionsByName = {};
-    let queue = [];
+    const queue = determineTranscriptionsToLoad();
 
-    if (vm.element.eaf && !vm.transcriptions.eaf) {
-      vm.transcriptions.eaf = {};
-      queue.push('eaf');
+    if ($state.params.segment) {
+      dataService.mediaElementTime = $state.params.segment;
     }
-    if (vm.element.trs && !vm.transcriptions.trs) {
-      vm.transcriptions.trs = {};
-      queue.push('trs');
-    }
-    if (vm.element.ixt && !vm.transcriptions.ixt) {
-      vm.transcriptions.ixt = {};
-      queue.push('ixt');
-    }
-    if (vm.element.flextext && !vm.transcriptions.flextext) {
-      vm.transcriptions.flextext = {};
-      queue.push('flextext');
-    }
-    vm.loadingTranscriptions = true;
+
     var chain = $q.when();
     queue.forEach(function(t) {
       chain = chain.then(chainTranscription(t));
     });
 
     return chain.then(() => {
-      vm.loadingTranscriptions = false;
-      select();
+      if ($state.params.transcription) {
+        vm.selectedTranscription =
+          vm.transcriptionsByName[$state.params.transcription];
+        vm.selectedType = $state.params.transcription.split('.').pop();
+        vm.selectedTranscriptionName = $state.params.transcription;
+        select();
+      } else {
+        queueTranscription(queue[0]);
+      }
     });
+
+    function determineTranscriptionsToLoad() {
+      let queue = [];
+
+      if (!isEmpty(vm.element.eaf) && !vm.transcriptions.eaf) {
+        vm.transcriptions.eaf = {};
+        queue.push('eaf');
+      }
+      if (!isEmpty(vm.element.trs) && !vm.transcriptions.trs) {
+        vm.transcriptions.trs = {};
+        queue.push('trs');
+      }
+      if (!isEmpty(vm.element.ixt) && !vm.transcriptions.ixt) {
+        vm.transcriptions.ixt = {};
+        queue.push('ixt');
+      }
+      if (!isEmpty(vm.element.flextext) && !vm.transcriptions.flextext) {
+        vm.transcriptions.flextext = {};
+        queue.push('flextext');
+      }
+      return queue;
+    }
 
     function chainTranscription(item) {
       return function() {
@@ -109,11 +113,14 @@ function Controller(
   }
 
   function select() {
+    vm.loadingTranscriptions = true;
+    vm.showTranscription = false;
+    vm.showInterlinearText = false;
     $timeout(() => {
-      vm.selectedTranscription =
-        vm.transcriptionsByName[$state.params.transcription];
-      vm.selectedType = $state.params.transcription.split('.').pop();
-      vm.selectedTranscriptionName = $state.params.transcription;
+      // vm.selectedTranscription =
+      //   vm.transcriptionsByName[$state.params.transcription];
+      // vm.selectedType = $state.params.transcription.split('.').pop();
+      // vm.selectedTranscriptionName = $state.params.transcription;
       if (includes(['eaf', 'trs'], vm.selectedType)) {
         vm.showTranscription = true;
         vm.showInterlinearText = false;
@@ -121,7 +128,7 @@ function Controller(
         vm.showTranscription = false;
         vm.showInterlinearText = true;
       }
-    }, 10);
+    }, 1000);
   }
 
   function queueTranscription(what, selected) {
@@ -132,6 +139,7 @@ function Controller(
     vm.selectedTranscription =
       vm.transcriptionsByName[vm.selectedTranscriptionName];
     $location.search('transcription', vm.selectedTranscriptionName);
+    select();
   }
 
   function scrollTranscription() {
