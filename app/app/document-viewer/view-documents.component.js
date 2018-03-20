@@ -76,6 +76,9 @@ function Controller(
         return;
       }
       vm.item = resp;
+      if (isEmpty(vm.item.documents)) {
+        return $state.go('main');
+      }
 
       vm.documents = vm.item.documents.map(document =>
         document.split('/').pop()

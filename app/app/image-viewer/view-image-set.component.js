@@ -77,6 +77,10 @@ function Controller(
         return;
       }
       vm.item = resp;
+      if (isEmpty(vm.item.images)) {
+        return $state.go('main');
+      }
+
       vm.images = map(vm.item.images, image => image.split('/').pop());
 
       if (!$state.params.imageId) {

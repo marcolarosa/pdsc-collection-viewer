@@ -60,6 +60,10 @@ function Controller($state, $rootScope, dataService, $timeout, $location) {
         return;
       }
       vm.item = resp;
+      if (isEmpty(vm.item.media)) {
+        return $state.go('main');
+      }
+
       vm.media = vm.item.media.map(m => m.name);
 
       if (!$state.params.mediaId) {

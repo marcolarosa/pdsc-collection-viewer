@@ -51,8 +51,11 @@ function Controller($state, $rootScope, dataService, hljs, $timeout) {
       if (isEmpty(resp)) {
         return;
       }
-
       vm.item = resp;
+      if (isEmpty(vm.item.transcriptions)) {
+        return $state.go('main');
+      }
+
       vm.transcriptions = vm.item.transcriptions.map(
         transcription => transcription.name
       );
