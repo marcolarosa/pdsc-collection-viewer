@@ -19,13 +19,6 @@ module.exports = [
         function sizeThePanel() {
           scope.vm.panelStyle = {
             position: 'relative',
-            // height:
-            //   $window.innerHeight -
-            //   configuration.header.toolbar -
-            //   configuration.header.headline -
-            //   configuration.header.controls -
-            //   30 +
-            //   'px',
             'max-width': `${window.innerWidth - 15}px`,
             'max-height': '800px',
             overflow: 'scroll'
