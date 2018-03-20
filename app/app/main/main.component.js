@@ -28,7 +28,6 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   vm.$onInit = init;
   vm.$onDestroy = destroy;
   vm.toggleItemInformation = toggleItemInformation;
-  vm.loadViewer = loadViewer;
 
   function init() {
     onSuccessHandler = $transitions.onSuccess({}, function(transition) {
@@ -50,7 +49,7 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
       vm.itemData = resp;
       vm.loadingData = false;
-      vm.loadViewer();
+      loadViewer();
     });
   }
 
