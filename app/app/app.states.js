@@ -49,8 +49,8 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/media',
     component: 'pdscMediaViewerComponent'
   });
-  $stateProvider.state('main.mediaInstance', {
-    url: '/media/:mediaId?transcription&segment',
-    component: 'pdscMediaViewerComponent'
+  $stateProvider.state('main.media.instance', {
+    url: '/:mediaId?transcription&segment'
+    // component: 'pdscMediaViewerComponent'
   });
 }
