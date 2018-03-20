@@ -67,10 +67,10 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
     ) {
       if (!isEmpty(vm.itemData.images)) {
         $state.go('main.images');
-      } else if (!isEmpty(vm.itemData.documents)) {
-        $state.go('main.documents');
-      } else {
+      } else if (!isEmpty(vm.itemData.media)) {
         $state.go('main.media');
+      } else {
+        $state.go('main.documents');
       }
     }
   }
