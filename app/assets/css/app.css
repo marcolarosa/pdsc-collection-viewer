@@ -80,12 +80,10 @@ html {
 }
 
 .transcription-panel {
-  border: 1px solid white;
-  border-radius: 4px;
-  height: 100%;
+  border: 1px solid #ffd54f;
+  border-radius: 2px;
   max-height: 500px;
   overflow: auto;
-  padding: 5px;
   position: relative;
   width: 100%;
 }
