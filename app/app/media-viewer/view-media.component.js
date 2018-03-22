@@ -30,17 +30,10 @@ function Controller($state, $rootScope, dataService, $timeout, $location) {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
     vm.config = {
       current: 0,
-      item: null
+      item: null,
+      showItemInformation: false
     };
-    $timeout(() => {
-      if ($state.params.transcription) {
-        activateTab(1);
-      } else {
-        activateTab(0);
-      }
-      loadItem();
-      vm.activateTab = activateTab;
-    }, 1500);
+    loadItem();
   }
 
   function destroy() {
@@ -107,12 +100,6 @@ function Controller($state, $rootScope, dataService, $timeout, $location) {
     jump();
   }
 
-  function activateTab(tabIndex) {
-    vm.activeTab = tabIndex;
-    if (tabIndex === 0) {
-      $location.search({});
-    }
-  }
   // scope.loadVideoPlayer = false;
   // scope.loadAudioPlayer = false;
   // scope.time = '';
