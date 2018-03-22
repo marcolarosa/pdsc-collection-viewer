@@ -1,5 +1,7 @@
 'use strict';
 
+import './media-viewer.css';
+
 module.exports = angular
   .module('pdsc.mediaViewer', [])
   .directive('mediaReady', require('./media-ready.directive'))

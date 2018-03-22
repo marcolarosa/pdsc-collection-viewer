@@ -26,10 +26,10 @@
     <div layout="row" layout-align="start center">
         <video
             id="{{vm.element.name}}"
+            class="media-viewer-player-style"
             controls
             controlsList="nodownload"
             preload="metadata"
-            style="max-width: 500px; min-width: 500px;"
             media-ready
             time-update>
                 <source ng-repeat="src in vm.element.files" src="{{src}}" />

@@ -31,11 +31,10 @@
     <div layout="row" layout-align="start center">
         <audio
             id="{{vm.element.name}}"
-            class=""
+            class="media-viewer-player-style"
             controls
             controlsList="nodownload"
             preload="metadata"
-            style="max-width: 500px; min-width: 500px;"
             media-ready
             time-update>
                 <source ng-repeat="src in vm.element.files" ng-src="{{src}}" />
