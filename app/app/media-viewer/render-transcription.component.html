@@ -49,7 +49,10 @@
     </div>
 </div>
 
-<div class="transcription-panel" ng-if="vm.showTranscription" transcription-ready>
+<div
+    class="media-viewer-transcription-panel media-viewer-transcription-panel-width"
+    ng-if="vm.showTranscription"
+    transcription-ready>
     <div ng-repeat="(k, v) in vm.selectedTranscription" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
         <div id="{{k}}"></div>
         <div layout="row">
@@ -80,7 +83,10 @@
     </div>
 </div>
 
-<div class="transcription-panel" ng-if="vm.showInterlinearText" transcription-ready>
+<div
+    class="media-viewer-transcription-panel media-viewer-transcription-panel-width"
+    ng-if="vm.showInterlinearText"
+    transcription-ready>
     <div ng-repeat="(k, sentence) in vm.selectedTranscription" layout="column" class="md-margin">
         <div id="{{k}}"></div>
         <div layout="row">
