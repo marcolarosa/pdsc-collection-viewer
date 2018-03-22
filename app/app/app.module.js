@@ -1,30 +1,47 @@
 'use strict';
 
+const hljs = require('highlight.js');
+
+require('./app.states');
+require('./main/module');
+require('./services/module');
+require('./filters/module');
+require('./image-viewer/module');
+require('./document-viewer/module');
+require('./transcription-viewer/module');
+require('./media-viewer/module');
+require('./supporting-services/module');
+
 angular
   .module('pdsc', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
-    'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'moment',
-    'underscore',
+    'lodash',
     'pdfjs',
     'ngMaterial',
-    'Clipboard',
+    'highlightjs',
+    'pdsc.routes',
+    'pdsc.main',
+    'pdsc.services',
+    'pdsc.filters',
+    'pdsc.imageViewer',
+    'pdsc.documentViewer',
+    'pdsc.transcriptionViewer',
+    'pdsc.mediaViewer'
   ])
-  .config(function ($routeProvider, $mdThemingProvider) {
-    $routeProvider
-      .when('/:collectionId?/:itemId/:itemInstance?', {
-        templateUrl: 'app/components/main/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(Configure);
 
-      $mdThemingProvider.theme('default')
-        .primaryPalette('blue-grey')
-        .accentPalette('orange');
-  });
+Configure.$inject = ['$mdThemingProvider', '$locationProvider'];
+function Configure($mdThemingProvider, $locationProvider) {
+  $mdThemingProvider
+    .theme('default')
+    .primaryPalette('blue-grey')
+    .accentPalette('orange');
+
+  $locationProvider.hashPrefix('');
+  // $locationProvider.html5mode(true);
+}

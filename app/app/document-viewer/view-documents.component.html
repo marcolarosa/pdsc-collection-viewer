@@ -1,0 +1,119 @@
+<div
+    layout-gt-sm="row"
+    layout="column">
+    <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
+        <span ng-if="!vm.loadingData">
+            <div layout="row" layout-align="center center">
+                <md-button
+                    class="small-button"
+                    aria-label="previous document"
+                    ng-click="vm.previousDocument()"
+                    ng-disabled="vm.config.current === 0"
+                    blur-on-click>
+                        <span class="fa fa-step-backward fa-lg"></span>
+                        <md-tooltip>Previous Document</md-tooltip>
+                </md-button>
+                <div class="md-subhead">
+                    Document {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.documents.length}}
+                </div>
+                <md-button
+                    class="small-button"
+                    aria-label="next document"
+                    ng-click="vm.nextDocument()"
+                    ng-disabled="vm.config.current === vm.documents.length - 1"
+                    blur-on-click>
+                        <span class="fa fa-step-forward fa-lg"></span>
+                        <md-tooltip>Next Document</md-tooltip>
+                </md-button>
+            </div>
+            <div layout="row" layout-align="center center">
+                <md-button
+                    class="small-button"
+                    aria-label="first page"
+                    ng-click="vm.firstPage()"
+                    ng-disabled="vm.config.currentPage === 1"
+                    blur-on-click>
+                        <span class="fa fa-fast-backward fa-lg"></span>
+                        <md-tooltip>First Page</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-button"
+                    aria-label="previous page"
+                    ng-click="vm.previousPage()"
+                    ng-disabled="vm.config.currentPage === 1"
+                    blur-on-click>
+                        <span class="fa fa-step-backward fa-lg"></span>
+                        <md-tooltip>Previous Page</md-tooltip>
+                </md-button>
+                <span ng-if="vm.config.pdfInfo.totalPages">
+                    &nbsp;
+                    Page {{vm.config.currentPage}} of {{vm.config.pdfInfo.totalPages}}
+                    &nbsp;
+                </span>
+                <md-button
+                    class="small-button"
+                    aria-label="next page"
+                    ng-click="vm.nextPage()"
+                    ng-disabled="vm.config.currentPage === vm.config.pdfInfo.totalPages"
+                    blur-on-click>
+                        <span class="fa fa-step-forward fa-lg"></span>
+                        <md-tooltip>Next Page</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-button"
+                    aria-label="last page"
+                    ng-click="vm.lastPage()"
+                    ng-disabled="vm.config.currentPage === vm.config.pdfInfo.totalPages"
+                    blur-on-click>
+                        <span class="fa fa-fast-forward fa-lg"></span>
+                        <md-tooltip>Last Page</md-tooltip>
+                </md-button>
+            </div>
+            <div layout="row" layout-align="center center">
+                <md-button
+                    class="small-button"
+                    aria-label="zoom out"
+                    ng-click="vm.zoomOut()"
+                    blur-on-click>
+                        <span class="fa fa-minus fa-lg"></span>
+                        <md-tooltip>Zoom Out</md-tooltip>
+                </md-button>
+                <span>
+                    <small>{{vm.config.scale | number:1}}x</small>
+                </span>
+                <md-button
+                    class="small-button"
+                    aria-label="zoom in"
+                    ng-click="vm.zoomIn()"
+                    blur-on-click>
+                        <span class="fa fa-plus fa-lg"></span>
+                        <md-tooltip>Zoom In</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-button"
+                    aria-label="download document"
+                    ng-href="{{vm.item.documents[vm.config.document]}}"
+                    download>
+                        <i class="fa fa-download fa-lg"></i>
+                        Download {{vm.item.documents[vm.config.document] | extension}}
+                </md-button>
+            </div>
+            <div layout="row" hide show-gt-sm layout-padding>
+                <pdsc-item-information-component
+                    item-data="vm.item"
+                    close="vm.toggleItemInformation()">
+                </pdsc-item-information-component>
+            </div>
+        </span>
+    </div>
+    <div layout="row" layout-align="center center" flex ng-if="vm.showError">
+        <a href="http://catalog.paradisec.org.au/users/sign_in">
+            Please log in to Nabu to view this item.
+        </a>
+    </div>
+    <div layout="row" layout-align="center center" flex ng-if="!vm.showError" style="margin: 10px;">
+        <div size-to-parent ng-style="panelStyle" style="overflow: auto;">
+            <canvas id="the-canvas" />
+        </div>
+    </div>
+</div>

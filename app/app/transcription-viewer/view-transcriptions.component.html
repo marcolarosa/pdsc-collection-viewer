@@ -1,0 +1,41 @@
+<div layout="column">
+    <span ng-if="!vm.loadingData">
+        <div layout="row" layout-align="center center">
+            <md-button
+                class="small-button"
+                aria-label="previous document"
+                ng-click="vm.previousDocument()"
+                ng-disabled="vm.config.current === 0"
+                blur-on-click>
+                    <span class="fa fa-step-backward fa-lg"></span>
+                    <md-tooltip>Previous Document</md-tooltip>
+            </md-button>
+            <div class="md-subhead">
+                Document {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.transcriptions.length}}
+            </div>
+            <md-button
+                class="small-button"
+                aria-label="next document"
+                ng-click="vm.nextDocument()"
+                ng-disabled="vm.config.current === vm.transcriptions.length - 1"
+                blur-on-click>
+                    <span class="fa fa-step-forward fa-lg"></span>
+                    <md-tooltip>Next Document</md-tooltip>
+            </md-button>
+        </div>
+    </span>
+    <div layout="row" layout-align="center center" class="md-subhead">
+        <strong>
+            {{vm.transcriptions[vm.config.current]}}
+        </strong>
+    </div>
+    <div layout="row" layout-align="center center" flex>
+        <div ng-show="!vm.loadingData" style="width: 500px; margin: 10px 0;">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </div>
+
+        <pre ng-if="vm.data">
+            <code ng-bind-html="vm.data" class="xml hljs"></code>
+        </pre>
+    </div>
+</div>

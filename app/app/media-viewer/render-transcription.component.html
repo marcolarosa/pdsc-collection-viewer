@@ -1,0 +1,128 @@
+<div layout="row" layout-align="center center">
+    <md-button
+        class="md-primary small-button"
+        ng-if="vm.element.eaf.length"
+        ng-disabled="!vm.transcriptions['eaf'] || vm.selectedType === 'eaf'"
+        ng-click="vm.queueTranscription('eaf')">
+            EAF
+    </md-button>
+    <md-button
+        class="md-primary small-button"
+        ng-if="vm.element.trs.length"
+        ng-disabled="!vm.transcriptions['trs'] || vm.selectedType === 'trs'"
+        ng-click="vm.queueTranscription('trs')">
+            TRS
+    </md-button>
+    <md-button
+        class="md-primary small-button"
+        ng-if="vm.element.ixt.length"
+        ng-disabled="!vm.transcriptions['ixt'] || vm.selectedType === 'ixt'"
+        ng-click="vm.queueTranscription('ixt')">
+            IXT
+    </md-button>
+    <md-button
+        class="md-primary small-button"
+        ng-if="vm.element.flextext.length"
+        ng-disabled="!vm.transcriptions['flextext'] || vm.selectedType === 'flextext'"
+        ng-click="vm.queueTranscription('flextext')">
+            FLEXTEXT
+    </md-button>
+</div>
+<div layout="row" layout-align="center center">
+    <md-input-container ng-show="vm.element[vm.selectedType].length > 1">
+        <md-select
+            ng-model="vm.selectedTranscriptionName"
+            ng-change="vm.queueTranscription(vm.selectedType, vm.selectedTranscriptionName)"
+            aria-label="select the transcription to display">
+            <md-option
+                ng-repeat="transcription in vm.element[vm.selectedType]"
+                ng-value="transcription.name">
+              {{transcription.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+</div>
+
+<div layout="row" layout-align="center center" flex>
+    <div ng-show="vm.loadingTranscriptions" style="width: 500px;">
+        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+    </div>
+</div>
+
+<div class="transcription-panel" ng-if="vm.showTranscription" transcription-ready>
+    <div ng-repeat="(k, v) in vm.selectedTranscription" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
+        <div id="{{k}}"></div>
+        <div layout="row">
+            <div>
+                <md-button class="small-button" ng-click="vm.play({
+                    'start': vm.selectedTranscription[k],
+                    'end': vm.selectedTranscription[k+1]
+                })">
+                    <i class="fa fa-play fa-sm"></i>
+                    Play ({{v.time | minutesSeconds}})
+                </md-button>
+            </div>
+            <div flex></div>
+            <div>
+                <pdsc-fragment-citation-component
+                    selected="vm.selectedTranscriptionName"
+                    element="vm.element"
+                    fragment="vm.selectedTranscription[k]">
+                </pdsc-fragment-citation>
+            </div>
+        </div>
+        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
+            {{v.value}}
+            <br/>
+            {{v.referenceValue}}
+        </div>
+        <md-divider ng-if="$index !== vm.selectedIndex"></md-divider>
+    </div>
+</div>
+
+<div class="transcription-panel" ng-if="vm.showInterlinearText" transcription-ready>
+    <div ng-repeat="(k, sentence) in vm.selectedTranscription" layout="column" class="md-margin">
+        <div id="{{k}}"></div>
+        <div layout="row">
+            <div>
+                <md-button class="small-button" ng-click="vm.play({
+                    'start': vm.selectedTranscription[k],
+                    'end': vm.selectedTranscription[k+1]
+                })">
+                    <i class="fa fa-play fa-sm"></i> Play ({{sentence.time | minutesSeconds}})
+                </md-button>
+            </div>
+            <div flex></div>
+            <div>
+                <pdsc-fragment-citation-component
+                    selected="vm.selectedTranscriptionName"
+                    element="vm.element"
+                    fragment="vm.selectedTranscription[k]">
+                </pdsc-fragment-citation>
+            </div>
+        </div>
+        <div layout-padding>
+            <div class="" ng-class="{ 'transcription-selected': $index === vm.selectedIndex}">{{sentence.transcription}}</div>
+            <div class="md-title highlight-translation">{{sentence.translation}}</div>
+            <div layout="row" layout-padding layout-wrap>
+                <table ng-repeat="word in sentence.words" class="table-style">
+                    <tbody class="md-caption highlight-word">
+                        <tr class="" ng-if="word.text">
+                            <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                        </tr>
+                        <tr class="" ng-if="!word.text">
+                            <td class="td-style" ng-repeat="w in word.words">{{w.text}}</td>
+                        </tr>
+                        <tr class="highlight-morpheme">
+                            <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
+                        </tr>
+                        <tr class="highlight-gloss">
+                            <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <md-divider ng-if="$index !== vm.selectedIndex"></md-divider>
+    </div>
+</div>

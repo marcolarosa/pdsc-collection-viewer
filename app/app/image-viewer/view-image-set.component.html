@@ -1,0 +1,106 @@
+<div
+    layout-gt-sm="row"
+    layout="column">
+    <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
+        <span ng-if="!vm.loadingData">
+            <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
+                    <md-button class="small-button"
+                        aria-label="jump to start"
+                        ng-click="vm.jumpToStart()"
+                        ng-disabled="vm.config.current === 0"
+                        blur-on-click>
+                            <span class="fa fa-fast-backward fa-lg"></span>
+                            <md-tooltip>First Image</md-tooltip>
+                    </md-button>
+                    <md-button class="small-button"
+                        aria-label="previous"
+                        ng-click="vm.previous()"
+                        ng-disabled="vm.config.current === 0"
+                        blur-on-click>
+                            <span class="fa fa-step-backward fa-lg"></span>
+                            <md-tooltip>Previous Image</md-tooltip>
+                    </md-button>
+                    <div class="md-subhead">
+                        Image {{vm.config.current + 1}}&nbsp;of&nbsp;{{vm.item.images.length}}
+                    </div>
+                    <md-button class="small-button"
+                        aria-label="next"
+                        ng-click="vm.next()"
+                        ng-disabled="vm.config.current === vm.images.length - 1"
+                        blur-on-click>
+                            <span class="fa fa-step-forward fa-lg"></span>
+                            <md-tooltip>Next Image</md-tooltip>
+                    </md-button>
+                    <md-button class="small-button"
+                        aria-label="jump to end"
+                        ng-click="vm.jumpToEnd()"
+                        ng-disabled="vm.config.current === vm.images.length - 1"
+                        blur-on-click>
+                            <span class="fa fa-fast-forward fa-lg"></span>
+                            <md-tooltip>Last Image</md-tooltip>
+                    </md-button>
+            </div>
+            <div layout="row" layout-align="center center">
+                    <md-button class="small-button"
+                        aria-label="toggle filmstrip"
+                        ng-click="vm.toggleFilmstrip()"
+                        blur-on-click
+                        ng-if="!vm.disableThumbnailView">
+                            <span ng-show="showFilmstrip">hide thumbnails</span>
+                            <span ng-hide="showFilmstrip">show thumbnails</span>
+                            <md-tooltip>Toggle Thumbnail Strip</md-tooltip>
+                    </md-button>
+                    <md-button class="small-button"
+                        aria-label="download item"
+                        ng-href="{{vm.item.images[vm.config.current]}}"
+                        download
+                        blur-on-click
+                        show-gt-sm>
+                            <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
+                            <md-tooltip>Download Image</md-tooltip>
+                    </md-button>
+                    <md-button class="small-button"
+                        aria-label="view item in full screen mode"
+                        ng-click="vm.toggleFullScreen(vm.image)">
+                            <i class="fa fa-expand fa-lg"></i>
+                            <md-tooltip>Toggle Fullscreen and Zoom</md-tooltip>
+                    </md-button>
+            </div>
+            <div layout="row" hide show-gt-sm layout-padding>
+                <pdsc-item-information-component
+                    item-data="vm.item"
+                    close="vm.toggleItemInformation()">
+                </pdsc-item-information-component>
+            </div>
+        </span>
+    </div>
+    <div layout="row" layout-align="center center" flex>
+        <div ng-show="!vm.showImage" style="width: 500px; margin: 10px 0;">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </div>
+        <img
+            class="pannable-image"
+            id='largeImage'
+            ng-src="{{vm.image}}"
+            ng-if="vm.image && !vm.loadingData && !vm.showError"
+            ng-style="vm.imageStyle"
+            show-when-ready>
+        <a href="http://catalog.paradisec.org.au/users/sign_in" ng-if="vm.showError">
+            Please log in to Nabu to view this item.
+        </a>
+    </div>
+</div>
+
+<md-sidenav
+    class="md-sidenav-right viewer-color"
+    md-component-id="thumbnailFilmstrip"
+    md-is-open="vm.config.sideNavIsOpen"
+    ng-if="!vm.loadingData">
+        <pdsc-image-viewer-thumbnail-strip-component
+            item="vm.item"
+            selected-item="vm.config.current"
+            load-item="vm.selectItem(item)"
+            is-open="vm.config.sideNavIsOpen"
+            ng-if="vm.config.sideNavIsOpen">
+        </pdsc-image-viewer-thumbnail-strip-component>
+</md-sidenav>

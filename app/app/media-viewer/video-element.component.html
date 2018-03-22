@@ -1,0 +1,38 @@
+<div
+    layout="column"
+    layout-align="center center"
+    ng-show="!vm.mediaReadyToPlay && !vm.loginRequired">
+        Loading media... please wait.
+</div>
+<div
+    layout="column"
+    layout-align="center center"
+    ng-show="vm.loginRequired">
+        <a href="http://catalog.paradisec.org.au/users/sign_in">
+            Please log in to Nabu to view this item.
+        </a>
+</div>
+<div
+    layout="column"
+    ng-show="vm.mediaReadyToPlay">
+
+    <div layout="row">
+        <div ng-repeat="src in vm.element.files">
+            <md-button class="small-button" href="{{src | stripTime}}" download>
+                <i class="fa fa-download fa-lg"></i> Download {{src | stripTime | extension}}
+            </md-button>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center">
+        <video
+            id="{{vm.element.name}}"
+            controls
+            controlsList="nodownload"
+            preload="metadata"
+            style="max-width: 500px; min-width: 500px;"
+            media-ready
+            time-update>
+                <source ng-repeat="src in vm.element.files" src="{{src}}" />
+        </video>
+    </div>
+</div>

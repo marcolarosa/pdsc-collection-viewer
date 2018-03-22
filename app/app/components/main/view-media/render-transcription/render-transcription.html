@@ -1,5 +1,6 @@
 <div ng-if="selected.transcript && transcript">
     <div layout="row">
+        <md-button ng-click="toggleTranscription()">Toggle transcription</md-button>
         <div flex></div>
         <md-input-container ng-if="transcriptsSelector">
             <md-select ng-model="selected.transcript" ng-change="load('transcript')" class="shift-down" aria-label="select transcription">
@@ -9,7 +10,7 @@
             </md-select>
         </md-input-container>
     </div>
-    <div layout="row">
+    <div layout="row" ng-if="showTranscription">
         <div class="transcription-panel">
             <div ng-repeat="(k, v) in transcript" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
                 <div id="{{k}}"></div>
@@ -45,6 +46,7 @@
 
 <div ng-if="selected.interlinear && interlinear">
     <div layout="row">
+        <md-button ng-click="toggleInterlinear()">Toggle interlinear text</md-button>
         <div flex></div>
         <md-input-container ng-if="interlinearTextsSelector">
             <md-select ng-model="selected.interlinear" ng-change="load('interlinear')" class="shift-down" aria-label="select interlinear text">
@@ -54,7 +56,7 @@
             </md-select>
         </md-input-container>
     </div>
-    <div layout="row">
+    <div layout="row" ng-if="showInterlinear">
         <div class="transcription-panel">
             <div ng-repeat="(k, sentence) in interlinearText" layout="column" class="md-margin">
                 <div id="{{k}}"></div>
