@@ -52,8 +52,10 @@
                     </md-button>
                     <md-button class="small-button"
                         aria-label="download item"
-                        ng-href="{{vm.item.images[vm.config.current]}}" download blur-on-click
-                        hide show-gt-sm>
+                        ng-href="{{vm.item.images[vm.config.current]}}"
+                        download
+                        blur-on-click
+                        show-gt-sm>
                             <i class="fa fa-download fa-lg"></i> Download {{vm.item.images[vm.config.current] | extension}}
                             <md-tooltip>Download Image</md-tooltip>
                     </md-button>
