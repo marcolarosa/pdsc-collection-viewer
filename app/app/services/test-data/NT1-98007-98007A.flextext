@@ -1,0 +1,2493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document version="2">
+    <interlinear-text guid="6c378b53-6e8b-4959-99e4-9c6ce6f07f5f">
+        <paragraphs>
+            <paragraph guid="af29dfd0-930d-4978-8372-69993aa6d31b">
+                <phrases>
+                    <phrase begin-time-offset="32130"
+                       end-time-offset="36870"
+                       guid="7ec7e7d5-269c-4fd2-865c-1db2d466bda7"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">yuwu nantji peinting kanyi marntikerdek-ka</item>
+                        <item lang="en" type="gls">Yes, I've finished this painting.</item>
+                    <words>
+                     <word guid="660b896f-3638-4327-bd59-28b136549e28">
+                        <item type="txt" lang="mwf">yuwu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yuwu</item>
+                              <item type="cf" lang="mwf">yu</item>
+                    
+                    
+                              <item type="gls" lang="en">yes</item>
+                              <item type="msa" lang="en">INTJ </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="963c640e-0dd4-4f48-b7da-f87597e781b4">
+                        <item type="txt" lang="mwf">peinting</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">peinting</item>
+                              <item type="cf" lang="mwf">peinting</item>
+                              <item type="gls" lang="en">painting</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b60282-12b4-4b8f-b9c8-d73cc28b87c2">
+                        <item type="txt" lang="mwf">kanyi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="4536b8ee-fb96-40ce-99b9-95cbd47e1a5f">
+                        <item type="txt" lang="mwf">marntikerdek-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mam</item>
+                              <item type="cf" lang="mwf">mam</item>
+                              <item type="gls" lang="en">1SG.HANDS(8).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">rikerdek</item>
+                              <item type="cf" lang="mwf">rikerdek</item>
+                              <item type="gls" lang="en">finish</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="733f1f11-9057-4e9c-b426-5432b2bc5d8b">
+                <phrases>
+                    <phrase begin-time-offset="37670"
+                       end-time-offset="42800"
+                       guid="fdde9930-f7fa-4e48-9e4b-a8ebb7e1c6cb"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">nantji-warda selim ngamanu ... ku mani damatha-nu ngay marda manganart-yu</item>
+                        <item lang="en" type="gls">Now I want to sell it. I want to get some money.</item>
+                    <words>
+                     <word guid="e77e1c8f-0e7a-4823-8bea-094098b4d34b">
+                        <item type="txt" lang="mwf">nantji-warda</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-warda</item>
+                              <item type="cf" lang="mwf">-warda</item>
+                              <item type="gls" lang="en">TEMP</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="88d48ede-b543-400a-8782-55d053a5febe">
+                        <item type="txt" lang="mwf">selim</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">selim</item>
+                              <item type="cf" lang="mwf">selim</item>
+                              <item type="gls" lang="en">sell</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="0fa34473-4072-4711-ba2f-d36bea95cd05">
+                        <item type="txt" lang="mwf">ngamanu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngama</item>
+                              <item type="cf" lang="mwf">ngama</item>
+                              <item type="gls" lang="en">1SG.SAY/DO(34).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word>
+                        <item type="punct" lang="mwf">...</item>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="17c77236-c73b-45f9-aa18-9328f6b31896">
+                        <item type="txt" lang="mwf">mani</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="b338aed6-a213-44a2-976b-62c6879ef388">
+                        <item type="txt" lang="mwf">damatha-nu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">damatha</item>
+                              <item type="cf" lang="mwf">damatha</item>
+                              <item type="gls" lang="en">just/only</item>
+                              <item type="msa" lang="en">adv </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="e7f3c195-df24-4033-a119-7ac08276391d">
+                        <item type="txt" lang="mwf">ngay</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngay</item>
+                              <item type="cf" lang="mwf">ngay</item>
+                              <item type="gls" lang="en">1SG</item>
+                              <item type="msa" lang="en">pro </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="c7c31545-05ab-4c75-8fb0-0498e11821ad">
+                        <item type="txt" lang="mwf">marda</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">marda</item>
+                              <item type="cf" lang="mwf">marda</item>
+                    
+                              <item type="gls" lang="en">belly</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="9843530e-43d4-4ca4-9e49-c23d5346b6d4">
+                        <item type="txt" lang="mwf">manganart-yu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mangan</item>
+                              <item type="cf" lang="mwf">mangan</item>
+                              <item type="gls" lang="en">1SG.GRAB(9).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">art</item>
+                              <item type="cf" lang="mwf">art</item>
+                              <item type="gls" lang="en">get/take</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-yu</item>
+                              <item type="cf" lang="mwf">-yu</item>
+                              <item type="gls" lang="en">CLS</item>
+                              <item type="msa" lang="en">***</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="5cf2336e-9804-459f-ad42-636314e5b026">
+                <phrases>
+                    <phrase begin-time-offset="48260"
+                       end-time-offset="51300"
+                       guid="e146aa48-3475-48e6-b866-a0bff5524c3f"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">mampa nantji-ka kanyi kurrankawuk</item>
+                        <item lang="en" type="gls">okay, the paintings are here</item>
+                    <words>
+                     <word guid="5ad378f9-3765-4c8d-bb2a-4197c01d99d1">
+                        <item type="txt" lang="mwf">mampa</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mam</item>
+                              <item type="cf" lang="mwf">mam</item>
+                              <item type="gls" lang="en">3SG.SAY/DO(34).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-mpa</item>
+                              <item type="cf" lang="mwf">-mpa</item>
+                              <item type="gls" lang="en">2SG.IO</item>
+                              <item type="msa" lang="en">IO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="7b93c463-74d7-4603-89f0-b69c7c231608">
+                        <item type="txt" lang="mwf">nantji-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b60282-12b4-4b8f-b9c8-d73cc28b87c2">
+                        <item type="txt" lang="mwf">kanyi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="ed3a644f-a0e3-442d-a078-4b7b5115fe83">
+                        <item type="txt" lang="mwf">kurrankawuk</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kurran</item>
+                              <item type="cf" lang="mwf">kurran</item>
+                              <item type="gls" lang="en">3SG.GO(6).PRSL</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngkawuk</item>
+                              <item type="cf" lang="mwf">ngkadhuk</item>
+                    
+                              <item type="gls" lang="en">exist</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="c06d889c-d87b-4269-ab0e-212e66f100b1">
+                <phrases>
+                    <phrase begin-time-offset="59250"
+                       end-time-offset="64100"
+                       guid="76b40e40-2f46-477c-9d55-18fac212faac"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">nantji kanyi-warra ngurdiyitjnu nantji lain green kanyi ku ...</item>
+                        <item lang="en" type="gls">well these green lines tell a story about the-</item>
+                    <words>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5847ec1c-751d-4efe-a6be-77361444043e">
+                        <item type="txt" lang="mwf">kanyi-warra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-warra</item>
+                              <item type="cf" lang="mwf">-warra</item>
+                              <item type="gls" lang="en">first</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="e338238e-3ca4-445c-900b-0b35337f738f">
+                        <item type="txt" lang="mwf">ngurdiyitjnu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngurdi</item>
+                              <item type="cf" lang="mwf">ngurdi</item>
+                              <item type="gls" lang="en">1SG.SHOVE(29).PIRR</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yitj</item>
+                              <item type="cf" lang="mwf">yitj</item>
+                    
+                              <item type="gls" lang="en">tell.story</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="cb67e58a-8491-4577-9ba7-8fef2ae1e66d">
+                        <item type="txt" lang="mwf">lain</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">layn</item>
+                              <item type="cf" lang="mwf">layn</item>
+                              <item type="gls" lang="en">line</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="0db683f7-6e71-4608-aeaf-4d6614e60cb7">
+                        <item type="txt" lang="mwf">green</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">green</item>
+                              <item type="cf" lang="mwf">green</item>
+                              <item type="gls" lang="en">green</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b60282-12b4-4b8f-b9c8-d73cc28b87c2">
+                        <item type="txt" lang="mwf">kanyi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word>
+                        <item type="punct" lang="mwf">...</item>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="f70abc9b-b31d-4cc2-9e3b-e45a0e3b565e">
+                <phrases>
+                    <phrase begin-time-offset="65040"
+                       end-time-offset="68390"
+                       guid="9bc7c5c5-8955-4ea8-a179-bcc5006b0321"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">peint kantjim-dim murriny stori murntakpun ku ngarra murriberr</item>
+                        <item lang="en" type="gls">the painting has an old story about birds</item>
+                    <words>
+                     <word guid="f3965a8c-c110-4270-ac5c-056873131709">
+                        <item type="txt" lang="mwf">peint</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">peint</item>
+                              <item type="cf" lang="mwf">peinting</item>
+                    
+                              <item type="gls" lang="en">painting</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="09d88c87-25a3-4fb9-8c92-58f9cbbf83b2">
+                        <item type="txt" lang="mwf">kantjim-dim</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kantjim</item>
+                              <item type="cf" lang="mwf">kantjim</item>
+                              <item type="gls" lang="en">3SG.ALOFT(5).PRSL</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">dim</item>
+                              <item type="cf" lang="mwf">dim</item>
+                              <item type="gls" lang="en">3SG.SIT(1).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="90f4ba97-e1a3-40c7-8836-882f883ed3b6">
+                        <item type="txt" lang="mwf">murriny</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murriny</item>
+                              <item type="cf" lang="mwf">murriny</item>
+                              <item type="gls" lang="en">speech</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="66c9ce0b-9f81-4c85-b246-9f3ae1481380">
+                        <item type="txt" lang="mwf">stori</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">stori</item>
+                              <item type="cf" lang="mwf">story</item>
+                    
+                              <item type="gls" lang="en">story</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="ceb3182c-43a6-4ff2-9246-97c1fbfde930">
+                        <item type="txt" lang="mwf">murntakpun</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murntak</item>
+                              <item type="cf" lang="mwf">murntak</item>
+                              <item type="gls" lang="en">old</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-pun</item>
+                              <item type="cf" lang="mwf">-wun</item>
+                              <item type="gls" lang="en">3PL.DO</item>
+                              <item type="msa" lang="en">DO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="0df4cd94-a505-4c4d-9fb9-d14d220679f9">
+                        <item type="txt" lang="mwf">murriberr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murrirrbe</item>
+                              <item type="cf" lang="mwf">murrirrbe</item>
+                              <item type="gls" lang="en">generic.bird</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="d00fd865-ffc7-4488-bb0b-920e77ca7019">
+                <phrases>
+                    <phrase begin-time-offset="77570"
+                       end-time-offset="83010"
+                       guid="ac926ee4-5c10-4a86-b312-33c32be0192c"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">nantji ngarra peint kala orentjwan-ka kura da weyi ngalla</item>
+                        <item lang="en" type="gls">the orange painting is about the big waterhole</item>
+                    <words>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f3965a8c-c110-4270-ac5c-056873131709">
+                        <item type="txt" lang="mwf">peint</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">peint</item>
+                              <item type="cf" lang="mwf">peinting</item>
+                    
+                              <item type="gls" lang="en">painting</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="ee0f8e20-591b-4ace-8aa7-bfe57ab84560">
+                        <item type="txt" lang="mwf">kala</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kala</item>
+                              <item type="cf" lang="mwf">kala</item>
+                              <item type="gls" lang="en">bloodwood.Sp.</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a67d52fe-dd8e-4b75-aec5-72792675cd9c">
+                        <item type="txt" lang="mwf">orentjwan-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">orentj</item>
+                              <item type="cf" lang="mwf">arindj</item>
+                    
+                              <item type="gls" lang="en">orange</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-wan</item>
+                              <item type="cf" lang="mwf">-wan</item>
+                              <item type="gls" lang="en">adj</item>
+                              <item type="msa" lang="en">Suff</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="759c947e-83dc-4515-980c-f11988d96655">
+                        <item type="txt" lang="mwf">kura</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kura</item>
+                              <item type="cf" lang="mwf">kura</item>
+                              <item type="gls" lang="en">water</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="3a872583-7947-41d1-931f-6309cca7a09f">
+                        <item type="txt" lang="mwf">weyi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">weyi</item>
+                              <item type="cf" lang="mwf">weyi</item>
+                    
+                              <item type="gls" lang="en">hole</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="d248ddbe-3b0b-470c-8705-4b8fde2c1c26">
+                        <item type="txt" lang="mwf">ngalla</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngalla</item>
+                              <item type="cf" lang="mwf">ngalla</item>
+                              <item type="gls" lang="en">big</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="372d87ab-5c5d-4e98-b68a-3f3df837155a">
+                <phrases>
+                    <phrase begin-time-offset="83380"
+                       end-time-offset="85120"
+                       guid="cc42e4df-4e33-4325-bc77-7585c929ae5b"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">marnta kanyi-re pirrim</item>
+                        <item lang="en" type="gls">it's just near here</item>
+                    <words>
+                     <word guid="6c4b07b0-e770-4f94-8cfb-883f2efd24b7">
+                        <item type="txt" lang="mwf">marnta</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">marnta</item>
+                              <item type="cf" lang="mwf">marnta</item>
+                              <item type="gls" lang="en">Pl.</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="81c0c311-fdd8-4f93-b987-9733fb7c7c41">
+                        <item type="txt" lang="mwf">kanyi-re</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-re</item>
+                              <item type="cf" lang="mwf">-re</item>
+                              <item type="gls" lang="en">PERL</item>
+                              <item type="msa" lang="en">Suff</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="cdde577c-d3ef-493a-a749-5852875dd9d0">
+                        <item type="txt" lang="mwf">pirrim</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pirrim</item>
+                              <item type="cf" lang="mwf">pirrim</item>
+                              <item type="gls" lang="en">3PL.SIT(1).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="55935a35-f140-4d19-910c-eacc67361db6">
+                <phrases>
+                    <phrase begin-time-offset="106260"
+                       end-time-offset="111110"
+                       guid="b0a4727d-7eff-4382-88d6-54a260f696e4"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">yuwu ngay-ka murriny bintjepup murriny ngarra kardu wakal mardinybuy ngalla ngay-gathu</item>
+                        <item lang="en" type="gls">yes, I heard that from my grown-up daughter</item>
+                    <words>
+                     <word guid="660b896f-3638-4327-bd59-28b136549e28">
+                        <item type="txt" lang="mwf">yuwu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yuwu</item>
+                              <item type="cf" lang="mwf">yu</item>
+                    
+                    
+                              <item type="gls" lang="en">yes</item>
+                              <item type="msa" lang="en">INTJ </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5099571d-c451-4628-955c-8bc0ecb4738e">
+                        <item type="txt" lang="mwf">ngay-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngay</item>
+                              <item type="cf" lang="mwf">ngay</item>
+                              <item type="gls" lang="en">1SG</item>
+                              <item type="msa" lang="en">pro </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="90f4ba97-e1a3-40c7-8836-882f883ed3b6">
+                        <item type="txt" lang="mwf">murriny</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murriny</item>
+                              <item type="cf" lang="mwf">murriny</item>
+                              <item type="gls" lang="en">speech</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="7d44765d-a74b-4178-a425-9b9a8465f491">
+                        <item type="txt" lang="mwf">bintjepup</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">bim</item>
+                              <item type="cf" lang="mwf">bim</item>
+                              <item type="gls" lang="en">1SG.16.NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yepup</item>
+                              <item type="cf" lang="mwf">yepup</item>
+                              <item type="gls" lang="en">hear</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="90f4ba97-e1a3-40c7-8836-882f883ed3b6">
+                        <item type="txt" lang="mwf">murriny</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murriny</item>
+                              <item type="cf" lang="mwf">murriny</item>
+                              <item type="gls" lang="en">speech</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="cf6a2212-8972-4c31-ba22-d141aae32d57">
+                        <item type="txt" lang="mwf">kardu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kardu</item>
+                              <item type="cf" lang="mwf">kardu</item>
+                              <item type="gls" lang="en">person</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="d82d26b7-1ced-4aab-8ea9-b499f45903d6">
+                        <item type="txt" lang="mwf">wakal</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">wakal</item>
+                              <item type="cf" lang="mwf">wakal</item>
+                    
+                              <item type="gls" lang="en">small</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a6fb391c-ed47-48af-b4ae-5580b024dce2">
+                        <item type="txt" lang="mwf">mardinybuy</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mardinybuy</item>
+                              <item type="cf" lang="mwf">mardinypuy</item>
+                    
+                              <item type="gls" lang="en">young.girl</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="d248ddbe-3b0b-470c-8705-4b8fde2c1c26">
+                        <item type="txt" lang="mwf">ngalla</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngalla</item>
+                              <item type="cf" lang="mwf">ngalla</item>
+                              <item type="gls" lang="en">big</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="1b8a4e89-8359-4ab8-abe8-bbcf4bc0b4d9">
+                        <item type="txt" lang="mwf">ngay-gathu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngay</item>
+                              <item type="cf" lang="mwf">ngay</item>
+                              <item type="gls" lang="en">1SG</item>
+                              <item type="msa" lang="en">pro </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-gathu</item>
+                              <item type="cf" lang="mwf">-gathu</item>
+                              <item type="gls" lang="en">actor</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="cfd6e8e8-917b-423a-8a57-7e2853819fef">
+                <phrases>
+                    <phrase begin-time-offset="111260"
+                       end-time-offset="112600"
+                       guid="7a2c89e7-40bb-46de-a441-ea18ba63ca4b"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">Sydney-gathu mamnga</item>
+                        <item lang="en" type="gls">she told me, from Sydney</item>
+                    <words>
+                     <word guid="c97236b2-77fe-42d4-9554-1417f44b10d4">
+                        <item type="txt" lang="mwf">Sydney-gathu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">Sydney</item>
+                              <item type="cf" lang="mwf">Sydney</item>
+                              <item type="gls" lang="en">Sydney</item>
+                              <item type="msa" lang="en">PlName </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-gathu</item>
+                              <item type="cf" lang="mwf">-gathu</item>
+                              <item type="gls" lang="en">hither</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="fd130934-94e1-46b7-bd95-63b9dbee9b3b">
+                        <item type="txt" lang="mwf">mamnga</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mam</item>
+                              <item type="cf" lang="mwf">mam</item>
+                              <item type="gls" lang="en">3SG.SAY/DO(34).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nga</item>
+                              <item type="cf" lang="mwf">-nga</item>
+                    
+                              <item type="gls" lang="en">1SG.IO</item>
+                              <item type="msa" lang="en">IO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="829945c5-6ddf-467f-9bcc-7654b92f8ff3">
+                <phrases>
+                    <phrase begin-time-offset="121050"
+                       end-time-offset="128180"
+                       guid="bdf97589-5efc-4baf-92ce-d06c7f49a79c"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">kura ngipiliny kanyi-wa kura mamurluy-wurran ngarra palyirr</item>
+                        <item lang="en" type="gls">this river is winding around the hills</item>
+                    <words>
+                     <word guid="759c947e-83dc-4515-980c-f11988d96655">
+                        <item type="txt" lang="mwf">kura</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kura</item>
+                              <item type="cf" lang="mwf">kura</item>
+                              <item type="gls" lang="en">water</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="e14f434a-2264-4a8e-a110-14064d846d44">
+                        <item type="txt" lang="mwf">ngipiliny</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngipiliny</item>
+                              <item type="cf" lang="mwf">ngipiliny</item>
+                              <item type="gls" lang="en">river</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f866a954-cdab-4540-84d4-dc29fda1c1c5">
+                        <item type="txt" lang="mwf">kanyi-wa</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-wa</item>
+                              <item type="cf" lang="mwf">-wa</item>
+                              <item type="gls" lang="en">EMPH</item>
+                              <item type="msa" lang="en">Suff</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="759c947e-83dc-4515-980c-f11988d96655">
+                        <item type="txt" lang="mwf">kura</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kura</item>
+                              <item type="cf" lang="mwf">kura</item>
+                              <item type="gls" lang="en">water</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="88a751e9-0aef-4426-bff5-cbc107eb6d49">
+                        <item type="txt" lang="mwf">mamurluy-wurran</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ma</item>
+                              <item type="cf" lang="mwf">ma</item>
+                    
+                              <item type="gls" lang="en">1SG.HANDS(8).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mu</item>
+                              <item type="cf" lang="mwf">mu</item>
+                    
+                              <item type="gls" lang="en">1SG.TWIST(11).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">rluy</item>
+                              <item type="cf" lang="mwf">rluy</item>
+                              <item type="gls" lang="en">turn</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">wurran</item>
+                              <item type="cf" lang="mwf">wurran</item>
+                              <item type="gls" lang="en">3SG.GO(6).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a00feefe-cb80-4bc3-ba10-69b5d8d9b01d">
+                        <item type="txt" lang="mwf">palyirr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">palyirr</item>
+                              <item type="cf" lang="mwf">palyirr</item>
+                              <item type="gls" lang="en">rock</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="6627e4b1-434a-4888-b7c2-ed4350f117a7">
+                <phrases>
+                    <phrase begin-time-offset="138805"
+                       end-time-offset="141500"
+                       guid="03337861-7880-415d-918c-2858b4b8850d"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">da palyirr da weyi kanyi-yu</item>
+                        <item lang="en" type="gls">this is a rock-hole</item>
+                    <words>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a00feefe-cb80-4bc3-ba10-69b5d8d9b01d">
+                        <item type="txt" lang="mwf">palyirr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">palyirr</item>
+                              <item type="cf" lang="mwf">palyirr</item>
+                              <item type="gls" lang="en">rock</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="3a872583-7947-41d1-931f-6309cca7a09f">
+                        <item type="txt" lang="mwf">weyi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">weyi</item>
+                              <item type="cf" lang="mwf">weyi</item>
+                    
+                              <item type="gls" lang="en">hole</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="8dce2f44-b27f-497c-ba88-e4f320b642eb">
+                        <item type="txt" lang="mwf">kanyi-yu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-yu</item>
+                              <item type="cf" lang="mwf">-yu</item>
+                              <item type="gls" lang="en">CLS</item>
+                              <item type="msa" lang="en">***</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="b2982d6f-1a07-46c9-8ed6-1d41e3f40ed9">
+                <phrases>
+                    <phrase begin-time-offset="141570"
+                       end-time-offset="145260"
+                       guid="0d388da2-3d79-4b26-9130-6339d13e5316"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">? da thunulili-tji pangu ngarra thay mulurn yittjit ngalla pangu</item>
+                        <item lang="en" type="gls">you walk there to the big shadey palce</item>
+                    <words>
+                     <word>
+                        <item type="punct" lang="mwf">?</item>
+                     </word>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="95abad39-fde4-40ff-b939-1c5af53f2e00">
+                        <item type="txt" lang="mwf">thunulili-tji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">thunu</item>
+                              <item type="cf" lang="mwf">thunu</item>
+                              <item type="gls" lang="en">2SG.FEET(7).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">lili</item>
+                              <item type="cf" lang="mwf">lili</item>
+                              <item type="gls" lang="en">walk</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">tji</item>
+                              <item type="cf" lang="mwf">tji</item>
+                    
+                              <item type="gls" lang="en">2SG.SIT(1).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="2f630b98-4cb6-4bd6-875e-8cd5c9d352c7">
+                        <item type="txt" lang="mwf">pangu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pangu</item>
+                              <item type="cf" lang="mwf">pangu</item>
+                              <item type="gls" lang="en">DIST</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="401ed8c1-42ce-40da-868e-dc2878364430">
+                        <item type="txt" lang="mwf">thay</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">thay</item>
+                              <item type="cf" lang="mwf">thay</item>
+                    
+                              <item type="gls" lang="en">tree</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="ae0fcd8c-e2db-4574-88e1-f4b1c0cb84e9">
+                        <item type="txt" lang="mwf">mulurn</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mulurn</item>
+                              <item type="cf" lang="mwf">mulurn</item>
+                              <item type="gls" lang="en">leaf</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="938ab77d-0c22-480c-ac8a-248e20c53f26">
+                        <item type="txt" lang="mwf">yittjit</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yittjit</item>
+                              <item type="cf" lang="mwf">yittjit</item>
+                              <item type="gls" lang="en">heavy</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="d248ddbe-3b0b-470c-8705-4b8fde2c1c26">
+                        <item type="txt" lang="mwf">ngalla</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngalla</item>
+                              <item type="cf" lang="mwf">ngalla</item>
+                              <item type="gls" lang="en">big</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="2f630b98-4cb6-4bd6-875e-8cd5c9d352c7">
+                        <item type="txt" lang="mwf">pangu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pangu</item>
+                              <item type="cf" lang="mwf">pangu</item>
+                              <item type="gls" lang="en">DIST</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="c7b5efa7-c9c0-4c0a-b872-5ec6d7c09499">
+                <phrases>
+                    <phrase begin-time-offset="145380"
+                       end-time-offset="149420"
+                       guid="f812f515-89ac-4711-a795-fd82f1e1ce8e"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">i nebirl karda palyirr pangathu-ka kardu kibim pepe ngarra palyirr manta</item>
+                        <item lang="en" type="gls">and look over there, people are at the foot of the hills nearby</item>
+                    <words>
+                     <word guid="ab0ba03b-dcda-49e4-9b8c-13320075eb23">
+                        <item type="txt" lang="mwf">i</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">i</item>
+                              <item type="cf" lang="mwf">i</item>
+                              <item type="gls" lang="en">and</item>
+                              <item type="msa" lang="en">conj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5db17ca0-52df-4b4a-8f82-ae4cc0d2d796">
+                        <item type="txt" lang="mwf">nebirl</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ne</item>
+                              <item type="cf" lang="mwf">ne</item>
+                    
+                              <item type="gls" lang="en">2PAUC.SIT(1).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">birl</item>
+                              <item type="cf" lang="mwf">birl</item>
+                    
+                              <item type="gls" lang="en">look</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="0abbfc1a-8229-4c9b-951a-28a69f11f5a2">
+                        <item type="txt" lang="mwf">karda</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">karda</item>
+                              <item type="cf" lang="mwf">karda</item>
+                              <item type="gls" lang="en">here</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a00feefe-cb80-4bc3-ba10-69b5d8d9b01d">
+                        <item type="txt" lang="mwf">palyirr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">palyirr</item>
+                              <item type="cf" lang="mwf">palyirr</item>
+                              <item type="gls" lang="en">rock</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="4af77ba2-c5f9-4b17-9aeb-826248f4bf13">
+                        <item type="txt" lang="mwf">pangathu-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pan</item>
+                              <item type="cf" lang="mwf">pan</item>
+                              <item type="gls" lang="en">3SG.SLASH(23).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-gathu</item>
+                              <item type="cf" lang="mwf">-gathu</item>
+                              <item type="gls" lang="en">hither</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="cf6a2212-8972-4c31-ba22-d141aae32d57">
+                        <item type="txt" lang="mwf">kardu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kardu</item>
+                              <item type="cf" lang="mwf">kardu</item>
+                              <item type="gls" lang="en">person</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="ee718a74-2bf0-41b1-8450-e38dc9ec82bb">
+                        <item type="txt" lang="mwf">kibim</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kibim</item>
+                              <item type="cf" lang="mwf">kibim</item>
+                              <item type="gls" lang="en">3PL.STAND(3).PRSL</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="347aa9af-1785-4408-9df8-2720526c5985">
+                        <item type="txt" lang="mwf">pepe</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pepe</item>
+                              <item type="cf" lang="mwf">pepe</item>
+                              <item type="gls" lang="en">down</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a00feefe-cb80-4bc3-ba10-69b5d8d9b01d">
+                        <item type="txt" lang="mwf">palyirr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">palyirr</item>
+                              <item type="cf" lang="mwf">palyirr</item>
+                              <item type="gls" lang="en">rock</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="591fd7cf-fa0f-4c33-8cac-63152143963d">
+                        <item type="txt" lang="mwf">manta</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">manta</item>
+                              <item type="cf" lang="mwf">manta</item>
+                              <item type="gls" lang="en">near</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="9ba26771-1480-41ae-939c-ed2e29a11cf5">
+                <phrases>
+                    <phrase begin-time-offset="149555"
+                       end-time-offset="150855"
+                       guid="4dcc588f-b3e9-4919-98e5-e67ef18c9d73"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">kardu muntakpun</item>
+                        <item lang="en" type="gls">people from the old days</item>
+                    <words>
+                     <word guid="cf6a2212-8972-4c31-ba22-d141aae32d57">
+                        <item type="txt" lang="mwf">kardu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kardu</item>
+                              <item type="cf" lang="mwf">kardu</item>
+                              <item type="gls" lang="en">person</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="50be954e-02a7-483d-bd10-cefb14572e82">
+                        <item type="txt" lang="mwf">muntakpun</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murntak</item>
+                              <item type="cf" lang="mwf">murntak</item>
+                              <item type="gls" lang="en">old</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-pun</item>
+                              <item type="cf" lang="mwf">-wun</item>
+                              <item type="gls" lang="en">3PL.DO</item>
+                              <item type="msa" lang="en">DO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="524510ca-20f6-41c1-811a-69519b9a3723">
+                <phrases>
+                    <phrase begin-time-offset="158170"
+                       end-time-offset="163785"
+                       guid="795c52ff-7ef6-4d35-adf0-d1d7648f2816"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">kanyi-wa kardu ngalantharr muntakpun purnililidha pibimmardawitj kangkarl ngarra palyirr</item>
+                        <item lang="en" type="gls">this is where the old-days people went walking, then climbed up to the hills</item>
+                    <words>
+                     <word guid="f866a954-cdab-4540-84d4-dc29fda1c1c5">
+                        <item type="txt" lang="mwf">kanyi-wa</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-wa</item>
+                              <item type="cf" lang="mwf">-wa</item>
+                              <item type="gls" lang="en">EMPH</item>
+                              <item type="msa" lang="en">Suff</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="cf6a2212-8972-4c31-ba22-d141aae32d57">
+                        <item type="txt" lang="mwf">kardu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kardu</item>
+                              <item type="cf" lang="mwf">kardu</item>
+                              <item type="gls" lang="en">person</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="b3c8847b-fc55-42fc-955b-ff299e2fb29a">
+                        <item type="txt" lang="mwf">ngalantharr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngalantharr</item>
+                              <item type="cf" lang="mwf">ngalantharr</item>
+                              <item type="gls" lang="en">old.man</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="50be954e-02a7-483d-bd10-cefb14572e82">
+                        <item type="txt" lang="mwf">muntakpun</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">murntak</item>
+                              <item type="cf" lang="mwf">murntak</item>
+                              <item type="gls" lang="en">old</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-pun</item>
+                              <item type="cf" lang="mwf">-wun</item>
+                              <item type="gls" lang="en">3PL.DO</item>
+                              <item type="msa" lang="en">DO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="2c49a4a9-8996-4cdd-81b1-96368f0f6556">
+                        <item type="txt" lang="mwf">purnililidha</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">purni</item>
+                              <item type="cf" lang="mwf">purni</item>
+                              <item type="gls" lang="en">3PL.GO(6).PIMP</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">lili</item>
+                              <item type="cf" lang="mwf">lili</item>
+                              <item type="gls" lang="en">walk</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-dha</item>
+                              <item type="cf" lang="mwf">-dha</item>
+                              <item type="gls" lang="en">PST</item>
+                              <item type="msa" lang="en">TAM</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="813247b1-ac2e-4de1-b240-4d634672bc13">
+                        <item type="txt" lang="mwf">pibimmardawitj</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pibim</item>
+                              <item type="cf" lang="mwf">pibim</item>
+                              <item type="gls" lang="en">3PL.STAND(3).NFUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mardawitj</item>
+                              <item type="cf" lang="mwf">mardawitj</item>
+                              <item type="gls" lang="en">ascend</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="68092477-ac3f-43c3-b6da-206e343f1ec4">
+                        <item type="txt" lang="mwf">kangkarl</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kangkarl</item>
+                              <item type="cf" lang="mwf">kangkarl</item>
+                              <item type="gls" lang="en">above</item>
+                              <item type="msa" lang="en">adj or n. </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a00feefe-cb80-4bc3-ba10-69b5d8d9b01d">
+                        <item type="txt" lang="mwf">palyirr</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">palyirr</item>
+                              <item type="cf" lang="mwf">palyirr</item>
+                              <item type="gls" lang="en">rock</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="0cf29091-01e3-4443-b05c-cf55029b72d9">
+                <phrases>
+                    <phrase begin-time-offset="167147"
+                       end-time-offset="169627"
+                       guid="6cdcb2e6-4132-4118-819a-7dc55a7bbaaa"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">ngarra-warda-re mange thamanu-yu</item>
+                        <item lang="en" type="gls">how will you do that?</item>
+                    <words>
+                     <word guid="cf01e923-7ede-44a0-9cf8-d6c5217aa4af">
+                        <item type="txt" lang="mwf">ngarra-warda-re</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-warda</item>
+                              <item type="cf" lang="mwf">-warda</item>
+                              <item type="gls" lang="en">TEMP</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-re</item>
+                              <item type="cf" lang="mwf">-re</item>
+                              <item type="gls" lang="en">PERL</item>
+                              <item type="msa" lang="en">Suff</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="39835e18-a4d9-49cf-bcfc-dd15b1c66d7a">
+                        <item type="txt" lang="mwf">mange</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mange</item>
+                              <item type="cf" lang="mwf">mange</item>
+                    
+                              <item type="gls" lang="en">hand</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="140ec717-2f8a-4c38-99bb-122f44cda276">
+                        <item type="txt" lang="mwf">thamanu-yu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">thama</item>
+                              <item type="cf" lang="mwf">thama</item>
+                              <item type="gls" lang="en">2SG.SAY/DO(34).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-yu</item>
+                              <item type="cf" lang="mwf">-yu</item>
+                              <item type="gls" lang="en">CLS</item>
+                              <item type="msa" lang="en">***</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="38aa56fb-0a62-4f37-b92a-96b6691ff669">
+                <phrases>
+                    <phrase begin-time-offset="175777"
+                       end-time-offset="180277"
+                       guid="d7dae42b-a39b-403d-9d74-153fbf9a7478"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">nantji peint ngay-ngatha nganipartnu kanyi-ka ku-ka mani-ka thangamut da marra-yu</item>
+                        <item lang="en" type="gls">if I leave my paintings here will you give me money today?</item>
+                    <words>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f3965a8c-c110-4270-ac5c-056873131709">
+                        <item type="txt" lang="mwf">peint</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">peint</item>
+                              <item type="cf" lang="mwf">peinting</item>
+                    
+                              <item type="gls" lang="en">painting</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="8d694334-2dca-451a-a043-6aff3fa5c7ea">
+                        <item type="txt" lang="mwf">ngay-ngatha</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngay</item>
+                              <item type="cf" lang="mwf">ngay</item>
+                              <item type="gls" lang="en">1SG</item>
+                              <item type="msa" lang="en">pro </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngatha</item>
+                              <item type="cf" lang="mwf">ngatha</item>
+                              <item type="gls" lang="en">if</item>
+                              <item type="msa" lang="en">adv </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="abfe105a-8798-4a5b-a528-2e08d84aa515">
+                        <item type="txt" lang="mwf">nganipartnu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngani</item>
+                              <item type="cf" lang="mwf">ngani</item>
+                              <item type="gls" lang="en">1SG.BE(4).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">part</item>
+                              <item type="cf" lang="mwf">part</item>
+                    
+                              <item type="gls" lang="en">leave</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="54791808-ff96-45b7-b9f3-349f24fc7be6">
+                        <item type="txt" lang="mwf">kanyi-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kanyi</item>
+                              <item type="cf" lang="mwf">kanyi</item>
+                              <item type="gls" lang="en">PROX</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="67ce5c65-e5ef-4f20-ab02-f196b646240e">
+                        <item type="txt" lang="mwf">ku-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f07aa9f2-5699-40cd-8e03-232741d521cb">
+                        <item type="txt" lang="mwf">mani-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="54726b8a-5435-43cf-932c-84cc8e777e53">
+                        <item type="txt" lang="mwf">thangamut</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">tha</item>
+                              <item type="cf" lang="mwf">tha</item>
+                    
+                              <item type="gls" lang="en">2SG.POKE(19).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nga</item>
+                              <item type="cf" lang="mwf">-nga</item>
+                    
+                              <item type="gls" lang="en">1SG.IO</item>
+                              <item type="msa" lang="en">IO</item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mut</item>
+                              <item type="cf" lang="mwf">mut</item>
+                              <item type="gls" lang="en">give</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5ca07ab5-762d-41da-a04a-f44611f37741">
+                        <item type="txt" lang="mwf">marra-yu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">marra</item>
+                              <item type="cf" lang="mwf">marra</item>
+                              <item type="gls" lang="en">new</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-yu</item>
+                              <item type="cf" lang="mwf">-yu</item>
+                              <item type="gls" lang="en">CLS</item>
+                              <item type="msa" lang="en">***</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="c7758bb1-e880-4ab1-8080-df5db2b09c03">
+                <phrases>
+                    <phrase begin-time-offset="183557"
+                       end-time-offset="186467"
+                       guid="695e0194-b0b0-45c7-afb4-57a7ac71aa8e"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">ma ku mani dangapak ngarra benk-ka</item>
+                        <item lang="en" type="gls">or will you put the money in my bank account?</item>
+                    <words>
+                     <word guid="535445d2-4551-4cdb-b352-325f85ee5984">
+                        <item type="txt" lang="mwf">ma</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ma</item>
+                              <item type="cf" lang="mwf">ma</item>
+                    
+                              <item type="gls" lang="en">but</item>
+                              <item type="msa" lang="en">conj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="17c77236-c73b-45f9-aa18-9328f6b31896">
+                        <item type="txt" lang="mwf">mani</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="9bcf45c3-4525-43e5-ba15-b7c1b540c2c1">
+                        <item type="txt" lang="mwf">dangapak</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nga</item>
+                              <item type="cf" lang="mwf">-nga</item>
+                    
+                              <item type="gls" lang="en">1SG.IO</item>
+                              <item type="msa" lang="en">IO</item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pak</item>
+                              <item type="cf" lang="mwf">pak</item>
+                    
+                              <item type="gls" lang="en">heap.high</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="324fce77-0e6f-47c3-97e7-0d7aac10c548">
+                        <item type="txt" lang="mwf">ngarra</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngarra</item>
+                              <item type="cf" lang="mwf">ngarra</item>
+                    
+                              <item type="gls" lang="en">LOC</item>
+                              <item type="msa" lang="en">PREP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="7121c126-9735-41f2-b312-6e409d4bf5cc">
+                        <item type="txt" lang="mwf">benk-ka</item>
+                        <morphemes>
+                           <morph>
+                              <item type="txt" lang="mwf">benk</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="79765afa-bf29-4193-963a-90bee312a44d">
+                <phrases>
+                    <phrase begin-time-offset="199562"
+                       end-time-offset="202322"
+                       guid="8c842e36-4142-4d99-80b6-31244a4d7b38"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">wurda-ngatha-ka ku mani mangayitnu-ka</item>
+                        <item lang="en" type="gls">what if they just keep my money?</item>
+                    <words>
+                     <word guid="db57e8e9-2716-4876-b6c7-26f0a0d115d9">
+                        <item type="txt" lang="mwf">wurda-ngatha-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">wurda</item>
+                              <item type="cf" lang="mwf">wurda</item>
+                              <item type="gls" lang="en">no</item>
+                              <item type="msa" lang="en">INTJ </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngatha</item>
+                              <item type="cf" lang="mwf">ngatha</item>
+                              <item type="gls" lang="en">if</item>
+                              <item type="msa" lang="en">adv </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="17c77236-c73b-45f9-aa18-9328f6b31896">
+                        <item type="txt" lang="mwf">mani</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="7f472a5c-8e93-427a-981a-d8ba4171286e">
+                        <item type="txt" lang="mwf">mangayitnu-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ma</item>
+                              <item type="cf" lang="mwf">ma</item>
+                    
+                              <item type="gls" lang="en">1SG.HANDS(8).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nga</item>
+                              <item type="cf" lang="mwf">nga</item>
+                    
+                              <item type="gls" lang="en">1PAUC.GO(6).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">yit</item>
+                              <item type="cf" lang="mwf">yit</item>
+                              <item type="gls" lang="en">hold</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="ad9fc83a-7455-442e-ab7b-dd1ef966ca9f">
+                <phrases>
+                    <phrase begin-time-offset="209152"
+                       end-time-offset="213282"
+                       guid="f0b7ffb2-feb6-4b59-9bfa-966bbc57d7f8"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">ku-ngatha kurdumpathuknu ku mani-ka da-ka thangkunuma-warda tjimardamardanu-yu</item>
+                        <item lang="en" type="gls">if they send you the money, how long do you have to wait for it?</item>
+                    <words>
+                     <word guid="ed54c292-d59a-48da-bea1-76f3a37121d1">
+                        <item type="txt" lang="mwf">ku-ngatha</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngatha</item>
+                              <item type="cf" lang="mwf">ngatha</item>
+                              <item type="gls" lang="en">if</item>
+                              <item type="msa" lang="en">adv </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="e80cab88-ed6f-4a59-ba1c-5c359b60d6a8">
+                        <item type="txt" lang="mwf">kurdumpathuknu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">kurdu</item>
+                              <item type="cf" lang="mwf">kurdu</item>
+                              <item type="gls" lang="en">3SG.SHOVE(29).FIRR</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-mpa</item>
+                              <item type="cf" lang="mwf">-mpa</item>
+                              <item type="gls" lang="en">2SG.IO</item>
+                              <item type="msa" lang="en">IO</item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">thuk</item>
+                              <item type="cf" lang="mwf">thuk</item>
+                    
+                              <item type="gls" lang="en">search</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f07aa9f2-5699-40cd-8e03-232741d521cb">
+                        <item type="txt" lang="mwf">mani-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="67272c28-11dc-42cc-8431-daafaba8719b">
+                        <item type="txt" lang="mwf">da-ka</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">2SG.13.FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ka</item>
+                              <item type="cf" lang="mwf">-ka</item>
+                    
+                              <item type="gls" lang="en">TOP</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="120a4f41-8227-4aa7-b7b6-e533ad462d23">
+                        <item type="txt" lang="mwf">thangkunuma-warda</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">thangkunuma</item>
+                              <item type="cf" lang="mwf">thangkunuma</item>
+                              <item type="gls" lang="en">how.much/many</item>
+                              <item type="msa" lang="en">INT </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-warda</item>
+                              <item type="cf" lang="mwf">-warda</item>
+                              <item type="gls" lang="en">TEMP</item>
+                              <item type="msa" lang="en">Adverb</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="b8ccda22-e81a-4037-8195-afb2d1a7bb40">
+                        <item type="txt" lang="mwf">tjimardamardanu-yu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">tji</item>
+                              <item type="cf" lang="mwf">tji</item>
+                    
+                              <item type="gls" lang="en">2SG.SIT(1).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mardamarda</item>
+                              <item type="cf" lang="mwf">mardamarda</item>
+                              <item type="gls" lang="en">wait.for</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-nu</item>
+                              <item type="cf" lang="mwf">-nu</item>
+                    
+                              <item type="gls" lang="en">FUT</item>
+                              <item type="msa" lang="en">CSP:Any</item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-yu</item>
+                              <item type="cf" lang="mwf">-yu</item>
+                              <item type="gls" lang="en">CLS</item>
+                              <item type="msa" lang="en">***</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="517ab917-9f37-41b5-9ef8-10c9a6685449">
+                <phrases>
+                    <phrase begin-time-offset="218957"
+                       end-time-offset="220350"
+                       guid="27107fae-d339-4698-83d1-e460c07c5707"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">da mangi patha</item>
+                        <item lang="en" type="gls">that's good</item>
+                    <words>
+                     <word guid="a25039be-3f81-4bde-a97d-e6f3c6bde4ee">
+                        <item type="txt" lang="mwf">da</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">da</item>
+                              <item type="cf" lang="mwf">da</item>
+                    
+                              <item type="gls" lang="en">PL/T</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="77476f15-ca85-4c09-8249-281822c56c4c">
+                        <item type="txt" lang="mwf">mangi</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ma</item>
+                              <item type="cf" lang="mwf">ma</item>
+                    
+                              <item type="gls" lang="en">1SG.HANDS(8).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ngi</item>
+                              <item type="cf" lang="mwf">-ngi</item>
+                    
+                              <item type="gls" lang="en">1SG.DO</item>
+                              <item type="msa" lang="en">DO</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="b3c6ee83-392e-4e66-b12c-cc8f9b94f2d2">
+                        <item type="txt" lang="mwf">patha</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">patha</item>
+                              <item type="cf" lang="mwf">patha</item>
+                    
+                              <item type="gls" lang="en">good</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="34243056-5fcd-484b-a976-2cb141a07986">
+                <phrases>
+                    <phrase begin-time-offset="220550"
+                       end-time-offset="222947"
+                       guid="31b17c41-f54f-4597-bcc3-5090adb86419"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">ku ngay mani martnu pirtpirt</item>
+                        <item lang="en" type="gls">I want to get money quick</item>
+                    <words>
+                     <word guid="96b7ac48-9602-41f0-a9a4-b9ae74e3b8f3">
+                        <item type="txt" lang="mwf">ku</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ku</item>
+                              <item type="cf" lang="mwf">ku</item>
+                    
+                              <item type="gls" lang="en">animate</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="e7f3c195-df24-4033-a119-7ac08276391d">
+                        <item type="txt" lang="mwf">ngay</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngay</item>
+                              <item type="cf" lang="mwf">ngay</item>
+                              <item type="gls" lang="en">1SG</item>
+                              <item type="msa" lang="en">pro </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="17c77236-c73b-45f9-aa18-9328f6b31896">
+                        <item type="txt" lang="mwf">mani</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">mani</item>
+                              <item type="cf" lang="mwf">mani</item>
+                    
+                              <item type="gls" lang="en">money</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="72bf3954-dfd8-48ee-b0d7-e04cc6547817">
+                        <item type="txt" lang="mwf">martnu</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ma</item>
+                              <item type="cf" lang="mwf">ma</item>
+                    
+                              <item type="gls" lang="en">1SG.HANDS(8).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">art</item>
+                              <item type="cf" lang="mwf">art</item>
+                              <item type="gls" lang="en">get/take</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nu</item>
+                              <item type="cf" lang="mwf">nu</item>
+                              <item type="gls" lang="en">2SG.TWIST(11).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="12fbe3c4-0e56-4382-aca9-eb718889b746">
+                        <item type="txt" lang="mwf">pirtpirt</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pirtpirt</item>
+                              <item type="cf" lang="mwf">pirtpirt</item>
+                              <item type="gls" lang="en">fast</item>
+                              <item type="msa" lang="en">adj </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+            <paragraph guid="e5e16ede-1f47-4f93-991a-647b18454ed4">
+                <phrases>
+                    <phrase begin-time-offset="227518"
+                       end-time-offset="230298"
+                       guid="ff8717b5-b36a-46d8-bcdc-3b71207174a1"
+                       media-file="db500314-7ab3-46ae-a2a4-27c1a2d16d53"
+                       speaker="SD">
+                        <item lang="mwf" type="txt">ngampaya nantji peint pana nabatj</item>
+                        <item lang="en" type="gls">okay, take the paintings</item>
+                    <words>
+                     <word guid="51bf4cc9-23e4-4909-9284-af6433d685f3">
+                        <item type="txt" lang="mwf">ngampaya</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">ngampa</item>
+                              <item type="cf" lang="mwf">mampa</item>
+                    
+                              <item type="gls" lang="en">alright</item>
+                              <item type="msa" lang="en">INTJ </item>
+                           </morph>
+                           <morph guid="d7f713dd-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">-ya</item>
+                              <item type="cf" lang="mwf">-ya</item>
+                              <item type="gls" lang="en">INTJ</item>
+                              <item type="msa" lang="en">CTC</item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="5c428256-7cc9-49da-be45-da0c7cce4af3">
+                        <item type="txt" lang="mwf">nantji</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">nantji</item>
+                              <item type="cf" lang="mwf">nantji</item>
+                    
+                              <item type="gls" lang="en">residue</item>
+                              <item type="msa" lang="en">NC </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="f3965a8c-c110-4270-ac5c-056873131709">
+                        <item type="txt" lang="mwf">peint</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">peint</item>
+                              <item type="cf" lang="mwf">peinting</item>
+                    
+                              <item type="gls" lang="en">painting</item>
+                              <item type="msa" lang="en">n </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="227347eb-888a-44a2-9396-9caf49d1e4d5">
+                        <item type="txt" lang="mwf">pana</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">pana</item>
+                              <item type="cf" lang="mwf">pana</item>
+                    
+                              <item type="gls" lang="en">RECN</item>
+                              <item type="msa" lang="en">dem </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                     <word guid="4311b1d7-8fc0-4df0-8a2f-27d3bd43233d">
+                        <item type="txt" lang="mwf">nabatj</item>
+                        <morphemes>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">na</item>
+                              <item type="cf" lang="mwf">na</item>
+                    
+                              <item type="gls" lang="en">2PAUC.GO(6).FUT</item>
+                              <item type="msa" lang="en">CSP </item>
+                           </morph>
+                           <morph guid="d7f713e8-e8cf-11d3-9764-00c04f186933">
+                              <item type="txt" lang="mwf">batj</item>
+                              <item type="cf" lang="mwf">batj</item>
+                    
+                              <item type="gls" lang="en">bring</item>
+                              <item type="msa" lang="en">Cov </item>
+                           </morph>
+                        </morphemes>
+                     </word>
+                  </words>
+               </phrase>
+                </phrases>
+            </paragraph>
+        </paragraphs>
+        <media-files offset-type="">
+            <media guid="db500314-7ab3-46ae-a2a4-27c1a2d16d53" location=""/>
+        </media-files>
+    </interlinear-text>
+</document>

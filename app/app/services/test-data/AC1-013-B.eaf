@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ANNOTATION_DOCUMENT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.3.xsd" DATE="2006-05-04T10:50:03+01:00" AUTHOR="unspecified" VERSION="2.3" FORMAT="2.3">
+    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
+        <MEDIA_DESCRIPTOR MEDIA_URL="file:///D:/cw/PhD/Soundfiles/Capell_elan/AC1-013-B.mp3" MIME_TYPE="audio/*"/>
+    </HEADER>
+    <TIME_ORDER>
+        <TIME_SLOT TIME_SLOT_ID="ts1" TIME_VALUE="10010"/>
+        <TIME_SLOT TIME_SLOT_ID="ts2" TIME_VALUE="13620"/>
+        <TIME_SLOT TIME_SLOT_ID="ts3" TIME_VALUE="13620"/>
+        <TIME_SLOT TIME_SLOT_ID="ts4" TIME_VALUE="17360"/>
+        <TIME_SLOT TIME_SLOT_ID="ts5" TIME_VALUE="19030"/>
+        <TIME_SLOT TIME_SLOT_ID="ts6" TIME_VALUE="21670"/>
+        <TIME_SLOT TIME_SLOT_ID="ts7" TIME_VALUE="22310"/>
+        <TIME_SLOT TIME_SLOT_ID="ts8" TIME_VALUE="24620"/>
+        <TIME_SLOT TIME_SLOT_ID="ts9" TIME_VALUE="24630"/>
+        <TIME_SLOT TIME_SLOT_ID="ts10" TIME_VALUE="26443"/>
+        <TIME_SLOT TIME_SLOT_ID="ts11" TIME_VALUE="26443"/>
+        <TIME_SLOT TIME_SLOT_ID="ts12" TIME_VALUE="27652"/>
+        <TIME_SLOT TIME_SLOT_ID="ts13" TIME_VALUE="27652"/>
+        <TIME_SLOT TIME_SLOT_ID="ts14" TIME_VALUE="30279"/>
+        <TIME_SLOT TIME_SLOT_ID="ts15" TIME_VALUE="30284"/>
+        <TIME_SLOT TIME_SLOT_ID="ts16" TIME_VALUE="32294"/>
+        <TIME_SLOT TIME_SLOT_ID="ts17" TIME_VALUE="32300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts18" TIME_VALUE="33844"/>
+        <TIME_SLOT TIME_SLOT_ID="ts19" TIME_VALUE="33844"/>
+        <TIME_SLOT TIME_SLOT_ID="ts20" TIME_VALUE="36227"/>
+        <TIME_SLOT TIME_SLOT_ID="ts21" TIME_VALUE="36227"/>
+        <TIME_SLOT TIME_SLOT_ID="ts22" TIME_VALUE="40083"/>
+        <TIME_SLOT TIME_SLOT_ID="ts23" TIME_VALUE="40083"/>
+        <TIME_SLOT TIME_SLOT_ID="ts24" TIME_VALUE="41785"/>
+        <TIME_SLOT TIME_SLOT_ID="ts25" TIME_VALUE="41785"/>
+        <TIME_SLOT TIME_SLOT_ID="ts26" TIME_VALUE="47564"/>
+        <TIME_SLOT TIME_SLOT_ID="ts27" TIME_VALUE="47564"/>
+        <TIME_SLOT TIME_SLOT_ID="ts28" TIME_VALUE="55545"/>
+        <TIME_SLOT TIME_SLOT_ID="ts29" TIME_VALUE="55545"/>
+        <TIME_SLOT TIME_SLOT_ID="ts30" TIME_VALUE="60689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts31" TIME_VALUE="60689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts32" TIME_VALUE="64581"/>
+        <TIME_SLOT TIME_SLOT_ID="ts33" TIME_VALUE="64584"/>
+        <TIME_SLOT TIME_SLOT_ID="ts34" TIME_VALUE="67300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts35" TIME_VALUE="67301"/>
+        <TIME_SLOT TIME_SLOT_ID="ts36" TIME_VALUE="70151"/>
+        <TIME_SLOT TIME_SLOT_ID="ts37" TIME_VALUE="70151"/>
+        <TIME_SLOT TIME_SLOT_ID="ts38" TIME_VALUE="73335"/>
+        <TIME_SLOT TIME_SLOT_ID="ts39" TIME_VALUE="73335"/>
+        <TIME_SLOT TIME_SLOT_ID="ts40" TIME_VALUE="77764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts41" TIME_VALUE="77764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts42" TIME_VALUE="78776"/>
+        <TIME_SLOT TIME_SLOT_ID="ts43" TIME_VALUE="78776"/>
+        <TIME_SLOT TIME_SLOT_ID="ts44" TIME_VALUE="86037"/>
+        <TIME_SLOT TIME_SLOT_ID="ts45" TIME_VALUE="86037"/>
+        <TIME_SLOT TIME_SLOT_ID="ts46" TIME_VALUE="115748"/>
+        <TIME_SLOT TIME_SLOT_ID="ts47" TIME_VALUE="115748"/>
+        <TIME_SLOT TIME_SLOT_ID="ts48" TIME_VALUE="116709"/>
+        <TIME_SLOT TIME_SLOT_ID="ts49" TIME_VALUE="116709"/>
+        <TIME_SLOT TIME_SLOT_ID="ts50" TIME_VALUE="117440"/>
+        <TIME_SLOT TIME_SLOT_ID="ts51" TIME_VALUE="117440"/>
+        <TIME_SLOT TIME_SLOT_ID="ts52" TIME_VALUE="128951"/>
+        <TIME_SLOT TIME_SLOT_ID="ts53" TIME_VALUE="128951"/>
+        <TIME_SLOT TIME_SLOT_ID="ts54" TIME_VALUE="134499"/>
+        <TIME_SLOT TIME_SLOT_ID="ts55" TIME_VALUE="134499"/>
+        <TIME_SLOT TIME_SLOT_ID="ts56" TIME_VALUE="138801"/>
+        <TIME_SLOT TIME_SLOT_ID="ts57" TIME_VALUE="138801"/>
+        <TIME_SLOT TIME_SLOT_ID="ts58" TIME_VALUE="144843"/>
+        <TIME_SLOT TIME_SLOT_ID="ts59" TIME_VALUE="144843"/>
+        <TIME_SLOT TIME_SLOT_ID="ts60" TIME_VALUE="158723"/>
+        <TIME_SLOT TIME_SLOT_ID="ts61" TIME_VALUE="158723"/>
+        <TIME_SLOT TIME_SLOT_ID="ts62" TIME_VALUE="171763"/>
+        <TIME_SLOT TIME_SLOT_ID="ts63" TIME_VALUE="171763"/>
+        <TIME_SLOT TIME_SLOT_ID="ts64" TIME_VALUE="177901"/>
+        <TIME_SLOT TIME_SLOT_ID="ts65" TIME_VALUE="177901"/>
+        <TIME_SLOT TIME_SLOT_ID="ts66" TIME_VALUE="183780"/>
+        <TIME_SLOT TIME_SLOT_ID="ts67" TIME_VALUE="183780"/>
+        <TIME_SLOT TIME_SLOT_ID="ts68" TIME_VALUE="190369"/>
+        <TIME_SLOT TIME_SLOT_ID="ts69" TIME_VALUE="190369"/>
+        <TIME_SLOT TIME_SLOT_ID="ts70" TIME_VALUE="200684"/>
+        <TIME_SLOT TIME_SLOT_ID="ts71" TIME_VALUE="200684"/>
+        <TIME_SLOT TIME_SLOT_ID="ts72" TIME_VALUE="202346"/>
+        <TIME_SLOT TIME_SLOT_ID="ts73" TIME_VALUE="202346"/>
+        <TIME_SLOT TIME_SLOT_ID="ts74" TIME_VALUE="206763"/>
+        <TIME_SLOT TIME_SLOT_ID="ts75" TIME_VALUE="206763"/>
+        <TIME_SLOT TIME_SLOT_ID="ts76" TIME_VALUE="210448"/>
+        <TIME_SLOT TIME_SLOT_ID="ts77" TIME_VALUE="210448"/>
+        <TIME_SLOT TIME_SLOT_ID="ts78" TIME_VALUE="215205"/>
+        <TIME_SLOT TIME_SLOT_ID="ts79" TIME_VALUE="215205"/>
+        <TIME_SLOT TIME_SLOT_ID="ts80" TIME_VALUE="233401"/>
+        <TIME_SLOT TIME_SLOT_ID="ts81" TIME_VALUE="233401"/>
+        <TIME_SLOT TIME_SLOT_ID="ts82" TIME_VALUE="239429"/>
+        <TIME_SLOT TIME_SLOT_ID="ts83" TIME_VALUE="239429"/>
+        <TIME_SLOT TIME_SLOT_ID="ts84" TIME_VALUE="243856"/>
+        <TIME_SLOT TIME_SLOT_ID="ts85" TIME_VALUE="243856"/>
+        <TIME_SLOT TIME_SLOT_ID="ts86" TIME_VALUE="246019"/>
+        <TIME_SLOT TIME_SLOT_ID="ts87" TIME_VALUE="246019"/>
+        <TIME_SLOT TIME_SLOT_ID="ts88" TIME_VALUE="248759"/>
+        <TIME_SLOT TIME_SLOT_ID="ts89" TIME_VALUE="248759"/>
+        <TIME_SLOT TIME_SLOT_ID="ts90" TIME_VALUE="251199"/>
+        <TIME_SLOT TIME_SLOT_ID="ts91" TIME_VALUE="251199"/>
+        <TIME_SLOT TIME_SLOT_ID="ts92" TIME_VALUE="254049"/>
+        <TIME_SLOT TIME_SLOT_ID="ts93" TIME_VALUE="254049"/>
+        <TIME_SLOT TIME_SLOT_ID="ts94" TIME_VALUE="257949"/>
+        <TIME_SLOT TIME_SLOT_ID="ts95" TIME_VALUE="257949"/>
+        <TIME_SLOT TIME_SLOT_ID="ts96" TIME_VALUE="260206"/>
+        <TIME_SLOT TIME_SLOT_ID="ts97" TIME_VALUE="260216"/>
+        <TIME_SLOT TIME_SLOT_ID="ts98" TIME_VALUE="263446"/>
+        <TIME_SLOT TIME_SLOT_ID="ts99" TIME_VALUE="263446"/>
+        <TIME_SLOT TIME_SLOT_ID="ts100" TIME_VALUE="265900"/>
+        <TIME_SLOT TIME_SLOT_ID="ts101" TIME_VALUE="265900"/>
+        <TIME_SLOT TIME_SLOT_ID="ts102" TIME_VALUE="268620"/>
+        <TIME_SLOT TIME_SLOT_ID="ts103" TIME_VALUE="268620"/>
+        <TIME_SLOT TIME_SLOT_ID="ts104" TIME_VALUE="270580"/>
+        <TIME_SLOT TIME_SLOT_ID="ts105" TIME_VALUE="270580"/>
+        <TIME_SLOT TIME_SLOT_ID="ts106" TIME_VALUE="273380"/>
+        <TIME_SLOT TIME_SLOT_ID="ts107" TIME_VALUE="273380"/>
+        <TIME_SLOT TIME_SLOT_ID="ts108" TIME_VALUE="275450"/>
+        <TIME_SLOT TIME_SLOT_ID="ts109" TIME_VALUE="275450"/>
+        <TIME_SLOT TIME_SLOT_ID="ts110" TIME_VALUE="278460"/>
+        <TIME_SLOT TIME_SLOT_ID="ts111" TIME_VALUE="278470"/>
+        <TIME_SLOT TIME_SLOT_ID="ts112" TIME_VALUE="282580"/>
+        <TIME_SLOT TIME_SLOT_ID="ts113" TIME_VALUE="282580"/>
+        <TIME_SLOT TIME_SLOT_ID="ts114" TIME_VALUE="285998"/>
+        <TIME_SLOT TIME_SLOT_ID="ts115" TIME_VALUE="285998"/>
+        <TIME_SLOT TIME_SLOT_ID="ts116" TIME_VALUE="288862"/>
+        <TIME_SLOT TIME_SLOT_ID="ts117" TIME_VALUE="288862"/>
+        <TIME_SLOT TIME_SLOT_ID="ts118" TIME_VALUE="292767"/>
+        <TIME_SLOT TIME_SLOT_ID="ts119" TIME_VALUE="292767"/>
+        <TIME_SLOT TIME_SLOT_ID="ts120" TIME_VALUE="295131"/>
+        <TIME_SLOT TIME_SLOT_ID="ts121" TIME_VALUE="295131"/>
+        <TIME_SLOT TIME_SLOT_ID="ts122" TIME_VALUE="297724"/>
+        <TIME_SLOT TIME_SLOT_ID="ts123" TIME_VALUE="297724"/>
+        <TIME_SLOT TIME_SLOT_ID="ts124" TIME_VALUE="301610"/>
+        <TIME_SLOT TIME_SLOT_ID="ts125" TIME_VALUE="301610"/>
+        <TIME_SLOT TIME_SLOT_ID="ts126" TIME_VALUE="304530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts127" TIME_VALUE="304530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts128" TIME_VALUE="306970"/>
+        <TIME_SLOT TIME_SLOT_ID="ts129" TIME_VALUE="306970"/>
+        <TIME_SLOT TIME_SLOT_ID="ts130" TIME_VALUE="310200"/>
+        <TIME_SLOT TIME_SLOT_ID="ts131" TIME_VALUE="310200"/>
+        <TIME_SLOT TIME_SLOT_ID="ts132" TIME_VALUE="312690"/>
+        <TIME_SLOT TIME_SLOT_ID="ts133" TIME_VALUE="312690"/>
+        <TIME_SLOT TIME_SLOT_ID="ts134" TIME_VALUE="314640"/>
+        <TIME_SLOT TIME_SLOT_ID="ts135" TIME_VALUE="314650"/>
+        <TIME_SLOT TIME_SLOT_ID="ts136" TIME_VALUE="317000"/>
+        <TIME_SLOT TIME_SLOT_ID="ts137" TIME_VALUE="317000"/>
+        <TIME_SLOT TIME_SLOT_ID="ts138" TIME_VALUE="319669"/>
+        <TIME_SLOT TIME_SLOT_ID="ts139" TIME_VALUE="319669"/>
+        <TIME_SLOT TIME_SLOT_ID="ts140" TIME_VALUE="323024"/>
+        <TIME_SLOT TIME_SLOT_ID="ts141" TIME_VALUE="323024"/>
+        <TIME_SLOT TIME_SLOT_ID="ts142" TIME_VALUE="326810"/>
+        <TIME_SLOT TIME_SLOT_ID="ts143" TIME_VALUE="326810"/>
+        <TIME_SLOT TIME_SLOT_ID="ts144" TIME_VALUE="330990"/>
+        <TIME_SLOT TIME_SLOT_ID="ts145" TIME_VALUE="331000"/>
+        <TIME_SLOT TIME_SLOT_ID="ts146" TIME_VALUE="334850"/>
+        <TIME_SLOT TIME_SLOT_ID="ts147" TIME_VALUE="334860"/>
+        <TIME_SLOT TIME_SLOT_ID="ts148" TIME_VALUE="339330"/>
+        <TIME_SLOT TIME_SLOT_ID="ts149" TIME_VALUE="339330"/>
+        <TIME_SLOT TIME_SLOT_ID="ts150" TIME_VALUE="342980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts151" TIME_VALUE="342980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts152" TIME_VALUE="346020"/>
+        <TIME_SLOT TIME_SLOT_ID="ts153" TIME_VALUE="346020"/>
+        <TIME_SLOT TIME_SLOT_ID="ts154" TIME_VALUE="348240"/>
+        <TIME_SLOT TIME_SLOT_ID="ts155" TIME_VALUE="348240"/>
+        <TIME_SLOT TIME_SLOT_ID="ts156" TIME_VALUE="353010"/>
+    </TIME_ORDER>
+    <TIER TIER_ID="ref@AC" PARTICIPANT="AC" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a1" TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts3">
+                <ANNOTATION_VALUE>AC1-013-B_001</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a2" TIME_SLOT_REF1="ts2" TIME_SLOT_REF2="ts4">
+                <ANNOTATION_VALUE>AC1-013-B_002</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a3" TIME_SLOT_REF1="ts11" TIME_SLOT_REF2="ts12">
+                <ANNOTATION_VALUE>AC1-013-B_006</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a4" TIME_SLOT_REF1="ts15" TIME_SLOT_REF2="ts16">
+                <ANNOTATION_VALUE>AC1-013-B_007b
+</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a5" TIME_SLOT_REF1="ts23" TIME_SLOT_REF2="ts24">
+                <ANNOTATION_VALUE>AC1-013-B_011</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a6" TIME_SLOT_REF1="ts32" TIME_SLOT_REF2="ts35">
+                <ANNOTATION_VALUE>AC1-013-B_015b</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a7" TIME_SLOT_REF1="ts39" TIME_SLOT_REF2="ts40">
+                <ANNOTATION_VALUE>AC1-013-B_018</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a8" TIME_SLOT_REF1="ts43" TIME_SLOT_REF2="ts44">
+                <ANNOTATION_VALUE>AC1-013-B_020</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a9" TIME_SLOT_REF1="ts79" TIME_SLOT_REF2="ts80">
+                <ANNOTATION_VALUE>AC1-013-B_038</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a10" TIME_SLOT_REF1="ts95" TIME_SLOT_REF2="ts96">
+                <ANNOTATION_VALUE>AC1-013-B_046</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a11" TIME_SLOT_REF1="ts111" TIME_SLOT_REF2="ts113">
+                <ANNOTATION_VALUE>AC1-013-B_054</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a12" TIME_SLOT_REF1="ts126" TIME_SLOT_REF2="ts129">
+                <ANNOTATION_VALUE>AC1-013-B_062</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a13" TIME_SLOT_REF1="ts145" TIME_SLOT_REF2="ts146">
+                <ANNOTATION_VALUE>AC1-013-B_071</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@AC" PARTICIPANT="AC" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="de" PARENT_REF="ref@AC">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a14" ANNOTATION_REF="a1">
+                <ANNOTATION_VALUE>Savosavo language, conversational.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a15" ANNOTATION_REF="a2">
+                <ANNOTATION_VALUE>Passages between a number of people.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a16" ANNOTATION_REF="a3">
+                <ANNOTATION_VALUE>Now say it again.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a17" ANNOTATION_REF="a4">
+                <ANNOTATION_VALUE>XXX</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a18" ANNOTATION_REF="a5">
+                <ANNOTATION_VALUE>Now say it again.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a19" ANNOTATION_REF="a6">
+                <ANNOTATION_VALUE>XXX</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a20" ANNOTATION_REF="a7">
+                <ANNOTATION_VALUE>Say it again / oma</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a21" ANNOTATION_REF="a8">
+                <ANNOTATION_VALUE>Going fishing.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a22" ANNOTATION_REF="a9">
+                <ANNOTATION_VALUE>Text in Savosavo language, a second part of the lessons in xxx.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a23" ANNOTATION_REF="a10">
+                <ANNOTATION_VALUE>Number two b.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a24" ANNOTATION_REF="a11">
+                <ANNOTATION_VALUE>Three b.     </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a25" ANNOTATION_REF="a12">
+                <ANNOTATION_VALUE>Four b.      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a26" ANNOTATION_REF="a13">
+                <ANNOTATION_VALUE>Five b.      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S1" PARTICIPANT="S1" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a27" TIME_SLOT_REF1="ts5" TIME_SLOT_REF2="ts6">
+                <ANNOTATION_VALUE>AC1-013-B_003</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a28" TIME_SLOT_REF1="ts8" TIME_SLOT_REF2="ts10">
+                <ANNOTATION_VALUE>AC1-013-B_005</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a29" TIME_SLOT_REF1="ts17" TIME_SLOT_REF2="ts18">
+                <ANNOTATION_VALUE>AC1-013-B_008</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a30" TIME_SLOT_REF1="ts21" TIME_SLOT_REF2="ts22">
+                <ANNOTATION_VALUE>AC1-013-B_010</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a31" TIME_SLOT_REF1="ts27" TIME_SLOT_REF2="ts28">
+                <ANNOTATION_VALUE>AC1-013-B_013</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a32" TIME_SLOT_REF1="ts31" TIME_SLOT_REF2="ts33">
+                <ANNOTATION_VALUE>AC1-013-B_015</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a33" TIME_SLOT_REF1="ts37" TIME_SLOT_REF2="ts38">
+                <ANNOTATION_VALUE>AC1-013-B_017</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S1" PARTICIPANT="S1" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S1">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a34" ANNOTATION_REF="a27">
+                <ANNOTATION_VALUE>Alatu ba soɰae me na.              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a35" ANNOTATION_REF="a28">
+                <ANNOTATION_VALUE>Apoie me maɲiɰa lo nini na.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a36" ANNOTATION_REF="a29">
+                <ANNOTATION_VALUE>Avasame te ata bai.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a37" ANNOTATION_REF="a30">
+                <ANNOTATION_VALUE>Apoi pala tei kiame te ata bai?                                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a38" ANNOTATION_REF="a31">
+                <ANNOTATION_VALUE>Nova alea toneɰa na no maɲiɰa la.                      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a39" ANNOTATION_REF="a32">
+                <ANNOTATION_VALUE>Nova alea totoaɰa lavae (or maybe lamae) no na.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a40" ANNOTATION_REF="a33">
+                <ANNOTATION_VALUE>Nova pa ɰeza mola lavae no na.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S1" PARTICIPANT="S1" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S1">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a41" ANNOTATION_REF="a27">
+                <ANNOTATION_VALUE>Where did you come from?            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a42" ANNOTATION_REF="a28">
+                <ANNOTATION_VALUE>What is the name of your village?     </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a43" ANNOTATION_REF="a29">
+                <ANNOTATION_VALUE>When did you come here?                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a44" ANNOTATION_REF="a30">
+                <ANNOTATION_VALUE>Why did you come here? (lit. What did you want to do that you came here?)</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a45" ANNOTATION_REF="a31">
+                <ANNOTATION_VALUE>How many of your brothers are at your home?               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a46" ANNOTATION_REF="a32">
+                <ANNOTATION_VALUE>How many siblings do you have?                           </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a47" ANNOTATION_REF="a33">
+                <ANNOTATION_VALUE>Do you have your own canoe?                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S2" PARTICIPANT="S2" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a48" TIME_SLOT_REF1="ts7" TIME_SLOT_REF2="ts9">
+                <ANNOTATION_VALUE>AC1-013-B_004</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a49" TIME_SLOT_REF1="ts13" TIME_SLOT_REF2="ts14">
+                <ANNOTATION_VALUE>AC1-013-B_007</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a50" TIME_SLOT_REF1="ts19" TIME_SLOT_REF2="ts20">
+                <ANNOTATION_VALUE>AC1-013-B_009</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a51" TIME_SLOT_REF1="ts25" TIME_SLOT_REF2="ts26">
+                <ANNOTATION_VALUE>AC1-013-B_012</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a52" TIME_SLOT_REF1="ts29" TIME_SLOT_REF2="ts30">
+                <ANNOTATION_VALUE>AC1-013-B_014</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a53" TIME_SLOT_REF1="ts34" TIME_SLOT_REF2="ts36">
+                <ANNOTATION_VALUE>AC1-013-B_016</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a54" TIME_SLOT_REF1="ts41" TIME_SLOT_REF2="ts42">
+                <ANNOTATION_VALUE>AC1-013-B_019</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S2" PARTICIPANT="S2" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S2">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a55" ANNOTATION_REF="a48">
+                <ANNOTATION_VALUE>Savo latu ba soɰae ave na.                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a56" ANNOTATION_REF="a49">
+                <ANNOTATION_VALUE>Paɰopaɰoe ai maɲiɰa lo nini.        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a57" ANNOTATION_REF="a50">
+                <ANNOTATION_VALUE>Babotu lo eleɰo la.                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a58" ANNOTATION_REF="a51">
+                <ANNOTATION_VALUE>Jajari / jajari / ta / ba soɰae ave na.           </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a59" ANNOTATION_REF="a52">
+                <ANNOTATION_VALUE>Padeŋe / tone / tone.      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a60" ANNOTATION_REF="a53">
+                <ANNOTATION_VALUE>Eo; iɰia totoaɰa lavae aɲi na.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a61" ANNOTATION_REF="a54">
+                <ANNOTATION_VALUE>Oma.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S2" PARTICIPANT="S2" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S2">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a62" ANNOTATION_REF="a48">
+                <ANNOTATION_VALUE>We came from Savo.                         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a63" ANNOTATION_REF="a49">
+                <ANNOTATION_VALUE>Paghopagho is the name of my village.   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a64" ANNOTATION_REF="a50">
+                <ANNOTATION_VALUE>Last year.                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a65" ANNOTATION_REF="a51">
+                <ANNOTATION_VALUE>We came here to learn.                             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a66" ANNOTATION_REF="a52">
+                <ANNOTATION_VALUE>Only one brother.           </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a67" ANNOTATION_REF="a53">
+                <ANNOTATION_VALUE>Yes; I have three siblings.                             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a68" ANNOTATION_REF="a54">
+                <ANNOTATION_VALUE>No.          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S3" PARTICIPANT="S3" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a69" TIME_SLOT_REF1="ts45" TIME_SLOT_REF2="ts46">
+                <ANNOTATION_VALUE>AC1-013-B_021</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a70" TIME_SLOT_REF1="ts47" TIME_SLOT_REF2="ts48">
+                <ANNOTATION_VALUE>AC1-013-B_022</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a71" TIME_SLOT_REF1="ts49" TIME_SLOT_REF2="ts50">
+                <ANNOTATION_VALUE>AC1-013-B_023</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a72" TIME_SLOT_REF1="ts51" TIME_SLOT_REF2="ts52">
+                <ANNOTATION_VALUE>AC1-013-B_024</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a73" TIME_SLOT_REF1="ts53" TIME_SLOT_REF2="ts54">
+                <ANNOTATION_VALUE>AC1-013-B_025</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a74" TIME_SLOT_REF1="ts55" TIME_SLOT_REF2="ts56">
+                <ANNOTATION_VALUE>AC1-013-B_026</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a75" TIME_SLOT_REF1="ts57" TIME_SLOT_REF2="ts58">
+                <ANNOTATION_VALUE>AC1-013-B_027</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S3" PARTICIPANT="S3" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S3">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a76" ANNOTATION_REF="a69">
+                <ANNOTATION_VALUE>Musaŋa sua samuɰu lo buriŋa la / oma dulo maŋa la / kede palea maŋa la ave / agoza tei tuka, muzi la agoza tei tuka, / samuɰu lo buriŋa la ave / mamulu / zu lo / kajia / lau keve / ave / ulula sua kunala laui / kul- kul- kuliɰue lo na.                                                                                                                                                                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a77" ANNOTATION_REF="a70">
+                <ANNOTATION_VALUE>Pazale la.   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a78" ANNOTATION_REF="a71">
+                <ANNOTATION_VALUE>Oma kulo ɲaɲui.      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a79" ANNOTATION_REF="a72">
+                <ANNOTATION_VALUE>Kulo pazale la no bo sara kia / mola bo zalaliɰue na; ela maŋa la / xxx zu ela maŋa la / mane mola lau kuliɰue.                                                                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a80" ANNOTATION_REF="a73">
+                <ANNOTATION_VALUE>Tuka no bo mola erili kulo lovui / bo / pililiɰue na.                                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a81" ANNOTATION_REF="a74">
+                <ANNOTATION_VALUE>Mapae ela maŋa la lo ɰuba te ɲaɰosa; oma lo siɰi.                                      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a82" ANNOTATION_REF="a75">
+                <ANNOTATION_VALUE>Teve bo mola pilili / mane alea koi / ɰavi / kulo data boɰue na.                                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S3" PARTICIPANT="S3" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S3">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a83" ANNOTATION_REF="a69">
+                <ANNOTATION_VALUE>After dinner, not every day, only some days when we want to hunt, want to hunt in the night, after the meal we take our ? and the paddle and we take our fishing line and go seawards.                                                                                                                                                                                                                             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a84" ANNOTATION_REF="a70">
+                <ANNOTATION_VALUE>To the beach.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a85" ANNOTATION_REF="a71">
+                <ANNOTATION_VALUE>Not seawards the sea.  </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a86" ANNOTATION_REF="a72">
+                <ANNOTATION_VALUE>When you arrive seawards at the beach, (you) go look for a canoe; sometimes xxx but sometimes then (you) take a canoe seawards.                                                       </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a87" ANNOTATION_REF="a73">
+                <ANNOTATION_VALUE>Then you go push the canoe and put it seawards, go and turn it around.                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a88" ANNOTATION_REF="a74">
+                <ANNOTATION_VALUE>                                                                                            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a89" ANNOTATION_REF="a75">
+                <ANNOTATION_VALUE>Then we go and turn the canoe, then all enter, paddle and go seawards outside.                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S4" PARTICIPANT="S4" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a90" TIME_SLOT_REF1="ts59" TIME_SLOT_REF2="ts60">
+                <ANNOTATION_VALUE>AC1-013-B_028</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a91" TIME_SLOT_REF1="ts61" TIME_SLOT_REF2="ts62">
+                <ANNOTATION_VALUE>AC1-013-B_029</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a92" TIME_SLOT_REF1="ts63" TIME_SLOT_REF2="ts64">
+                <ANNOTATION_VALUE>AC1-013-B_030</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a93" TIME_SLOT_REF1="ts65" TIME_SLOT_REF2="ts66">
+                <ANNOTATION_VALUE>AC1-013-B_031</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a94" TIME_SLOT_REF1="ts67" TIME_SLOT_REF2="ts68">
+                <ANNOTATION_VALUE>AC1-013-B_032</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a95" TIME_SLOT_REF1="ts69" TIME_SLOT_REF2="ts70">
+                <ANNOTATION_VALUE>AC1-013-B_033</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a96" TIME_SLOT_REF1="ts71" TIME_SLOT_REF2="ts72">
+                <ANNOTATION_VALUE>AC1-013-B_034</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a97" TIME_SLOT_REF1="ts73" TIME_SLOT_REF2="ts74">
+                <ANNOTATION_VALUE>AC1-013-B_035</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a98" TIME_SLOT_REF1="ts75" TIME_SLOT_REF2="ts76">
+                <ANNOTATION_VALUE>AC1-013-B_036</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a99" TIME_SLOT_REF1="ts77" TIME_SLOT_REF2="ts78">
+                <ANNOTATION_VALUE>AC1-013-B_037</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S4" PARTICIPANT="S4" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S4">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a100" ANNOTATION_REF="a90">
+                <ANNOTATION_VALUE>Kulo data no bo tuka no / no bo sara tuka no alalia no ekati sobo tai, / tei tuka no / no pini te neu soloɰue na.                                                             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a101" ANNOTATION_REF="a91">
+                <ANNOTATION_VALUE>Tuka no nova kunala zu no ɰau / lau teno / lo kizu / lau teno lo / lo kenaɰuli lovu tuka no / varuru xxx lau neu soloɰu.                                                                                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a102" ANNOTATION_REF="a92">
+                <ANNOTATION_VALUE>No kunala neu solo tuka / no tauliɰu.                            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a103" ANNOTATION_REF="a93">
+                <ANNOTATION_VALUE>L- lo / mi lo ba / doko paili kia / no talili kia nova ulaɰue lo na.                                                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a104" ANNOTATION_REF="a94">
+                <ANNOTATION_VALUE>Ulula taɰa solo kia, / no pisuli zeno pale /                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a105" ANNOTATION_REF="a95">
+                <ANNOTATION_VALUE>No mi la- / no mi ula taɰa solo tuka no, / pisulia tuka no / pale tutu solo tuka no / no kizu lau ɰoi xxx toa neu soloɰue.                                                                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a106" ANNOTATION_REF="a96">
+                <ANNOTATION_VALUE>Tuka no ɰoi tauliɰu.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a107" ANNOTATION_REF="a97">
+                <ANNOTATION_VALUE>Lo mi lo ba doko paili kia no talili kia lo k- eoza kia no ulaɰue na.                                                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a108" ANNOTATION_REF="a98">
+                <ANNOTATION_VALUE>Tuka no pisuli pale tutu soloɰue lo.                            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a109" ANNOTATION_REF="a99">
+                <ANNOTATION_VALUE>xxx          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S4" PARTICIPANT="S4" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S4">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a110" ANNOTATION_REF="a90">
+                <ANNOTATION_VALUE>When you go seawards outside, when you arrive, you float around somewhere, if so you throw out your ? (hooks?)                                                                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a111" ANNOTATION_REF="a91">
+                <ANNOTATION_VALUE>Then when you take your fishing line and your fishing bamboo and you take the ? and you put the hook, you stare xxx take it and throw it down.                                                                            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a112" ANNOTATION_REF="a92">
+                <ANNOTATION_VALUE>When you throw the fishing line down you wait.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a113" ANNOTATION_REF="a93">
+                <ANNOTATION_VALUE>When the fish comes and does something ?, when you twist it, you pull out the fish.                                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a114" ANNOTATION_REF="a94">
+                <ANNOTATION_VALUE>When you throw up the fishing bamboo you take it off and you inside         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a115" ANNOTATION_REF="a95">
+                <ANNOTATION_VALUE>Your fish, / when you throw up and pull your fish, then you take it off, then you throw it in the basket, you take X and throw it down again.                                                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a116" ANNOTATION_REF="a96">
+                <ANNOTATION_VALUE>Then you wait again.           </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a117" ANNOTATION_REF="a97">
+                <ANNOTATION_VALUE>When the fish comes and does something ?, when you twist it, when it is hooked you pull the fish.                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a118" ANNOTATION_REF="a98">
+                <ANNOTATION_VALUE>Then you take it off and throw it in the basket.                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a119" ANNOTATION_REF="a99">
+                <ANNOTATION_VALUE>             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S5" PARTICIPANT="S5" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a120" TIME_SLOT_REF1="ts81" TIME_SLOT_REF2="ts82">
+                <ANNOTATION_VALUE>AC1-013-B_039</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a121" TIME_SLOT_REF1="ts83" TIME_SLOT_REF2="ts84">
+                <ANNOTATION_VALUE>AC1-013-B_040</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a122" TIME_SLOT_REF1="ts85" TIME_SLOT_REF2="ts86">
+                <ANNOTATION_VALUE>AC1-013-B_041</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a123" TIME_SLOT_REF1="ts87" TIME_SLOT_REF2="ts88">
+                <ANNOTATION_VALUE>AC1-013-B_042</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a124" TIME_SLOT_REF1="ts89" TIME_SLOT_REF2="ts90">
+                <ANNOTATION_VALUE>AC1-013-B_043</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a125" TIME_SLOT_REF1="ts93" TIME_SLOT_REF2="ts94">
+                <ANNOTATION_VALUE>AC1-013-B_045</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a126" TIME_SLOT_REF1="ts97" TIME_SLOT_REF2="ts98">
+                <ANNOTATION_VALUE>AC1-013-B_047</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a127" TIME_SLOT_REF1="ts99" TIME_SLOT_REF2="ts101">
+                <ANNOTATION_VALUE>AC1-013-B_048</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a128" TIME_SLOT_REF1="ts100" TIME_SLOT_REF2="ts103">
+                <ANNOTATION_VALUE>AC1-013-B_049</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a129" TIME_SLOT_REF1="ts102" TIME_SLOT_REF2="ts105">
+                <ANNOTATION_VALUE>AC1-013-B_050</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a130" TIME_SLOT_REF1="ts104" TIME_SLOT_REF2="ts106">
+                <ANNOTATION_VALUE>AC1-013-B_051</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a131" TIME_SLOT_REF1="ts107" TIME_SLOT_REF2="ts108">
+                <ANNOTATION_VALUE>AC1-013-B_052</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a132" TIME_SLOT_REF1="ts109" TIME_SLOT_REF2="ts110">
+                <ANNOTATION_VALUE>AC1-013-B_053</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a133" TIME_SLOT_REF1="ts112" TIME_SLOT_REF2="ts114">
+                <ANNOTATION_VALUE>AC1-013-B_055</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a134" TIME_SLOT_REF1="ts115" TIME_SLOT_REF2="ts116">
+                <ANNOTATION_VALUE>AC1-013-B_056</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a135" TIME_SLOT_REF1="ts117" TIME_SLOT_REF2="ts118">
+                <ANNOTATION_VALUE>AC1-013-B_057</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a136" TIME_SLOT_REF1="ts119" TIME_SLOT_REF2="ts120">
+                <ANNOTATION_VALUE>AC1-013-B_058</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a137" TIME_SLOT_REF1="ts121" TIME_SLOT_REF2="ts122">
+                <ANNOTATION_VALUE>AC1-013-B_059</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a138" TIME_SLOT_REF1="ts123" TIME_SLOT_REF2="ts124">
+                <ANNOTATION_VALUE>AC1-013-B_060</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a139" TIME_SLOT_REF1="ts125" TIME_SLOT_REF2="ts127">
+                <ANNOTATION_VALUE>AC1-013-B_061</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a140" TIME_SLOT_REF1="ts128" TIME_SLOT_REF2="ts130">
+                <ANNOTATION_VALUE>AC1-013-B_063</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a141" TIME_SLOT_REF1="ts131" TIME_SLOT_REF2="ts132">
+                <ANNOTATION_VALUE>AC1-013-B_064</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a142" TIME_SLOT_REF1="ts135" TIME_SLOT_REF2="ts137">
+                <ANNOTATION_VALUE>AC1-013-B_066</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a143" TIME_SLOT_REF1="ts136" TIME_SLOT_REF2="ts138">
+                <ANNOTATION_VALUE>AC1-013-B_067</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a144" TIME_SLOT_REF1="ts139" TIME_SLOT_REF2="ts140">
+                <ANNOTATION_VALUE>AC1-013-B_068</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a145" TIME_SLOT_REF1="ts141" TIME_SLOT_REF2="ts142">
+                <ANNOTATION_VALUE>AC1-013-B_069</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a146" TIME_SLOT_REF1="ts143" TIME_SLOT_REF2="ts144">
+                <ANNOTATION_VALUE>AC1-013-B_070</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a147" TIME_SLOT_REF1="ts147" TIME_SLOT_REF2="ts149">
+                <ANNOTATION_VALUE>AC1-013-B_072</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a148" TIME_SLOT_REF1="ts148" TIME_SLOT_REF2="ts151">
+                <ANNOTATION_VALUE>AC1-013-B_073</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a149" TIME_SLOT_REF1="ts150" TIME_SLOT_REF2="ts153">
+                <ANNOTATION_VALUE>AC1-013-B_074</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a150" TIME_SLOT_REF1="ts152" TIME_SLOT_REF2="ts155">
+                <ANNOTATION_VALUE>AC1-013-B_075</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a151" TIME_SLOT_REF1="ts154" TIME_SLOT_REF2="ts156">
+                <ANNOTATION_VALUE>AC1-013-B_076</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S5" PARTICIPANT="S5" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S5">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a152" ANNOTATION_REF="a120">
+                <ANNOTATION_VALUE>Telo ota gagelali telo / gola / samu lelesaŋili.                                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a153" ANNOTATION_REF="a121">
+                <ANNOTATION_VALUE>Teze sa- / teze savuli ai polo laveli.                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a154" ANNOTATION_REF="a122">
+                <ANNOTATION_VALUE>Teɲe lali laveli.                      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a155" ANNOTATION_REF="a123">
+                <ANNOTATION_VALUE>Teve tataɰolia teve louzu.                                              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a156" ANNOTATION_REF="a124">
+                <ANNOTATION_VALUE>Serau- / sereɰaɰu lavae.          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a157" ANNOTATION_REF="a125">
+                <ANNOTATION_VALUE>Ailo maŋa laɲe oma ai / bani gagelali tai.                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a158" ANNOTATION_REF="a126">
+                <ANNOTATION_VALUE>Muzis- / Muzi la lo / misu na gougouzu.                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a159" ANNOTATION_REF="a127">
+                <ANNOTATION_VALUE>Te ai xxx misu ɰuroli.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a160" ANNOTATION_REF="a128">
+                <ANNOTATION_VALUE>xxx misu na kabu.        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a161" ANNOTATION_REF="a129">
+                <ANNOTATION_VALUE>Polo ruɰuli.             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a162" ANNOTATION_REF="a130">
+                <ANNOTATION_VALUE>Te lo ai misu na ŋai toroŋo polo lovali.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a163" ANNOTATION_REF="a131">
+                <ANNOTATION_VALUE>xxx laveli.            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a164" ANNOTATION_REF="a132">
+                <ANNOTATION_VALUE>xxx serali.            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a165" ANNOTATION_REF="a133">
+                <ANNOTATION_VALUE>Ai lau sua vono (should maybe voɲu) memere ŋai toroŋo.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a166" ANNOTATION_REF="a134">
+                <ANNOTATION_VALUE>Teɲe maɲiɰa la lo (equals lau) bazu.             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a167" ANNOTATION_REF="a135">
+                <ANNOTATION_VALUE>Teve ota pitili telo toɰo palei.                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a168" ANNOTATION_REF="a136">
+                <ANNOTATION_VALUE>Ailo ivaɰu lave lali.                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a169" ANNOTATION_REF="a137">
+                <ANNOTATION_VALUE>Telo voɲu na avei.               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a170" ANNOTATION_REF="a138">
+                <ANNOTATION_VALUE>Teɲe lo voɲu lo xxx lovu serali.                            </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a171" ANNOTATION_REF="a139">
+                <ANNOTATION_VALUE>Lo maŋive louzu.                      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a172" ANNOTATION_REF="a140">
+                <ANNOTATION_VALUE>Pa katoɲe levozu.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a173" ANNOTATION_REF="a141">
+                <ANNOTATION_VALUE>Teɲe lo kurao levozu.                       </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a174" ANNOTATION_REF="a142">
+                <ANNOTATION_VALUE>Buriŋa la lo kato na ruruzu.                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a175" ANNOTATION_REF="a143">
+                <ANNOTATION_VALUE>Teɲe lo kurao lo mijila paparili.               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a176" ANNOTATION_REF="a144">
+                <ANNOTATION_VALUE>Teɲe lo ruru sua kato pale lovuzu.                           </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a177" ANNOTATION_REF="a145">
+                <ANNOTATION_VALUE>Te / teɲe lo kurao s- lo xxx lo (maybe equals lau) petali.   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a178" ANNOTATION_REF="a146">
+                <ANNOTATION_VALUE>Omalo ɲega lo evu tai t- keɲe samu seserei.                                                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a179" ANNOTATION_REF="a147">
+                <ANNOTATION_VALUE>Supuroŋo ɲeroɰa pade duru la s- / s- / pazuzu soɰa.                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a180" ANNOTATION_REF="a148">
+                <ANNOTATION_VALUE>Teze lo mapaɰa na bai teze lo duru goreli.                                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a181" ANNOTATION_REF="a149">
+                <ANNOTATION_VALUE>Teze ko ɲero ko s- si lauzu.                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a182" ANNOTATION_REF="a150">
+                <ANNOTATION_VALUE>xxx louɰu matali.               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a183" ANNOTATION_REF="a151">
+                <ANNOTATION_VALUE>Aɲi ɰoi lova / ɲe- / ko ɲero ko si matali.                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S5" PARTICIPANT="S5" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S5">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a184" ANNOTATION_REF="a120">
+                <ANNOTATION_VALUE>Then he opened it there and he spoiled the raw food.                                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a185" ANNOTATION_REF="a121">
+                <ANNOTATION_VALUE>Then they said to kill my pig.                                       </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a186" ANNOTATION_REF="a122">
+                <ANNOTATION_VALUE>Then I killed it.                       </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a187" ANNOTATION_REF="a123">
+                <ANNOTATION_VALUE>Then we baked it in the oven and ate it.                                 </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a188" ANNOTATION_REF="a124">
+                <ANNOTATION_VALUE>It was very fat.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a189" ANNOTATION_REF="a125">
+                <ANNOTATION_VALUE>This time I won&apos;t open the fence.                                     </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a190" ANNOTATION_REF="a126">
+                <ANNOTATION_VALUE>At night the dog barked.                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a191" ANNOTATION_REF="a127">
+                <ANNOTATION_VALUE>Then my xxx dog chased it.      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a192" ANNOTATION_REF="a128">
+                <ANNOTATION_VALUE>xxx dog ran away.        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a193" ANNOTATION_REF="a129">
+                <ANNOTATION_VALUE>Ran in the bush for a pig.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a194" ANNOTATION_REF="a130">
+                <ANNOTATION_VALUE>Then my dog bit a very big pig.                               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a195" ANNOTATION_REF="a131">
+                <ANNOTATION_VALUE>xxx killed it.         </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a196" ANNOTATION_REF="a132">
+                <ANNOTATION_VALUE>xxx properly.          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a197" ANNOTATION_REF="a133">
+                <ANNOTATION_VALUE>The turtle I took was a little bit very big.             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a198" ANNOTATION_REF="a134">
+                <ANNOTATION_VALUE>Then I took it home.                                </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a199" ANNOTATION_REF="a135">
+                <ANNOTATION_VALUE>Then we tied it there and it was still alive.              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a200" ANNOTATION_REF="a136">
+                <ANNOTATION_VALUE>This day we hit it.                      </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a201" ANNOTATION_REF="a137">
+                <ANNOTATION_VALUE>Then the turtle died.             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a202" ANNOTATION_REF="a138">
+                <ANNOTATION_VALUE>Then I put the turtle&apos;s xxx aside properly.                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a203" ANNOTATION_REF="a139">
+                <ANNOTATION_VALUE>We ate its edible parts.               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a204" ANNOTATION_REF="a140">
+                <ANNOTATION_VALUE>I burned a stone.                     </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a205" ANNOTATION_REF="a141">
+                <ANNOTATION_VALUE>Then I burned the pidgeon.                   </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a206" ANNOTATION_REF="a142">
+                <ANNOTATION_VALUE>Afterwards the stone was glowing.             </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a207" ANNOTATION_REF="a143">
+                <ANNOTATION_VALUE>Then I cut the body of the pidgeon (open).       </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a208" ANNOTATION_REF="a144">
+                <ANNOTATION_VALUE>Then I put the glowing stone inside.                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a209" ANNOTATION_REF="a145">
+                <ANNOTATION_VALUE>Then I took and wrapped the kurao xxx.                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a210" ANNOTATION_REF="a146">
+                <ANNOTATION_VALUE>It is not long before it will be done and I eat properly.                                        </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a211" ANNOTATION_REF="a147">
+                <ANNOTATION_VALUE>A lot of megapode birds lay eggs in one hole.                                  </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a212" ANNOTATION_REF="a148">
+                <ANNOTATION_VALUE>Then the people came and they dug the hole.                                          </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a213" ANNOTATION_REF="a149">
+                <ANNOTATION_VALUE>Then they took the eggs of the megapode.                    </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a214" ANNOTATION_REF="a150">
+                <ANNOTATION_VALUE>xxx like to eat it.              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a215" ANNOTATION_REF="a151">
+                <ANNOTATION_VALUE>I also like the megapode&apos;s egg.                                  </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S6" PARTICIPANT="S6" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a216" TIME_SLOT_REF1="ts91" TIME_SLOT_REF2="ts92">
+                <ANNOTATION_VALUE>AC1-013-B_044</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S6" PARTICIPANT="S6" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S6">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a217" ANNOTATION_REF="a216">
+                <ANNOTATION_VALUE>Ailo maŋa la omaɲe xxx              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S6" PARTICIPANT="S6" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S6">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a218" ANNOTATION_REF="a216">
+                <ANNOTATION_VALUE>This time I don&apos;t...                  </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ref@S7" PARTICIPANT="S7" LINGUISTIC_TYPE_REF="ref" DEFAULT_LOCALE="us">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a219" TIME_SLOT_REF1="ts133" TIME_SLOT_REF2="ts134">
+                <ANNOTATION_VALUE>AC1-013-B_065</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="st@S7" PARTICIPANT="S7" LINGUISTIC_TYPE_REF="st" DEFAULT_LOCALE="ipa-96" PARENT_REF="ref@S7">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a220" ANNOTATION_REF="a219">
+                <ANNOTATION_VALUE>Buriŋa la lo kato na rurui               </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER TIER_ID="ft@S7" PARTICIPANT="S7" LINGUISTIC_TYPE_REF="ft" DEFAULT_LOCALE="us" PARENT_REF="ref@S7">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a221" ANNOTATION_REF="a219">
+                <ANNOTATION_VALUE>Afterwards the stone glowed.              </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="ref" TIME_ALIGNABLE="true" GRAPHIC_REFERENCES="false"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="st" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="sa" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Subdivision"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="ft" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="dt" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="mb" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Subdivision"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="gl" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="wc" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LINGUISTIC_TYPE LINGUISTIC_TYPE_ID="cm" TIME_ALIGNABLE="false" GRAPHIC_REFERENCES="false" CONSTRAINTS="Symbolic_Association"/>
+    <LOCALE LANGUAGE_CODE="us" COUNTRY_CODE="EN"/>
+    <LOCALE LANGUAGE_CODE="de" COUNTRY_CODE="AT"/>
+    <LOCALE LANGUAGE_CODE="ipa-96" VARIANT="rtr"/>
+    <CONSTRAINT STEREOTYPE="Time_Subdivision" DESCRIPTION="Time subdivision of parent annotation&apos;s time interval, no time gaps allowed within this interval"/>
+    <CONSTRAINT STEREOTYPE="Symbolic_Subdivision" DESCRIPTION="Symbolic subdivision of a parent annotation. Annotations refering to the same parent are ordered"/>
+    <CONSTRAINT STEREOTYPE="Symbolic_Association" DESCRIPTION="1-1 association with a parent annotation"/>
+    <CONSTRAINT STEREOTYPE="Included_In" DESCRIPTION="Time alignable annotations within the parent annotation&apos;s time interval, gaps are allowed"/>
+</ANNOTATION_DOCUMENT>

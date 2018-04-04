@@ -24,7 +24,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
+        test: /\.(html|xml|eaf|trs|ixt|flextext)$/,
         loader: 'raw-loader'
       },
       {
