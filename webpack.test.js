@@ -5,7 +5,8 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   mode: 'development',
-  plugins: []
+  plugins: [],
+  watch: true
 });
