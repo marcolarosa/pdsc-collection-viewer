@@ -30,6 +30,7 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   vm.toggleItemInformation = toggleItemInformation;
 
   function init() {
+    vm.showOptions = false;
     onSuccessHandler = $transitions.onSuccess({}, function(transition) {
       if (transition.$to().name === 'main') {
         loadItem();
@@ -64,13 +65,14 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
       !isEmpty(vm.itemData) &&
       $state.current.name === 'main'
     ) {
-      if (!isEmpty(vm.itemData.images)) {
-        $state.go('main.images');
-      } else if (!isEmpty(vm.itemData.media)) {
-        $state.go('main.media');
-      } else {
-        $state.go('main.documents');
-      }
+      $state.go('main.files');
+      // if (!isEmpty(vm.itemData.images)) {
+      //   $state.go('main.images');
+      // } else if (!isEmpty(vm.itemData.media)) {
+      //   $state.go('main.media');
+      // } else {
+      //   $state.go('main.documents');
+      // }
     }
   }
 }

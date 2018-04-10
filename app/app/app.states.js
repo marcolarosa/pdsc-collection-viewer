@@ -19,6 +19,11 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     component: 'pdscCollectionViewerMainComponent'
   });
 
+  $stateProvider.state('main.files', {
+    url: '/files',
+    component: 'pdscFileViewerComponent'
+  });
+
   $stateProvider.state('main.images', {
     url: '/images',
     component: 'pdscImageViewerComponent'

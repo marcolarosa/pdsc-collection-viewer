@@ -1,0 +1,28 @@
+.file-viewer-element {
+  padding-left: 4px;
+}
+
+.file-viewer-link-styling a {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.file-viewer-link-styling a:link,
+.file-viewer-link-styling a:visited {
+  text-decoration: none;
+}
+
+.file-viewer-link-styling a:hover,
+.file-viewer-link-styling a:active {
+  text-decoration: underline;
+}
+
+.file-viewer-link-styling a:link,
+.file-viewer-link-styling a:visited {
+  color: #607d8b;
+}
+
+.file-viewer-media-separator {
+  height: 25px;
+}

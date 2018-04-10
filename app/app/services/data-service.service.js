@@ -72,7 +72,7 @@ function DataService(
       !isEmpty(ds.data[collectionId][itemId])
     ) {
       const data = ds.data[collectionId][itemId];
-      return Promise.resolve(data);
+      return Promise.resolve(Object.assign({}, data));
     }
 
     ds.loading[collectionId][itemId] = true;
@@ -105,7 +105,7 @@ function DataService(
       $rootScope.$broadcast('item data loaded');
 
       // and return it to the caller which is expecting a promise
-      return resp.data.data;
+      return Object.assign({}, resp.data.data);
     }
 
     function handleError(err) {

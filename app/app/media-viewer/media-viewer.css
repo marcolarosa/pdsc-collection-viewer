@@ -35,10 +35,36 @@
 .media-viewer-transcription-panel {
   border: 1px solid #ffd54f;
   border-radius: 2px;
-  max-height: 500px;
+  max-height: 600px;
   overflow: auto;
   position: relative;
 }
+@media (min-height: 500px) {
+  .media-viewer-transcription-panel {
+    max-height: 200px;
+  }
+}
+@media (min-height: 600px) {
+  .media-viewer-transcription-panel {
+    max-height: 250px;
+  }
+}
+@media (min-height: 700px) {
+  .media-viewer-transcription-panel {
+    max-height: 300px;
+  }
+}
+@media (min-height: 800px) {
+  .media-viewer-transcription-panel {
+    max-height: 400px;
+  }
+}
+@media (min-height: 1000px) {
+  .media-viewer-transcription-panel {
+    max-height: 600px;
+  }
+}
+
 .media-viewer-transcription-panel-width {
   max-width: 280px;
   width: 280px;

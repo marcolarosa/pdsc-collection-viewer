@@ -6,6 +6,7 @@ require('./app.states');
 require('./main/module');
 require('./services/module');
 require('./filters/module');
+require('./file-viewer/module');
 require('./image-viewer/module');
 require('./document-viewer/module');
 require('./transcription-viewer/module');
@@ -28,6 +29,7 @@ angular
     'pdsc.main',
     'pdsc.services',
     'pdsc.filters',
+    'pdsc.fileViewer',
     'pdsc.imageViewer',
     'pdsc.documentViewer',
     'pdsc.transcriptionViewer',

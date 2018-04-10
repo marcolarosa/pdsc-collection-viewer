@@ -1,62 +1,73 @@
 <div flex layout="column">
     <md-toolbar class="toolbar">
-        <div layout="row" ng-hide="vm.loadingData">
-            <!-- <md-button class="small-font" ng-click="vm.toggleItemInformation()" blur-on-click>
-                <i class="fa fa-info-circle fa-lg"></i> View Item Information
-            </md-button> -->
-            <md-button
-                class="small-font"
-                ng-href="{{vm.itemData.collectionLink}}"
-                target="_blank">
-                    <i class="fa fa-external-link fa-lg"></i> View Collection in Catalog
-                    <md-tooltip>View Collection in Catalog</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ng-href="{{vm.itemData.identifier[1]}}"
-                target="_blank">
-                    <i class="fa fa-external-link fa-lg"></i> View Item in Catalog
-                    <md-tooltip>View Item in Catalog</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ui-sref="main.images"
-                blur-on-click
-                ng-if="vm.itemData.images.length">
-                    <i class="fa fa-file-image-o fa-lg"></i> Images
-                    <md-tooltip>View Images</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ui-sref="main.media"
-                blur-on-click
-                ng-if="vm.itemData.media.length">
-                    <i class="fa fa-file-audio-o fa-lg"></i> Multimedia
-                    <md-tooltip>View Multimedia</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ui-sref="main.documents"
-                blur-on-click
-                ng-if="vm.itemData.documents.length">
-                    <i class="fa fa-file-pdf-o fa-lg"></i> Documents
-                    <md-tooltip>View Documents</md-tooltip>
-            </md-button>
-            <md-button
-                class="small-font"
-                ui-sref="main.transcriptions"
-                blur-on-click
-                ng-if="vm.itemData.transcriptions.length">
-                    <i class="fa fa-file-code-o fa-lg"></i> Transcriptions
-                    <md-tooltip>View Transcriptions</md-tooltip>
-            </md-button>
-
-            <!-- <md-button
-                class="small-font"
-                ng-href="{{vm.levelup}}"
-                ng-if="vm.levelup">
-                    <i class="fa fa-level-up fa-lg"></i> View Item
-            </md-button> -->
+        <div
+            layout="row"
+            layout-xs="column"
+            layout-sm="column"
+            layout-padding-xs
+            layout-padding-sm
+            ng-hide="vm.loadingData">
+            <span
+                class="hide-md hide-lg hide-xl"
+                ng-click="vm.showOptions = !vm.showOptions">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </span>
+            <div
+                ng-class="{'hide-sm': !vm.showOptions, 'hide-xs': !vm.showOptions}">
+                <md-button
+                    class="small-font"
+                    ng-href="{{vm.itemData.collectionLink}}"
+                    target="_blank">
+                        <i class="fa fa-external-link fa-lg"></i> Collection
+                        <md-tooltip>View Collection in Catalog</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ng-href="{{vm.itemData.identifier[1]}}"
+                    target="_blank">
+                        <i class="fa fa-external-link fa-lg"></i> Item
+                        <md-tooltip>View Item in Catalog</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ui-sref="main.files"
+                    blur-on-click>
+                        <i class="fa fa-file-o fa-lg"></i> File Browser
+                        <md-tooltip>View Files</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ui-sref="main.images"
+                    blur-on-click
+                    ng-if="vm.itemData.images.length">
+                        <i class="fa fa-file-image-o fa-lg"></i> Images
+                        <md-tooltip>View Images</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ui-sref="main.media"
+                    blur-on-click
+                    ng-if="vm.itemData.media.length">
+                        <i class="fa fa-file-audio-o fa-lg"></i> Audio / Video
+                        <md-tooltip>View Audio / Video</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ui-sref="main.documents"
+                    blur-on-click
+                    ng-if="vm.itemData.documents.length">
+                        <i class="fa fa-file-pdf-o fa-lg"></i> Documents
+                        <md-tooltip>View Documents</md-tooltip>
+                </md-button>
+                <md-button
+                    class="small-font"
+                    ui-sref="main.transcriptions"
+                    blur-on-click
+                    ng-if="vm.itemData.transcriptions.length">
+                        <i class="fa fa-file-code-o fa-lg"></i> Transcriptions
+                        <md-tooltip>View Transcriptions</md-tooltip>
+                </md-button>
+            </div>
         </div>
     </md-toolbar>
     <div layout="row" layout-align="center center" store-height element="headline">
