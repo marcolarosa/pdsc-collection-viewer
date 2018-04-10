@@ -2,16 +2,16 @@
     <md-toolbar class="toolbar">
         <div
             layout="row"
-            layout-xs="column"
-            layout-sm="column"
             layout-padding-xs
             layout-padding-sm
             ng-hide="vm.loadingData">
-            <span
-                class="hide-md hide-lg hide-xl"
-                ng-click="vm.showOptions = !vm.showOptions">
+            <md-button
+                aria-label="show menu options"
+                class="hide-md hide-lg hide-xl small-button"
+                ng-click="vm.showOptions = !vm.showOptions"
+                blur-on-click>
                 <i class="fa fa-bars" aria-hidden="true"></i>
-            </span>
+            </md-button>
             <div
                 ng-class="{'hide-sm': !vm.showOptions, 'hide-xs': !vm.showOptions}">
                 <md-button

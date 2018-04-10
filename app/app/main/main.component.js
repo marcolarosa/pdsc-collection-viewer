@@ -20,7 +20,7 @@ Controller.$inject = [
 function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   var vm = this;
 
-  var onSuccessHandler;
+  var broadcastListener;
 
   vm.showItemInformation = false;
   vm.levelUp = false;
@@ -30,24 +30,23 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   vm.toggleItemInformation = toggleItemInformation;
 
   function init() {
+    vm.loadingData = true;
     vm.showOptions = false;
-    onSuccessHandler = $transitions.onSuccess({}, function(transition) {
-      if (transition.$to().name === 'main') {
-        loadItem();
-      }
-    });
+    broadcastListener = $rootScope.$on('item data loaded', loadItem);
     loadItem();
   }
 
   function destroy() {
-    onSuccessHandler();
+    broadcastListener();
   }
 
   function loadItem() {
     vm.collectionId = $state.params.collectionId;
     vm.itemId = $state.params.itemId;
-    vm.loadingData = true;
     return dataService.getItem(vm.collectionId, vm.itemId).then(resp => {
+      if (isEmpty(resp)) {
+        return;
+      }
       vm.itemData = resp;
       vm.loadingData = false;
       loadViewer();
@@ -60,11 +59,7 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
 
   function loadViewer() {
     // load a viewer if we're at the item root
-    if (
-      !isUndefined(vm.itemData) &&
-      !isEmpty(vm.itemData) &&
-      $state.current.name === 'main'
-    ) {
+    if ($state.current.name === 'main') {
       $state.go('main.files');
       // if (!isEmpty(vm.itemData.images)) {
       //   $state.go('main.images');
