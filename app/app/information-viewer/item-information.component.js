@@ -4,7 +4,6 @@ module.exports = {
   template: require('./item-information.component.html'),
   bindings: {
     itemData: '<'
-    // close: '&'
   },
   controller: Controller,
   controllerAs: 'vm'

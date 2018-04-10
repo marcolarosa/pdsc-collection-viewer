@@ -1,6 +1,4 @@
-<div
-    layout-gt-sm="row"
-    layout="column">
+<div layout="column">
     <div layout-gt-sm="column" layout-align="top center" flex-gt-sm="40">
         <span ng-if="!vm.loadingData">
             <div layout="row" layout-align="center center" ng-if="!vm.disableThumbnailView">
@@ -65,12 +63,6 @@
                             <i class="fa fa-expand fa-lg"></i>
                             <md-tooltip>Toggle Fullscreen and Zoom</md-tooltip>
                     </md-button>
-            </div>
-            <div layout="row" hide show-gt-sm layout-padding>
-                <pdsc-item-information-component
-                    item-data="vm.item"
-                    close="vm.toggleItemInformation()">
-                </pdsc-item-information-component>
             </div>
         </span>
     </div>

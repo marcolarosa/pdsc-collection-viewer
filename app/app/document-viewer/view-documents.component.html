@@ -98,12 +98,6 @@
                         Download {{vm.item.documents[vm.config.document] | extension}}
                 </md-button>
             </div>
-            <div layout="row" hide show-gt-sm layout-padding>
-                <pdsc-item-information-component
-                    item-data="vm.item"
-                    close="vm.toggleItemInformation()">
-                </pdsc-item-information-component>
-            </div>
         </span>
     </div>
     <div layout="row" layout-align="center center" flex ng-if="vm.showError">

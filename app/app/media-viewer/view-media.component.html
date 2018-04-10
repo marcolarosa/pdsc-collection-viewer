@@ -22,31 +22,6 @@
                 <md-tooltip>Next Item</md-tooltip>
         </md-button>
         <div flex="5" hide-sm hide-xs></div>
-        <md-button
-            class="small-button"
-            aria-label="show item information"
-            ng-click="vm.config.showItemInformation = !vm.config.showItemInformation"
-            blur-on-click
-            hide-sm
-            hide-xs>
-                <span ng-show="vm.config.showItemInformation">Hide Item Information</span>
-                <span ng-show="!vm.config.showItemInformation">Show Item Information</span>
-                <md-tooltip>Show Item Information</md-tooltip>
-        </md-button>
-    </div>
-    <div layout="row" layout-align="center center" show-sm show-xs hide-gt-sm>
-        <md-button
-            class="small-button"
-            aria-label="show item information"
-            ng-click="vm.config.showItemInformation = !vm.config.showItemInformation"
-            blur-on-click>
-                <span ng-show="vm.config.showItemInformation">Hide Item Information</span>
-                <span ng-show="!vm.config.showItemInformation">Show Item Information</span>
-                <md-tooltip>Show Item Information</md-tooltip>
-        </md-button>
-    </div>
-    <div layout="row" ng-if="vm.config.showItemInformation">
-        <pdsc-item-information-component item-data="vm.item"></pdsc-item-information-component>
     </div>
     <div layout="row" layout-align="center start" flex ng-hide="vm.config.showItemInformation">
         <pdsc-audio-player-component
