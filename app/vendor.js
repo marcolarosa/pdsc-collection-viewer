@@ -22,7 +22,7 @@ require('../node_modules/ImageViewer/imageviewer.js');
 require('highlight.js');
 
 import pdflib from 'pdfjs-dist';
-pdflib.PDFJS.workerSrc = 'lib/pdf.worker.js';
+pdflib.PDFJS.workerSrc = 'lib/pdf.worker.min.js';
 
 const Clipboard = require('clipboard');
 const clipboard = new Clipboard('button');

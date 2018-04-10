@@ -53,16 +53,27 @@
     class="media-viewer-transcription-panel media-viewer-transcription-panel-width"
     ng-if="vm.showTranscription"
     transcription-ready>
-    <div ng-repeat="(k, v) in vm.selectedTranscription" ng-if="v.value || v.referenceValue" layout="column" class="md-margin">
+    <div
+        layout="column" class="md-margin"
+        ng-repeat="(k, annotation) in vm.selectedTranscription" track by $index>
         <div id="{{k}}"></div>
         <div layout="row">
-            <div>
+            <div ng-if="vm.selectedType === 'eaf'">
                 <md-button class="small-button" ng-click="vm.play({
-                    'start': vm.selectedTranscription[k],
-                    'end': vm.selectedTranscription[k+1]
+                    'start': annotation.time.begin,
+                    'end': annotation.time.end
                 })">
                     <i class="fa fa-play fa-sm"></i>
-                    Play ({{v.time | minutesSeconds}})
+                    Play ({{annotation.time.begin | minutesSeconds}})
+                </md-button>
+            </div>
+            <div ng-if="vm.selectedType === 'trs'">
+                <md-button class="small-button" ng-click="vm.play({
+                    'start': vm.selectedTranscription[k].time,
+                    'end': vm.selectedTranscription[k+1].time
+                })">
+                    <i class="fa fa-play fa-sm"></i>
+                    Play ({{annotation.time | minutesSeconds}})
                 </md-button>
             </div>
             <div flex></div>
@@ -74,10 +85,22 @@
                 </pdsc-fragment-citation>
             </div>
         </div>
-        <div layout="row" layout-padding ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
-            {{v.value}}
-            <br/>
-            {{v.referenceValue}}
+        <div ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
+            <div ng-if="vm.selectedType === 'eaf'">
+                <div layout="column" layout-padding>
+                    {{annotation.tierId}}
+                    <div ng-repeat="value in annotation.value" track by $index>
+                        {{value.text}}
+                    </div>
+                </div>
+            </div>
+            <div ng-if="vm.selectedType === 'trs'">
+                <div layout="row" layout-padding>
+                    {{annotation.value}}
+                    <br/>
+                    {{annotation.referenceValue}}
+                </div>
+            </div>
         </div>
         <md-divider ng-if="$index !== vm.selectedIndex"></md-divider>
     </div>
@@ -92,8 +115,8 @@
         <div layout="row">
             <div>
                 <md-button class="small-button" ng-click="vm.play({
-                    'start': vm.selectedTranscription[k],
-                    'end': vm.selectedTranscription[k+1]
+                    'start': vm.selectedTranscription[k].time,
+                    'end': vm.selectedTranscription[k+1].time
                 })">
                     <i class="fa fa-play fa-sm"></i> Play ({{sentence.time | minutesSeconds}})
                 </md-button>

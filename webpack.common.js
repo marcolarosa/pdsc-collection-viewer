@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -12,14 +13,26 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[hash].[name].bundle.js'
   },
   target: 'web',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Nabu Collection Viewer',
       template: './app/index.html'
-    })
+    }),
+    new CleanWebpackPlugin(['dist/*'], {
+      watch: true
+    }),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: './node_modules/pdfjs-dist/build/pdf.worker.min.js',
+          to: './lib/'
+        }
+      ],
+      {}
+    )
   ],
   module: {
     rules: [

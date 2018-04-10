@@ -31,9 +31,8 @@ function Controller($state, $timeout, $location, dataService) {
   function playFragment() {
     const start = dataService.playFrom.start;
     const end = dataService.playFrom.end;
-    // seek to start.time
     var audioElement = document.getElementById(vm.element.name);
-    audioElement.currentTime = start.time;
+    audioElement.currentTime = start;
 
     // hit play
     audioElement.play();
@@ -41,7 +40,7 @@ function Controller($state, $timeout, $location, dataService) {
     // then set a timeout to pause at end.time
     $timeout(function() {
       audioElement.pause();
-    }, (end.time - start.time) * 1000);
+    }, (end - start) * 1000);
   }
 
   // function loadItem() {

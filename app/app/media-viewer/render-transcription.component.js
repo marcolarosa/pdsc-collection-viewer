@@ -142,8 +142,11 @@ function Controller(
   }
 
   function scrollTranscription() {
-    var transformed = _.map(vm.selectedTranscription, function(t) {
-      if (t.time > dataService.mediaElementTime) {
+    var transformed = vm.selectedTranscription.map(t => {
+      if (
+        t.time > dataService.mediaElementTime ||
+        t.time.begin > dataService.mediaElementTime
+      ) {
         return 1;
       } else {
         return 0;
