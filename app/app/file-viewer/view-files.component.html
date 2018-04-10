@@ -13,7 +13,9 @@
         Images ({{vm.item.images.length}})
         <div>
             <div ng-repeat="image in vm.item.images" track by $index>
-                <span class="file-viewer-element">|</span>
+                <span class="">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
                 <a
                     class="file-viewer-link-styling"
                     ui-sref="main.images.instance({imageId: image})">{{image}}</a>
@@ -30,7 +32,9 @@
             <div>
                 <div ng-repeat="item in vm.item.media" track by $index>
                     <span ng-if="item.type === 'audio'">
-                        <span class="file-viewer-element">|</span>
+                        <span class="">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
                         <a ui-sref="main.media.instance({mediaId: item.name})">{{item.name}}</a>
                     </span>
                 </div>
@@ -45,7 +49,9 @@
             <div>
                 <div ng-repeat="item in vm.item.media" track by $index>
                     <span ng-if="item.type === 'video'">
-                        <span class="file-viewer-element">|</span>
+                        <span class="">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
                         <a ui-sref="main.media.instance({mediaId: item.name})">{{item.name}}</a>
                     </span>
                 </div>
@@ -55,30 +61,35 @@
             </div>
         </div>
     </div>
-
-    <div>
-        Documents ({{vm.item.documents.length}})
+    <div class="column">
         <div>
-            <div ng-repeat="item in vm.item.documents" track by $index>
-                <span class="file-viewer-element">|</span>
-                <a ui-sref="main.documents.instance({documentId: item.name})">{{item.name}}</a>
+            Documents ({{vm.item.documents.length}})
+            <div>
+                <div ng-repeat="item in vm.item.documents" track by $index>
+                    <span class="">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                    <a ui-sref="main.documents.instance({documentId: item})">{{item}}</a>
+                </div>
+            </div>
+            <div ng-if="!vm.item.documents.length">
+                No documents registered.
             </div>
         </div>
-        <div ng-if="!vm.item.documents.length">
-            No documents registered.
-        </div>
-    </div>
-
-    <div>
-        Transcriptions ({{vm.item.transcriptions.length}})
+        <div class="file-viewer-media-separator"></div>
         <div>
-            <div ng-repeat="item in vm.item.transcriptions" track by $index>
-                <span class="file-viewer-element">|</span>
-                <a ui-sref="main.transcriptions.instance({transcriptionId: item.name})">{{item.name}}</a>
+            Transcriptions ({{vm.item.transcriptions.length}})
+            <div>
+                <div ng-repeat="item in vm.item.transcriptions" track by $index>
+                    <span class="">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                    <a ui-sref="main.transcriptions.instance({transcriptionId: item.name})">{{item.name}}</a>
+                </div>
             </div>
-        </div>
-        <div ng-if="!vm.item.transcriptions.length">
-            No transcriptions registered.
+            <div ng-if="!vm.item.transcriptions.length">
+                No transcriptions registered.
+            </div>
         </div>
     </div>
 

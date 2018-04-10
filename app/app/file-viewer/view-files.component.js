@@ -56,6 +56,7 @@ function Controller(
       $scope.$apply(() => {
         vm.item = resp;
         vm.item.images = vm.item.images.map(i => i.split('/').pop());
+        vm.item.documents = vm.item.documents.map(i => i.split('/').pop());
         vm.hasAudio = vm.item.media.filter(m => m.type === 'audio');
         vm.hasVideo = vm.item.media.filter(m => m.type === 'video');
       });
