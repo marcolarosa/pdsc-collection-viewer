@@ -14,17 +14,17 @@ Controller.$inject = [
   '$rootScope',
   'dataService',
   'hljs',
-  '$timeout'
+  '$timeout',
+  '$scope'
 ];
-function Controller($state, $rootScope, dataService, hljs, $timeout) {
+function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
   var vm = this;
 
   var broadcastListener;
 
   vm.$onInit = init;
   vm.$onDestroy = destroy;
-  vm.nextDocument = nextDocument;
-  vm.previousDocument = previousDocument;
+  vm.jump = jump;
 
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
@@ -56,27 +56,25 @@ function Controller($state, $rootScope, dataService, hljs, $timeout) {
         return $state.go('main');
       }
 
-      vm.transcriptions = vm.item.transcriptions.map(
-        transcription => transcription.name
-      );
       if (!$state.params.transcriptionId) {
         $timeout(() => {
           $state.go('main.transcriptions.instance', {
-            transcriptionId: vm.transcriptions[0]
+            transcriptionId: vm.item.transcriptions[0].name
           });
         });
       }
       $timeout(() => {
-        const transcriptionId = $state.params.transcriptionId;
-        vm.config.current = vm.transcriptions.indexOf(transcriptionId);
         loadTranscription();
       });
     }
   }
 
   function loadTranscription() {
-    const type = vm.transcriptions[vm.config.current].split('.').pop();
-    const item = vm.item.transcriptions[vm.config.current];
+    vm.selectedTranscription = vm.item.transcriptions.filter(
+      t => t.name === $state.params.transcriptionId
+    )[0];
+    const type = vm.selectedTranscription.name.split('.').pop();
+    const item = vm.selectedTranscription;
     dataService.loadTranscription(type, item, 'xml').then(data => {
       hljs.configure({
         tabReplace: '    ',
@@ -89,32 +87,13 @@ function Controller($state, $rootScope, dataService, hljs, $timeout) {
   }
 
   function jump() {
-    each(vm.transcriptions, (transcription, idx) => {
-      if (vm.config.current === idx) {
-        vm.data = null;
-        $timeout(() => {
-          loadTranscription();
-          $state.go('main.transcriptions.instance', {
-            transcriptionId: transcription
-          });
-        });
-      }
+    $timeout(() => {
+      $state.go('main.transcriptions.instance', {
+        transcriptionId: vm.selectedTranscription.name
+      });
     });
-  }
-
-  function nextDocument() {
-    if (vm.config.current === vm.item.transcriptions.length - 1) {
-      return;
-    }
-    vm.config.current += 1;
-    jump();
-  }
-
-  function previousDocument() {
-    if (vm.config.current === 0) {
-      return;
-    }
-    vm.config.current -= 1;
-    jump();
+    $timeout(() => {
+      loadTranscription();
+    });
   }
 }
