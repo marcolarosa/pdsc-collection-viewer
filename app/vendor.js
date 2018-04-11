@@ -22,6 +22,12 @@ require('highlight.js');
 
 import pdflib from 'pdfjs-dist';
 pdflib.PDFJS.workerSrc = 'lib/pdf.worker.min.js';
+/// #if DEPLOY_TESTING
+pdflib.PDFJS.workerSrc = 'test-viewer/lib/pdf.worker.min.js';
+/// #endif
+/// #if DEPLOY_PRODUCTION
+pdflib.PDFJS.workerSrc = 'viewer/lib/pdf.worker.min.js';
+/// #endif
 
 const Clipboard = require('clipboard');
 const clipboard = new Clipboard('button');
