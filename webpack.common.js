@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,7 +14,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[hash].[name].bundle.js'
+    filename: '[name].[chunkHash].bundle.js'
   },
   target: 'web',
   plugins: [
@@ -32,7 +33,8 @@ module.exports = {
         }
       ],
       {}
-    )
+    ),
+    new ExtractTextPlugin('styles.[chunkHash].css')
   ],
   module: {
     rules: [
@@ -42,11 +44,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader?presets[]=es2015',
+        use: [{loader: 'babel-loader?presets[]=es2015'}],
         exclude: /node_modules|bower_components/
       },
       {
