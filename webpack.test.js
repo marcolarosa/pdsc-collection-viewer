@@ -14,5 +14,24 @@ module.exports = merge(common, {
       safe: true
     })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'ifdef-loader',
+            options: {
+              DEPLOY_TESTING: false,
+              DEPLOY_PRODUCTION: false
+            }
+          },
+          {loader: 'babel-loader?presets[]=es2015'}
+        ],
+        exclude: /node_modules|bower_components/
+      }
+    ]
+  },
+
   watch: true
 });

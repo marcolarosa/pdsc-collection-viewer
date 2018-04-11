@@ -19,5 +19,23 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'ifdef-loader',
+            options: {
+              DEPLOY_TESTING: true,
+              DEPLOY_PRODUCTION: false
+            }
+          },
+          {loader: 'babel-loader?presets[]=es2015'}
+        ],
+        exclude: /node_modules|bower_components/
+      }
+    ]
+  }
 });

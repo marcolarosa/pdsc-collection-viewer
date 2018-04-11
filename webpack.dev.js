@@ -15,5 +15,23 @@ module.exports = merge(common, {
     watchContentBase: true,
     disableHostCheck: true
   },
-  plugins: [new webpack.NamedModulesPlugin()]
+  plugins: [new webpack.NamedModulesPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'ifdef-loader',
+            options: {
+              DEPLOY_TESTING: false,
+              DEPLOY_PRODUCTION: false
+            }
+          },
+          {loader: 'babel-loader?presets[]=es2015'}
+        ],
+        exclude: /node_modules|bower_components/
+      }
+    ]
+  }
 });
