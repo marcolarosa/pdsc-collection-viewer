@@ -12,7 +12,7 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/viewer/',
-    filename: '[hash].[name].bundle.js'
+    filename: '[name].[chunkHash].bundle.js'
   },
   plugins: [
     new UglifyJSPlugin({sourceMap: true}),
