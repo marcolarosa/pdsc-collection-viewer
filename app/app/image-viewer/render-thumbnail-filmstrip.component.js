@@ -46,7 +46,9 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
   function highlightSelectedItem() {
     vm.thumbnails = vm.thumbnails.map((thumb, idx) => {
       thumb.selected =
-        idx === vm.selectedItem ? 'filmstrip-highlight-current' : '';
+        idx === vm.selectedItem
+          ? 'image-viewer-filmstrip-highlight-current'
+          : '';
       return thumb;
     });
 

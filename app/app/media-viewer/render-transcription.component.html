@@ -85,7 +85,7 @@
                 </pdsc-fragment-citation>
             </div>
         </div>
-        <div ng-class="{ 'transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
+        <div ng-class="{ 'media-viewer-transcription-selected': $index === vm.selectedIndex}" class="md-subhead">
             <div ng-if="vm.selectedType === 'eaf'">
                 <div layout="column" layout-padding>
                     {{annotation.tierId}}
@@ -131,22 +131,22 @@
             </div>
         </div>
         <div layout-padding>
-            <div class="" ng-class="{ 'transcription-selected': $index === vm.selectedIndex}">{{sentence.transcription}}</div>
+            <div class="" ng-class="{ 'media-viewer-transcription-selected': $index === vm.selectedIndex}">{{sentence.transcription}}</div>
             <div class="md-title highlight-translation">{{sentence.translation}}</div>
             <div layout="row" layout-padding layout-wrap>
-                <table ng-repeat="word in sentence.words" class="table-style">
-                    <tbody class="md-caption highlight-word">
+                <table ng-repeat="word in sentence.words" class="media-viewer-table-style">
+                    <tbody class="md-caption media-viewer-highlight-word">
                         <tr class="" ng-if="word.text">
-                            <td class="td-style" colspan="{{word.words.length}}">{{word.text}}</td>
+                            <td class="media-viewer-td-style" colspan="{{word.words.length}}">{{word.text}}</td>
                         </tr>
                         <tr class="" ng-if="!word.text">
-                            <td class="td-style" ng-repeat="w in word.words">{{w.text}}</td>
+                            <td class="media-viewer-td-style" ng-repeat="w in word.words">{{w.text}}</td>
                         </tr>
-                        <tr class="highlight-morpheme">
-                            <td class="td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
+                        <tr class="media-viewer-highlight-morpheme">
+                            <td class="media-viewer-td-style" ng-repeat="w in word.words">{{w.morpheme}}</td>
                         </tr>
-                        <tr class="highlight-gloss">
-                            <td class="td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
+                        <tr class="media-viewer-highlight-gloss">
+                            <td class="media-viewer-td-style" ng-repeat="w in word.words">{{w.gloss}}</td>
                         </tr>
                     </tbody>
                 </table>

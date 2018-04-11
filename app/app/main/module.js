@@ -1,5 +1,7 @@
 'use strict';
 
+import './main.css';
+
 module.exports = angular
   .module('pdsc.main', [])
   .constant('configuration', require('./configuration'))

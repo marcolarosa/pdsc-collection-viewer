@@ -2,7 +2,6 @@
 
 import '../node_modules/font-awesome/css/font-awesome.css';
 import '../node_modules/angular-material/angular-material.css';
-import './assets/css/app.css';
 import '../node_modules/ImageViewer/imageviewer.css';
 import '../node_modules/highlight.js/styles/atom-one-dark.css';
 

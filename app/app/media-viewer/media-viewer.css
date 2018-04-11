@@ -1,3 +1,31 @@
+.media-viewer-highlight-word {
+  background-color: #b0bec5;
+}
+.media-viewer-highlight-morpheme {
+  background-color: #efebe9;
+}
+.media-viewer-highlight-gloss {
+  background-color: #efebe9;
+}
+.media-viewer-highlight-translation {
+  color: #ef6c00;
+}
+.media-viewer-td-style {
+  border-bottom: 1px solid #b0bec5;
+  border-left: 1px solid #b0bec5;
+  border-right: 1px solid #b0bec5;
+  margin: 2px;
+  padding: 5px;
+}
+.media-viewer-table-style {
+  border-spacing: 0;
+}
+
+.media-viewer-transcription-selected {
+  background-color: #ffd54f;
+  border-radius: 4px;
+}
+
 .media-viewer-player-style {
   max-width: 280px;
   min-width: 280px;

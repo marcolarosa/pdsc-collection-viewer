@@ -1,5 +1,7 @@
 'use strict';
 
+import './image-viewer.css';
+
 module.exports = angular
   .module('pdsc.imageViewer', [])
   .component('pdscImageViewerComponent', require('./view-image-set.component'))

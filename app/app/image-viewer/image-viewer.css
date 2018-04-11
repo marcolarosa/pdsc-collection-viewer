@@ -1,0 +1,9 @@
+.image-viewer-filmstrip-highlight-current {
+  border: 4px solid #607d8b;
+  border-radius: 2px;
+  padding: 4px 37px 2px 4px;
+}
+
+.image-viewer-filmstrip-thumbnail {
+  width: 150px;
+}

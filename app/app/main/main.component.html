@@ -1,5 +1,5 @@
 <div flex layout="column">
-    <md-toolbar class="toolbar">
+    <md-toolbar class="main-toolbar">
         <div
             layout="row"
             layout-padding-xs
@@ -14,20 +14,6 @@
             </md-button>
             <div
                 ng-class="{'hide-sm': !vm.showOptions, 'hide-xs': !vm.showOptions}">
-                <!-- <md-button
-                    class="small-font"
-                    ng-href="{{vm.itemData.collectionLink}}"
-                    target="_blank">
-                        <i class="fa fa-external-link fa-lg"></i> View Collection in Catalog
-                        <md-tooltip>View Collection in Catalog</md-tooltip>
-                </md-button>
-                <md-button
-                    class="small-font"
-                    ng-href="{{vm.itemData.identifier[1]}}"
-                    target="_blank">
-                        <i class="fa fa-external-link fa-lg"></i> View Item in Catalog
-                        <md-tooltip>View Item in Catalog</md-tooltip>
-                </md-button> -->
                 <md-button
                     class="small-font"
                     ui-sref="main.information"
@@ -80,7 +66,7 @@
     <div layout="row" layout-align="center center" store-height element="headline">
         <h3 class="md-headline">{{vm.itemData.title}}</h3>
     </div>
-    <div layout="row" layout-align="center top">
-        <div ui-view class="viewer-panel"></div>
+    <div layout="row" layout-align="center top" layout-margin>
+        <div ui-view class="main-viewer-panel"></div>
     </div>
 </div>
