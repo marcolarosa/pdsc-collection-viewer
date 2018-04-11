@@ -90,7 +90,9 @@
                 <div layout="column" layout-padding>
                     {{annotation.tierId}}
                     <div ng-repeat="value in annotation.value" track by $index>
-                        {{value.text}}
+                        <span ng-class="{'media-viewer-highlight-translation md-title': value.language === 'us'}">
+                            {{value.text}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -132,7 +134,7 @@
         </div>
         <div layout-padding>
             <div class="" ng-class="{ 'media-viewer-transcription-selected': $index === vm.selectedIndex}">{{sentence.transcription}}</div>
-            <div class="md-title highlight-translation">{{sentence.translation}}</div>
+            <div class="md-title media-viewer-highlight-translation">{{sentence.translation}}</div>
             <div layout="row" layout-padding layout-wrap>
                 <table ng-repeat="word in sentence.words" class="media-viewer-table-style">
                     <tbody class="md-caption media-viewer-highlight-word">

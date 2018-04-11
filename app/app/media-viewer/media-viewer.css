@@ -7,9 +7,6 @@
 .media-viewer-highlight-gloss {
   background-color: #efebe9;
 }
-.media-viewer-highlight-translation {
-  color: #ef6c00;
-}
 .media-viewer-td-style {
   border-bottom: 1px solid #b0bec5;
   border-left: 1px solid #b0bec5;
@@ -24,6 +21,10 @@
 .media-viewer-transcription-selected {
   background-color: #ffd54f;
   border-radius: 4px;
+}
+
+.media-viewer-highlight-translation {
+  color: #ef6c00;
 }
 
 .media-viewer-player-style {
