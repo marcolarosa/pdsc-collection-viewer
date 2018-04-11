@@ -20,6 +20,7 @@ Controller.$inject = [
 function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   var vm = this;
 
+  var onSuccessHandler;
   var broadcastListener;
 
   vm.showItemInformation = false;
@@ -33,10 +34,15 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
     vm.loadingData = true;
     vm.showOptions = false;
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
+    onSuccessHandler = $transitions.onSuccess({}, function(transition) {
+      vm.state = $state.current.name.split('.')[1];
+    });
+    vm.state = $state.current.name.split('.')[1];
     loadItem();
   }
 
   function destroy() {
+    onSuccessHandler();
     broadcastListener();
   }
 

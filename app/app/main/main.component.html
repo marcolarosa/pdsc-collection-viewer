@@ -16,6 +16,7 @@
                 ng-class="{'hide-sm': !vm.showOptions, 'hide-xs': !vm.showOptions}">
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'information'}"
                     ui-sref="main.information"
                     blur-on-click>
                         <i class="fa fa-info fa-lg"></i> Information
@@ -23,6 +24,7 @@
                 </md-button>
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'files'}"
                     ui-sref="main.files"
                     blur-on-click>
                         <i class="fa fa-file-o fa-lg"></i> File Browser
@@ -30,6 +32,7 @@
                 </md-button>
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'images'}"
                     ui-sref="main.images"
                     blur-on-click
                     ng-if="vm.itemData.images.length">
@@ -38,6 +41,7 @@
                 </md-button>
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'media'}"
                     ui-sref="main.media"
                     blur-on-click
                     ng-if="vm.itemData.media.length">
@@ -46,6 +50,7 @@
                 </md-button>
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'documents'}"
                     ui-sref="main.documents"
                     blur-on-click
                     ng-if="vm.itemData.documents.length">
@@ -54,6 +59,7 @@
                 </md-button>
                 <md-button
                     class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'transcriptions'}"
                     ui-sref="main.transcriptions"
                     blur-on-click
                     ng-if="vm.itemData.transcriptions.length">

@@ -12,6 +12,10 @@
   background-color: #f2f1ef;
 }
 
+.main-toolbar-selected {
+  color: #ffd54f;
+}
+
 .main-viewer-panel {
   max-width: 320px;
   width: 320px;
