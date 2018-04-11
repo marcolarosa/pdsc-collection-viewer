@@ -1,16 +1,14 @@
-<div layout="column" ng-if="!vm.loadingData">
-    <div layout="row" layout-align="center center" class="md-subhead">
-        <md-select
-            ng-model="vm.selectedTranscription"
-            ng-change="vm.jump()"
-            aria-label="select the transcription to display">
-            <md-option
-                ng-repeat="transcription in vm.item.transcriptions"
-                ng-value="transcription">
-              {{transcription.name}}
-            </md-option>
-        </md-select>
-    </div>
+<div layout="column" layout-align="center center" ng-if="!vm.loadingData">
+    <md-select
+        ng-model="vm.selectedTranscription"
+        ng-change="vm.jump()"
+        aria-label="select the transcription to display">
+        <md-option
+            ng-repeat="transcription in vm.item.transcriptions"
+            ng-value="transcription">
+          {{transcription.name}}
+        </md-option>
+    </md-select>
     <div layout="row" layout-align="center center" flex>
         <div ng-show="!vm.loadingData" style="width: 500px; margin: 10px 0;">
             <md-progress-linear md-mode="indeterminate"></md-progress-linear>
