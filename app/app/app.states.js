@@ -53,6 +53,14 @@ function CollectionViewerRoutes($urlRouterProvider, $stateProvider) {
     url: '/:transcriptionId'
   });
 
+  $stateProvider.state('main.media', {
+    url: '/media',
+    component: 'pdscMediaViewerComponent'
+  });
+  $stateProvider.state('main.media.instance', {
+    url: '/:mediaId?transcription&segment'
+  });
+
   $stateProvider.state('main.languages', {
     url: '/languages',
     component: 'pdscLanguageViewerComponent'
