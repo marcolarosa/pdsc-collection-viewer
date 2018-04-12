@@ -7,4 +7,5 @@ module.exports = angular
   .component(
     'pdscLanguageViewerComponent',
     require('./view-languages.component')
-  );
+  )
+  .component('pdscLanguageViewerMapComponent', require('./map.component.js'));

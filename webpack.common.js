@@ -57,6 +57,17 @@ module.exports = {
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
         loader: 'file-loader?name=res/[name].[ext]?[hash]'
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },

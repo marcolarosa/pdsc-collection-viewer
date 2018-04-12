@@ -1,1 +1,9 @@
-{{vm.data}}
+<div layout="column" ng-if="!vm.loadingData">
+    <div layout="row" layout-align="center center">
+        <div class="md-headline">{{vm.data.name}} (level: {{vm.data.level}})</div>
+    </div>
+
+    <div layout="row">
+        <pdsc-language-viewer-map-component coords="[vm.data.coords]"></pdsc-language-viewer-map-component>
+    </div>
+</div>
