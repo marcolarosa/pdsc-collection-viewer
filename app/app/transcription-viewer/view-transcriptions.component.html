@@ -1,4 +1,7 @@
 <div layout="column" layout-align="center center" ng-if="!vm.loadingData">
+    <div layout="row" layout-align="center center" store-height element="headline">
+        <h3 class="md-headline">Transcriptions</h3>
+    </div>
     <md-select
         ng-model="vm.selectedTranscription"
         ng-change="vm.jump()"
