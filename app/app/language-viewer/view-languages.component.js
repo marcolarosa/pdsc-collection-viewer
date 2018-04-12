@@ -12,12 +12,22 @@ module.exports = {
 Controller.$inject = [
   '$state',
   '$rootScope',
+  '$scope',
   '$location',
   '$timeout',
-  'dataService'
+  'dataService',
+  'firebaseService'
 ];
 
-function Controller($state, $rootScope, $location, $timeout, dataService) {
+function Controller(
+  $state,
+  $rootScope,
+  $scope,
+  $location,
+  $timeout,
+  dataService,
+  firebaseService
+) {
   var vm = this;
 
   var broadcastListener;
@@ -28,6 +38,11 @@ function Controller($state, $rootScope, $location, $timeout, dataService) {
   function init() {
     broadcastListener = $rootScope.$on('item data loaded', loadItem);
     loadItem();
+    vm.database = firebaseService.getDatabase();
+    const languageData = firebaseService.getLanguageData(
+      $state.params.languageId
+    );
+    languageData.on('value', data => setData(data));
   }
 
   function destroy() {
@@ -57,5 +72,12 @@ function Controller($state, $rootScope, $location, $timeout, dataService) {
         });
       }
     }
+  }
+
+  function setData(data) {
+    $scope.$apply(() => {
+      vm.data = data.val();
+      console.log(vm.data);
+    });
   }
 }
