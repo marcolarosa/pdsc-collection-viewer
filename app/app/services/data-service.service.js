@@ -196,7 +196,7 @@ function DataService(
     var data = {
       openAccess: true,
       identifier: tree['dc:identifier'].map(i => i['#text']),
-      language: tree['dc:language'].map(l => l['@attributes']['olac:code']),
+      languages: tree['dc:language'].map(l => l['@attributes']['olac:code']),
       title: get(tree, 'dc:title'),
       date: get(tree, 'dcterms:created'),
       description: get(tree, 'dc:description'),
