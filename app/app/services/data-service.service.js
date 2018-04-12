@@ -105,6 +105,7 @@ function DataService(
       $rootScope.$broadcast('item data loaded');
 
       // and return it to the caller which is expecting a promise
+      console.log(resp.data.data);
       return Object.assign({}, resp.data.data);
     }
 
@@ -194,17 +195,16 @@ function DataService(
     }
     var data = {
       openAccess: true,
-      identifier: lodash.map(tree['dc:identifier'], function(d) {
-        return d['#text'];
-      }),
+      identifier: tree['dc:identifier'].map(i => i['#text']),
+      language: tree['dc:language'].map(l => l['@attributes']['olac:code']),
       title: get(tree, 'dc:title'),
       date: get(tree, 'dcterms:created'),
       description: get(tree, 'dc:description'),
       citation: get(tree, 'dcterms:bibliographicCitation'),
-      contributor: lodash.map(tree['dc:contributor'], function(d) {
+      contributor: tree['dc:contributor'].map(c => {
         return {
-          name: d['#text'],
-          role: d['@attributes']['olac:code']
+          name: c['#text'],
+          role: c['@attributes']['olac:code']
         };
       }),
       images: constructItemList('images', tree),
