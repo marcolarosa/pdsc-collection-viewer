@@ -22,14 +22,6 @@ require('esri-leaflet');
 require('../node_modules/ImageViewer/imageviewer.js');
 require('highlight.js');
 
-const leaflet = require('leaflet');
-delete leaflet.Icon.Default.prototype._getIconUrl;
-leaflet.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-});
-
 import pdflib from 'pdfjs-dist';
 pdflib.PDFJS.workerSrc = 'lib/pdf.worker.min.js';
 /// #if DEPLOY_TESTING

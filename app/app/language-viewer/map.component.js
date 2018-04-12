@@ -2,6 +2,12 @@
 
 const leaflet = require('leaflet');
 const esriLeaflet = require('esri-leaflet');
+delete leaflet.Icon.Default.prototype._getIconUrl;
+leaflet.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 
 module.exports = {
   template: require('./map.component.html'),
@@ -20,9 +26,9 @@ function Controller() {
   vm.$onDestroy = destroy;
 
   function init() {
-    console.log(leaflet);
     const map = leaflet.map('language-viewer-map').setView(vm.coords[0], 5);
-    const marker = leaflet.marker(vm.coords[0]).addTo(map);
+    const markers = vm.coords.map(c => leaflet.marker(c).addTo(map));
+    console.log(markers);
     esriLeaflet.basemapLayer('Topographic').addTo(map);
   }
 
