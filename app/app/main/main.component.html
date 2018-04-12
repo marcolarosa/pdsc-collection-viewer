@@ -66,6 +66,16 @@
                         <i class="fa fa-file-code-o fa-lg"></i> Transcriptions
                         <md-tooltip>View Transcriptions</md-tooltip>
                 </md-button>
+                <md-button
+                    class="small-font"
+                    ng-class="{'main-toolbar-selected': vm.state === 'languages'}"
+                    ui-sref="main.languages"
+                    blur-on-click
+                    ng-if="vm.itemData.languages.length">
+                        <i class="fa fa-sign-language" aria-hidden="true"></i> Languages
+                        <md-tooltip>View Language Information</md-tooltip>
+                </md-button>
+
             </div>
         </div>
     </md-toolbar>

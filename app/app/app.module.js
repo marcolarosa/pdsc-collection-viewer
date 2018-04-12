@@ -9,6 +9,7 @@ require('./filters/module');
 require('./file-viewer/module');
 require('./image-viewer/module');
 require('./information-viewer/module');
+require('./language-viewer/module');
 require('./document-viewer/module');
 require('./transcription-viewer/module');
 require('./media-viewer/module');
@@ -33,6 +34,7 @@ angular
     'pdsc.fileViewer',
     'pdsc.imageViewer',
     'pdsc.informationViewer',
+    'pdsc.languageViewer',
     'pdsc.documentViewer',
     'pdsc.transcriptionViewer',
     'pdsc.mediaViewer'
