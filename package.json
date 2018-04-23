@@ -70,6 +70,8 @@
       "./node_modules/webpack/bin/webpack.js --config webpack.deploy.testing.js",
     "build:deploy-production":
       "./node_modules/webpack/bin/webpack.js --config webpack.deploy.production.js",
+    "build:deploy-librarybox":
+      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.librarybox.js",
     "karma": "./node_modules/karma/bin/karma start karma.conf.js",
     "test": "npm-run-all --serial build:test"
   }
