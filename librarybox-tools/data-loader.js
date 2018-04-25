@@ -10,6 +10,7 @@ const {
 const xmlToJson = require('../app/app/services/xml-to-json.service');
 const DOMParser = require('xmldom').DOMParser;
 const shell = require('shelljs');
+const inquirer = require('inquirer');
 
 const args = require('yargs')
   .option('viewer', {
@@ -28,51 +29,87 @@ const args = require('yargs')
 
 run(args);
 async function run(args) {
-  let items;
-  prepareTarget(args['library-box-path']);
-  installCollectionViewer(args['viewer'], args['library-box-path']);
-  let collections = flattenDeep(walkDataPath(args['data-path']));
-  collections = await Promise.all(
-    collections.map(async collection => {
-      const cid = collection.collectionId;
-      const iid = collection.itemId;
-      return {
-        ...collection,
-        data: await loadItemData(cid, iid)
-      };
-    })
-  );
+  await promptViewerBuilt();
+  await promptContinue(args);
+  const target = `${args['library-box-path']}/LibraryBox`;
+  const viewer = args['viewer'];
+  const dataPath = args['data-path'];
+  if (
+    !shell.test('-d', target) ||
+    !shell.test('-d', `${target}/Content`) ||
+    !shell.test('-d', `${target}/Shared`)
+  ) {
+    console.log(`
+    ${target} does not seem to exist. Have you specified the mountpoint
+    of the LibraryBox disk correctly? If so, does that disk have a folder
+    'LibraryBox' and does the 'LibraryBox' folder contain folders named
+    'Content' and 'Shared'?
+    `);
+    process.exit();
+  }
+  prepareTarget(target);
+  installCollectionViewer(viewer, target);
+  const collections = loadData(dataPath);
   collections.forEach(collection => {
-    collection = processImages(
-      args['data-path'],
-      args['library-box-path'],
-      collection
-    );
-    collection = processTranscriptions(
-      args['data-path'],
-      args['library-box-path'],
-      collection
-    );
-    collection = processMedia(
-      args['data-path'],
-      args['library-box-path'],
-      collection
-    );
-    collection = processDocuments(
-      args['data-path'],
-      args['library-box-path'],
-      collection
-    );
+    collection = processImages(dataPath, target, collection);
+    collection = processTranscriptions(dataPath, target, collection);
+    collection = processMedia(dataPath, target, collection);
+    collection = processDocuments(dataPath, target, collection);
     delete collection.dataPath;
     console.log(`INFO: ${collection.collectionId}/${collection.itemId}: Done`);
     console.log(`INFO: ${collection.collectionId}/${collection.itemId}:`);
     console.log('');
   });
   fs.writeFileSync(
-    `${args['library-box-path']}/Shared/index.json`,
+    `${target}/Shared/index.json`,
     JSON.stringify(collections),
     'utf8'
   );
+}
+
+async function promptViewerBuilt() {
+  console.log(`
+    A version of the viewer needs to be built for installation on the LibraryBox.
+
+    This only needs to be done once in a given session (ie today). If you're
+    installing a brand new LibraryBox or updating the content of one created
+    some time ago you probably want to rebuild the viewer first so that you
+    install the latest version.
+  `);
+  const response = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'promptViewerBuilt',
+      message:
+        'Have you recently built the viewer for installation on the LibraryBox?'
+    }
+  ]);
+  if (!response.promptViewerBuilt) {
+    console.log(`
+      Please build the viewer vis: 'npm run build:deploy-librarybox'.
+      When complete, re-run this script and hit enter to select 'Yes'
+    `);
+    process.exit();
+  }
+}
+
+async function promptContinue(args) {
+  console.log(`
+    The LibraryBox is mounted at: ${args['library-box-path']}.
+
+    Ensure this is correct as this script will try to cleanup (remove) any
+    existing data at the paths:
+    - ${args['library-box-path']}/LibraryBox/Content
+    - ${args['library-box-path']}/LibraryBox/Shared
+  `);
+  const response = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'promptContinue',
+      message: 'Do you wish to continue?',
+      default: false
+    }
+  ]);
 }
 
 function prepareTarget(target) {
@@ -87,6 +124,21 @@ function prepareTarget(target) {
 function installCollectionViewer(viewer, target) {
   console.log('INFO: Installing Collection Viewer');
   shell.cp('-r', `${viewer}/*`, `${target}/Content/`);
+}
+
+async function loadData(data) {
+  let collections = flattenDeep(walkDataPath(data));
+  collections = await Promise.all(
+    collections.map(async collection => {
+      const cid = collection.collectionId;
+      const iid = collection.itemId;
+      return {
+        ...collection,
+        data: await loadItemData(cid, iid)
+      };
+    })
+  );
+  return collections;
 }
 
 function setup(target, collection) {
