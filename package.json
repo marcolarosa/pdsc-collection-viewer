@@ -14,6 +14,7 @@
     "font-awesome": "4.7.0",
     "highlight.js": "^9.12.0",
     "imageviewer": "github:amritk/ImageViewer",
+    "inquirer": "^5.2.0",
     "jquery": "^3.3.1",
     "lodash": "4.17.5",
     "moment": "^2.11.2",
