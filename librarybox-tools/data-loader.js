@@ -12,6 +12,10 @@ const DOMParser = require('xmldom').DOMParser;
 const shell = require('shelljs');
 
 const args = require('yargs')
+  .option('viewer', {
+    describe: 'The full path to the collection viewer distributable',
+    demandOption: true
+  })
   .option('data-path', {
     describe: 'The full path to the data folders',
     demandOption: true
@@ -25,6 +29,8 @@ const args = require('yargs')
 run(args);
 async function run(args) {
   let items;
+  prepareTarget(args['library-box-path']);
+  installCollectionViewer(args['viewer'], args['library-box-path']);
   let collections = flattenDeep(walkDataPath(args['data-path']));
   collections = await Promise.all(
     collections.map(async collection => {
@@ -36,7 +42,6 @@ async function run(args) {
       };
     })
   );
-  prepareTarget(args['library-box-path']);
   collections.forEach(collection => {
     collection = processImages(
       args['data-path'],
@@ -59,6 +64,9 @@ async function run(args) {
       collection
     );
     delete collection.dataPath;
+    console.log(`INFO: ${collection.collectionId}/${collection.itemId}: Done`);
+    console.log(`INFO: ${collection.collectionId}/${collection.itemId}:`);
+    console.log('');
   });
   fs.writeFileSync(
     `${args['library-box-path']}/Shared/index.json`,
@@ -68,9 +76,17 @@ async function run(args) {
 }
 
 function prepareTarget(target) {
+  console.log('INFO: Preparing LibraryBox');
+  shell.mkdir('-p', `${target}/Content`);
+  shell.rm('-rf', `${target}/Content/*`);
   shell.mkdir('-p', `${target}/Shared`);
   shell.rm('-rf', `${target}/Shared/*`);
   shell.mkdir('-p', `${target}/Shared/repository`);
+}
+
+function installCollectionViewer(viewer, target) {
+  console.log('INFO: Installing Collection Viewer');
+  shell.cp('-r', `${viewer}/*`, `${target}/Content/`);
 }
 
 function setup(target, collection) {
@@ -84,6 +100,7 @@ function setup(target, collection) {
 function processImages(source, targetPath, collection) {
   let name;
   const {cid, iid, target} = setup(targetPath, collection);
+  console.log(`INFO: ${cid}/${iid}: Copying Images`);
   collection.data.images = collection.data.images.map(file => {
     try {
       return copyToTarget({cid, iid, source, target, file});
@@ -103,6 +120,7 @@ function processImages(source, targetPath, collection) {
 function processDocuments(source, targetPath, collection) {
   let name;
   const {cid, iid, target} = setup(targetPath, collection);
+  console.log(`INFO: ${cid}/${iid}: Copying Documents`);
   collection.data.documents = collection.data.documents.map(file => {
     try {
       return copyToTarget({cid, iid, source, target, file});
@@ -116,6 +134,8 @@ function processDocuments(source, targetPath, collection) {
 function processTranscriptions(source, targetPath, collection) {
   let name;
   const {cid, iid, target} = setup(targetPath, collection);
+  console.log(`INFO: ${cid}/${iid}: Copying Transcriptions`);
+
   collection.data.transcriptions = collection.data.transcriptions.map(file => {
     try {
       const url = copyToTarget({cid, iid, source, target, file: file.url});
@@ -132,6 +152,7 @@ function processTranscriptions(source, targetPath, collection) {
 function processMedia(source, targetPath, collection) {
   let name;
   const {cid, iid, target} = setup(targetPath, collection);
+  console.log(`INFO: ${cid}/${iid}: Copying Media`);
   collection.data.media = collection.data.media.map(media => {
     media.files = media.files.map(file => {
       try {
@@ -168,6 +189,7 @@ function copyToTarget({cid, iid, source, target, file}) {
 }
 
 function walkDataPath(path) {
+  console.log('INFO: Loading data');
   let collections, items;
   try {
     collections = fs.readdirSync(path).map(collection => {
