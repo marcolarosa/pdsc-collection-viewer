@@ -8,12 +8,21 @@
   width: 100vw;
 }
 
+.main-root-toolbar {
+  min-height: 56px;
+  width: 100vw;
+}
+
 .main-viewer-color {
   background-color: #f2f1ef;
 }
 
 .main-toolbar-selected {
   color: #ffd54f;
+}
+
+.main-item-link {
+  padding-left: 5px;
 }
 
 .main-viewer-panel {

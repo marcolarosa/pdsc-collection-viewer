@@ -1,6 +1,7 @@
 'use strict';
 
 const {includes, isEmpty, isUndefined} = require('lodash');
+const configuration = require('./configuration');
 
 module.exports = {
   template: require('./main.component.html'),
@@ -31,6 +32,7 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   vm.toggleItemInformation = toggleItemInformation;
 
   function init() {
+    vm.mode = configuration.datasource.mode;
     vm.loadingData = true;
     vm.showOptions = false;
     broadcastListener = $rootScope.$on('item data loaded', loadItem);

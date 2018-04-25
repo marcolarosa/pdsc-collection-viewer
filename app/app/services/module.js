@@ -7,5 +7,4 @@ module.exports = angular
   .service('flextextParserService', require('./flextext-parser.service'))
   .service('ixtParserService', require('./ixt-parser.service'))
   .service('trsParserService', require('./trs-parser.service'))
-  .service('xmlToJsonService', require('./xml-to-json.service'))
   .service('xmlTestDataService', require('./xml-data-loader.service'));

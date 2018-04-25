@@ -17,7 +17,12 @@
     "jquery": "^3.3.1",
     "lodash": "4.17.5",
     "moment": "^2.11.2",
-    "pdfjs-dist": "^1.10.88"
+    "pdfjs-dist": "^1.10.88",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "shelljs": "^0.8.1",
+    "xmldom": "^0.1.27",
+    "yargs": "^11.0.0"
   },
   "repository": {},
   "devDependencies": {
@@ -56,14 +61,17 @@
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.0",
     "webpack-merge": "^4.1.2",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-shell-plugin": "^0.5.0",
+    "write-file-webpack-plugin": "^4.2.0"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "develop":
-      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js",
+    "develop:online":
+      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.online.js",
+    "develop:librarybox":
+      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.librarybox.js",
     "build:test":
       "./node_modules/webpack/bin/webpack.js --config webpack.test.js",
     "build:deploy-testing":
@@ -73,6 +81,7 @@
     "build:deploy-librarybox":
       "./node_modules/webpack/bin/webpack.js --config webpack.deploy.librarybox.js",
     "karma": "./node_modules/karma/bin/karma start karma.conf.js",
-    "test": "npm-run-all --serial build:test"
+    "test": "npm-run-all --serial build:test",
+    "develop": "npm-run-all --serial develop:online"
   }
 }

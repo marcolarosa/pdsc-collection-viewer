@@ -10,6 +10,8 @@ const {
   flattenDeep
 } = require('lodash');
 
+const {parseOAI, parseXML} = require('./data-service-lib');
+
 module.exports = DataService;
 
 DataService.$inject = [
@@ -17,7 +19,6 @@ DataService.$inject = [
   '$log',
   '$http',
   'configuration',
-  'xmlToJsonService',
   'eafParserService',
   'trsParserService',
   'ixtParserService',
@@ -29,7 +30,6 @@ function DataService(
   $log,
   $http,
   configuration,
-  xmlToJson,
   eaf,
   trs,
   ixt,
@@ -37,11 +37,8 @@ function DataService(
   lodash
 ) {
   var ds = {
-    imageTypes: ['jpg', 'jpeg', 'png'],
-    videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
-    audioTypes: ['mp3', 'ogg', 'oga'],
-    documentTypes: ['pdf'],
     getItem: getItem,
+    libraryBoxLoader: libraryBoxLoader,
     loadTranscription: loadTranscription,
     broadcastMediaElementTime: broadcastMediaElementTime,
     listenForMediaElementBroadcast: listenForMediaElementBroadcast,
@@ -77,6 +74,34 @@ function DataService(
 
     ds.loading[collectionId][itemId] = true;
 
+    let url;
+    if (configuration.datasource.mode === 'online') {
+      return onlineLoader(collectionId, itemId).then(processResponse);
+    } else if (configuration.datasource.mode === 'librarybox') {
+      return libraryBoxLoader(collectionId, itemId).then(processResponse);
+    } else {
+      $log.error(`Unexpected mode set: ${configuration.datasource.mode}`);
+      return {};
+    }
+
+    function processResponse(data) {
+      // store the object in the service and let the metadata
+      //  controller know it's ready to go
+      data.collectionId = collectionId;
+      data.itemId = itemId;
+      data.collectionLink =
+        configuration.datasource.collections + '/' + collectionId;
+
+      ds.data[collectionId][itemId] = data;
+      ds.loading[collectionId][itemId] = false;
+      $rootScope.$broadcast('item data loaded');
+
+      // and return it to the caller which is expecting a promise
+      return Object.assign({}, data);
+    }
+  }
+
+  function onlineLoader(collectionId, itemId) {
     const itemIdentifier = configuration.datasource.itemIdentifier
       .replace('{{collectionId}}', collectionId)
       .replace('{{itemId}}', itemId);
@@ -85,233 +110,30 @@ function DataService(
       '{{itemId}}',
       itemIdentifier
     );
-
     $log.info(`ds getItem ${url}`);
+
     return $http
       .get(url, {transformResponse: parseOAI})
-      .then(processResponse)
-      .catch(handleError);
-
-    function processResponse(resp) {
-      resp.data.data.collectionId = collectionId;
-      resp.data.data.collectionLink =
-        configuration.datasource.collections + '/' + collectionId;
-      resp.data.data.itemId = itemId;
-
-      // store the object in the service and let the metadata
-      //  controller know it's ready to go
-      ds.data[collectionId][itemId] = resp.data.data;
-      ds.loading[collectionId][itemId] = false;
-      $rootScope.$broadcast('item data loaded');
-
-      // and return it to the caller which is expecting a promise
-      return Object.assign({}, resp.data.data);
-    }
-
-    function handleError(err) {
-      $log.error("dataService: error, couldn't get", url);
-    }
-
-    function parseOAI(d) {
-      var tree = parseXML(d);
-
-      try {
-        tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
-
-        return {data: createItemDataStructure(tree)};
-      } catch (e) {
-        return {data: ''};
-      }
-    }
+      .then(response => response.data.data)
+      .catch(() => $log.error("dataService: error, couldn't get", url));
   }
 
-  function parseXML(doc, as) {
-    var parser = new DOMParser();
-    var xmldoc = parser.parseFromString(doc, 'text/xml');
-    if (as === 'xml') {
-      return doc;
-    }
-    return xmlToJson.convert(xmldoc);
-  }
-
-  function constructItemList(type, tree) {
-    var selector;
-    if (type === 'images') {
-      selector = ds.imageTypes;
-    } else if (type === 'video') {
-      selector = ds.videoTypes;
-    } else if (type === 'audio') {
-      selector = ds.audioTypes;
-    } else if (type === 'documents') {
-      selector = ds.documentTypes;
-    } else if (type === 'eaf') {
-      selector = 'eaf';
-    } else if (type === 'trs') {
-      selector = 'trs';
-    } else if (type === 'ixt') {
-      selector = 'ixt';
-    } else if (type === 'flextext') {
-      selector = 'flextext';
-    }
-
-    if (!isArray(tree['dcterms:tableOfContents'])) {
-      tree['dcterms:tableOfContents'] = [tree['dcterms:tableOfContents']];
-    }
-    var items = compact(
-      lodash.map(tree['dcterms:tableOfContents'], function(d) {
-        var i = d['#text'];
-        var ext = i.split('.').pop();
-        if (
-          ext !== undefined &&
-          selector !== undefined &&
-          includes(selector, ext.toLowerCase())
-        ) {
-          return d['#text'];
+  function libraryBoxLoader(collectionId, itemId) {
+    const url = '/Shared/index.json';
+    $log.info(`ds getItem ${url}`);
+    return $http
+      .get(url)
+      .then(response => {
+        if (collectionId && itemId) {
+          const result = response.data.filter(
+            d => d.collectionId === collectionId && d.itemId === itemId
+          );
+          return result[0].data;
+        } else {
+          return response.data;
         }
       })
-    );
-
-    if (includes(['audio', 'video', 'eaf', 'trs', 'ixt', 'flextext'], type)) {
-      // audio and video can exist in multiple formats; so, group the data
-      //  by name and then return an array of arrays - sorting by item name
-      return lodash(items)
-        .chain()
-        .groupBy(function(d) {
-          return lodash.last(d.split('/')).split('.')[0];
-        })
-        .value();
-    } else {
-      return items;
-    }
-  }
-
-  function createItemDataStructure(tree) {
-    if (!lodash.isArray(tree['dc:identifier'])) {
-      tree['dc:identifier'] = [tree['dc:identifier']];
-    }
-    if (!lodash.isArray(tree['dc:contributor'])) {
-      tree['dc:contributor'] = [tree['dc:contributor']];
-    }
-    var data = {
-      openAccess: true,
-      identifier: lodash.map(tree['dc:identifier'], function(d) {
-        return d['#text'];
-      }),
-      title: get(tree, 'dc:title'),
-      date: get(tree, 'dcterms:created'),
-      description: get(tree, 'dc:description'),
-      citation: get(tree, 'dcterms:bibliographicCitation'),
-      contributor: lodash.map(tree['dc:contributor'], function(d) {
-        return {
-          name: d['#text'],
-          role: d['@attributes']['olac:code']
-        };
-      }),
-      images: constructItemList('images', tree),
-      documents: constructItemList('documents', tree),
-      media: processMedia(tree),
-      rights: get(tree, 'dcterms:accessRights')
-    };
-
-    data.transcriptions = flattenDeep(
-      data.media.map(m => {
-        return compact([m.eaf, m.trs, m.ixt, m.flextext]);
-      })
-    ).sort();
-
-    // if the item is closed - set a flag to make it easier to work with in the view
-    if (data.rights.match('Closed.*')) {
-      data.openAccess = false;
-    }
-
-    data.thumbnails = generateThumbnails(data.images);
-    data.audioVisualisations = generateAudioVisualisations(data.audio);
-    return data;
-
-    function processMedia(tree) {
-      const audio = constructItemList('audio', tree);
-      const video = constructItemList('video', tree);
-      const eaf = processMediaItem('eaf', tree);
-      const trs = processMediaItem('trs', tree);
-      const ixt = processMediaItem('ixt', tree);
-      const flextext = processMediaItem('flextext', tree);
-
-      let media = [];
-      each(audio, (files, key) => {
-        media.push(createMediaItemDataStructure(key, files, 'audio'));
-      });
-      each(video, (files, key) => {
-        media.push(createMediaItemDataStructure(key, files, 'video'));
-      });
-      return media;
-
-      function processMediaItem(key, tree) {
-        let item = constructItemList(key, tree);
-        each(item, (v, k) => {
-          item[k] = map(v, url => {
-            return {
-              name: url.split('/').pop(),
-              url: url
-            };
-          });
-        });
-        return item;
-      }
-
-      function createMediaItemDataStructure(key, files, type) {
-        return {
-          name: key,
-          type: type,
-          files: files,
-          eaf: eaf[key] ? eaf[key] : [],
-          trs: trs[key] ? trs[key] : [],
-          ixt: ixt[key] ? ixt[key] : [],
-          flextext: flextext[key] ? flextext[key] : []
-        };
-      }
-    }
-
-    // helper to extract a value for 'thing'
-    //  not every item has every datapoint
-    function get(tree, thing) {
-      try {
-        return tree[thing]['#text'];
-      } catch (e) {
-        return '';
-      }
-    }
-  }
-
-  function generateThumbnails(images) {
-    return lodash.map(images, function(d) {
-      var name = d.split('/').pop();
-      var thumbName =
-        name.split('.')[0] + '-thumb-PDSC_ADMIN.' + name.split('.')[1];
-      return d.replace(name, thumbName);
-    });
-  }
-
-  function generateAudioVisualisations(audio) {
-    var audioVisualisations = lodash.map(audio, function(d) {
-      var name = d[0].split('/').pop();
-      var audioVisName = name.split('.')[0] + '-soundimage-PDSC_ADMIN.jpg';
-      return d[0].replace(name, audioVisName);
-    });
-    audioVisualisations = lodash(audioVisualisations)
-      .chain()
-      .groupBy(function(d) {
-        return d
-          .split('/')
-          .pop()
-          .split('.')[0]
-          .split('-soundimage')[0];
-      })
-      .value();
-
-    lodash.each(audioVisualisations, function(d, i) {
-      audioVisualisations[i] = d[0];
-    });
-    return audioVisualisations;
+      .catch(() => $log.error("dataService: error, couldn't get", url));
   }
 
   function loadTranscription(type, item, as) {

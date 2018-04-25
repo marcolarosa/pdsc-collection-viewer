@@ -2,4 +2,37 @@
     <p>The viewer requires the collection and item to display in the URL.</p>
     <p>Typically this is something like /viewer/#/{collection id}/{item id}</p>
 </div>
-<div ui-view></div>
+<div ui-view ng-if="vm.currentState !== 'root'"></div>
+<div ng-if="vm.mode === 'librarybox'">
+    <md-toolbar
+        class="main-toolbar main-root-toolbar"
+        layout="row"
+        layout-align="center center">
+            PARADISEC Offline Catalog
+    </md-toolbar>
+    <div
+        layout="row"
+        class="file-viewer-link-styling"
+        ng-if="!vm.loadingData">
+            <div flex="15" flex-gt-xs="25"></div>
+            <!-- <div class="md-headline">Available Collections</div> -->
+            <div flex="70" flex-gt-xs="50">
+                <div
+                    layout="column"
+                    layout-padding
+                    ng-repeat="(k, collection) in vm.collections">
+                    Collection: {{k}}
+                    <div ng-repeat="item in collection" class="">
+                        <span class="">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
+                        <a
+                            class="file-viewer-link-styling"
+                            ui-sref="main({collectionId: k, itemId: item.itemId})">
+                            {{item.itemId}} - {{item.data.title}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

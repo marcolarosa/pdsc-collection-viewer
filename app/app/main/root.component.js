@@ -1,5 +1,8 @@
 'use strict';
 
+const configuration = require('./configuration');
+const {groupBy, sortBy} = require('lodash');
+
 module.exports = {
   template: require('./root.component.html'),
   bindings: {},
@@ -7,9 +10,8 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-Controller.$inject = ['$state', '$transitions', '$window'];
-
-function Controller($state, $transitions, $window) {
+Controller.$inject = ['$state', '$transitions', '$window', 'dataService'];
+function Controller($state, $transitions, $window, dataService) {
   var vm = this;
 
   var onBeforeHandler;
@@ -19,6 +21,7 @@ function Controller($state, $transitions, $window) {
   vm.$onDestroy = destroy;
 
   function init() {
+    vm.mode = configuration.datasource.mode;
     onBeforeHandler = $transitions.onBefore({}, function(transition) {
       viewSetup(transition.$to().name);
     });
@@ -26,8 +29,12 @@ function Controller($state, $transitions, $window) {
   }
 
   function viewSetup(stateName) {
-    if (stateName === 'root') {
+    if (stateName === 'root' && vm.mode === 'online') {
       $window.location.href = 'http://catalog.paradisec.org.au';
+    } else {
+      dataService.libraryBoxLoader().then(response => {
+        vm.collections = groupBy(response, 'collectionId');
+      });
     }
   }
 

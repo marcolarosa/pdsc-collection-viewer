@@ -16,6 +16,15 @@
                 ng-class="{'hide-sm': !vm.showOptions, 'hide-xs': !vm.showOptions}">
                 <md-button
                     class="small-font"
+                    ui-sref="root"
+                    blur-on-click
+                    ng-if="vm.mode === 'librarybox'">
+                        <i class="fa fa-arrow-left fa-lg"></i> Collections
+                        <md-tooltip>Up to Collection List</md-tooltip>
+                </md-button>
+
+                <md-button
+                    class="small-font"
                     ng-class="{'main-toolbar-selected': vm.state === 'information'}"
                     ui-sref="main.information"
                     blur-on-click>
