@@ -49,7 +49,7 @@ async function run(args) {
   }
   prepareTarget(target);
   installCollectionViewer(viewer, target);
-  const collections = loadData(dataPath);
+  const collections = await loadData(dataPath);
   collections.forEach(collection => {
     collection = processImages(dataPath, target, collection);
     collection = processTranscriptions(dataPath, target, collection);
@@ -110,14 +110,20 @@ async function promptContinue(args) {
       default: false
     }
   ]);
+  if (!response.promptContinue) {
+    console.log(`
+      ok - exiting
+    `);
+    process.exit();
+  }
 }
 
 function prepareTarget(target) {
   console.log('INFO: Preparing LibraryBox');
-  shell.mkdir('-p', `${target}/Content`);
-  shell.rm('-rf', `${target}/Content/*`);
-  shell.mkdir('-p', `${target}/Shared`);
-  shell.rm('-rf', `${target}/Shared/*`);
+  shell.exec(`rm -rf ${target}/Content/*`);
+  //shell.mkdir('-p', `${target}/Content`);
+  shell.exec(`rm -rf ${target}/Shared/*`);
+  //shell.mkdir('-p', `${target}/Shared`);
   shell.mkdir('-p', `${target}/Shared/repository`);
 }
 
