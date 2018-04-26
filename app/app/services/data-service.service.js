@@ -119,7 +119,7 @@ function DataService(
   }
 
   function libraryBoxLoader(collectionId, itemId) {
-    const url = '/Shared/index.json';
+    const url = '/repository/index.json';
     $log.info(`ds getItem ${url}`);
     return $http
       .get(url)
