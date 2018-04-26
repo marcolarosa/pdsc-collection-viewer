@@ -34,16 +34,12 @@ async function run(args) {
   const target = `${args['library-box-path']}/LibraryBox`;
   const viewer = args['viewer'];
   const dataPath = args['data-path'];
-  if (
-    !shell.test('-d', target) ||
-    !shell.test('-d', `${target}/Content`) ||
-    !shell.test('-d', `${target}/Shared`)
-  ) {
+  if (!shell.test('-d', target) || !shell.test('-d', `${target}/www`)) {
     console.log(`
     ${target} does not seem to exist. Have you specified the mountpoint
     of the LibraryBox disk correctly? If so, does that disk have a folder
     'LibraryBox' and does the 'LibraryBox' folder contain folders named
-    'Content' and 'Shared'?
+    'www'?
     `);
     process.exit();
   }
@@ -61,7 +57,7 @@ async function run(args) {
     console.log('');
   });
   fs.writeFileSync(
-    `${target}/Shared/index.json`,
+    `${target}/www/repository/index.json`,
     JSON.stringify(collections),
     'utf8'
   );
@@ -99,8 +95,7 @@ async function promptContinue(args) {
 
     Ensure this is correct as this script will try to cleanup (remove) any
     existing data at the paths:
-    - ${args['library-box-path']}/LibraryBox/Content
-    - ${args['library-box-path']}/LibraryBox/Shared
+    - ${args['library-box-path']}/LibraryBox/www
   `);
   const response = await inquirer.prompt([
     {
@@ -120,16 +115,14 @@ async function promptContinue(args) {
 
 function prepareTarget(target) {
   console.log('INFO: Preparing LibraryBox');
-  shell.exec(`rm -rf ${target}/Content/*`);
-  //shell.mkdir('-p', `${target}/Content`);
-  shell.exec(`rm -rf ${target}/Shared/*`);
-  //shell.mkdir('-p', `${target}/Shared`);
-  shell.mkdir('-p', `${target}/Shared/repository`);
+  shell.exec(`rm -rf ${target}/www/*`);
+  //shell.mkdir('-p', `${target}/www`);
+  shell.mkdir('-p', `${target}/www/repository`);
 }
 
 function installCollectionViewer(viewer, target) {
   console.log('INFO: Installing Collection Viewer');
-  shell.cp('-r', `${viewer}/*`, `${target}/Content/`);
+  shell.cp('-r', `${viewer}/*`, `${target}/www/`);
 }
 
 async function loadData(data) {
@@ -150,7 +143,7 @@ async function loadData(data) {
 function setup(target, collection) {
   const cid = collection.collectionId;
   const iid = collection.itemId;
-  target = `${target}/Shared/repository/${cid}/${iid}`;
+  target = `${target}/www/repository/${cid}/${iid}`;
   shell.mkdir('-p', target);
   return {cid, iid, target};
 }
@@ -239,7 +232,7 @@ function copyToTarget({cid, iid, source, target, file}) {
   const name = file.split('/').pop();
   if (shell.test('-f', `${source}/${cid}/${iid}/${name}`)) {
     shell.cp(`${source}/${cid}/${iid}/${name}`, `${target}/${name}`);
-    return `/Shared/repository/${file.split('repository/')[1]}`;
+    return `/repository/${file.split('repository/')[1]}`;
   } else {
     console.error(`ERROR: Referenced file missing: ${cid}/${iid}/${name}`);
     throw new Error();
