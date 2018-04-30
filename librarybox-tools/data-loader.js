@@ -34,12 +34,11 @@ async function run(args) {
   const target = `${args['library-box-path']}/LibraryBox`;
   const viewer = args['viewer'];
   const dataPath = args['data-path'];
-  if (!shell.test('-d', target) || !shell.test('-d', `${target}/www`)) {
+  if (!shell.test('-d', target)) {
     console.log(`
     ${target} does not seem to exist. Have you specified the mountpoint
     of the LibraryBox disk correctly? If so, does that disk have a folder
-    'LibraryBox' and does the 'LibraryBox' folder contain folders named
-    'www'?
+    'LibraryBox'?
     `);
     process.exit();
   }
@@ -115,9 +114,9 @@ async function promptContinue(args) {
 
 function prepareTarget(target) {
   console.log('INFO: Preparing LibraryBox');
-  shell.exec(`rm -rf ${target}/www/*`);
-  //shell.mkdir('-p', `${target}/www`);
+  shell.exec(`rm -rf ${target}/www`);
   shell.mkdir('-p', `${target}/www/repository`);
+  shell.mkdir('-p', `${target}/www/cgi-bin`);
 }
 
 function installCollectionViewer(viewer, target) {
