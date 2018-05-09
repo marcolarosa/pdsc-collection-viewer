@@ -69,11 +69,11 @@
             </div>
             <div ng-if="vm.selectedType === 'trs'">
                 <md-button class="small-button" ng-click="vm.play({
-                    'start': vm.selectedTranscription[k].time,
-                    'end': vm.selectedTranscription[k+1].time
+                    'start': vm.selectedTranscription[k].time.begin,
+                    'end': vm.selectedTranscription[k+1].time.begin
                 })">
                     <i class="fa fa-play fa-sm"></i>
-                    Play ({{annotation.time | minutesSeconds}})
+                    Play ({{annotation.time.begin | minutesSeconds}})
                 </md-button>
             </div>
             <div flex></div>
@@ -117,10 +117,10 @@
         <div layout="row">
             <div>
                 <md-button class="small-button" ng-click="vm.play({
-                    'start': vm.selectedTranscription[k].time,
-                    'end': vm.selectedTranscription[k+1].time
+                    'start': vm.selectedTranscription[k].time.begin,
+                    'end': vm.selectedTranscription[k+1].time.begin
                 })">
-                    <i class="fa fa-play fa-sm"></i> Play ({{sentence.time | minutesSeconds}})
+                    <i class="fa fa-play fa-sm"></i> Play ({{sentence.time.begin | minutesSeconds}})
                 </md-button>
             </div>
             <div flex></div>

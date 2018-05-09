@@ -33,7 +33,9 @@ function IXTParserService(lodash) {
         id: d['@attributes'].startTime ? d['@attributes'].startTime : 0,
         transcription: d.transcription['#text'],
         translation: d.translation['#text'],
-        time: parseFloat(d['@attributes'].startTime),
+        time: {
+          begin: parseFloat(d['@attributes'].startTime)
+        },
         words: words
       };
     });

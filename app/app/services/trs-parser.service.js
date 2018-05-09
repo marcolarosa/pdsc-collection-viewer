@@ -62,7 +62,9 @@ function TRSParserService(lodash) {
       transdata = lodash.map(transdata, function(d) {
         return {
           id: d[0] ? d[0] : 0,
-          time: d[0] ? d[0] : 0,
+          time: {
+            begin: d[0] ? d[0] : 0
+          },
           value: d[1],
           referenceValue: '',
           speaker: spkr

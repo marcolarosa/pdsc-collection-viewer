@@ -40,6 +40,9 @@ function Controller(
   vm.transcriptionOptions = ['eaf', 'trs', 'ixt', 'flextext'];
 
   function init() {
+    if ($state.params.segment) {
+      dataService.broadcastMediaElementTime($state.params.segment);
+    }
     timeUpdateListener = dataService.listenForMediaElementBroadcast(
       scrollTranscription
     );
@@ -127,6 +130,7 @@ function Controller(
         vm.showTranscription = false;
         vm.showInterlinearText = true;
       }
+      scrollTranscription();
     }, 1000);
   }
 
@@ -143,10 +147,7 @@ function Controller(
 
   function scrollTranscription() {
     var transformed = vm.selectedTranscription.map(t => {
-      if (
-        t.time > dataService.mediaElementTime ||
-        t.time.begin > dataService.mediaElementTime
-      ) {
+      if (t.time.begin > dataService.mediaElementTime) {
         return 1;
       } else {
         return 0;
