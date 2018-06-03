@@ -25,7 +25,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['dist/'], {
       watch: true,
       root: __dirname,
-      exclude: ['Shared']
+      exclude: ['repository']
     }),
     new webpack.NamedModulesPlugin(),
     new WriteFilePlugin(),
