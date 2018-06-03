@@ -1,306 +1,432 @@
 'use strict';
 
-const request = require('request-promise-native');
+const fs = require('fs-extra');
 const util = require('util');
-const fs = require('fs');
-const {compact, flattenDeep} = require('lodash');
-const {
-  createItemDataStructure
-} = require('../app/app/services/data-service-lib');
-const xmlToJson = require('../app/app/services/xml-to-json.service');
-const DOMParser = require('xmldom').DOMParser;
+const readdir = util.promisify(fs.readdir);
+const stat = util.promisify(fs.stat);
+const copy = util.promisify(fs.copyFile);
 const shell = require('shelljs');
-const inquirer = require('inquirer');
+
+const {
+  compact,
+  flattenDeep,
+  includes,
+  groupBy,
+  map,
+  each,
+  isArray
+} = require('lodash');
+const {convert} = require('./xml-to-json-service');
+const DOMParser = require('xmldom').DOMParser;
 
 const args = require('yargs')
-  .option('viewer', {
-    describe: 'The full path to the collection viewer distributable',
-    demandOption: true
-  })
   .option('data-path', {
     describe: 'The full path to the data folders',
     demandOption: true
   })
-  .option('library-box-path', {
-    describe: 'The full path to the library box disk',
+  .option('output-path', {
+    describe: 'The full path to where you want the repository created',
     demandOption: true
   })
   .help().argv;
 
 run(args);
 async function run(args) {
-  await promptViewerBuilt();
-  await promptContinue(args);
-  const target = `${args['library-box-path']}/LibraryBox`;
-  const viewer = args['viewer'];
+  const target = `${args['output-path']}/repository`;
   const dataPath = args['data-path'];
   if (!shell.test('-d', target)) {
-    console.log(`
-    ${target} does not seem to exist. Have you specified the mountpoint
-    of the LibraryBox disk correctly? If so, does that disk have a folder
-    'LibraryBox'?
+    console.error(`
+      ${target} does not seem to exist. Please create it.
     `);
     process.exit();
   }
-  prepareTarget(target);
-  installCollectionViewer(viewer, target);
-  const collections = await loadData(dataPath);
-  collections.forEach(collection => {
-    collection = processImages(dataPath, target, collection);
-    collection = processTranscriptions(dataPath, target, collection);
-    collection = processMedia(dataPath, target, collection);
-    collection = processDocuments(dataPath, target, collection);
-    delete collection.dataPath;
-    console.log(`INFO: ${collection.collectionId}/${collection.itemId}: Done`);
-    console.log(`INFO: ${collection.collectionId}/${collection.itemId}:`);
-    console.log('');
-  });
-  fs.writeFileSync(
-    `${target}/www/repository/index.json`,
-    JSON.stringify(collections),
-    'utf8'
-  );
-}
 
-async function promptViewerBuilt() {
-  console.log(`
-    A version of the viewer needs to be built for installation on the LibraryBox.
-
-    This only needs to be done once in a given session (ie today). If you're
-    installing a brand new LibraryBox or updating the content of one created
-    some time ago you probably want to rebuild the viewer first so that you
-    install the latest version.
-  `);
-  const response = await inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'promptViewerBuilt',
-      message:
-        'Have you recently built the viewer for installation on the LibraryBox?'
+  try {
+    console.log('Verifying the target disk.');
+    if (!await verifyTargetLibraryBoxDisk(target)) {
+      console.error(
+        `${this.usbMountPoint} doesn't look like a LibraryBox disk;`
+      );
+      console.error(
+        `I was expecting to find a folder '${installationTarget}' but it doesn't exist.`
+      );
     }
-  ]);
-  if (!response.promptViewerBuilt) {
-    console.log(`
-      Please build the viewer vis: 'npm run build:deploy-librarybox'.
-      When complete, re-run this script and hit enter to select 'Yes'
-    `);
-    process.exit();
-  }
-}
 
-async function promptContinue(args) {
-  console.log(`
-    The LibraryBox is mounted at: ${args['library-box-path']}.
+    console.log('Preparing the target disk.');
+    prepareTarget(target);
 
-    Ensure this is correct as this script will try to cleanup (remove) any
-    existing data at the paths:
-    - ${args['library-box-path']}/LibraryBox/www
-  `);
-  const response = await inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'promptContinue',
-      message: 'Do you wish to continue?',
-      default: false
-    }
-  ]);
-  if (!response.promptContinue) {
-    console.log(`
-      ok - exiting
-    `);
-    process.exit();
-  }
-}
+    let errors, result;
+    console.log('Processing the data to be loaded.');
+    result = await buildDataTree(dataPath);
 
-function prepareTarget(target) {
-  console.log('INFO: Preparing LibraryBox');
-  shell.exec(`rm -rf ${target}/www`);
-  shell.mkdir('-p', `${target}/www/repository`);
-  shell.mkdir('-p', `${target}/www/cgi-bin`);
-}
+    console.log('Building the index.');
+    const index = buildIndex(result.items);
 
-function installCollectionViewer(viewer, target) {
-  console.log('INFO: Installing Collection Viewer');
-  shell.cp('-r', `${viewer}/*`, `${target}/www/`);
-}
-
-async function loadData(data) {
-  let collections = flattenDeep(walkDataPath(data));
-  collections = await Promise.all(
-    collections.map(async collection => {
-      const cid = collection.collectionId;
-      const iid = collection.itemId;
-      return {
-        ...collection,
-        data: await loadItemData(cid, iid)
-      };
-    })
-  );
-  return collections;
-}
-
-function setup(target, collection) {
-  const cid = collection.collectionId;
-  const iid = collection.itemId;
-  target = `${target}/www/repository/${cid}/${iid}`;
-  shell.mkdir('-p', target);
-  return {cid, iid, target};
-}
-
-function processImages(source, targetPath, collection) {
-  let name;
-  const {cid, iid, target} = setup(targetPath, collection);
-  console.log(`INFO: ${cid}/${iid}: Copying Images`);
-  collection.data.images = collection.data.images.map(file => {
-    try {
-      return copyToTarget({cid, iid, source, target, file});
-    } catch (e) {}
-  });
-
-  collection.data.thumbnails = collection.data.thumbnails.map(file => {
-    try {
-      return copyToTarget({cid, iid, source, target, file});
-    } catch (e) {}
-  });
-  collection.data.images = compact(collection.data.images);
-  collection.data.thumbnails = compact(collection.data.thumbnails);
-  return collection;
-}
-
-function processDocuments(source, targetPath, collection) {
-  let name;
-  const {cid, iid, target} = setup(targetPath, collection);
-  console.log(`INFO: ${cid}/${iid}: Copying Documents`);
-  collection.data.documents = collection.data.documents.map(file => {
-    try {
-      return copyToTarget({cid, iid, source, target, file});
-    } catch (e) {}
-  });
-
-  collection.data.documents = compact(collection.data.documents);
-  return collection;
-}
-
-function processTranscriptions(source, targetPath, collection) {
-  let name;
-  const {cid, iid, target} = setup(targetPath, collection);
-  console.log(`INFO: ${cid}/${iid}: Copying Transcriptions`);
-
-  collection.data.transcriptions = collection.data.transcriptions.map(file => {
-    try {
-      const url = copyToTarget({cid, iid, source, target, file: file.url});
-      return {
-        name: file.name,
-        url
-      };
-    } catch (e) {}
-  });
-  collection.data.transcriptions = compact(collection.data.transcriptions);
-  return collection;
-}
-
-function processMedia(source, targetPath, collection) {
-  let name;
-  const {cid, iid, target} = setup(targetPath, collection);
-  console.log(`INFO: ${cid}/${iid}: Copying Media`);
-  collection.data.media = collection.data.media.map(media => {
-    media.files = media.files.map(file => {
-      try {
-        return copyToTarget({cid, iid, source, target, file});
-      } catch (e) {}
+    console.log('Loading the data (this can take some time).');
+    result = await installTheData({
+      dataPath: dataPath,
+      target: target,
+      index: index
     });
-    media.files = compact(media.files);
-    ['eaf', 'trs', 'ixt', 'flextext'].forEach(t => {
-      media[t] = media[t].map(file => {
-        try {
-          const url = copyToTarget({cid, iid, source, target, file: file.url});
+
+    console.log('Writing the index file.');
+    writeIndexFile(target, result.index);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const types = {
+  imageTypes: ['jpg', 'jpeg', 'png'],
+  videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
+  audioTypes: ['mp3', 'ogg', 'oga'],
+  documentTypes: ['pdf'],
+  transcriptionTypes: ['eaf', 'trs', 'ixt', 'flextext']
+};
+
+function writeIndexFile(target, index) {
+  fs.writeFileSync(`${target}/index.json`, JSON.stringify(index), 'utf8');
+}
+
+function installTheData({dataPath, target, index}) {
+  return new Promise(async function(resolve, reject) {
+    for (let item of index) {
+      item.data = await processImages(dataPath, target, item.data);
+      item.data = await processTranscriptions(dataPath, target, item.data);
+      item.data = await processMedia(dataPath, target, item.data);
+      item.data = await processDocuments(dataPath, target, item.data);
+
+      const transcriptions = groupBy(item.data.transcriptions, 'name');
+      item.data.media = item.data.media.map(media => {
+        ['eaf', 'trs', 'ixt', 'flextext'].forEach(t => {
+          media[t] = media[t].map(tw => transcriptions[tw.name][0]);
+        });
+        return media;
+      });
+    }
+    resolve({index});
+  });
+
+  function processImages(source, targetPath, item) {
+    return new Promise(async function(resolve, reject) {
+      let name;
+      const {cid, iid, target} = setup(targetPath, item);
+      item.images = await Promise.all(
+        item.images.map(async file => {
+          return await copyToTarget({file, target});
+        })
+      );
+
+      item.thumbnails = await Promise.all(
+        item.thumbnails.map(async file => {
+          return await copyToTarget({file, target});
+        })
+      );
+      item.images = compact(item.images);
+      item.thumbnails = compact(item.thumbnails);
+      resolve(item);
+    });
+  }
+
+  function processTranscriptions(source, targetPath, item) {
+    return new Promise(async function(resolve, reject) {
+      let name;
+      const {cid, iid, target} = setup(targetPath, item);
+      item.transcriptions = await Promise.all(
+        item.transcriptions.map(async file => {
+          const url = await copyToTarget({
+            file: file.url,
+            target
+          });
           return {
             name: file.name,
             url
           };
-        } catch (e) {}
-      });
-      media[t] = compact(media[t]);
+        })
+      );
+      item.transcriptions = compact(item.transcriptions);
+      resolve(item);
     });
-    return media;
-  });
-  return collection;
-}
+  }
 
-function copyToTarget({cid, iid, source, target, file}) {
-  const name = file.split('/').pop();
-  if (shell.test('-f', `${source}/${cid}/${iid}/${name}`)) {
-    shell.cp(`${source}/${cid}/${iid}/${name}`, `${target}/${name}`);
-    return `/repository/${file.split('repository/')[1]}`;
-  } else {
-    console.error(`ERROR: Referenced file missing: ${cid}/${iid}/${name}`);
-    throw new Error();
+  function processMedia(source, targetPath, item) {
+    return new Promise(async function(resolve, reject) {
+      let name;
+      const {cid, iid, target} = setup(targetPath, item);
+      item.media = await Promise.all(
+        item.media.map(async media => {
+          media.files = await Promise.all(
+            media.files.map(async file => {
+              return await copyToTarget({target, file});
+            })
+          );
+          media.files = compact(media.files);
+          ['eaf', 'trs', 'ixt', 'flextext'].forEach(async t => {
+            media[t] = await Promise.all(
+              media[t].map(async file => {
+                const url = await copyToTarget({
+                  file: file.url,
+                  target
+                });
+                return {
+                  name: file.name,
+                  url
+                };
+              })
+            );
+            media[t] = compact(media[t]);
+          });
+          return media;
+        })
+      );
+      resolve(item);
+    });
+  }
+
+  function processDocuments(source, targetPath, item) {
+    return new Promise(async function(resolve, reject) {
+      let name;
+      const {cid, iid, target} = setup(targetPath, item);
+      item.documents = await Promise.all(
+        item.documents.map(async file => {
+          try {
+            return await copyToTarget({file, target});
+          } catch (e) {}
+        })
+      );
+
+      item.documents = compact(item.documents);
+      resolve(item);
+    });
+  }
+
+  function setup(target, item) {
+    const cid = item.collectionId;
+    const iid = item.itemId;
+    target = `${target}/${cid}/${iid}`;
+    shell.mkdir('-p', target);
+    return {cid, iid, target};
+  }
+
+  async function copyToTarget({target, file}) {
+    const name = file.split('/').pop();
+    target = `${target}/${name}`;
+    if (shell.test('-f', `${file}`)) {
+      // shell.cp(`${file}`, `${target}`);
+      await copy(file, target);
+
+      console.log(`Loaded: ${file}`);
+      return `/repository/${target.split('repository/')[1]}`;
+    } else {
+      console.error(`Missing source file: ${file}`);
+    }
   }
 }
 
-function walkDataPath(path) {
-  console.log('INFO: Loading data');
-  let collections, items;
+function prepareTarget(target) {
+  fs.removeSync(`${target}/*`);
+}
+
+async function verifyTargetLibraryBoxDisk(target) {
   try {
-    collections = fs.readdirSync(path).map(collection => {
-      if (fs.statSync(`${path}/${collection}`).isDirectory()) {
-        items = compact(mapItems(`${path}/${collection}`));
-        return items.map(item => {
+    const folder = await stat(`${target}`);
+    return folder.isDirectory();
+  } catch (error) {
+    return false;
+  }
+}
+
+function buildIndex(items) {
+  return items.map(item => {
+    return {
+      collectionId: item.collectionId,
+      itemId: item.itemId,
+      data: readCatalogFile(item)
+    };
+  });
+}
+
+function createItemDataStructure(path, data) {
+  // console.log(data);
+  const files = getFiles(path, data);
+  const mediaFiles = compact(
+    filterFiles([...types.videoTypes, ...types.audioTypes], files)
+  );
+  let imageFiles = compact(filterFiles(types.imageTypes, files));
+  imageFiles = compact(imageFiles.filter(image => !image.name.match('thumb')));
+  const imageThumbnails = compact(
+    imageFiles.filter(image => image.name.match('thumb'))
+  );
+  const documentFiles = compact(filterFiles(types.documentTypes, files));
+  const transcriptionFiles = compact(
+    filterFiles(types.transcriptionTypes, files)
+  );
+  return {
+    citation: get(data.item, 'citation'),
+    collectionId: get(data.item, 'identifier').split('-')[0],
+    collectionLink: `http://catalog.paradisec.org.au/collections/${get(
+      data,
+      'collectionId'
+    )}`,
+    date: get(data.item, 'originationDate'),
+    description: get(data.item, 'description'),
+    documents: [],
+    identifier: [get(data.item, 'identifier'), get(data.item, 'archiveLink')],
+    images: imageFiles.map(image => image.path),
+    itemId: get(data.item, 'identifier').split('-')[1],
+    media: getMediaData([...mediaFiles, ...transcriptionFiles]),
+    openAccess: get(data.item, 'private') === 'false',
+    rights: get(data.item.adminInfo, 'dataAccessConditions'),
+    thumbnails: imageThumbnails.map(image => image.path),
+    title: get(data.item, 'title'),
+    transcriptions: transcriptionFiles.map(t => {
+      return {name: t.name, url: t.path};
+    })
+  };
+
+  function get(leaf, thing) {
+    try {
+      return leaf[thing]['#text'];
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function getFiles(path, data) {
+    const collectionId = get(data.item, 'identifier').split('-')[0];
+    const itemId = get(data.item, 'identifier').split('-')[1];
+    if (!isArray(data.item.files.file)) {
+      data.item.files.file = [data.item.files.file];
+    }
+    return data.item.files.file.map(file => {
+      return {
+        name: `${get(file, 'name')}`,
+        path: `${path}/${get(file, 'name')}`,
+        type: get(file, 'mimeType')
+      };
+    });
+  }
+
+  function filterFiles(types, files) {
+    let extension;
+    return files.filter(file => {
+      extension = file.name.split('.')[1];
+      return includes(types, extension);
+    });
+  }
+
+  function getMediaData(files) {
+    files = groupBy(files, file => {
+      return file.name.split('.')[0];
+    });
+    return map(files, (v, k) => {
+      return {
+        name: k,
+        files: filter([...v], 'media'),
+        eaf: filter([...v], 'eaf'),
+        flextext: filter([...v], 'flextext'),
+        ixt: filter([...v], 'ixt'),
+        trs: filter([...v], 'trs'),
+        type: v[0].type.split('/')[0]
+      };
+    });
+
+    function filter(files, what) {
+      if (what === 'media') {
+        const set = [...types.videoTypes, ...types.audioTypes];
+        files = files.filter(file => {
+          return includes(set, file.name.split('.')[1]);
+        });
+        return files.map(file => file.path);
+      } else {
+        files = files.filter(file => {
+          return file.name.split('.')[1] === what;
+        });
+        return files.map(file => {
           return {
-            collectionId: collection,
-            itemId: item,
-            dataPath: `${path}/${collection}/${item}`
+            name: file.name,
+            url: file.path
           };
         });
       }
-    });
-    collections = compact(collections);
-    return collections;
-  } catch (error) {
-    console.log(error);
-  }
-
-  function mapItems(path) {
-    let items = fs.readdirSync(`${path}`);
-    return items.map(item => {
-      if (fs.statSync(`${path}/${item}`).isDirectory()) {
-        return item;
-      }
-    });
+    }
   }
 }
 
-function loadItemData(collectionId, itemId) {
-  const datasource = {
-    collections: 'http://catalog.paradisec.org.au/collections',
-    itemIdentifier: 'oai:paradisec.org.au:{{collectionId}}-{{itemId}}',
-    getItem:
-      'http://catalog.paradisec.org.au/oai/item?verb=GetRecord&identifier={{itemId}}&metadataPrefix=olac'
-  };
+function readCatalogFile({dataPath, dataFile}) {
+  const data = parseXML(fs.readFileSync(dataFile, {encoding: 'utf8'}));
+  return createItemDataStructure(dataPath, data);
 
-  const itemIdentifier = datasource.itemIdentifier
-    .replace('{{collectionId}}', collectionId)
-    .replace('{{itemId}}', itemId);
-  const url = datasource.getItem.replace('{{itemId}}', itemIdentifier);
-  return request.get(url).then(response => parseOAI(response).data);
-
-  function parseOAI(d) {
-    var tree = parseXML(d);
-
-    try {
-      tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
-      return {data: createItemDataStructure(tree)};
-    } catch (e) {
-      return {data: ''};
-    }
-  }
-
-  function parseXML(doc, as) {
+  function parseXML(doc) {
     var parser = new DOMParser();
     var xmldoc = parser.parseFromString(doc, 'text/xml');
-    if (as === 'xml') {
-      return doc;
+    return convert(xmldoc);
+  }
+}
+
+async function buildDataTree(path) {
+  let collections, items;
+  try {
+    let dataFolders = await scandir(path);
+    dataFolders = flattenDeep(dataFolders);
+    dataFolders = compact(dataFolders);
+    let errors = [];
+
+    let items = [];
+    for (let folder of dataFolders) {
+      if (folder.dataFile.length > 1) {
+        errors.push(
+          `${
+            folder.dataPath
+          } has more than 1 Catalog file. Skipping this folder.`
+        );
+      } else {
+        const cid = folder.dataFile[0].split('-')[0];
+        const iid = folder.dataFile[0].split('-')[1];
+        if (!folder.dataPath.match(/.AppleDouble/)) {
+          items.push({
+            dataPath: folder.dataPath,
+            dataFile: `${folder.dataPath}/${folder.dataFile[0]}`,
+            collectionId: cid,
+            itemId: iid
+          });
+        }
+      }
     }
-    return xmlToJson.convert(xmldoc);
+    return {items, errors};
+  } catch (e) {
+    console.log(e);
+  }
+
+  async function scandir(path) {
+    let dataFolders = [];
+    let errors = [];
+    let subfolder, content, dataFile;
+    if (await isDirectory(path)) {
+      content = await readdir(path);
+      dataFile = containsCatXMLFile(content);
+      if (dataFile.length > 0) {
+        dataFolders.push({
+          dataPath: path,
+          dataFile: dataFile
+        });
+      }
+      for (let i of content) {
+        subfolder = `${path}/${i}`;
+        if (isDirectory(subfolder)) {
+          dataFolders.push(await scandir(subfolder));
+        }
+      }
+    }
+    return dataFolders;
+  }
+
+  async function isDirectory(path) {
+    const pathStat = await stat(path);
+    return pathStat.isDirectory();
+  }
+
+  function containsCatXMLFile(content) {
+    return content.filter(f => f.match(/CAT-PDSC_ADMIN.xml/));
   }
 }
