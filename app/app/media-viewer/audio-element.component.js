@@ -42,15 +42,4 @@ function Controller($state, $timeout, $location, dataService) {
       audioElement.pause();
     }, (end - start) * 1000);
   }
-
-  // function loadItem() {
-  //   var url =
-  //     '/' +
-  //     $state.params.collectionId +
-  //     '/' +
-  //     $state.params.itemId +
-  //     '/' +
-  //     vm.element.name;
-  //   $location.url(url);
-  // }
 }
