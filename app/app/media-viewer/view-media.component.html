@@ -21,31 +21,53 @@
                 <span class="fa fa-step-forward fa-lg"></span>
                 <md-tooltip>Next Item</md-tooltip>
         </md-button>
-        <div flex="5" hide-sm hide-xs></div>
     </div>
-    <div layout="row" layout-align="center start" flex ng-hide="vm.config.showItemInformation">
-        <pdsc-audio-player-component
-            element="vm.config.item"
-            ng-if="vm.config.item.type === 'audio'">
-        </pdsc-audio-player-component>
-        <pdsc-video-player-component
-            element="vm.config.item"
-            ng-if="vm.config.item.type === 'video'">
-        </pdsc-video-player-component>
+    <div ng-if="vm.config.item.type === 'audio'">
+        <div layout="row" layout-align="center start" flex ng-hide="vm.config.showItemInformation">
+            <pdsc-audio-player-component
+                element="vm.config.item">
+            </pdsc-audio-player-component>
+        </div>
+        <div
+            layout="row"
+            layout-align="center center"
+            ng-if="
+                vm.config.item.eaf.length ||
+                vm.config.item.trs.length ||
+                vm.config.item.ixt.length ||
+                vm.config.item.flextext.length
+            "
+            ng-hide="vm.config.showItemInformation">
+            <pdsc-transcription-render-component
+                element="vm.config.item"
+                ng-if="vm.config.item">
+            </pdsc-transcription-render-component>
+        </div>
     </div>
-    <div
-        layout="row"
-        layout-align="center center"
-        ng-if="
-            vm.config.item.eaf.length ||
-            vm.config.item.trs.length ||
-            vm.config.item.ixt.length ||
-            vm.config.item.flextext.length
-        "
-        ng-hide="vm.config.showItemInformation">
-        <pdsc-transcription-render-component
-            element="vm.config.item"
-            ng-if="vm.config.item">
-        </pdsc-transcription-render-component>
+    <div ng-if="vm.config.item.type === 'video'">
+        <div layout="row"
+                layout-align="center start"
+                layout-padding
+                flex ng-hide="vm.config.showItemInformation">
+            <pdsc-video-player-component
+                element="vm.config.item">
+            </pdsc-video-player-component>
+            <div
+                layout="row"
+                class="hide-xs hide-sm"
+                ng-if="
+                    vm.config.item.eaf.length ||
+                    vm.config.item.trs.length ||
+                    vm.config.item.ixt.length ||
+                    vm.config.item.flextext.length
+                "
+                ng-hide="vm.config.showItemInformation">
+                <pdsc-transcription-render-component
+                    element="vm.config.item"
+                    ng-if="vm.config.item">
+                </pdsc-transcription-render-component>
+            </div>
+        </div>
     </div>
+
 </div>
