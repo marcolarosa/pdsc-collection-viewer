@@ -5,6 +5,7 @@
 - [Preamble](#preamble)
 	- [Features](#features)
 - [URL structure](#url-structure)
+- [Prerequisites](#prerequisites)
 - [Developing the online version.](#developing-the-online-version)
 - [Developing the LibrayBox Version.](#developing-the-libraybox-version)
 - [Building a distribution](#building-a-distribution)
@@ -36,10 +37,8 @@ the network.
 * deep linking to all resources
 * scrolling transcript support as media playing
 * media jump to segment from transcript
+* the EAF parser supports EAF files with multiple tiers.
 
-Marco La Rosa
-Wed, Apr 11, 10:02 AM
-I forgot to mention that the EAF parser now supports EAF files with multiple tiers.
 ## URL structure
 
 As the viewer is designed to display item resources (and given that at the
@@ -60,6 +59,11 @@ collections.
 http://{localhost | vm IP address}:9000/#/
 ```
 
+## Prerequisites
+
+You need nodejs installed (version 8 or greater). See [here](https://nodejs.org/en/download/) for what to do for your
+system.
+
 ## Developing the online version.
 ```
 > npm run develop:online
@@ -69,7 +73,14 @@ This will give you a webpack based build (in dist) with livereload.
 
 ## Developing the LibrayBox Version.
 ```
-> npm run develop:LibraryBox
+> npm run develop:librarybox
+
+As the offline version requires the data to be available locally, after the app has
+started you need to run the following:
+
+> node librarybox-tools/data-loader.js --data-path {path to some data} --output-path dist
+
+Note that the data folders **must** contain a CAT-PDSC_ADMIN.xml file.
 ```
 
 ## Building a distribution
