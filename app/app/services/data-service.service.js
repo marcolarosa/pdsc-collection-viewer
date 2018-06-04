@@ -10,7 +10,12 @@ const {
   flattenDeep
 } = require('lodash');
 
-const {parseOAI, parseXML} = require('./data-service-lib');
+const {
+  parseOAI,
+  parseXML,
+  createItemDataStructureFromGraphQL
+} = require('./data-service-lib');
+import gql from 'graphql-tag';
 
 module.exports = DataService;
 
@@ -23,7 +28,9 @@ DataService.$inject = [
   'trsParserService',
   'ixtParserService',
   'flextextParserService',
-  'lodash'
+  'lodash',
+  'apollo',
+  '$window'
 ];
 function DataService(
   $rootScope,
@@ -34,7 +41,9 @@ function DataService(
   trs,
   ixt,
   ftp,
-  lodash
+  lodash,
+  apollo,
+  $window
 ) {
   var ds = {
     getItem: getItem,
@@ -102,20 +111,70 @@ function DataService(
   }
 
   function onlineLoader(collectionId, itemId) {
-    const itemIdentifier = configuration.datasource.itemIdentifier
-      .replace('{{collectionId}}', collectionId)
-      .replace('{{itemId}}', itemId);
+    return apollo
+      .query({
+        query: gql`
+          query($identifier: String!) {
+            items(full_identifier: $identifier, limit: 1, page: 1) {
+              results {
+                identifier: full_identifier
+                title
+                description
+                rights: access_condition_name
+                access_condition_details: access_narrative
+                permalink
+                access_class
+                date: originated_on
+                citation
+                collector {
+                  name
+                }
+                roles: item_agents {
+                  role_name
+                  user_name
+                }
+                collection {
+                  identifier
+                  permalink
+                }
+                files: essences {
+                  filename
+                  mimetype
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          identifier: `${collectionId}-${itemId}`
+        }
+      })
+      .then(result => {
+        return createItemDataStructureFromGraphQL(result.data.items.results[0]);
+      })
+      .catch(error => {
+        if (error.message.match(/401/)) {
+          $window.location.href = 'http://catalog.paradisec.org.au';
+        }
+      });
 
-    const url = configuration.datasource.getItem.replace(
-      '{{itemId}}',
-      itemIdentifier
-    );
-    $log.info(`ds getItem ${url}`);
-
-    return $http
-      .get(url, {transformResponse: parseOAI})
-      .then(response => response.data.data)
-      .catch(() => $log.error("dataService: error, couldn't get", url));
+    // NOTE: LEGACY OAI DATA LOADER
+    // const itemIdentifier = configuration.datasource.itemIdentifier
+    //   .replace('{{collectionId}}', collectionId)
+    //   .replace('{{itemId}}', itemId);
+    //
+    // const url = configuration.datasource.getItem.replace(
+    //   '{{itemId}}',
+    //   itemIdentifier
+    // );
+    // $log.info(`ds getItem ${url}`);
+    //
+    // return $http
+    //   .get(url, {transformResponse: parseOAI})
+    //   .then(response => {
+    //     return response.data.data;
+    //   })
+    //   .catch(() => $log.error("dataService: error, couldn't get", url));
   }
 
   function libraryBoxLoader(collectionId, itemId) {

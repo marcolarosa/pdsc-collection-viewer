@@ -13,6 +13,7 @@ require('angular-material');
 require('angular-messages');
 require('angular-sanitize');
 require('@uirouter/angularjs');
+require('angular1-apollo');
 require('moment');
 require('lodash');
 require('pdfjs-dist');

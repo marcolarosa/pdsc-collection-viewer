@@ -7,3 +7,9 @@
 .image-viewer-filmstrip-thumbnail {
   width: 150px;
 }
+
+.image-style {
+  max-width: 600px;
+  overflow: auto;
+  width: 600px;
+}

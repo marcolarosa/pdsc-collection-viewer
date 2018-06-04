@@ -37,6 +37,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'ifdef-loader',
@@ -45,9 +46,13 @@ module.exports = merge(common, {
               DEPLOY_PRODUCTION: false
             }
           },
-          {loader: 'babel-loader?presets[]=es2015'}
-        ],
-        exclude: /node_modules|bower_components/
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env']
+            }
+          }
+        ]
       }
     ]
   }

@@ -71,15 +71,15 @@
             <md-progress-linear md-mode="indeterminate"></md-progress-linear>
         </div>
         <img
-            class="pannable-image"
+            class="pannable-image image-style"
             id='largeImage'
             ng-src="{{vm.image}}"
+            ng-hide="!vm.showImage"
             ng-if="vm.image && !vm.loadingData && !vm.showError"
-            ng-style="vm.imageStyle"
             show-when-ready>
-        <a href="http://catalog.paradisec.org.au/users/sign_in" ng-if="vm.showError">
-            Please log in to Nabu to view this item.
-        </a>
+        <p ng-if="vm.showError">
+            Unfortunately we're unable to display this image at this time.
+        </p>
     </div>
 </div>
 

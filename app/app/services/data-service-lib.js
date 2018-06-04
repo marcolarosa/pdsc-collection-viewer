@@ -8,20 +8,23 @@ const {
   isArray,
   each,
   map,
-  flattenDeep
+  flattenDeep,
+  groupBy
 } = require('lodash');
 const lodash = require('lodash');
 
 module.exports = {
   parseOAI,
   parseXML,
-  createItemDataStructure
+  createItemDataStructure,
+  createItemDataStructureFromGraphQL
 };
 
 const types = {
   imageTypes: ['jpg', 'jpeg', 'png'],
   videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
   audioTypes: ['mp3', 'ogg', 'oga'],
+  transcriptionTypes: ['eaf', 'trs', 'ixt'],
   documentTypes: ['pdf']
 };
 
@@ -43,6 +46,127 @@ function parseXML(doc, as) {
     return doc;
   }
   return xmlToJson.convert(xmldoc);
+}
+
+function createItemDataStructureFromGraphQL(data) {
+  const collectionId = data.identifier.split('-')[0];
+  const itemId = data.identifier.split('-')[1];
+
+  const files = getFiles({data, collectionId, itemId});
+  const mediaFiles = compact(
+    filterFiles([...types.videoTypes, ...types.audioTypes], files)
+  );
+  let imageFiles = compact(filterFiles(types.imageTypes, files));
+  imageFiles = compact(imageFiles.filter(image => !image.name.match('thumb')));
+  const imageThumbnails = imageFiles.map(image => {
+    let extension, basename, components, name, path;
+    components = image.name.split('.');
+    extension = components.pop();
+    basename = components.join('.');
+    name = `${basename}-thumb-PDSC_ADMIN.${extension}`;
+    path = image.path.split('/');
+    path.pop();
+    path = path.join('/');
+    return {
+      name,
+      type: image.type,
+      path: `${path}/${name}`
+    };
+  });
+  const documentFiles = compact(filterFiles(types.documentTypes, files));
+  const transcriptionFiles = compact(
+    filterFiles(types.transcriptionTypes, files)
+  );
+
+  return {
+    audioVisualisations: {},
+    citation: data.citation,
+    collectionId: collectionId,
+    collectionLink: data.permalink,
+    contributor: constructContributorList({data}),
+    date: data.date,
+    description: data.description,
+    documents: documentFiles.map(document => document.path),
+    identifier: [data.identifier, data.permalink],
+    images: imageFiles.map(image => image.path),
+    itemId: itemId,
+    media: getMediaData([...mediaFiles, ...transcriptionFiles]),
+    openAccess: data.access_class === 'open' ? true : false,
+    rights: data.rights,
+    thumbnails: imageThumbnails.map(image => image.path),
+    title: data.title,
+    transcriptions: transcriptionFiles.map(t => {
+      return {name: t.name, url: t.path};
+    })
+  };
+
+  function constructContributorList({data}) {
+    return [
+      {name: data.collector.name, role: 'compiler'},
+      ...data.roles.map(r => {
+        return {name: r.user_name, role: r.role_name};
+      })
+    ];
+  }
+
+  function getMediaData(files) {
+    files = groupBy(files, file => {
+      return file.name.split('.')[0];
+    });
+    return map(files, (v, k) => {
+      return {
+        name: k,
+        files: filter([...v], 'media'),
+        eaf: filter([...v], 'eaf'),
+        // flextext: filter([...v], 'flextext'),
+        ixt: filter([...v], 'ixt'),
+        trs: filter([...v], 'trs'),
+        type: v[0].type.split('/')[0]
+      };
+    });
+
+    function filter(files, what) {
+      if (what === 'media') {
+        const set = [...types.videoTypes, ...types.audioTypes];
+        files = files.filter(file => {
+          return includes(set, file.name.split('.')[1]);
+        });
+        return files.map(file => file.path);
+      } else {
+        files = files.filter(file => {
+          return file.name.split('.')[1] === what;
+        });
+        return files.map(file => {
+          return {
+            name: file.name,
+            url: file.path
+          };
+        });
+      }
+    }
+  }
+
+  function getFiles({data, collectionId, itemId}) {
+    let path = `http://catalog.paradisec.org.au/repository/${collectionId}/${itemId}`;
+    if (!isArray(data.files)) {
+      data.files = [data.files];
+    }
+    return data.files.map(file => {
+      return {
+        name: file.filename,
+        path: `${path}/${file.filename}`,
+        type: file.mimetype
+      };
+    });
+  }
+
+  function filterFiles(types, files) {
+    let extension;
+    return files.filter(file => {
+      extension = file.name.split('.').pop();
+      return includes(types, extension);
+    });
+  }
 }
 
 function createItemDataStructure(tree) {

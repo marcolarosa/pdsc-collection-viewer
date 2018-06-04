@@ -14,6 +14,11 @@ require('./transcription-viewer/module');
 require('./media-viewer/module');
 require('./supporting-services/module');
 
+import AngularApollo from 'angular1-apollo';
+import {ApolloClient} from 'apollo-client';
+import {InMemoryCache} from 'apollo-cache-inmemory';
+import {HttpLink} from 'apollo-link-http';
+
 angular
   .module('pdsc', [
     'ngAnimate',
@@ -21,6 +26,7 @@ angular
     'ngMessages',
     'ui.router',
     'ngSanitize',
+    'angular-apollo',
     'moment',
     'lodash',
     'pdfjs',
@@ -39,13 +45,27 @@ angular
   ])
   .config(Configure);
 
-Configure.$inject = ['$mdThemingProvider', '$locationProvider'];
-function Configure($mdThemingProvider, $locationProvider) {
+Configure.$inject = [
+  '$mdThemingProvider',
+  '$locationProvider',
+  'apolloProvider'
+];
+function Configure($mdThemingProvider, $locationProvider, apolloProvider) {
   $mdThemingProvider
     .theme('default')
     .primaryPalette('blue-grey')
     .accentPalette('orange');
 
   $locationProvider.hashPrefix('');
+
+  const client = new ApolloClient({
+    link: new HttpLink({
+      uri: 'http://catalog.paradisec.org.au/graphql',
+      credentials: 'include'
+    }),
+    cache: new InMemoryCache()
+  });
+
+  apolloProvider.defaultClient(client);
   // $locationProvider.html5mode(true);
 }

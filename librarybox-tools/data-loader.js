@@ -43,7 +43,7 @@ async function run(args) {
 
   try {
     console.log('Verifying the target disk.');
-    if (!await verifyTargetLibraryBoxDisk(target)) {
+    if (!(await verifyTargetLibraryBoxDisk(target))) {
       console.error(
         `${this.usbMountPoint} doesn't look like a LibraryBox disk;`
       );
@@ -255,7 +255,7 @@ function createItemDataStructure(path, data) {
     )}`,
     date: get(data.item, 'originationDate'),
     description: get(data.item, 'description'),
-    documents: [],
+    documents: documentFiles.map(document => document.path),
     identifier: [get(data.item, 'identifier'), get(data.item, 'archiveLink')],
     images: imageFiles.map(image => image.path),
     itemId: get(data.item, 'identifier').split('-')[1],
