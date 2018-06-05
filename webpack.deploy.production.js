@@ -8,7 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  devtool: 'nosources-source-map',
+  devtool: 'none',
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
