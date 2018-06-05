@@ -64,7 +64,7 @@ function Controller($state, $timeout, $location, $anchorScroll, $mdSidenav) {
   function loadImage(image) {
     vm.loadItem({item: image});
     $timeout(() => {
-      // highlightSelectedItem();
+      highlightSelectedItem();
     });
   }
 }
