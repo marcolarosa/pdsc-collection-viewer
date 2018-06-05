@@ -1,16 +1,13 @@
 <div
     layout="column"
     layout-align="center center"
-    ng-show="!vm.mediaReadyToPlay && !vm.loginRequired">
-        Loading media... please wait.
-</div>
-<div
-    layout="column"
-    layout-align="center center"
-    ng-show="vm.loginRequired">
-        <a href="http://catalog.paradisec.org.au/users/sign_in">
-            Please log in to Nabu to view this item.
-        </a>
+    ng-show="!vm.mediaReadyToPlay">
+        <div layout="row" layout-padding>
+            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+            <span>
+                Loading media... please wait.
+            </span>
+        </div>
 </div>
 <div
     layout="column"
