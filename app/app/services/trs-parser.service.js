@@ -12,7 +12,7 @@ function TRSParserService(lodash) {
     if (data.html) {
       return;
     }
-    if (data.parsererror["#text"].match(/Error/)) {
+    if (data.parsererror && data.parsererror["#text"].match(/Error/)) {
       return;
     }
 
