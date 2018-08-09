@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const xmlToJson = require('./xml-to-json.service');
+const xmlToJson = require("./xml-to-json.service");
 const {
   includes,
   isEmpty,
@@ -10,8 +10,8 @@ const {
   map,
   flattenDeep,
   groupBy
-} = require('lodash');
-const lodash = require('lodash');
+} = require("lodash");
+const lodash = require("lodash");
 
 module.exports = {
   parseOAI,
@@ -21,52 +21,52 @@ module.exports = {
 };
 
 const types = {
-  imageTypes: ['jpg', 'jpeg', 'png'],
-  videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
-  audioTypes: ['mp3', 'ogg', 'oga'],
-  transcriptionTypes: ['eaf', 'trs', 'ixt'],
-  documentTypes: ['pdf']
+  imageTypes: ["jpg", "jpeg", "png"],
+  videoTypes: ["mp4", "ogg", "ogv", "mov", "webm"],
+  audioTypes: ["mp3", "ogg", "oga"],
+  transcriptionTypes: ["eaf", "trs", "ixt"],
+  documentTypes: ["pdf"]
 };
 
 function parseOAI(d) {
   var tree = parseXML(d);
 
   try {
-    tree = tree['OAI-PMH'].GetRecord.record.metadata['olac:olac'];
-    return {data: createItemDataStructure(tree)};
+    tree = tree["OAI-PMH"].GetRecord.record.metadata["olac:olac"];
+    return { data: createItemDataStructure(tree) };
   } catch (e) {
-    return {data: ''};
+    return { data: "" };
   }
 }
 
 function parseXML(doc, as) {
   var parser = new DOMParser();
-  var xmldoc = parser.parseFromString(doc, 'text/xml');
-  if (as === 'xml') {
+  var xmldoc = parser.parseFromString(doc, "text/xml");
+  if (as === "xml") {
     return doc;
   }
   return xmlToJson.convert(xmldoc);
 }
 
 function createItemDataStructureFromGraphQL(data) {
-  const collectionId = data.identifier.split('-')[0];
-  const itemId = data.identifier.split('-')[1];
+  const collectionId = data.identifier.split("-")[0];
+  const itemId = data.identifier.split("-")[1];
 
-  const files = getFiles({data, collectionId, itemId});
+  const files = getFiles({ data, collectionId, itemId });
   const mediaFiles = compact(
     filterFiles([...types.videoTypes, ...types.audioTypes], files)
   );
   let imageFiles = compact(filterFiles(types.imageTypes, files));
-  imageFiles = compact(imageFiles.filter(image => !image.name.match('thumb')));
+  imageFiles = compact(imageFiles.filter(image => !image.name.match("thumb")));
   const imageThumbnails = imageFiles.map(image => {
     let extension, basename, components, name, path;
-    components = image.name.split('.');
+    components = image.name.split(".");
     extension = components.pop();
-    basename = components.join('.');
+    basename = components.join(".");
     name = `${basename}-thumb-PDSC_ADMIN.${extension}`;
-    path = image.path.split('/');
+    path = image.path.split("/");
     path.pop();
-    path = path.join('/');
+    path = path.join("/");
     return {
       name,
       type: image.type,
@@ -83,7 +83,7 @@ function createItemDataStructureFromGraphQL(data) {
     citation: data.citation,
     collectionId: collectionId,
     collectionLink: data.permalink,
-    contributor: constructContributorList({data}),
+    contributor: constructContributorList({ data }),
     date: data.date,
     description: data.description,
     documents: documentFiles.map(document => document.path),
@@ -91,50 +91,50 @@ function createItemDataStructureFromGraphQL(data) {
     images: imageFiles.map(image => image.path),
     itemId: itemId,
     media: getMediaData([...mediaFiles, ...transcriptionFiles]),
-    openAccess: data.access_class === 'open' ? true : false,
+    openAccess: data.access_class === "open" ? true : false,
     rights: data.rights,
     thumbnails: imageThumbnails.map(image => image.path),
     title: data.title,
     transcriptions: transcriptionFiles.map(t => {
-      return {name: t.name, url: t.path};
+      return { name: t.name, url: t.path };
     })
   };
 
-  function constructContributorList({data}) {
+  function constructContributorList({ data }) {
     return [
-      {name: data.collector.name, role: 'compiler'},
+      { name: data.collector.name, role: "compiler" },
       ...data.roles.map(r => {
-        return {name: r.user_name, role: r.role_name};
+        return { name: r.user_name, role: r.role_name };
       })
     ];
   }
 
   function getMediaData(files) {
     files = groupBy(files, file => {
-      return file.name.split('.')[0];
+      return file.name.split(".")[0];
     });
     return map(files, (v, k) => {
       return {
         name: k,
-        files: filter([...v], 'media'),
-        eaf: filter([...v], 'eaf'),
+        files: filter([...v], "media"),
+        eaf: filter([...v], "eaf"),
         // flextext: filter([...v], 'flextext'),
-        ixt: filter([...v], 'ixt'),
-        trs: filter([...v], 'trs'),
-        type: v[0].type.split('/')[0]
+        ixt: filter([...v], "ixt"),
+        trs: filter([...v], "trs"),
+        type: v[0].type.split("/")[0]
       };
     });
 
     function filter(files, what) {
-      if (what === 'media') {
+      if (what === "media") {
         const set = [...types.videoTypes, ...types.audioTypes];
         files = files.filter(file => {
-          return includes(set, file.name.split('.')[1]);
+          return includes(set, file.name.split(".")[1]);
         });
         return files.map(file => file.path);
       } else {
         files = files.filter(file => {
-          return file.name.split('.')[1] === what;
+          return file.name.split(".")[1] === what;
         });
         return files.map(file => {
           return {
@@ -146,7 +146,7 @@ function createItemDataStructureFromGraphQL(data) {
     }
   }
 
-  function getFiles({data, collectionId, itemId}) {
+  function getFiles({ data, collectionId, itemId }) {
     let path = `http://catalog.paradisec.org.au/repository/${collectionId}/${itemId}`;
     if (!isArray(data.files)) {
       data.files = [data.files];
@@ -163,38 +163,38 @@ function createItemDataStructureFromGraphQL(data) {
   function filterFiles(types, files) {
     let extension;
     return files.filter(file => {
-      extension = file.name.split('.').pop();
+      extension = file.name.split(".").pop();
       return includes(types, extension);
     });
   }
 }
 
 function createItemDataStructure(tree) {
-  if (!isArray(tree['dc:identifier'])) {
-    tree['dc:identifier'] = [tree['dc:identifier']];
+  if (!isArray(tree["dc:identifier"])) {
+    tree["dc:identifier"] = [tree["dc:identifier"]];
   }
-  if (!isArray(tree['dc:contributor'])) {
-    tree['dc:contributor'] = [tree['dc:contributor']];
+  if (!isArray(tree["dc:contributor"])) {
+    tree["dc:contributor"] = [tree["dc:contributor"]];
   }
   var data = {
     openAccess: true,
-    identifier: tree['dc:identifier'].map(d => {
-      return d['#text'];
+    identifier: tree["dc:identifier"].map(d => {
+      return d["#text"];
     }),
-    title: get(tree, 'dc:title'),
-    date: get(tree, 'dcterms:created'),
-    description: get(tree, 'dc:description'),
-    citation: get(tree, 'dcterms:bibliographicCitation'),
-    contributor: tree['dc:contributor'].map(d => {
+    title: get(tree, "dc:title"),
+    date: get(tree, "dcterms:created"),
+    description: get(tree, "dc:description"),
+    citation: get(tree, "dcterms:bibliographicCitation"),
+    contributor: tree["dc:contributor"].map(d => {
       return {
-        name: d['#text'],
-        role: d['@attributes']['olac:code']
+        name: d["#text"],
+        role: d["@attributes"]["olac:code"]
       };
     }),
-    images: constructItemList('images', tree),
-    documents: constructItemList('documents', tree),
+    images: constructItemList("images", tree),
+    documents: constructItemList("documents", tree),
     media: processMedia(tree),
-    rights: get(tree, 'dcterms:accessRights')
+    rights: get(tree, "dcterms:accessRights")
   };
 
   data.transcriptions = flattenDeep(
@@ -204,7 +204,7 @@ function createItemDataStructure(tree) {
   ).sort();
 
   // if the item is closed - set a flag to make it easier to work with in the view
-  if (data.rights.match('Closed.*')) {
+  if (data.rights.match("Closed.*")) {
     data.openAccess = false;
   }
 
@@ -213,19 +213,19 @@ function createItemDataStructure(tree) {
   return data;
 
   function processMedia(tree) {
-    const audio = constructItemList('audio', tree);
-    const video = constructItemList('video', tree);
-    const eaf = processMediaItem('eaf', tree);
-    const trs = processMediaItem('trs', tree);
-    const ixt = processMediaItem('ixt', tree);
-    const flextext = processMediaItem('flextext', tree);
+    const audio = constructItemList("audio", tree);
+    const video = constructItemList("video", tree);
+    const eaf = processMediaItem("eaf", tree);
+    const trs = processMediaItem("trs", tree);
+    const ixt = processMediaItem("ixt", tree);
+    const flextext = processMediaItem("flextext", tree);
 
     let media = [];
     each(audio, (files, key) => {
-      media.push(createMediaItemDataStructure(key, files, 'audio'));
+      media.push(createMediaItemDataStructure(key, files, "audio"));
     });
     each(video, (files, key) => {
-      media.push(createMediaItemDataStructure(key, files, 'video'));
+      media.push(createMediaItemDataStructure(key, files, "video"));
     });
     return media;
 
@@ -234,7 +234,7 @@ function createItemDataStructure(tree) {
       each(item, (v, k) => {
         item[k] = map(v, url => {
           return {
-            name: url.split('/').pop(),
+            name: url.split("/").pop(),
             url: url
           };
         });
@@ -259,57 +259,57 @@ function createItemDataStructure(tree) {
   //  not every item has every datapoint
   function get(tree, thing) {
     try {
-      return tree[thing]['#text'];
+      return tree[thing]["#text"];
     } catch (e) {
-      return '';
+      return "";
     }
   }
 }
 
 function constructItemList(type, tree) {
   var selector;
-  if (type === 'images') {
+  if (type === "images") {
     selector = types.imageTypes;
-  } else if (type === 'video') {
+  } else if (type === "video") {
     selector = types.videoTypes;
-  } else if (type === 'audio') {
+  } else if (type === "audio") {
     selector = types.audioTypes;
-  } else if (type === 'documents') {
+  } else if (type === "documents") {
     selector = types.documentTypes;
-  } else if (type === 'eaf') {
-    selector = 'eaf';
-  } else if (type === 'trs') {
-    selector = 'trs';
-  } else if (type === 'ixt') {
-    selector = 'ixt';
-  } else if (type === 'flextext') {
-    selector = 'flextext';
+  } else if (type === "eaf") {
+    selector = "eaf";
+  } else if (type === "trs") {
+    selector = "trs";
+  } else if (type === "ixt") {
+    selector = "ixt";
+  } else if (type === "flextext") {
+    selector = "flextext";
   }
 
-  if (!isArray(tree['dcterms:tableOfContents'])) {
-    tree['dcterms:tableOfContents'] = [tree['dcterms:tableOfContents']];
+  if (!isArray(tree["dcterms:tableOfContents"])) {
+    tree["dcterms:tableOfContents"] = [tree["dcterms:tableOfContents"]];
   }
   var items = compact(
-    tree['dcterms:tableOfContents'].map(d => {
-      var i = d['#text'];
-      var ext = i.split('.').pop();
+    tree["dcterms:tableOfContents"].map(d => {
+      var i = d["#text"];
+      var ext = i.split(".").pop();
       if (
         ext !== undefined &&
         selector !== undefined &&
         includes(selector, ext.toLowerCase())
       ) {
-        return d['#text'];
+        return d["#text"];
       }
     })
   );
 
-  if (includes(['audio', 'video', 'eaf', 'trs', 'ixt', 'flextext'], type)) {
+  if (includes(["audio", "video", "eaf", "trs", "ixt", "flextext"], type)) {
     // audio and video can exist in multiple formats; so, group the data
     //  by name and then return an array of arrays - sorting by item name
     return lodash(items)
       .chain()
       .groupBy(function(d) {
-        return lodash.last(d.split('/')).split('.')[0];
+        return lodash.last(d.split("/")).split(".")[0];
       })
       .value();
   } else {
@@ -319,27 +319,27 @@ function constructItemList(type, tree) {
 
 function generateThumbnails(images) {
   return images.map(d => {
-    var name = d.split('/').pop();
+    var name = d.split("/").pop();
     var thumbName =
-      name.split('.')[0] + '-thumb-PDSC_ADMIN.' + name.split('.')[1];
+      name.split(".")[0] + "-thumb-PDSC_ADMIN." + name.split(".")[1];
     return d.replace(name, thumbName);
   });
 }
 
 function generateAudioVisualisations(audio) {
   var audioVisualisations = lodash.map(audio, function(d) {
-    var name = d[0].split('/').pop();
-    var audioVisName = name.split('.')[0] + '-soundimage-PDSC_ADMIN.jpg';
+    var name = d[0].split("/").pop();
+    var audioVisName = name.split(".")[0] + "-soundimage-PDSC_ADMIN.jpg";
     return d[0].replace(name, audioVisName);
   });
   audioVisualisations = lodash(audioVisualisations)
     .chain()
     .groupBy(function(d) {
       return d
-        .split('/')
+        .split("/")
         .pop()
-        .split('.')[0]
-        .split('-soundimage')[0];
+        .split(".")[0]
+        .split("-soundimage")[0];
     })
     .value();
 

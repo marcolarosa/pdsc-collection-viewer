@@ -47,6 +47,10 @@
     <div ng-show="vm.loadingTranscriptions" style="width: 500px;">
         <md-progress-linear md-mode="indeterminate"></md-progress-linear>
     </div>
+    <div ng-if="!vm.selectedTranscription">
+        Unable to show the selected transcription. It's likely there is an error
+        in the file.
+    <div>
 </div>
 
 <div
