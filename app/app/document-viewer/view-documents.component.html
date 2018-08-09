@@ -92,10 +92,10 @@
                 <md-button
                     class="small-button"
                     aria-label="download document"
-                    ng-href="{{vm.item.documents[vm.config.document]}}"
+                    ng-href="{{vm.item.documents[vm.config.current]}}"
                     download>
                         <i class="fa fa-download fa-lg"></i>
-                        Download {{vm.item.documents[vm.config.document] | extension}}
+                        Download {{vm.item.documents[vm.config.current] | extension}}
                 </md-button>
             </div>
         </span>
