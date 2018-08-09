@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const {
   includes,
@@ -8,29 +8,29 @@ const {
   each,
   map,
   flattenDeep
-} = require('lodash');
+} = require("lodash");
 
 const {
   parseOAI,
   parseXML,
   createItemDataStructureFromGraphQL
-} = require('./data-service-lib');
-import gql from 'graphql-tag';
+} = require("./data-service-lib");
+import gql from "graphql-tag";
 
 module.exports = DataService;
 
 DataService.$inject = [
-  '$rootScope',
-  '$log',
-  '$http',
-  'configuration',
-  'eafParserService',
-  'trsParserService',
-  'ixtParserService',
-  'flextextParserService',
-  'lodash',
-  'apollo',
-  '$window'
+  "$rootScope",
+  "$log",
+  "$http",
+  "configuration",
+  "eafParserService",
+  "trsParserService",
+  "ixtParserService",
+  "flextextParserService",
+  "lodash",
+  "apollo",
+  "$window"
 ];
 function DataService(
   $rootScope,
@@ -84,9 +84,9 @@ function DataService(
     ds.loading[collectionId][itemId] = true;
 
     let url;
-    if (configuration.datasource.mode === 'online') {
+    if (configuration.datasource.mode === "online") {
       return onlineLoader(collectionId, itemId).then(processResponse);
-    } else if (configuration.datasource.mode === 'librarybox') {
+    } else if (configuration.datasource.mode === "librarybox") {
       return libraryBoxLoader(collectionId, itemId).then(processResponse);
     } else {
       $log.error(`Unexpected mode set: ${configuration.datasource.mode}`);
@@ -99,11 +99,11 @@ function DataService(
       data.collectionId = collectionId;
       data.itemId = itemId;
       data.collectionLink =
-        configuration.datasource.collections + '/' + collectionId;
+        configuration.datasource.collections + "/" + collectionId;
 
       ds.data[collectionId][itemId] = data;
       ds.loading[collectionId][itemId] = false;
-      $rootScope.$broadcast('item data loaded');
+      $rootScope.$broadcast("item data loaded");
 
       // and return it to the caller which is expecting a promise
       return Object.assign({}, data);
@@ -154,7 +154,7 @@ function DataService(
       })
       .catch(error => {
         if (error.message.match(/401/)) {
-          $window.location.href = 'http://catalog.paradisec.org.au';
+          $window.location.href = "http://catalog.paradisec.org.au";
         }
       });
 
@@ -178,7 +178,7 @@ function DataService(
   }
 
   function libraryBoxLoader(collectionId, itemId) {
-    const url = '/repository/index.json';
+    const url = "/repository/index.json";
     $log.info(`ds getItem ${url}`);
     return $http
       .get(url)
@@ -198,20 +198,20 @@ function DataService(
   function loadTranscription(type, item, as) {
     let transform;
     let what = {};
-    if (type === 'eaf') {
+    if (type === "eaf") {
       transform = parseEAF;
-    } else if (type === 'trs') {
+    } else if (type === "trs") {
       transform = parseTRS;
-    } else if (type === 'ixt') {
+    } else if (type === "ixt") {
       transform = parseIxt;
-    } else if (type === 'flextext') {
+    } else if (type === "flextext") {
       transform = parseFlextext;
     } else {
       return;
     }
 
     return $http
-      .get(item.url, {transformResponse: transform, withCredentials: true})
+      .get(item.url, { transformResponse: transform, withCredentials: true })
       .then(resp => {
         return resp.data.data;
       })
@@ -221,53 +221,53 @@ function DataService(
       });
 
     function parseEAF(d) {
-      if (as === 'xml') {
-        return {data: parseXML(d, 'xml')};
+      if (as === "xml") {
+        return { data: parseXML(d, "xml") };
       } else {
-        return {data: eaf.parse(parseXML(d))};
+        return { data: eaf.parse(parseXML(d)) };
       }
     }
 
     function parseTRS(d) {
-      if (as === 'xml') {
-        return {data: parseXML(d, 'xml')};
+      if (as === "xml") {
+        return { data: parseXML(d, "xml") };
       } else {
-        return {data: trs.parse(parseXML(d))};
+        return { data: trs.parse(parseXML(d)) };
       }
     }
 
     function parseIxt(d) {
-      if (as === 'xml') {
-        return {data: parseXML(d, 'xml')};
+      if (as === "xml") {
+        return { data: parseXML(d, "xml") };
       } else {
-        return {data: ixt.parse(parseXML(d))};
+        return { data: ixt.parse(parseXML(d)) };
       }
     }
 
     function parseFlextext(d) {
-      if (as === 'xml') {
-        return {data: parseXML(d, 'xml')};
+      if (as === "xml") {
+        return { data: parseXML(d, "xml") };
       } else {
-        return {data: ftp.parse(parseXML(d))};
+        return { data: ftp.parse(parseXML(d)) };
       }
     }
   }
 
   function broadcastMediaElementTime(time) {
     ds.mediaElementTime = time;
-    $rootScope.$broadcast('media time updated');
+    $rootScope.$broadcast("media time updated");
   }
 
   function listenForMediaElementBroadcast(callback) {
-    return $rootScope.$on('media time updated', callback);
+    return $rootScope.$on("media time updated", callback);
   }
 
   function broadcastPlayFrom(range) {
     ds.playFrom = range;
-    $rootScope.$broadcast('media play from');
+    $rootScope.$broadcast("media play from");
   }
 
   function listenForPlayFrom(callback) {
-    return $rootScope.$on('media play from', callback);
+    return $rootScope.$on("media play from", callback);
   }
 }

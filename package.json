@@ -2,18 +2,12 @@
   "name": "pdsc",
   "version": "0.0.0",
   "scripts": {
-    "develop:online":
-      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.online.js",
-    "develop:librarybox":
-      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.librarybox.js",
-    "build:test":
-      "./node_modules/webpack/bin/webpack.js --config webpack.test.js",
-    "build:deploy-testing":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.testing.js",
-    "build:deploy-production":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.production.js",
-    "build:deploy-librarybox":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.librarybox.js",
+    "develop:online": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.online.js",
+    "develop:librarybox": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.librarybox.js",
+    "build:test": "./node_modules/webpack/bin/webpack.js --config webpack.test.js",
+    "build:deploy-testing": "./node_modules/webpack/bin/webpack.js --config webpack.deploy.testing.js",
+    "build:deploy-production": "./node_modules/webpack/bin/webpack.js --config webpack.deploy.production.js",
+    "build:deploy-librarybox": "./node_modules/webpack/bin/webpack.js --config webpack.deploy.librarybox.js",
     "karma": "./node_modules/karma/bin/karma start karma.conf.js",
     "test": "npm-run-all --serial build:test",
     "develop": "npm-run-all --serial develop:online"
@@ -92,25 +86,5 @@
     "webpack-merge": "^4.1.2",
     "webpack-shell-plugin": "^0.5.0",
     "write-file-webpack-plugin": "^4.2.0"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "scripts": {
-    "develop:online":
-      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.online.js",
-    "develop:librarybox":
-      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.develop.librarybox.js",
-    "build:test":
-      "./node_modules/webpack/bin/webpack.js --config webpack.test.js",
-    "build:deploy-testing":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.testing.js",
-    "build:deploy-production":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.production.js",
-    "build:deploy-librarybox":
-      "./node_modules/webpack/bin/webpack.js --config webpack.deploy.librarybox.js",
-    "karma": "./node_modules/karma/bin/karma start karma.conf.js",
-    "test": "npm-run-all --serial build:test",
-    "develop": "npm-run-all --serial develop:online"
   }
 }
