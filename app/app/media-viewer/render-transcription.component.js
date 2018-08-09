@@ -136,6 +136,7 @@ function Controller(
   }
 
   function queueTranscription(what, selected) {
+    dataService.broadcastPlayFrom({ start: 0 });
     vm.selectedType = what;
     vm.selectedTranscriptionName = selected
       ? selected
