@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 module.exports = TRSParserService;
 
-TRSParserService.$inject = ['lodash'];
+TRSParserService.$inject = ["lodash"];
 function TRSParserService(lodash) {
   var trsParser = {};
 
@@ -12,14 +12,17 @@ function TRSParserService(lodash) {
     if (data.html) {
       return;
     }
+    if (data.parsererror && data.parsererror["#text"].match(/Error/)) {
+      return;
+    }
 
     // extract the speakers and group by id
     var speakers;
     if (data.Trans[1].Speakers) {
       speakers = lodash.map(data.Trans[1].Speakers.Speaker, function(d) {
         return {
-          id: d['@attributes'].id,
-          name: d['@attributes'].name
+          id: d["@attributes"].id,
+          name: d["@attributes"].name
         };
       });
       speakers = lodash.groupBy(speakers, function(d) {
@@ -37,25 +40,25 @@ function TRSParserService(lodash) {
     lodash.each(data.Trans[1].Episode.Section.Turn, function(d) {
       var spkr;
       // extract the speaker for use later
-      if (d['@attributes']) {
-        spkr = d['@attributes'].speaker;
+      if (d["@attributes"]) {
+        spkr = d["@attributes"].speaker;
       } else {
-        spkr = '';
+        spkr = "";
       }
 
       // extract the text
-      var texts = lodash.map(d['#text'], function(e) {
+      var texts = lodash.map(d["#text"], function(e) {
         return e.trim();
       });
-      texts = lodash.without(texts, '');
+      texts = lodash.without(texts, "");
 
       var syncs;
       if (lodash.isArray(d.Sync)) {
         syncs = lodash.map(d.Sync, function(e) {
-          return e['@attributes'].time;
+          return e["@attributes"].time;
         });
       } else if (lodash.isObject(d.Sync)) {
-        syncs = [d.Sync['@attributes'].time];
+        syncs = [d.Sync["@attributes"].time];
       }
       var transdata = lodash.zip(syncs, texts);
 
@@ -66,7 +69,7 @@ function TRSParserService(lodash) {
             begin: d[0] ? d[0] : 0
           },
           value: d[1],
-          referenceValue: '',
+          referenceValue: "",
           speaker: spkr
         };
       });

@@ -1,23 +1,23 @@
-'use strict';
+"use strict";
 
-const {includes, map, isEmpty} = require('lodash');
+const { includes, map, isEmpty } = require("lodash");
 
 module.exports = {
-  template: require('./render-transcription.component.html'),
+  template: require("./render-transcription.component.html"),
   bindings: {
-    element: '<'
+    element: "<"
   },
   controller: Controller,
-  controllerAs: 'vm'
+  controllerAs: "vm"
 };
 
 Controller.$inject = [
-  'dataService',
-  '$timeout',
-  '$q',
-  '$location',
-  '$anchorScroll',
-  '$state'
+  "dataService",
+  "$timeout",
+  "$q",
+  "$location",
+  "$anchorScroll",
+  "$state"
 ];
 function Controller(
   dataService,
@@ -37,7 +37,7 @@ function Controller(
   vm.play = play;
   vm.scrollTranscription = scrollTranscription;
 
-  vm.transcriptionOptions = ['eaf', 'trs', 'ixt', 'flextext'];
+  vm.transcriptionOptions = ["eaf", "trs", "ixt", "flextext"];
 
   function init() {
     if ($state.params.segment) {
@@ -66,7 +66,7 @@ function Controller(
       if ($state.params.transcription) {
         vm.selectedTranscription =
           vm.transcriptionsByName[$state.params.transcription];
-        vm.selectedType = $state.params.transcription.split('.').pop();
+        vm.selectedType = $state.params.transcription.split(".").pop();
         vm.selectedTranscriptionName = $state.params.transcription;
         select();
       } else {
@@ -79,19 +79,19 @@ function Controller(
 
       if (!isEmpty(vm.element.eaf) && !vm.transcriptions.eaf) {
         vm.transcriptions.eaf = {};
-        queue.push('eaf');
+        queue.push("eaf");
       }
       if (!isEmpty(vm.element.trs) && !vm.transcriptions.trs) {
         vm.transcriptions.trs = {};
-        queue.push('trs');
+        queue.push("trs");
       }
       if (!isEmpty(vm.element.ixt) && !vm.transcriptions.ixt) {
         vm.transcriptions.ixt = {};
-        queue.push('ixt');
+        queue.push("ixt");
       }
       if (!isEmpty(vm.element.flextext) && !vm.transcriptions.flextext) {
         vm.transcriptions.flextext = {};
-        queue.push('flextext');
+        queue.push("flextext");
       }
       return queue;
     }
@@ -119,14 +119,15 @@ function Controller(
   }
 
   function select() {
+    if (!vm.selectedTranscription) return;
     vm.loadingTranscriptions = true;
     vm.showTranscription = false;
     vm.showInterlinearText = false;
     $timeout(() => {
-      if (includes(['eaf', 'trs'], vm.selectedType)) {
+      if (includes(["eaf", "trs"], vm.selectedType)) {
         vm.showTranscription = true;
         vm.showInterlinearText = false;
-      } else if (includes(['ixt', 'flextext'], vm.selectedType)) {
+      } else if (includes(["ixt", "flextext"], vm.selectedType)) {
         vm.showTranscription = false;
         vm.showInterlinearText = true;
       }
@@ -135,13 +136,14 @@ function Controller(
   }
 
   function queueTranscription(what, selected) {
+    dataService.broadcastPlayFrom({ start: 0 });
     vm.selectedType = what;
     vm.selectedTranscriptionName = selected
       ? selected
       : vm.element[vm.selectedType][0].name;
     vm.selectedTranscription =
       vm.transcriptionsByName[vm.selectedTranscriptionName];
-    $location.search('transcription', vm.selectedTranscriptionName);
+    $location.search("transcription", vm.selectedTranscriptionName);
     select();
   }
 

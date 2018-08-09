@@ -49,6 +49,11 @@
     </div>
 </div>
 
+<div ng-if="!vm.selectedTranscription && !vm.loadingTranscriptions && (vm.showTranscription || vm.showInterlinearText)">
+    Unfortunately we're unable to show you the selected transcription. It's likely there is an error
+    in the file.
+</div>
+
 <div
     class="media-viewer-transcription-panel media-viewer-transcription-panel-width"
     ng-if="vm.showTranscription"
