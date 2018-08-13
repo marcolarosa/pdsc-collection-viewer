@@ -1,36 +1,39 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const WriteFilePlugin = require('write-file-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
+const WriteFilePlugin = require("write-file-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
   cache: true,
-  devtool: 'eval-source-map',
-  mode: 'development',
+  devtool: "eval-source-map",
+  mode: "development",
   output: {
-    path: path.join(__dirname, './dist')
+    path: path.join(__dirname, "./dist")
+  },
+  watch: true,
+  watchOptions: {
+    ignored: ["/node_modules/"]
   },
   devServer: {
-    contentBase: './dist',
-    host: '0.0.0.0',
-    port: '9000',
-    watchContentBase: true,
+    contentBase: "./dist",
+    host: "0.0.0.0",
+    port: "9000",
     disableHostCheck: true
   },
   plugins: [
-    new CleanWebpackPlugin(['dist/'], {
+    new CleanWebpackPlugin(["dist/"], {
       watch: true,
       root: __dirname,
-      exclude: ['Shared']
+      exclude: ["Shared"]
     }),
     new webpack.NamedModulesPlugin(),
     new WriteFilePlugin(),
     new webpack.DefinePlugin({
-      'process.env.MODE': JSON.stringify('online')
+      "process.env.MODE": JSON.stringify("online")
     })
   ],
   module: {
@@ -40,16 +43,16 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'ifdef-loader',
+            loader: "ifdef-loader",
             options: {
               DEPLOY_TESTING: false,
               DEPLOY_PRODUCTION: false
             }
           },
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['env']
+              presets: ["env"]
             }
           }
         ]
