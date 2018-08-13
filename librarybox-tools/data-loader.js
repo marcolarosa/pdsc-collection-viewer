@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const fs = require('fs-extra');
-const util = require('util');
+const fs = require("fs-extra");
+const util = require("util");
 const readdir = util.promisify(fs.readdir);
 const stat = util.promisify(fs.stat);
 const copy = util.promisify(fs.copyFile);
-const shell = require('shelljs');
+const shell = require("shelljs");
 
 const {
   compact,
@@ -15,26 +15,26 @@ const {
   map,
   each,
   isArray
-} = require('lodash');
-const {convert} = require('./xml-to-json-service');
-const DOMParser = require('xmldom').DOMParser;
+} = require("lodash");
+const { convert } = require("./xml-to-json-service");
+const DOMParser = require("xmldom").DOMParser;
 
-const args = require('yargs')
-  .option('data-path', {
-    describe: 'The full path to the data folders',
+const args = require("yargs")
+  .option("data-path", {
+    describe: "The full path to the data folders",
     demandOption: true
   })
-  .option('output-path', {
-    describe: 'The full path to where you want the repository created',
+  .option("output-path", {
+    describe: "The full path to where you want the repository created",
     demandOption: true
   })
   .help().argv;
 
 run(args);
 async function run(args) {
-  const target = `${args['output-path']}/repository`;
-  const dataPath = args['data-path'];
-  if (!shell.test('-d', target)) {
+  const target = `${args["output-path"]}/repository`;
+  const dataPath = args["data-path"];
+  if (!shell.test("-d", target)) {
     console.error(`
       ${target} does not seem to exist. Please create it.
     `);
@@ -42,7 +42,7 @@ async function run(args) {
   }
 
   try {
-    console.log('Verifying the target disk.');
+    console.log("Verifying the target disk.");
     if (!(await verifyTargetLibraryBoxDisk(target))) {
       console.error(
         `${this.usbMountPoint} doesn't look like a LibraryBox disk;`
@@ -52,24 +52,24 @@ async function run(args) {
       );
     }
 
-    console.log('Preparing the target disk.');
+    console.log("Preparing the target disk.");
     prepareTarget(target);
 
     let errors, result;
-    console.log('Processing the data to be loaded.');
+    console.log("Processing the data to be loaded.");
     result = await buildDataTree(dataPath);
 
-    console.log('Building the index.');
+    console.log("Building the index.");
     const index = buildIndex(result.items);
 
-    console.log('Loading the data (this can take some time).');
+    console.log("Loading the data (this can take some time).");
     result = await installTheData({
       dataPath: dataPath,
       target: target,
       index: index
     });
 
-    console.log('Writing the index file.');
+    console.log("Writing the index file.");
     writeIndexFile(target, result.index);
   } catch (error) {
     console.log(error);
@@ -77,18 +77,18 @@ async function run(args) {
 }
 
 const types = {
-  imageTypes: ['jpg', 'jpeg', 'png'],
-  videoTypes: ['mp4', 'ogg', 'ogv', 'mov', 'webm'],
-  audioTypes: ['mp3', 'ogg', 'oga'],
-  documentTypes: ['pdf'],
-  transcriptionTypes: ['eaf', 'trs', 'ixt', 'flextext']
+  imageTypes: ["jpg", "jpeg", "png"],
+  videoTypes: ["mp4", "ogg", "ogv", "mov", "webm"],
+  audioTypes: ["mp3", "ogg", "oga"],
+  documentTypes: ["pdf"],
+  transcriptionTypes: ["eaf", "trs", "ixt", "flextext"]
 };
 
 function writeIndexFile(target, index) {
-  fs.writeFileSync(`${target}/index.json`, JSON.stringify(index), 'utf8');
+  fs.writeFileSync(`${target}/index.json`, JSON.stringify(index), "utf8");
 }
 
-function installTheData({dataPath, target, index}) {
+function installTheData({ dataPath, target, index }) {
   return new Promise(async function(resolve, reject) {
     for (let item of index) {
       item.data = await processImages(dataPath, target, item.data);
@@ -96,30 +96,30 @@ function installTheData({dataPath, target, index}) {
       item.data = await processMedia(dataPath, target, item.data);
       item.data = await processDocuments(dataPath, target, item.data);
 
-      const transcriptions = groupBy(item.data.transcriptions, 'name');
+      const transcriptions = groupBy(item.data.transcriptions, "name");
       item.data.media = item.data.media.map(media => {
-        ['eaf', 'trs', 'ixt', 'flextext'].forEach(t => {
+        ["eaf", "trs", "ixt", "flextext"].forEach(t => {
           media[t] = media[t].map(tw => transcriptions[tw.name][0]);
         });
         return media;
       });
     }
-    resolve({index});
+    resolve({ index });
   });
 
   function processImages(source, targetPath, item) {
     return new Promise(async function(resolve, reject) {
       let name;
-      const {cid, iid, target} = setup(targetPath, item);
+      const { cid, iid, target } = setup(targetPath, item);
       item.images = await Promise.all(
         item.images.map(async file => {
-          return await copyToTarget({file, target});
+          return await copyToTarget({ file, target });
         })
       );
 
       item.thumbnails = await Promise.all(
         item.thumbnails.map(async file => {
-          return await copyToTarget({file, target});
+          return await copyToTarget({ file, target });
         })
       );
       item.images = compact(item.images);
@@ -131,7 +131,7 @@ function installTheData({dataPath, target, index}) {
   function processTranscriptions(source, targetPath, item) {
     return new Promise(async function(resolve, reject) {
       let name;
-      const {cid, iid, target} = setup(targetPath, item);
+      const { cid, iid, target } = setup(targetPath, item);
       item.transcriptions = await Promise.all(
         item.transcriptions.map(async file => {
           const url = await copyToTarget({
@@ -152,12 +152,12 @@ function installTheData({dataPath, target, index}) {
   function processMedia(source, targetPath, item) {
     return new Promise(async function(resolve, reject) {
       let name;
-      const {cid, iid, target} = setup(targetPath, item);
+      const { cid, iid, target } = setup(targetPath, item);
       item.media = await Promise.all(
         item.media.map(async media => {
           media.files = await Promise.all(
             media.files.map(async file => {
-              return await copyToTarget({target, file});
+              return await copyToTarget({ target, file });
             })
           );
           media.files = compact(media.files);
@@ -171,11 +171,11 @@ function installTheData({dataPath, target, index}) {
   function processDocuments(source, targetPath, item) {
     return new Promise(async function(resolve, reject) {
       let name;
-      const {cid, iid, target} = setup(targetPath, item);
+      const { cid, iid, target } = setup(targetPath, item);
       item.documents = await Promise.all(
         item.documents.map(async file => {
           try {
-            return await copyToTarget({file, target});
+            return await copyToTarget({ file, target });
           } catch (e) {}
         })
       );
@@ -189,19 +189,19 @@ function installTheData({dataPath, target, index}) {
     const cid = item.collectionId;
     const iid = item.itemId;
     target = `${target}/${cid}/${iid}`;
-    shell.mkdir('-p', target);
-    return {cid, iid, target};
+    shell.mkdir("-p", target);
+    return { cid, iid, target };
   }
 
-  async function copyToTarget({target, file}) {
-    const name = file.split('/').pop();
+  async function copyToTarget({ target, file }) {
+    const name = file.split("/").pop();
     target = `${target}/${name}`;
-    if (shell.test('-f', `${file}`)) {
+    if (shell.test("-f", `${file}`)) {
       // shell.cp(`${file}`, `${target}`);
       await copy(file, target);
 
       console.log(`Loaded: ${file}`);
-      return `/repository/${target.split('repository/')[1]}`;
+      return `/repository/${target.split("repository/")[1]}`;
     } else {
       console.error(`Missing source file: ${file}`);
     }
@@ -238,56 +238,56 @@ function createItemDataStructure(path, data) {
     filterFiles([...types.videoTypes, ...types.audioTypes], files)
   );
   let imageFiles = compact(filterFiles(types.imageTypes, files));
-  imageFiles = compact(imageFiles.filter(image => !image.name.match('thumb')));
+  imageFiles = compact(imageFiles.filter(image => !image.name.match("thumb")));
   const imageThumbnails = compact(
-    imageFiles.filter(image => image.name.match('thumb'))
+    imageFiles.filter(image => image.name.match("thumb"))
   );
   const documentFiles = compact(filterFiles(types.documentTypes, files));
   const transcriptionFiles = compact(
     filterFiles(types.transcriptionTypes, files)
   );
   return {
-    citation: get(data.item, 'citation'),
-    collectionId: get(data.item, 'identifier').split('-')[0],
+    citation: get(data.item, "citation"),
+    collectionId: get(data.item, "identifier").split("-")[0],
     collectionLink: `http://catalog.paradisec.org.au/collections/${get(
       data,
-      'collectionId'
+      "collectionId"
     )}`,
-    date: get(data.item, 'originationDate'),
-    description: get(data.item, 'description'),
+    date: get(data.item, "originationDate"),
+    description: get(data.item, "description"),
     documents: documentFiles.map(document => document.path),
-    identifier: [get(data.item, 'identifier'), get(data.item, 'archiveLink')],
+    identifier: [get(data.item, "identifier"), get(data.item, "archiveLink")],
     images: imageFiles.map(image => image.path),
-    itemId: get(data.item, 'identifier').split('-')[1],
+    itemId: get(data.item, "identifier").split("-")[1],
     media: getMediaData([...mediaFiles, ...transcriptionFiles]),
-    openAccess: get(data.item, 'private') === 'false',
-    rights: get(data.item.adminInfo, 'dataAccessConditions'),
+    openAccess: get(data.item, "private") === "false",
+    rights: get(data.item.adminInfo, "dataAccessConditions"),
     thumbnails: imageThumbnails.map(image => image.path),
-    title: get(data.item, 'title'),
+    title: get(data.item, "title"),
     transcriptions: transcriptionFiles.map(t => {
-      return {name: t.name, url: t.path};
+      return { name: t.name, url: t.path };
     })
   };
 
   function get(leaf, thing) {
     try {
-      return leaf[thing]['#text'];
+      return leaf[thing]["#text"];
     } catch (e) {
-      return '';
+      return "";
     }
   }
 
   function getFiles(path, data) {
-    const collectionId = get(data.item, 'identifier').split('-')[0];
-    const itemId = get(data.item, 'identifier').split('-')[1];
+    const collectionId = get(data.item, "identifier").split("-")[0];
+    const itemId = get(data.item, "identifier").split("-")[1];
     if (!isArray(data.item.files.file)) {
       data.item.files.file = [data.item.files.file];
     }
     return data.item.files.file.map(file => {
       return {
-        name: `${get(file, 'name')}`,
-        path: `${path}/${get(file, 'name')}`,
-        type: get(file, 'mimeType')
+        name: `${get(file, "name")}`,
+        path: `${path}/${get(file, "name")}`,
+        type: get(file, "mimeType")
       };
     });
   }
@@ -295,37 +295,37 @@ function createItemDataStructure(path, data) {
   function filterFiles(types, files) {
     let extension;
     return files.filter(file => {
-      extension = file.name.split('.')[1];
+      extension = file.name.split(".")[1];
       return includes(types, extension);
     });
   }
 
   function getMediaData(files) {
     files = groupBy(files, file => {
-      return file.name.split('.')[0];
+      return file.name.split(".")[0];
     });
     return map(files, (v, k) => {
       return {
         name: k,
-        files: filter([...v], 'media'),
-        eaf: filter([...v], 'eaf'),
-        flextext: filter([...v], 'flextext'),
-        ixt: filter([...v], 'ixt'),
-        trs: filter([...v], 'trs'),
-        type: v[0].type.split('/')[0]
+        files: filter([...v], "media"),
+        eaf: filter([...v], "eaf"),
+        flextext: filter([...v], "flextext"),
+        ixt: filter([...v], "ixt"),
+        trs: filter([...v], "trs"),
+        type: v[0].type.split("/")[0]
       };
     });
 
     function filter(files, what) {
-      if (what === 'media') {
+      if (what === "media") {
         const set = [...types.videoTypes, ...types.audioTypes];
         files = files.filter(file => {
-          return includes(set, file.name.split('.')[1]);
+          return includes(set, file.name.split(".")[1]);
         });
         return files.map(file => file.path);
       } else {
         files = files.filter(file => {
-          return file.name.split('.')[1] === what;
+          return file.name.split(".")[1] === what;
         });
         return files.map(file => {
           return {
@@ -338,13 +338,13 @@ function createItemDataStructure(path, data) {
   }
 }
 
-function readCatalogFile({dataPath, dataFile}) {
-  const data = parseXML(fs.readFileSync(dataFile, {encoding: 'utf8'}));
+function readCatalogFile({ dataPath, dataFile }) {
+  const data = parseXML(fs.readFileSync(dataFile, { encoding: "utf8" }));
   return createItemDataStructure(dataPath, data);
 
   function parseXML(doc) {
     var parser = new DOMParser();
-    var xmldoc = parser.parseFromString(doc, 'text/xml');
+    var xmldoc = parser.parseFromString(doc, "text/xml");
     return convert(xmldoc);
   }
 }
@@ -366,8 +366,8 @@ async function buildDataTree(path) {
           } has more than 1 Catalog file. Skipping this folder.`
         );
       } else {
-        const cid = folder.dataFile[0].split('-')[0];
-        const iid = folder.dataFile[0].split('-')[1];
+        const cid = folder.dataFile[0].split("-")[0];
+        const iid = folder.dataFile[0].split("-")[1];
         if (!folder.dataPath.match(/.AppleDouble/)) {
           items.push({
             dataPath: folder.dataPath,
@@ -378,7 +378,7 @@ async function buildDataTree(path) {
         }
       }
     }
-    return {items, errors};
+    return { items, errors };
   } catch (e) {
     console.log(e);
   }
