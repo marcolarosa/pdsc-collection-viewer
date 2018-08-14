@@ -4,59 +4,49 @@ const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
-const WriteFilePlugin = require("write-file-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
-  cache: true,
-  devtool: "eval-source-map",
-  mode: "development",
-  output: {
-    path: path.join(__dirname, "./dist")
-  },
-  watch: true,
-  watchOptions: {
-    ignored: ["/node_modules/"]
-  },
-  devServer: {
-    contentBase: "./dist",
-    host: "0.0.0.0",
-    port: "9000",
-    disableHostCheck: true
-  },
-  plugins: [
-    new CleanWebpackPlugin(["dist/"], {
-      watch: true,
-      root: __dirname,
-      exclude: ["Shared"]
-    }),
-    new webpack.NamedModulesPlugin(),
-    new WriteFilePlugin(),
-    new webpack.DefinePlugin({
-      "process.env.MODE": JSON.stringify("online")
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "ifdef-loader",
-            options: {
-              DEPLOY_TESTING: false,
-              DEPLOY_PRODUCTION: false
+    devtool: "eval-source-map",
+    mode: "development",
+    // stats: "verbose",
+    serve: {
+        host: "0.0.0.0",
+        port: "9000",
+        devMiddleware: {
+            writeToDisk: true
+        },
+        hotClient: {
+            allEntries: true,
+            host: {
+                server: "192.168.56.2",
+                client: "192.168.56.2"
             }
-          },
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["env"]
+        }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            "process.env.MODE": JSON.stringify("online")
+        })
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ifdef-loader",
+                        options: {
+                            DEPLOY_TESTING: false,
+                            DEPLOY_PRODUCTION: false
+                        }
+                    },
+                    {
+                        loader: "babel-loader",
+                        options: { presets: "env" }
+                    }
+                ]
             }
-          }
         ]
-      }
-    ]
-  }
+    }
 });

@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 
-const {isEmpty, each} = require('lodash');
+const { isEmpty, each } = require("lodash");
 
 module.exports = {
-  template: require('./view-transcriptions.component.html'),
+  template: require("./view-transcriptions.component.html"),
   bindings: {},
   controller: Controller,
-  controllerAs: 'vm'
+  controllerAs: "vm"
 };
 
 Controller.$inject = [
-  '$state',
-  '$rootScope',
-  'dataService',
-  'hljs',
-  '$timeout',
-  '$scope'
+  "$state",
+  "$rootScope",
+  "dataService",
+  "hljs",
+  "$timeout",
+  "$scope"
 ];
 function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
   var vm = this;
@@ -27,7 +27,7 @@ function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
   vm.jump = jump;
 
   function init() {
-    broadcastListener = $rootScope.$on('item data loaded', loadItem);
+    broadcastListener = $rootScope.$on("item data loaded", loadItem);
     vm.config = {
       current: 0
     };
@@ -53,12 +53,12 @@ function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
       }
       vm.item = resp;
       if (isEmpty(vm.item.transcriptions)) {
-        return $state.go('main');
+        return $state.go("main");
       }
 
       if (!$state.params.transcriptionId) {
         $timeout(() => {
-          $state.go('main.transcriptions.instance', {
+          $state.go("main.transcriptions.instance", {
             transcriptionId: vm.item.transcriptions[0].name
           });
         });
@@ -73,14 +73,14 @@ function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
     vm.selectedTranscription = vm.item.transcriptions.filter(
       t => t.name === $state.params.transcriptionId
     )[0];
-    const type = vm.selectedTranscription.name.split('.').pop();
+    const type = vm.selectedTranscription.name.split(".").pop();
     const item = vm.selectedTranscription;
-    dataService.loadTranscription(type, item, 'xml').then(data => {
+    dataService.loadTranscription(type, item, "xml").then(data => {
       hljs.configure({
-        tabReplace: '    ',
+        tabReplace: "    ",
         useBr: true
       });
-      data = hljs.highlight('xml', data).value;
+      data = hljs.highlight("xml", data).value;
       vm.data = data;
       hljs.initHighlighting();
     });
@@ -88,7 +88,7 @@ function Controller($state, $rootScope, dataService, hljs, $timeout, $scope) {
 
   function jump() {
     $timeout(() => {
-      $state.go('main.transcriptions.instance', {
+      $state.go("main.transcriptions.instance", {
         transcriptionId: vm.selectedTranscription.name
       });
     });

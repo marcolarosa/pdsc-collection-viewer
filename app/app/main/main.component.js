@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 
-const {includes, isEmpty, isUndefined} = require('lodash');
-const configuration = require('./configuration');
+const { includes, isEmpty, isUndefined } = require("lodash");
+const configuration = require("./configuration");
 
 module.exports = {
-  template: require('./main.component.html'),
+  template: require("./main.component.html"),
   bindings: {},
   controller: Controller,
-  controllerAs: 'vm'
+  controllerAs: "vm"
 };
 
 Controller.$inject = [
-  '$state',
-  '$transitions',
-  '$rootScope',
-  'dataService',
-  '$mdSidenav'
+  "$state",
+  "$transitions",
+  "$rootScope",
+  "dataService",
+  "$mdSidenav"
 ];
 
 function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
@@ -35,11 +35,11 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
     vm.mode = configuration.datasource.mode;
     vm.loadingData = true;
     vm.showOptions = false;
-    broadcastListener = $rootScope.$on('item data loaded', loadItem);
+    broadcastListener = $rootScope.$on("item data loaded", loadItem);
     onSuccessHandler = $transitions.onSuccess({}, function(transition) {
-      vm.state = $state.current.name.split('.')[1];
+      vm.state = $state.current.name.split(".")[1];
     });
-    vm.state = $state.current.name.split('.')[1];
+    vm.state = $state.current.name.split(".")[1];
     loadItem();
   }
 
@@ -62,13 +62,13 @@ function Controller($state, $transitions, $rootScope, dataService, $mdSidenav) {
   }
 
   function toggleItemInformation() {
-    $mdSidenav('left').toggle();
+    $mdSidenav("left").toggle();
   }
 
   function loadViewer() {
     // load a viewer if we're at the item root
-    if ($state.current.name === 'main') {
-      $state.go('main.files');
+    if ($state.current.name === "main") {
+      $state.go("main.files");
       // if (!isEmpty(vm.itemData.images)) {
       //   $state.go('main.images');
       // } else if (!isEmpty(vm.itemData.media)) {
