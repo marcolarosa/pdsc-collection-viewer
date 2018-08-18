@@ -12,9 +12,30 @@
                     </span>
                     <a
                         class="file-viewer-link-styling"
+                        ng-if="item.data.elements > 1"
                         ui-sref="main({collectionId: item.collectionId, itemId: item.itemId})">
                         {{item.collectionId}} / {{item.itemId}} - {{item.data.title}} 
                     </a>
+                    <span ng-if="item.data.elements === 1">
+                        <a
+                            class="file-viewer-link-styling"
+                            ng-if="item.data.images.length"
+                            ui-sref="main.images({collectionId: item.collectionId, itemId: item.itemId})">
+                            {{item.itemId}} - {{item.data.title}}
+                        </a>
+                        <a
+                            class="file-viewer-link-styling"
+                            ng-if="item.data.documents.length"
+                            ui-sref="main.documents({collectionId: item.collectionId, itemId: item.itemId})">
+                            {{item.itemId}} - {{item.data.title}}
+                        </a>
+                        <a
+                            class="file-viewer-link-styling"
+                            ng-if="item.data.media.length"
+                            ui-sref="main.media({collectionId: item.collectionId, itemId: item.itemId})">
+                            {{item.itemId}} - {{item.data.title}}
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>

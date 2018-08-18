@@ -9,11 +9,34 @@
                 <span class="">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </span>
+
                 <a
                     class="file-viewer-link-styling"
-                    ui-sref="main({collectionId: k, itemId: item.itemId})">
+                    ng-if="item.data.elements > 1"
+                    ui-sref="main.files({collectionId: k, itemId: item.itemId})">
                     {{item.itemId}} - {{item.data.title}}
                 </a>
+
+                <span ng-if="item.data.elements === 1">
+                    <a
+                        class="file-viewer-link-styling"
+                        ng-if="item.data.images.length"
+                        ui-sref="main.images({collectionId: k, itemId: item.itemId})">
+                        {{item.itemId}} - {{item.data.title}}
+                    </a>
+                    <a
+                        class="file-viewer-link-styling"
+                        ng-if="item.data.documents.length"
+                        ui-sref="main.documents({collectionId: k, itemId: item.itemId})">
+                        {{item.itemId}} - {{item.data.title}}
+                    </a>
+                    <a
+                        class="file-viewer-link-styling"
+                        ng-if="item.data.media.length"
+                        ui-sref="main.media({collectionId: k, itemId: item.itemId})">
+                        {{item.itemId}} - {{item.data.title}}
+                    </a>
+                </span>
             </div>
         </div>
     </div>
