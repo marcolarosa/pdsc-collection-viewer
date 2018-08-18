@@ -72,7 +72,7 @@ module.exports = {
     resolve: {
         alias: {
             app: path.resolve(__dirname, "app/app"),
-            services: path.resolve(__dirname, "app/app/services")
+            services: path.resolve(__dirname, "app/app/services"),
             jquery: "jquery/src/jquery"
         }
     }
