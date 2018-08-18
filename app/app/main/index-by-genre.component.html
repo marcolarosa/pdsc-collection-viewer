@@ -1,0 +1,22 @@
+<div layout="row" layout-align="center center">
+    <div>
+        <div 
+            layout="column" 
+            layout-padding
+            ng-repeat="(k, items) in vm.collections">
+            <div layout="column">
+                Genre: {{k}}
+                <div class="row" ng-repeat="item in items">
+                    <span class="">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                    <a
+                        class="file-viewer-link-styling"
+                        ui-sref="main({collectionId: item.collectionId, itemId: item.itemId})">
+                        {{item.collectionId}} / {{item.itemId}} - {{item.data.title}} 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

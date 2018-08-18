@@ -1,65 +1,74 @@
 .small-button {
-  margin: 6px 2px;
-  min-width: 40px;
+    margin: 6px 2px;
+    min-width: 40px;
 }
 
 .main-toolbar {
-  min-height: 20px;
-  width: 100vw;
+    min-height: 20px;
+    width: 100vw;
 }
 
 .main-root-toolbar {
-  min-height: 56px;
-  width: 100vw;
+    min-height: 56px;
+    width: 100vw;
 }
 
 .main-viewer-color {
-  background-color: #f2f1ef;
+    background-color: #f2f1ef;
 }
 
 .main-toolbar-selected {
-  color: #ffd54f;
+    color: #ffd54f;
 }
 
 .main-item-link {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 .main-viewer-panel {
-  max-width: 320px;
-  width: 320px;
+    max-width: 320px;
+    width: 320px;
 }
+
 @media (min-width: 400px) {
-  .main-viewer-panel {
-    max-width: 380px;
-    width: 380px;
-  }
+    .main-viewer-panel {
+        max-width: 380px;
+        width: 380px;
+    }
 }
+
 @media (min-width: 650px) {
-  .main-viewer-panel {
-    max-width: 650px;
-    width: 650px;
-  }
+    .main-viewer-panel {
+        max-width: 650px;
+        width: 650px;
+    }
 }
+
 @media (min-width: 700px) {
-  .main-viewer-panel {
-    max-width: 700px;
-    width: 700px;
-  }
+    .main-viewer-panel {
+        max-width: 700px;
+        width: 700px;
+    }
 }
+
 @media (min-width: 960px) {
-  .main-viewer-panel {
-    max-width: 1000px;
-    width: 1000px;
-  }
+    .main-viewer-panel {
+        max-width: 1000px;
+        width: 1000px;
+    }
 }
+
 @media (min-width: 1200px) {
-  .main-viewer-panel {
-    max-width: 1200px;
-    width: 1200px;
-  }
+    .main-viewer-panel {
+        max-width: 1200px;
+        width: 1200px;
+    }
 }
 
 .main-small-font {
-  font-size: 12px;
+    font-size: 12px;
+}
+
+.main-index-styling {
+    width: 100%;
 }

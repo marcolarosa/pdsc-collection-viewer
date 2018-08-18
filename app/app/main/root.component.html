@@ -13,26 +13,23 @@
     <div
         layout="row"
         class="file-viewer-link-styling"
-        ng-if="!vm.loadingData">
-            <div flex="15" flex-gt-xs="25"></div>
-            <!-- <div class="md-headline">Available Collections</div> -->
-            <div flex="70" flex-gt-xs="50">
-                <div
-                    layout="column"
-                    layout-padding
-                    ng-repeat="(k, collection) in vm.collections">
-                    Collection: {{k}}
-                    <div ng-repeat="item in collection" class="">
-                        <span class="">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </span>
-                        <a
-                            class="file-viewer-link-styling"
-                            ui-sref="main({collectionId: k, itemId: item.itemId})">
-                            {{item.itemId}} - {{item.data.title}}
-                        </a>
-                    </div>
-                </div>
-            </div>
+        ng-if="vm.data">
+            <md-tabs md-dynamic-height md-center-tabs md-border-bottom md-selected="vm.activeTabIndex" class="main-index-styling">
+                <md-tab label="Browse by Identifier">
+                    <md-content class="md-padding main-viewer-color">
+                        <pdsc-index-by-item-id-component collections="vm.data"></pdsc-index-by-item-id-component>
+                    <md-content>
+                </md-tab>
+                <md-tab label="Browse by Genre" ng-if="vm.genreData">
+                    <md-content class="md-padding main-viewer-color">
+                        <pdsc-index-by-genre-component collections="vm.genreData"></pdsc-index-by-genre-component>
+                    <md-content>
+                </md-tab>
+                <md-tab label="Browse by Speaker" ng-if="vm.speakerData">
+                    <md-content class="md-padding main-viewer-color">
+                        <pdsc-index-by-speaker-component collections="vm.speakerData"></pdsc-index-by-speaker-component>
+                    <md-content>
+                </md-tab>
+            </md-tabs>
     </div>
 </div>

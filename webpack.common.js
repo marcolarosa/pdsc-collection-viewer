@@ -34,7 +34,7 @@ module.exports = {
         new CleanWebpackPlugin(["dist/"], {
             watch: true,
             root: __dirname,
-            exclude: ["Shared"]
+            exclude: ["Shared", "www"]
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
@@ -71,7 +71,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            src: path.resolve(__dirname, "src"),
+            app: path.resolve(__dirname, "app/app"),
+            services: path.resolve(__dirname, "app/app/services")
             jquery: "jquery/src/jquery"
         }
     }
