@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="file-viewer-media-separator"></div>
-        <div>
+        <div ng-if="vm.mode === 'online'">
             Transcriptions ({{vm.item.transcriptions.length}})
             <div>
                 <div ng-repeat="item in vm.item.transcriptions" track by $index>

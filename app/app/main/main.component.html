@@ -71,7 +71,7 @@
                     ng-class="{'main-toolbar-selected': vm.state === 'transcriptions'}"
                     ui-sref="main.transcriptions"
                     blur-on-click
-                    ng-if="vm.itemData.transcriptions.length">
+                    ng-if="vm.mode === 'online' && vm.itemData.transcriptions.length">
                         <i class="fa fa-file-code-o fa-lg"></i> Transcriptions
                         <md-tooltip>View Transcriptions</md-tooltip>
                 </md-button>
