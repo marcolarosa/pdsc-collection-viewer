@@ -97,8 +97,11 @@ which adds the relevant CORS headers whilst proxying to the real NABU server.
 
 This will give you a webpack based build (in dist) with livereload.
 
-If you have docker installed on your system you can just do `docker-compose up` and the online version will be started
-inside a docker container.
+OR via a docker container:
+
+```
+> TARGET="online" docker-compose up
+```
 
 ## Developing the LibrayBox Version.
 
@@ -109,6 +112,12 @@ inside a docker container.
 You will need the [librarybox-installer](https://github.com/marcolarosa/pdsc-librarybox-installer). Set it up and then follow the notes at `Building a catalog for LibraryBox Development`. Ensure you build the
 catalog in the `dist` folder in this repository.
 
+OR via a docker container:
+
+```
+> TARGET="librarybox" docker-compose up
+```
+
 ## Building a distribution
 
 ### Deploy to TESTING
@@ -117,16 +126,34 @@ catalog in the `dist` folder in this repository.
 > npm run build:deploy-testing
 ```
 
+OR via a docker container:
+
+```
+> TARGET="testing" docker-compose -f docker-compose-build.yml up
+```
+
 ### Deploy to PRODUCTION
 
 ```
 > npm run build:deploy-production
 ```
 
+OR via a docker container:
+
+```
+> TARGET="production" docker-compose -f docker-compose-build.yml up
+```
+
 ### Deploy to LibraryBox
 
 ```
 > npm run build:deploy-librarybox
+```
+
+OR via a docker container:
+
+```
+> TARGET="librarybox" docker-compose -f docker-compose-build.yml up
 ```
 
 ## Items with varying types useful for testing
