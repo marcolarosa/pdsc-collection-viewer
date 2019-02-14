@@ -357,7 +357,7 @@ function generateAudioVisualisations(audio) {
 function groupByIdentifier(data) {
     let collections = groupBy(data, "collectionId");
     var ordered = {};
-    _(collections)
+    lodash(collections)
         .keys()
         .sort()
         .each(function(key) {
