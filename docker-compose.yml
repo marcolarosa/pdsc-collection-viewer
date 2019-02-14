@@ -1,0 +1,19 @@
+version: "2"
+
+volumes:
+    node-modules:
+
+services:
+    app:
+        image: node:10-stretch
+        tty: true
+        environment:
+            TERM: "xterm-256color"
+            NODE_ENV: "development"
+        volumes:
+            - $PWD:/srv/app
+            - node-modules:/srv/app/node_modules
+        working_dir: /srv/app
+        command: ["npm", "run", "develop:online"]
+        ports:
+            - 9000:9000

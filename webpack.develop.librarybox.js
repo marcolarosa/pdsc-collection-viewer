@@ -9,20 +9,13 @@ module.exports = merge(common, {
     devtool: "eval-source-map",
     mode: "development",
     // stats: "verbose",
-    serve: {
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
         host: "0.0.0.0",
-        port: "9000",
-        content: "./dist/www",
-        devMiddleware: {
-            writeToDisk: true
-        },
-        hotClient: {
-            allEntries: true,
-            host: {
-                server: "192.168.56.2",
-                client: "192.168.56.2"
-            }
-        }
+        port: 9000,
+        historyApiFallback: true,
+        watchContentBase: true
     },
     plugins: [
         new webpack.DefinePlugin({
