@@ -4,9 +4,9 @@
     "scripts": {
         "develop:online": "npm install && node_modules/.bin/webpack-dev-server --hot --config webpack.develop.online.js",
         "develop:librarybox": "npm install && node_modules/.bin/webpack-dev-server --hot --config webpack.develop.librarybox.js",
-        "build:deploy-testing": "./node_modules/.bin/webpack --config webpack.deploy.testing.js",
-        "build:deploy-production": "./node_modules/.bin/webpack --config webpack.deploy.production.js",
-        "build:deploy-librarybox": "./node_modules/.bin/webpack --config webpack.deploy.librarybox.js",
+        "build:deploy-testing": "npm install && ./node_modules/.bin/webpack --config webpack.deploy.testing.js",
+        "build:deploy-production": "npm install && ./node_modules/.bin/webpack --config webpack.deploy.production.js",
+        "build:deploy-librarybox": "npm install && ./node_modules/.bin/webpack --config webpack.deploy.librarybox.js",
         "karma": "./node_modules/karma/bin/karma start karma.conf.js"
     },
     "engines": {
