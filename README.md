@@ -3,17 +3,17 @@
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Paradisec Collection Viewer](#paradisec-collection-viewer)
-	- [Preamble](#preamble)
-		- [Features](#features)
-	- [URL structure](#url-structure)
-	- [Setup](#setup)
-	- [Developing the online version.](#developing-the-online-version)
-	- [Developing the LibrayBox Version.](#developing-the-libraybox-version)
-	- [Building a distribution](#building-a-distribution)
-		- [Deploy to TESTING](#deploy-to-testing)
-		- [Deploy to PRODUCTION](#deploy-to-production)
-		- [Deploy to LibraryBox](#deploy-to-librarybox)
-	- [Items with varying types useful for testing](#items-with-varying-types-useful-for-testing)
+  - [Preamble](#preamble)
+    - [Features](#features)
+  - [URL structure](#url-structure)
+  - [Setup](#setup)
+  - [Developing the online version.](#developing-the-online-version)
+  - [Developing the LibrayBox Version.](#developing-the-libraybox-version)
+  - [Building a distribution](#building-a-distribution)
+    - [Deploy to TESTING](#deploy-to-testing)
+    - [Deploy to PRODUCTION](#deploy-to-production)
+    - [Deploy to LibraryBox](#deploy-to-librarybox)
+  - [Items with varying types useful for testing](#items-with-varying-types-useful-for-testing)
 
 <!-- /TOC -->
 
@@ -69,6 +69,26 @@ http://{localhost | vm IP address}:9000/#/
 You need nodejs installed (version 8 or greater). See [here](https://nodejs.org/en/download/) for what to do for your
 system. Once nodejs is setup run `npm install` to install the packages.
 
+As this application loads data from NABU and given that NABU does not allow requests from outside domains (in
+the parlance: NABU does not have CORS enabled) you will also need to set your host to man in the middle requests
+to NABU.
+
+Clone the repo @ https://github.com/marcolarosa/nginx-cors-plus and build the docker container then run it with:
+
+```
+> docker run -it --rm -p 80:80 -e TARGET="http://catalog.paradisec.org.au" nginx-cors-proxy
+```
+
+Then, edit your /etc/hosts file and add `catalog.paradisec.org.au` to the line starting with `127.0.0.1`. It should
+look something like this:
+
+```
+127.0.0.1	localhost catalog.paradisec.org.au
+```
+
+This then results in requests from the viewer to catalog.paradisec.org.au to be sent to the proxy container just started
+which adds the relevant CORS headers whilst proxying to the real NABU server.
+
 ## Developing the online version.
 
 ```
@@ -76,6 +96,9 @@ system. Once nodejs is setup run `npm install` to install the packages.
 ```
 
 This will give you a webpack based build (in dist) with livereload.
+
+If you have docker installed on your system you can just do `docker-compose up` and the online version will be started
+inside a docker container.
 
 ## Developing the LibrayBox Version.
 
