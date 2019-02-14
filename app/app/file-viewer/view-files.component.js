@@ -36,7 +36,6 @@ function Controller(
 
     function init() {
         vm.mode = configuration.datasource.mode;
-        console.log(vm.mode);
         vm.loadingData = true;
         broadcastListener = $rootScope.$on("item data loaded", loadItem);
         loadItem();
