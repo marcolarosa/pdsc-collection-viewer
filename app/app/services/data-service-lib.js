@@ -3,13 +3,14 @@
 const xmlToJson = require("./xml-to-json.service");
 const {
     includes,
-    isEmpty,
     compact,
     isArray,
     each,
     map,
     flattenDeep,
-    groupBy
+    groupBy,
+    sortBy,
+    orderBy
 } = require("lodash");
 const lodash = require("lodash");
 
@@ -83,7 +84,7 @@ function createItemDataStructureFromGraphQL(data) {
         filterFiles(types.transcriptionTypes, files)
     );
 
-    return {
+    let struct = {
         audioVisualisations: {},
         citation: data.citation,
         collectionId: collectionId,
@@ -91,19 +92,29 @@ function createItemDataStructureFromGraphQL(data) {
         contributor: constructContributorList({ data }),
         date: data.date,
         description: data.description,
-        documents: documentFiles.map(document => document.path),
+        documents: documentFiles.map(document => document.path).sort(),
         identifier: [data.identifier, data.permalink],
-        images: imageFiles.map(image => image.path),
+        images: imageFiles.map(image => image.path).sort(),
         itemId: itemId,
-        media: getMediaData([...mediaFiles, ...transcriptionFiles]),
+        media: orderBy(
+            getMediaData([...mediaFiles, ...transcriptionFiles]),
+            "name"
+        ),
         openAccess: data.access_class === "open" ? true : false,
         rights: data.rights,
-        thumbnails: imageThumbnails.map(image => image.path),
+        thumbnails: sortBy(
+            imageThumbnails.map(image => image.path),
+            i => i.split(".")[0].split("-")[2]
+        ),
         title: data.title,
-        transcriptions: transcriptionFiles.map(t => {
-            return { name: t.name, url: t.path };
-        })
+        transcriptions: orderBy(
+            transcriptionFiles.map(t => {
+                return { name: t.name, url: t.path };
+            }),
+            "name"
+        )
     };
+    return struct;
 
     function constructContributorList({ data }) {
         return [
