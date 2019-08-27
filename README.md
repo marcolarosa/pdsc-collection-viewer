@@ -1,3 +1,7 @@
+> # Development of this application has moved to https://github.com/CoEDL/nabu-collection-viewer-v1
+>
+> ## Issues raised in this repository will be ignored.
+
 # Paradisec Collection Viewer
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
